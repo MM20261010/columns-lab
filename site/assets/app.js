@@ -2,6 +2,13 @@
 'use strict';
 const c=window.CSVCore, $=id=>document.getElementById(id);
 let last=null;
+const inputControls=['files','encoding','delimiter','source','skipblank'];
+function invalidateResult(){
+  last=null;$('download').disabled=true;
+  $('preview').replaceChildren();$('diagnostics').replaceChildren();
+  message('入力または結合設定が変わりました。もう一度結合するか、架空サンプルをお試しください。');
+}
+for(const id of inputControls)$(id).addEventListener('change',invalidateResult);
 const MAX_FILE=10*1024*1024, MAX_TOTAL=25*1024*1024;
 function message(text,bad=false){$('status').textContent=text;$('status').className=bad?'status bad':'status';}
 function detectAndDecode(bytes, preferred){
@@ -57,6 +64,8 @@ function renderDiagnostics(out){
 }
 $('run').addEventListener('click',async()=>{
   $('run').disabled=true;$('download').disabled=true;last=null;
+  $('demo').disabled=true;
+  for(const id of inputControls)$(id).disabled=true;
   $('preview').replaceChildren();$('diagnostics').replaceChildren();
   message('CSVを読み込んでいます…');
   try{
@@ -66,7 +75,10 @@ $('run').addEventListener('click',async()=>{
     message(`${tables.length}ファイルを結合しました。${last.total.toLocaleString('ja-JP')}データ行・${last.columns.length}列。先頭12行を表示中。`);
     $('download').disabled=false;
   }catch(e){message(e.message,true);}
-  finally{$('run').disabled=false;}
+  finally{
+    $('run').disabled=false;$('demo').disabled=false;
+    for(const id of inputControls)$(id).disabled=false;
+  }
 });
 $('download').addEventListener('click',()=>{
   if(!last)return;

@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict');
+const vm=require('node:vm');
+const fs=require('node:fs');
+const core=require('../site/assets/csv-core.js');
+function node(){return {value:'',checked:true,disabled:false,textContent:'',className:'',children:[],listeners:{},append(...x){this.children.push(...x);},replaceChildren(){this.children=[];},addEventListener(event,fn){this.listeners[event]=fn;}};}
+const ids=['files','encoding','delimiter','source','skipblank','run','demo','download','preview','diagnostics','status','excelSafety','outputEncoding'];
+const elements=Object.fromEntries(ids.map(id=>[id,node()]));
+const context={window:{CSVCore:core},document:{getElementById:id=>elements[id],createElement:node,createTextNode:text=>({textContent:text})},TextDecoder,Uint8Array};
+vm.runInNewContext(fs.readFileSync(require.resolve('../site/assets/app.js'),'utf8'),context);
+elements.demo.listeners.click();
+assert.equal(elements.download.disabled,false);
+assert.ok(elements.preview.children.length>0);
+elements.source.checked=false; elements.source.listeners.change();
+assert.equal(elements.download.disabled,true);
+assert.equal(elements.preview.children.length,0);
+assert.match(elements.status.textContent,/もう一度/);
+elements.demo.listeners.click();
+elements.files.listeners.change();
+assert.equal(elements.download.disabled,true);
+console.log('UI result invalidation tests: passed');

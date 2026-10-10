@@ -30,3 +30,10 @@ assert.equal(T.sanitizeForExcel('   +1'),"'   +1");
 assert.equal(T.sanitizeForExcel('123'), '123');
 assert.equal(T.writeCSV(['a','b'],[['hello, world','"z"']],false),'a,b\r\n"hello, world","""z"""\r\n');
 console.log('CSV core tests: passed');
+// Regression: sampling must not truncate a long quoted record.
+for(const delimiter of ['\t',';']){
+  const text=`name${delimiter}note\nA${delimiter}"${'x'.repeat(31000)}\ncontinued"\n`;
+  assert.equal(T.detectDelimiter(text),delimiter);
+  assert.equal(T.parseCSV(text,delimiter)[1][1],'x'.repeat(31000)+'\ncontinued');
+}
+assert.equal(T.detectDelimiter('name\tnote\r\nA\t"a""b"\r\n'),'\t');
