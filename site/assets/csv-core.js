@@ -50,7 +50,22 @@
 
   // Detect separators from complete CSV records, respecting quoted newlines.
   function detectDelimiter(input) {
-    const text=String(input).slice(0,30000).replace(/^\uFEFF/, '');
+    const original=String(input).replace(/^\uFEFF/, '');
+    // Never cut in the middle of a quoted field: a partial record makes
+    // the correct separator look invalid. Sample up to ten full records.
+    let quoted=false, records=0, end=original.length;
+    for(let i=0;i<original.length;i++){
+      if(original[i]==='"'){
+        if(quoted && original[i+1]==='"'){i++;continue;}
+        quoted=!quoted;
+      }
+      if(!quoted && (original[i]==='\n'||original[i]==='\r')){
+        if(original[i]==='\r' && original[i+1]==='\n')i++;
+        records++;
+        if(records>=10 || i>=30000){end=i+1;break;}
+      }
+    }
+    const text=original.slice(0,end);
     let best=',';let bestScore=-Infinity;
     for (const delimiter of [',','\t',';']) {
       try {
