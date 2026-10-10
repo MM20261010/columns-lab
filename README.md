@@ -32,3 +32,13 @@ node tests/core.test.js
 
 ## 狙い
 広告や有料版を急がず、検索流入とリピート利用の兆候を調べる。競合が多い「一般的なCSV結合」としてではなく、列不一致の発見と安全な統合に価値を寄せて評価。実証できなければ分野ごと転換する。
+
+## 公開後の運用 (v0.3)
+公開URL: https://columns-lab.pages.dev/ 。mainへの変更はCloudflare PagesのGit接続で再デプロイする。
+
+- 計測手順: docs/measurement.md
+- 検索改善: docs/growth-plan.md
+- 月次レビュー: docs/monthly-template.md / docs/kpi.csv
+- 検証記録: docs/qa-2026-10-10.md
+
+計測設定は手順書の作成と実際の有効化を分けて記録する。
