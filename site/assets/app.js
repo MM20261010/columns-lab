@@ -23,7 +23,7 @@ async function readAll() {
   const totalSize=files.reduce((n,f)=>n+f.size,0);
   if(totalSize>MAX_TOTAL)throw Error('合計25MB以内のCSVを選択してください');
   for (const f of files) if(f.size>MAX_FILE)throw Error(`${f.name}: 10MBを超えています`);
-  const tables=[];
+  const tables=[];let inputCells=0;
   for(const f of files){
     let contents;
     try{contents=detectAndDecode(new Uint8Array(await f.arrayBuffer()),$('encoding').value);}
@@ -32,7 +32,7 @@ async function readAll() {
     if(delimiter==='auto')delimiter=c.detectDelimiter(contents);
     if(delimiter==='tab')delimiter='\t';
     let rows;
-    try{rows=c.parseCSV(contents,delimiter);}catch(e){throw Error(`${f.name}: ${e.message}`);}
+    try{rows=c.parseCSV(contents,delimiter,{maxCells:c.LIMITS.inputCells-inputCells});inputCells+=rows.reduce((n,r)=>n+r.length,0);}catch(e){throw Error(`${f.name}: ${e.message}`);}
     if(!rows.length)throw Error(`${f.name}: 空のCSVです`);
     tables.push({name:f.name,rows});
   }
@@ -82,7 +82,9 @@ $('run').addEventListener('click',async()=>{
 });
 $('download').addEventListener('click',()=>{
   if(!last)return;
-  const payload=c.writeCSV(last.columns,last.rows,$('excelSafety').checked);
+  let payload;
+  try {payload=c.writeCSV(last.columns,last.rows,$('excelSafety').checked);}
+  catch(e){last=null;$('download').disabled=true;message(e.message,true);return;}
   const bom=$('outputEncoding').value==='bom'?'\uFEFF':'';
   const objectURL=URL.createObjectURL(new Blob([bom,payload],{type:'text/csv;charset=utf-8'}));
   const link=document.createElement('a');link.href=objectURL;link.download='merged_'+new Date().toISOString().slice(0,10)+'.csv';
