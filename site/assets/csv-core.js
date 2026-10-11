@@ -6,12 +6,19 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function() {
   'use strict';
 
-  function parseCSV(content, delimiter=',') {
+  // Provisional desktop-tested limits; mobile validation is still required.
+  const LIMITS=Object.freeze({inputCells:500000,outputCells:500000,columns:256,outputCharacters:4000000});
+
+  function parseCSV(content, delimiter=',', opts={}) {
     if (!['\t',',',';'].includes(delimiter)) throw Error('対応していない区切り文字です');
     const text = String(content).replace(/^\uFEFF/, '');
     const rows = [];
-    let row = [], value = '', state = 'start';
-    function pushField() { row.push(value); value=''; state='start'; }
+    let row = [], value = '', state = 'start', cells=0;
+    const maxCells=opts.maxCells ?? LIMITS.inputCells;
+    function pushField() {
+      if(++cells>maxCells) throw Error('入力セル数の上限を超えました。ファイルを小さく分けてください');
+      row.push(value); value=''; state='start';
+    }
     function pushRow() { pushField(); rows.push(row); row=[]; }
     let line = 1;
     for (let i=0;i<text.length;i++) {
@@ -96,7 +103,7 @@
     if (!Array.isArray(tables) || tables.length<2) throw Error('CSVを2ファイル以上選んでください');
     const includeSource=opts.source !== false;
     const skipBlank=opts.skipBlank !== false;
-    const columns=[], originals=[], summaries=[];
+    const columns=[], columnSet=new Set(), originals=[], summaries=[];
     let total=0;
     for(const t of tables){
       if(!t || !Array.isArray(t.rows) || !t.rows.length) throw Error(`${t?.name||'ファイル'}: データがありません`);
@@ -106,10 +113,12 @@
       for(let i=0;i<data.length;i++) {
         if(data[i].length>headers.length) throw Error(`${t.name}: データ${i+2}行目にヘッダーより多い項目があります`);
       }
-      for(const h of headers) if(!columns.includes(h)) columns.push(h);
+      for(const h of headers) if(!columnSet.has(h)){columnSet.add(h);columns.push(h);}
       originals.push({name:t.name,headers,data});
       total+=data.length;
     }
+    const estimate=estimateMerge(originals,columns,includeSource);
+    checkCapacity(estimate,opts.limits || LIMITS);
     for (const o of originals) {
       const colset=new Set(o.headers);
       summaries.push({name:o.name,rows:o.data.length,headers:o.headers,
@@ -123,7 +132,31 @@
       for(const r of o.data) rows.push(columns.map(h=>h==='_source_file'&&includeSource?o.name:
         positions.has(h) ? (r[positions.get(h)]??'') : ''));
     }
-    return {columns,rows,summaries,total, source:includeSource};
+    return {columns,rows,summaries,total, source:includeSource,estimate};
+  }
+
+  // Count a conservative CSV upper bound without creating dense merged rows.
+  // Includes separators, CRLF, repeated filenames, doubled quotes and up to
+  // one protection prefix + two wrapping quotes per cell, for either export mode.
+  function estimateMerge(originals,columns,includeSource) {
+    const rows=originals.reduce((n,o)=>n+o.data.length,0), width=columns.length+(includeSource?1:0);
+    const outputCells=(rows+1)*width;
+    let characters=(rows+1)*(Math.max(0,width-1)+2)+3*outputCells;
+    const cost=value=>{const text=String(value??'');let quotes=0;
+      for(let i=0;i<text.length;i++)if(text[i]==='"')quotes++;
+      return text.length+quotes;};
+    for(const h of columns)characters+=cost(h);
+    if(includeSource)characters+=cost('_source_file');
+    for(const o of originals){
+      for(const r of o.data)for(const value of r)characters+=cost(value);
+      if(includeSource)characters+=o.data.length*cost(o.name);
+    }
+    return {rows,columns:width,outputCells,outputCharactersUpperBound:characters};
+  }
+  function checkCapacity(estimate,limits=LIMITS) {
+    if(estimate.columns>limits.columns || estimate.outputCells>limits.outputCells ||
+       estimate.outputCharactersUpperBound>limits.outputCharacters)
+      throw Error('結合後の列数・セル数・出力サイズが上限を超えます。行や列を減らすか、ファイルを分けてください');
   }
   function sanitizeForExcel(value) {
     const text=String(value??'');
@@ -132,8 +165,16 @@
   }
   function csvCell(v) {const text=String(v??'');return /[",\r\n]/.test(text)?'"'+text.replace(/"/g,'""')+'"':text;}
   function writeCSV(columns, rows, excelSafety=true) {
-    const lines=[columns,...rows];
-    return lines.map(r=>r.map(v=>csvCell(excelSafety?sanitizeForExcel(v):v)).join(',')).join('\r\n')+'\r\n';
+    // Avoid spreading an arbitrary number of rows as function/array elements.
+    const lines=[];let characters=0;
+    for(let i=-1;i<rows.length;i++){
+      const row=i<0?columns:rows[i];
+      const line=row.map(v=>csvCell(excelSafety?sanitizeForExcel(v):v)).join(',')+'\r\n';
+      characters+=line.length;
+      if(characters>LIMITS.outputCharacters)throw Error('出力サイズの上限を超えました。ファイルを分けてください');
+      lines.push(line);
+    }
+    return lines.join('');
   }
-  return {parseCSV,detectDelimiter,validateHeaders,isBlankRow,mergeTables,sanitizeForExcel,csvCell,writeCSV};
+  return {parseCSV,detectDelimiter,validateHeaders,isBlankRow,mergeTables,sanitizeForExcel,csvCell,writeCSV,LIMITS,estimateMerge,checkCapacity};
 });
