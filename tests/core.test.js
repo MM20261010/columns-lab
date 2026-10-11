@@ -37,3 +37,33 @@ for(const delimiter of ['\t',';']){
   assert.equal(T.parseCSV(text,delimiter)[1][1],'x'.repeat(31000)+'\ncontinued');
 }
 assert.equal(T.detectDelimiter('name\tnote\r\nA\t"a""b"\r\n'),'\t');
+
+// Reject parsed-cell growth before appending the cell that exceeds the budget.
+assert.deepEqual(T.parseCSV('a,b\n1,2',',',{maxCells:4}),[['a','b'],['1','2']]);
+assert.throws(()=>T.parseCSV('a,b\n1,2',',',{maxCells:3}),/入力セル数/);
+assert.throws(()=>T.parseCSV('a',',',{maxCells:0}),/入力セル数/);
+assert.deepEqual(T.parseCSV('a\n1',',',{maxRows:2}),[['a'],['1']]);
+assert.throws(()=>T.parseCSV('a\n1\n2',',',{maxRows:2}),/入力行数/);
+// Estimate must account for missing columns, repeated source names, quoting,
+// protection prefixes, header-only files and short rows, without changing values.
+const specialTables=[{name:'=source".csv',rows:[['a','b'],['=1+1','x"y'],['short']]},
+ {name:'other.csv',rows:[['c'],['\t=1+1']]}];
+for(const source of [false,true])for(const skipBlank of [false,true]){
+ const merged=T.mergeTables(specialTables,{source,skipBlank});
+ assert.equal(merged.estimate.outputCells,(merged.total+1)*merged.columns.length);
+ for(const mode of [false,true])assert.ok(T.writeCSV(merged.columns,merged.rows,mode).length<=merged.estimate.outputCharactersUpperBound);
+}
+// A small input can create a wide dense output. The guard runs before row maps.
+const smallLimits={columns:10,outputCells:5,outputCharacters:100};
+assert.throws(()=>T.mergeTables(tables,{limits:smallLimits}),/上限/);
+T.checkCapacity({columns:2,outputCells:6,outputCharactersUpperBound:20},{columns:2,outputCells:6,outputCharacters:20});
+for(const e of [{columns:3,outputCells:6,outputCharactersUpperBound:20},
+ {columns:2,outputCells:7,outputCharactersUpperBound:20},
+ {columns:2,outputCells:6,outputCharactersUpperBound:21}])
+ assert.throws(()=>T.checkCapacity(e,{columns:2,outputCells:6,outputCharacters:20}),/上限/);
+assert.throws(()=>T.writeCSV(['a'],[['x'.repeat(T.LIMITS.outputCharacters)]]),/出力サイズ/);
+const headersOnly=T.mergeTables([{name:'A',rows:[['a']]},{name:'B',rows:[['b']]}]);
+assert.equal(headersOnly.estimate.outputCells,3);
+assert.throws(()=>T.checkCapacity({rows:2,columns:1,outputCells:3,outputCharactersUpperBound:10},
+  {rows:1,columns:2,outputCells:10,outputCharacters:100}),/行数/);
+console.log('Capacity/estimate boundary tests: passed');
