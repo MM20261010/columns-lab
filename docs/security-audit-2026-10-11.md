@@ -40,3 +40,47 @@
 - https://developers.cloudflare.com/web-analytics/changelog/
 
 状態: 指摘を記録済み、対策実装・全角の実機検証・膨張上限測定・CSP互換性試験は未完了。
+
+## 後続の修正・検証（2026-10-11 JST）
+
+### PR #3：数式対策（Draft、未マージ）
+
+全角＝/＋/－/＠、先頭タブ/CR/LF、空白後の開始文字を検出対象へ追加。検出のためだけに空白を扱い、NFKC変換やtrimで値を作り直さない。厳密な半角負数（小数/指数表記含む）をアポストロフィなしで保持する案。ヘッダー/元ファイル名列も保存時の同じ処理を通す。CSVの構文引用でタブ/カンマ/二重引用符/改行を保持し、保護OFFの往復も検証した。
+
+回帰テスト: 危険開始文字16ケース、通常値/負数/引用符/内部改行等、負数風の非リテラル、ヘッダー・名前由来値・保護OFFを確認。既存core/UIテスト成功。入力値とプレビューを変更せず、保存対象に保護をかける。負数保持は現行ONの挙動変更で、レビューが必要。
+
+LibreOfficeの既存ローカル環境を利用。LibreOfficeDev 26.8.0.0.alpha0（2c87e51...）、CSV入力フィルター `Text - txt - csv (StarCalc):44,34,76,1,,0,false,true,true,false,false,0,true`。無害なASCII/全角開始文字、タブ/改行、負数、引用符の12ケース。ODSのセルformula属性を調べ、OFFは2ケースに属性あり、ONは0。ONの負数-123は数値-123として格納された。ONのODSをCSVへ出力し、同じ入力フィルターで再取込後も数式属性0。
+
+この限定検証は開発版/指定フィルター/無害なケースだけの結果。Excel、通常版LibreOffice、GUIでの既定取り込み、他ロケール、悪意ある外部参照式、他の不可視文字は未検証。実行/外部参照を伴う攻撃式は使っていない。ヘッダー/ファイル名由来値はコア出力の検証であり、全ソフトの独立検証ではない。OWASPは普遍的な方法がないこと、Excel再保存の限界、タブによる方法にも値への影響があることを説明している。アポストロフィ案のExcel耐性は未確認で、安全を保証しない。
+
+再現: 架空のケースだけをwriteCSVでON/OFF出力→上記フィルターでheadlessのODSへ変換→content.xmlのformula属性を数える→ONのODSをCSVへ出力→同じフィルターでODSへ再取込。検査ログにはケース識別子/件数だけを出し、利用者データは使わない。CLIフィルター根拠: https://help.libreoffice.org/latest/en-GB/text/shared/guide/csv_params.html
+
+### PR #4：出力膨張（Draft、未マージ）
+
+入力の行/セル予算を解析中に検査し、複数ファイルの合計セルを管理。密な結合行を生成する前に、ヘッダー含むセル数と出力文字数の上界を計算する。引用符追加・元ファイル名の繰返し・不足列・数式保護も見込む。保存失敗後に結果を保存できない状態へ戻す。既存core/UIと追加の境界/合計予算/復旧試験は成功。[測定と上限の影響](csv-capacity-results.md)参照。
+
+暫定上限は入力各10万データ行/合計50万セル、出力合計10万データ行/256列/ヘッダー込み50万セル/見積400万UTF-16文字。測定したWorkのV8ヒープ差でありRSS/ピークは不明。従来利用できた大きい入力を拒否する影響がある。短い行や少数列でも行配列が増える。同期処理中のユーザー操作による即時キャンセルは未実装、長い単一値/スマホ/DOM/Blobも残存リスク。全端末のフリーズ防止を保証しない。
+
+両PRの変更8ファイルはGitHub保存内容とテスト済みローカル内容が完全一致。双方を局所で組み合わせた回帰も成功。ただしGit上の統合/マージはしていない。core/test/HTMLの同じ箇所を扱うので、承認後の統合時に差分を解決して再試験する。
+
+### CSP・権限・本番
+
+site/_headersは未変更。Report-OnlyとAnalyticsの互換性試験案を[csp-report-only-plan.md](csp-report-only-plan.md)へ作成。実配信/強制化はしていない。GraphQL到達/schemaは既存OAuthで成功、明示AccountのRUM集計は認可拒否。[analytics-access.md](analytics-access.md)の追加Account Analytics Readは承認待ち、再認証/権限/トークン/Secrets作成なし。mainの実行コードは現行のまま。本番修正が適用済みとは報告しない。
+
+### 公開制御の確認漏れと本人操作
+
+既存Cloudflareのpreview branch includes=*、excludes=[]で、ブランチ/コミットがプレビューされた。最初の数式コミット8200eefをスキップ指定なしで登録してしまい、未承認の修正プレビューが作成された。承認前公開を防ぐ確認が不足した。現状は削除できていない。漏洩の証拠はなく、利用者CSVをアップロードしたものではないが、未レビューの実行コードが公開された事実を残す。
+
+後続の[CF-Pages-Skip]コミットはAPIのis_skipped=trueを確認。既存プレビューを取り消す機能ではない。新しい権限を取って削除せず、本人のCloudflare画面で次の対象を確認して削除する必要がある:
+
+| プレビューデプロイID | branch/commit | 状態 |
+| --- | --- | --- |
+| 9f227cdf-7760-4a4c-9d2e-b8a0f89d30db | fix/csv-formula-guard / 8200eef | 数式修正を含む、success |
+| f63afa09-b63b-40e9-9e50-b1e7c0b65152 | fix/csv-formula-guard / 168b497 | ブランチ作成時の既存コード、success |
+| bc6675ee-d069-4dfd-a8de-b05460e2f47d | fix/csv-capacity-guard / 168b497 | ブランチ作成時の既存コード、success |
+
+本人の操作案: Workers & Pages→columns-lab→DeploymentsでPreviewを選び、branch/commit/IDを照合して対象を削除。本番168b497は削除しない。必要ならSettings→Builds→Branch controlのPreviewを停止する設定を本人が承認して選ぶ。画面名は公式案内を基にしたもので現在のUI操作は未検証。WorkブラウザーのCloudflareログイン403再試行はしない。削除/設定完了の連絡後、GPTがPages Readで結果を確認する。
+
+本番コミット/主要コードは未変更。初回main上のコードコミット操作は自動承認レビューが拒否し、専用ブランチ作成後の操作へ切り替えた。これとは別にCloudflareの自動プレビュー確認漏れがあったので、運用ルールに事前確認・スキップ・公開後確認を追加する。main未保護というGitHubの表示も観測。保護設定は今回は変更せず、将来の承認事項として残す。
+
+参照: https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/
