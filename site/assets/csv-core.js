@@ -7,7 +7,7 @@
   'use strict';
 
   // Provisional desktop-tested limits; mobile validation is still required.
-  const LIMITS=Object.freeze({inputCells:500000,outputCells:500000,columns:256,outputCharacters:4000000});
+  const LIMITS=Object.freeze({inputCells:500000,rows:100000,outputCells:500000,columns:256,outputCharacters:4000000});
 
   function parseCSV(content, delimiter=',', opts={}) {
     if (!['\t',',',';'].includes(delimiter)) throw Error('対応していない区切り文字です');
@@ -19,7 +19,11 @@
       if(++cells>maxCells) throw Error('入力セル数の上限を超えました。ファイルを小さく分けてください');
       row.push(value); value=''; state='start';
     }
-    function pushRow() { pushField(); rows.push(row); row=[]; }
+    function pushRow() {
+      if(rows.length>=(opts.maxRows ?? LIMITS.rows+1))
+        throw Error('入力行数の上限を超えました。ファイルを小さく分けてください');
+      pushField(); rows.push(row); row=[];
+    }
     let line = 1;
     for (let i=0;i<text.length;i++) {
       const c = text[i];
@@ -154,9 +158,9 @@
     return {rows,columns:width,outputCells,outputCharactersUpperBound:characters};
   }
   function checkCapacity(estimate,limits=LIMITS) {
-    if(estimate.columns>limits.columns || estimate.outputCells>limits.outputCells ||
+    if(estimate.rows>limits.rows || estimate.columns>limits.columns || estimate.outputCells>limits.outputCells ||
        estimate.outputCharactersUpperBound>limits.outputCharacters)
-      throw Error('結合後の列数・セル数・出力サイズが上限を超えます。行や列を減らすか、ファイルを分けてください');
+      throw Error('結合後の行数・列数・セル数・出力サイズが上限を超えます。行や列を減らすか、ファイルを分けてください');
   }
   function sanitizeForExcel(value) {
     const text=String(value??'');
