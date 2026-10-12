@@ -23,11 +23,11 @@ for(const marker of ['=','+','-','@','＝','＋','－','＠']){
     assert.equal(cells[0][0],"'"+marker+'header');
     assert.equal(cells[1][0],"'"+value);
     assert.equal(cells[1][1],"'"+value+'.csv');
-    assert.equal(cells[2][0],'-123');
+    assert.equal(cells[2][0],"'-123");
   }
 }
 for(const number of ['-001','-000.50','-.0','-1e999','-123456789012345678901234567890']){
-  assert.equal(T.sanitizeForExcel(number),number); // CSV string only; import precision is unverified.
+  assert.equal(T.sanitizeForExcel(number),"'"+number); // Conservative ON; spreadsheet precision remains unverified.
 }
 for(const number of ['-1\r','-1\n','-1\r\n','-1\u2028','-1\u2029','-1\t']){
   assert.equal(T.sanitizeForExcel(number),"'"+number);
@@ -47,8 +47,9 @@ for(const code of invisiblePrefixes){
 }
 const legacySanitize=value=>/^[\u0000-\u0020]*[=+@\-]/.test(value)?"'"+value:value;
 for(const value of ['-001','-000.50','-0','-.5','-1.','-9007199254740993','-123456789012345678901','-1e999']){
-  assert.equal(T.sanitizeForExcel(value),value);
+  assert.equal(T.sanitizeForExcel(value),"'"+value);
   assert.equal(legacySanitize(value),"'"+value);
-  assert.equal(T.parseCSV(T.writeCSV(['case'],[[value]],true))[1][0],value);
+  assert.equal(T.parseCSV(T.writeCSV(['case'],[[value]],true))[1][0],"'"+value);
+  assert.equal(T.parseCSV(T.writeCSV(['case'],[[value]],false))[1][0],value);
 }
-console.log('Invisible prefix classification and negative legacy-change checks passed');
+console.log('Invisible prefix classification and negative legacy-compatibility checks passed');
