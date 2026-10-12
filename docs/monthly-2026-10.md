@@ -127,3 +127,23 @@ Googleアカウント再審査は通過し、同じアカウントで所有権�
 - PR #6 e169449の実ファイル選択用自己完結HTML＋小CSV2件をWorkで保存。外部通信/依存/Analyticsなし。埋込ハッシュ/回帰/CSV実バイト/ZIP一致成功、Android6点は本人待ち。GitHub/サイトへ配布物本体を置かない。
 - Visits/PV/検索表示/クリック、月次収益/経費/純利益は引き続き不明、kpi.csv空欄。Search Console所有権済み、サイトマップ取得エラー/登録リクエスト一時失敗は未解決。
 - #2〜#6 Draft・未マージ、preview none、本番168b497 success。追加支出0円、新規アカウント/権限/Secrets/契約/提携/広告/課金なし。
+
+## 2026-10-12 PR #6の承認済み本番公開
+
+本人が固定head e1694493931035d5bb1342b264792dc69f105171のマージ・本番公開を明示承認（16:38 JST）。開始main dd72a15。最新mainの既存コード/テスト5ファイルはPR基点と一致、新規4テストを含む全9ファイルが固定head/テスト済みローカルと一致、差分9ファイル限定、競合なし。5回帰コマンド成功、Pages GET 200でpreview none/旧本番168b497 successを再確認して実施。
+
+GitHub connectorのReady mutationはResource not accessible by integrationで拒否。既存認証済みGitHub UIでPR #6だけReadyにし、通常のmerge commitを実行。新規権限を取得しない。#6 headの変更なし。マージコミット bdd91e27e2092beb74508847f74ab8221cea2e42。スキップ指定を含まないマージメッセージで承認済み本番デプロイを開始。
+
+Cloudflare Pages deployment eb3183d5-bc02-4db4-bcbf-465e9190190c: main/bdd91e2、is_skipped=false、deploy success、完了2026-10-12 16:42:15 JST。プロジェクトcanonical productionもbdd91e2 success、preview none。マージ後GitHub9 blob SHAは承認headと完全一致。公開設定変更・新規依存/権限/課金/契約なし。
+
+### 公開後確認（Work Chrome、架空CSVのみ）
+
+- 公開ツールを正常表示。native FileChooserで qa-sales-a.csv/qa-sales-b.csv を実選択。4データ行・5列、金額100/200/300/400（合計1,000）、列順の差/欠けた列の空欄を確認。
+- ONダウンロードの実バイトにUTF-8 BOM、保護された '-001 と '=1+1 を確認。元ファイル名OFFでプレビュー消去/保存無効、再結合4行4列。OFF保存の実バイトは-001/=1+1をそのまま保持。保存されたファイルを読んで確認（OS/全端末の保証ではない）。
+- トップ/ツール/ガイド/プライバシーのタイトル/見出し/正常表示。各ページのAnalytics beacon script DOMは1個。受信/集計/Visits/PVの確認ではない。
+- ターミナルHTTPクライアントのトップGETは403。このクライアントの制限原因は未特定。ブラウザーの正常表示と区別し、サイト全体の障害やHTTP 200確認と断定しない。ブラウザー操作APIの一部が長時間かかったため、体感性能の測定にも使わない。
+- 実機Androidの新picker版結果、Fennec、Excel/通常版Calc、不可視19接頭のExcel挙動、大容量/ピークは未検証。従来Cromiteの内蔵サンプル合格と今回のデスクトップ確認を区別。同期中断未実装、暫定容量拒否、ONの負数等の文字列化、URL解放best effortは残る。
+
+PR #2/#3/#4/#5はDraft・未マージ。#3/#4の改善は#6経由で本番統合済みだが、それらのPR自体はマージしていない。#5 Workerは設計のみ。障害は今回の検証範囲で未発見。復旧候補は#6マージの変更だけをrevertするPR（親1の最新文書を残す。旧168b497をコード比較基準に使用）、追加の重要操作は本人承認後。無断revert/強制reset/Cloudflare権限追加なし。
+
+今回の追加支出0円。月次収益/経費/純利益、Analytics実測、検索指標は不明のまま。自己テスト訪問が計測に混じる可能性を記録し、数値を推定で埋めない。
