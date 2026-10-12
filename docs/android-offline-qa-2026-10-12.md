@@ -74,3 +74,29 @@ ON/OFFやBOM選択は保存設定であり、それだけで再結合を要求�
 - 大容量、実ファイル選択、回転、端末ピークメモリ、Excel/通常版Calc、本番ページのAnalytics/CSP互換性はこの結果の検証対象外。数式実行の万能な防止や全端末の応答性を保証しない。
 
 小さい操作にWorkerを急いで導入する根拠は得られていない。PR #5は設計のみ保留。長い単一セル・多行の同期処理の中断不能という既知の課題は残る。
+
+## 2026-10-12 15:33依頼後：実ファイル選択版の配布準備
+
+開始main 2d445c2、統合Draft #6 head e1694493931035d5bb1342b264792dc69f105171を再取得。HTML/CSV本体はWork配布物のみ、GitHub/main/公開サイトに配置しない。ZIPにHTML＋小CSV2件をまとめて保存済み。
+
+- columns-lab-android-file-picker.html（29,436 bytes）。PR #6のcore/appを改変せず埋め込み、CSSはmain 2d445c2のblob d42a843fと一致。実input type=file/multipleを維持し、filesの模擬差替えなし。
+- 公開用HTMLから外部リンク/資産を除き、手順と固定ソース説明を追加。Analytics/外部通信API/依存/永続保存/ログ出力/Workerなし。検証版CSPは内蔵ハッシュのみ、connect-src none。本番CSP/ヘッダーは変更なし。
+- 小CSV2件はUTF-8 BOM付き、4行/元ファイル名あり5列・金額合計1,000。担当の-001と=1+1は害のない架空値。保存はテキストで確認し、表計算での安全保証には使わない。
+- 固定ソース全9 blobの一致、埋込core/app SHA-256一致、CSPハッシュ・静的通信検査、CSV実バイトのON/OFF/元ファイル名有無の結果、既存5回帰、ZIP内3ファイルのハッシュ一致が成功。
+- Androidネイティブpicker/機内モードからの複数選択、保存先/テキスト開封、新HTMLの実CSP/見た目/応答性は本人未検証。WorkのローカルHTMLブラウザー実行は前回のURLポリシー制限のまま、迂回公開しない。
+
+### 配布ハッシュ（SHA-256）
+
+- columns-lab-android-file-picker.html: 2b6e9cbc263200ca75dc616706ec79d9b6d383ea248fe128977c8abfbfeec76d
+- qa-sales-a.csv: cf2c88eefe7886ffe1997ca32ddaee3ffd19208a184a7236ea38ff7e535fd6b9
+- qa-sales-b.csv: d44de48c25ef88a5e1055fea6a27280b3033dd6bff2a0981dc17d37359a27c23
+- 埋込core: 20dc179103c08f9d71dc358d49e15e9c521d4a3ed5b300687a7edf50724d9a5c
+- 埋込app: 91b3effb1a93b477aa69c6d702a53475d3e75f18f2e9e60dc4262b26e2497fa3
+- 埋込css: 76e30ed0e65e71f157862836bb2af243c8aacefb05210c197eb64b7ebc2d318d
+- ZIP: 687350d3468648fceab2d16473780cab857cce90792106c1f9a10999de6809f3
+
+### 本人の最小操作
+
+ZIPを解凍→機内モード/Wi-Fi OFF→CromiteでHTMLを開く→配布CSV2件を実選択（demoは使わない）→結合4行5列/合計1,000→ON保存/テキストで保護確認→元ファイル名OFFで旧結果消去/保存不可→再結合4行4列/保存。報告は「2件選択、期待結果、保存/テキスト、旧結果無効化、再結合、体感応答性」の6点だけ。開けなければ権限を緩めず停止。
+
+合格なら小データの実pickerまでの公開前最小条件は満たす候補になる。#6固定headの残存リスク（Excel/通常版/Fennec/大容量・同期中断・容量拒否・値の文字列化）を明示し本人公開承認を待つ。回転やShift_JIS等は今回の最小手順の保証外。復旧は統合変更のみをrevertする承認用PR。#2〜#6 Draft・未マージを維持。
