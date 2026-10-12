@@ -109,3 +109,7 @@ node --expose-gc --max-old-space-size=64 tests/pipeline-profile.js long-cell
 - https://community.owasp.org/attacks/CSV_Injection
 - https://help.libreoffice.org/latest/en-US/text/shared/guide/csv_params.html
 - https://developer.mozilla.org/en-US/docs/Web/API/Blob/Blob
+
+## 2026-10-12 Cromite報告後の統合判断
+
+最新の統合構成、受入結果、利用者影響、残存リスク、最小追加確認、復旧は[integration-release-2026-10-12.md](integration-release-2026-10-12.md)。#3/#4の個別マージは禁止、統合Draft PRの固定headを承認対象にする。
