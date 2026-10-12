@@ -2,19 +2,18 @@
 
 最終更新: 2026-10-12（日本時間）。対象: MM20261010/columns-lab、main。公開: https://columns-lab.pages.dev/
 
-## 今回の終了状態（2026-10-12、Androidオフライン成果物）
+## 今回の終了状態（2026-10-12、Cromite実機・統合公開準備）
 
-- 開始時main7d01740、引き継ぎ、Draft #2/#3/#4/#5を再取得。Pages Readでpreview=none、本番main/168b497 successを確認。承認前マージ/公開なし。
-- Android用columns-lab-android-check.htmlをWork成果物として作成・保存済み（33,317 bytes）。GitHub main/PR/公開サイトへHTMLを置かない。本人のダウンロード/実機動作はまだ未確認。[配布仕様・ハッシュ・本人手順](android-offline-qa-2026-10-12.md)を参照。
-- 固定ソースはPR #3 2ba2927、PR #4 4ae642d、CSS/main7d01740。PR #4 coreへPR #3 sanitizeForExcel/csvCellを組み合わせ、既存局所統合coreと一致。PR #4 appは改変せず埋め込み、CSS/JSは内蔵。新しい検証HTML/操作補助は本番HTMLとは別。
-- ファイルSHA-256: 057d50acabb640f057c46f1e13e2e32449dc6456e01c2daee88f21fc29a80b5a。保存後のバイト数/ハッシュ一致も確認。外部資産・Analytics・通信API・永続保存・consoleなし。検証版限定のCSPは内蔵ハッシュだけを許可しconnect-src none。本番CSPは変更しない。
-- 実CSV選択を用意せず、内蔵の4行の架空サンプルだけ。列名結合（5列/合計1,000）、保護ON/OFF、負数保護、古い結果無効化、再結合をワンタップ確認。保存はPR #4のBlob/URL処理を使い、端末で開けたかは本人記録として区別。大容量試験なし。
-- 統合のcore/UI/formula/capacity/download回帰とHTMLの静的検査が成功。DOM模擬で5確認、Blob/BOM、古い保存不可、URL解放試行を確認。実ブラウザーやAndroidの代替ではない。
-- Workブラウザーはfile://をURLポリシーで拒否。公開HTTP/別ブラウザー/データURL等で迂回していない。ローカルHTMLの実行、実際のCSP、見た目、Fennec保存、回転/応答性は未検証。実ファイルpickerもこの成果物では検証できない。
-- PR #3は負数保護維持、不可視19種の開発版限定結果とExcel未検証を区別。PR #4は上限/保存失敗処理と手動区切り案内。WorkerはPR #5の設計のみで、実装判断はAndroid結果の後。#2/#3/#4/#5はDraft・未マージ。
-- Google再審査待ち、計測/収益/月次経費は不明、CSP本番はReport-Only案のみ。追加支出0円、最小権限維持、新規Secrets/トークン/課金なし。
+- 開始main e591031、#3 head2ba2927/#4 head4ae642dを再取得。Pages Read GET 200: preview=none、本番main/168b497 success。#2/#3/#4/#5はDraft・未マージ。承認前公開なし。
+- 本人のCromite実機報告: 機内モード/Wi-Fi OFFで自己完結HTML正常表示。4行5列/合計1,000、ON/OFF、古い結果無効化、再結合、保存/テキスト表示に成功、体感遅延なし。[実機記録](android-offline-qa-2026-10-12.md)と[手順](mobile-qa.md)。端末ハッシュは未照合。
+- 小さい架空サンプル限定。Fennec（アプリ候補なし）、実ファイル選択、大容量/ピーク、Excel/通常版Calcは未検証。配布HTMLはGitHub/main/サイトへ置かない。SHA256 057d50acabb640f057c46f1e13e2e32449dc6456e01c2daee88f21fc29a80b5a、固定#3/#4とCSS7d01740。外部通信/Analyticsなし。
+- #3の負数保護は従来互換の保守的ONを維持。19不可視接頭は検出外、LibreOfficeDevの指定条件で数式化しなかった事実をExcel安全性に拡張しない。削除/正規化なし。
+- 統合専用ブランチ integrate/csv-security-stability を最新mainから作成。共通core/HTML/testの重複を解決し、#3/#4を組み合わせた5回帰が成功。[統合Draft PR #6](https://github.com/MM20261010/columns-lab/pull/6) head e1694493931035d5bb1342b264792dc69f105171。GitHub保存9ファイル一致と保存後5回帰成功、mergeable=true。新ブランチ基点と9コミットのPages is_skipped=trueも確認。公開条件と復旧は[integration-release-2026-10-12.md](integration-release-2026-10-12.md)。#3/#4を個別に先行マージしない。
+- 上限による拒否、数式保護による文字列化、長い値/自動判定の一時負荷、同期中断不能、保存後段のbest-effort解放が残る。小さいCromite結果からWorkerの即時導入は不要と判断、#5は設計のみ。
+- Google再審査通過・Search Console所有権確認成功は本人報告。サイトマップ登録済み/取得エラー、ライブテスト取得成功/クロール許可、トップの登録リクエストは一時エラーで未完了。[計測記録](measurement.md)。原因未特定、インデックス済みとはしない。
+- Visits/PV/検索指標/月次収益/経費は不明。追加支出0円、新規権限/Secrets/トークンなし。Analyticsの追加読取権限は未承認、CSPは案のみ。
 
-次に必要な本人作業: HTMLをダウンロード→機内モード（Wi-Fi OFF）でFennec開封→5確認→最後はONでCSV保存/開封。報告は「開けたか」「保存/開封できたか」「操作が重くないか」の3点。開けなければ権限を緩めず停止。結果を記録し、Worker必要性と公開条件を判断してから、本人承認までマージ/本番公開を保留。
+次の判断: 統合PRの影響と残存リスクを本人がレビューし、限定的な公開を承認するか。より慎重には本番同等HTMLの実ファイル選択を架空の小CSVで確認してから判断する。承認前のPRマージ/本番/プレビュー公開は禁止。公開承認後の確認・復旧手順は統合公開判断記録へ記載する。
 
 ## 最優先の方針
 
@@ -27,23 +26,23 @@
 - Web Analytics設定が有効、公開トップ・ツール・ガイド・プライバシーにbeacon各1個。受信・集計値は未確認。Visits・PVは不明で、0として扱わない。
 - CSV結合は列名対応、UTF-8/Shift_JIS、CSV/TSV、BOM出力、元ファイル名列に対応。入力は1ファイル10MiB・合計25MiBまで。各PRのcore/UI回帰テストは2026-10-12再実行成功。本番へ対策を反映した意味ではない。
 - 利用者はAndroid Fennecでトップ表示を確認済み。ファイル選択・結合・保存・回転を含むスマホ実機の一連の検証は未完了。
-- Googleアカウント再審査待ち。Search Console操作は保留。確認HTMLと専用200リダイレクトは保持する。別アカウント作成・認証回避はしない。
+- Google再審査通過・Search Console所有権確認成功（本人報告）。サイトマップ取得エラー/登録リクエスト一時失敗が残る。確認HTMLは保持。別アカウント作成・認証回避なし。
 - GitHub Actions [PR #2](https://github.com/MM20261010/columns-lab/pull/2)はDraft・未マージ。Secrets登録・実行・定期化はしない。ローカルにそのPRのファイルがあってもmainへ混入させない。
 
 ## 実施済みの変更と証拠の場所
 
 - CSV/TSV判定、古い結果の保存防止、SEO用canonical・robots・sitemap・404、確認HTML配信。
 - プライバシーを実際のAnalytics利用に合わせて更新。既存ガイドに入力例と検算を追加。
-- 今回はPR #3へ説明/テスト、PR #4へ保存失敗処理/テスト/架空測定を登録。mainは記録だけを更新する。権限・接続・ワークフローは変更しない。
+- #3/#4の改善をDraft統合PR #6へ9ファイル限定でまとめた。mainは記録だけを更新。権限・接続・ワークフローは変更しない。
 - 計測とGoogle再開手順: [measurement.md](measurement.md)、権限提案: [analytics-access.md](analytics-access.md)。
 - 実測・支出・仮説: [monthly-2026-10.md](monthly-2026-10.md)、[kpi.csv](kpi.csv)、[monthly-template.md](monthly-template.md)。
 - 監査・残存リスク: [security-audit-2026-10-11.md](security-audit-2026-10-11.md)。実機手順: [mobile-qa.md](mobile-qa.md)。市場比較: [market-research-2026-10.md](market-research-2026-10.md)。
 
 ## 未解決と次の優先作業
 
-1. 数式対策の限界（全角開始文字・表計算ソフトで再保存した後）と、列の和集合による出力膨張を検証する。新機能より先に、作成済みの専用Draft PRのレビューと追加検証を進める。実害・情報漏洩は現時点で確認していない。
+1. 統合Draft #6の固定headで本番同等の実ファイル選択→結合/保存/無効化の最小追加確認を行い、影響/残存リスクを提示して本人の公開承認を待つ。Excel/通常版Calcと大容量実機は未検証。実害・情報漏洩は現時点で確認していない。
 2. Analyticsの安全な集計読み取りを確定。GraphQL到達/schemaは確認済み、RUM集計は認可拒否。権限変更前に用途・範囲・リスクの承認を得る。取得できない間は欠測を明示する。
-3. スマホ実機試験。機密情報のない架空CSVのみを使用する。
+3. 小データCromiteオフラインは本人報告で合格。Fennec/実ファイルpicker/大容量は区別し、必要な最小追加実機確認だけ機密情報のない架空CSVで行う。Search Consoleのサイトマップ取得エラーとインデックス申請一時失敗は原因未確定。
 4. 市場調査の第1候補はインポート前診断。最近の独立した困りごと・試用意向を検証し、1つの小さな仮説に絞る。検索ボリューム・支払い意向は未検証。
 5. 毎月5日に前月仮締め、10日を目安に遅延確認。安全監査も実施。数字が不明なら不明のまま記録し、推定利益・成長を作らない。
 
