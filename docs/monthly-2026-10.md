@@ -89,3 +89,10 @@
 - PR #4の自動判定は長い単一セルで手動1回/自動4回解析。手動区切り案内を追加、上限は変更なし。中断と復旧のWorker案を独立Draft PR #5（文書のみ）へ設計。Androidはオフライン自己完結HTML案、未配布/未実機。
 - 既存回帰/局所統合成功、GitHub13ファイル一致。各PRの最小公開前確認・利用者影響・リスク・復旧を技術記録へ整理。preview=noneと本番main/168b497維持、#2/#3/#4/#5 Draft・未マージ。公開承認を今回求めない。
 - Visits/PV/検索指標/月次収益/経費/純利益は不明、kpi.csv空欄維持。追加支出0円、新規権限/Secrets/トークン/課金なし。Google再審査待ち。
+
+## 2026-10-12 14:04依頼後のAndroid確認準備
+
+- 固定PR #3/#4とmain CSSの自己完結HTMLをWork成果物として作成・保存。33,317 bytes、ハッシュ/固定ソースはandroid-offline-qa-2026-10-12.md。HTMLのGitHub/サイト登録はなし。
+- 小さい架空CSVだけでワンタップ5確認・CSV保存を用意。外部資産/通信API/Analytics/picker/大容量試験なし。静的検査、統合回帰、DOM模擬は成功。
+- Workブラウザーはfile://をURLポリシーで拒否。迂回公開なし。Android/Fennec開封/保存/応答性は本人確認待ち。Excel/通常版Calc未検証、Worker #5は設計のみ。
+- #2/#3/#4/#5 Draft・未マージ、本番main/168b497、preview noneを維持。Google審査待ち。計測/収益/月次経費は不明、kpi.csv空欄維持。追加支出0円、新規権限/Secrets/課金なし。
