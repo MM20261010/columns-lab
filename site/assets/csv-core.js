@@ -127,9 +127,8 @@
   }
   function sanitizeForExcel(value) {
     const text=String(value??'');
-    // Preserve only an unambiguous ASCII negative numeric literal. No trimming,
-    // locale conversion or NFKC: those would silently change the original data.
-    if (/^-(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(text)) return text;
+    // Keep the existing conservative policy: negative values are protected too.
+    // Do not infer a numeric column type or silently bypass export protection.
     // OWASP includes full-width formula markers and leading tab/CR/LF.
     // Check whitespace for detection only; retain the original string unchanged.
     const prefix=/^[\u0000-\u0020\s]*[=+@\-＝＋＠－]/.test(text);
