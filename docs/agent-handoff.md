@@ -1,21 +1,20 @@
 # 列そろえラボ：共通引き継ぎ記録
 
-最終更新: 2026-10-11（日本時間）。対象: MM20261010/columns-lab、main。公開: https://columns-lab.pages.dev/
+最終更新: 2026-10-12（日本時間）。対象: MM20261010/columns-lab、main。公開: https://columns-lab.pages.dev/
 
-## 今回の終了状態（この節を優先）
+## 今回の終了状態（2026-10-12、この節を優先）
 
-- 本番の確認済みデプロイは168b497。数式対策 [PR #3](https://github.com/MM20261010/columns-lab/pull/3)、出力膨張対策 [PR #4](https://github.com/MM20261010/columns-lab/pull/4)を専用ブランチで作成。どちらもDraft・未マージ、レビュー/承認待ち。本番の実行コードへ未反映。
-- PR #3: 全角開始文字/先頭タブ・CR/LFの保護、厳密な半角負数の保持、ヘッダー/元ファイル名/引用符/保護OFFの回帰テスト。LibreOfficeDev 26.8 alpha・指定フィルターの12ケースでONは数式属性0、CSV再保存/再取込後も0。Excel、通常版、他ロケールは未検証。万能の数式防止ではない。
-- PR #4: 入力解析中の行/セル制限、密な結合行を生成する前の出力見積もり、保存時エラー処理。暫定上限は各入力10万データ行（空行含む）/合計50万セル、出力10万行/256列/ヘッダー込み50万セル/見積400万UTF-16文字。架空の列・行増加を測定したが、スマホ/ピークメモリ/即時キャンセルは未検証・未実装。[測定と影響](csv-capacity-results.md)を読む。
-- 各PRのcore/UI回帰、局所で双方を合わせた回帰は成功。GitHubの8変更ファイルがテスト済み内容と完全一致。統合時はcore/test/説明の重なる差分を解決して再試験が必要。
-- GraphQL /graphqlへのqueryとschema取得は既存OAuthで200。対象Account/hostname/期間を明示したRUM集計は「not authorized for that account」/INVALID_ARGUMENT、失敗時HTTPステータス非提示。Visits/PVは不明。Pages GET成功とは区別。追加Account Analytics Readの提案/手順は[analytics-access.md](analytics-access.md)。承認前の再認証/権限追加/トークン/Secretsなし。
-- CSPは[Report-Only検証案](csp-report-only-plan.md)のみ。site/_headersは変更していない。
-- **公開制御の対応完了（2026-10-11）:** 本人がプレビュー自動デプロイを「なし」に変更し、対象3件を削除。別セッションでのAPI確認を本人が報告。本セッションでもPages GET 200、preview_deployment_setting=none、本番main/168b497 success、3件の個別GETはエラー8000009（存在しない）を確認。失敗時HTTPステータスはツール非提示。削除の追加操作は不要。最初の8200eefの未承認プレビュー公開は履歴として[監査記録](security-audit-2026-10-11.md)に残す。
-- Google審査待ち、PR #2 Draft・未マージ、計測/収益/経費は不明、今回の追加支出0円。新機能/収益化作業は行わない。
+- 開始時mainは43d6012。Pages Readでプレビュー自動公開none、本番main/168b497 successを確認。今回も承認前のプレビュー公開/本番反映/マージをしない。過去の未承認プレビュー3件は本人削除・API確認が完了し、監査に履歴を保持。
+- [PR #3](https://github.com/MM20261010/columns-lab/pull/3) head bef19e5: Draft・未マージ。不可視接頭20種類と負数の仕様差を追加テスト。今回sanitize変更なし、型/先頭ゼロ/桁数について利用者説明を追加。20接頭中FEFF以外19種類は未検出。LibreOfficeDev限定49件のONで数式属性0、再保存/再取り込みでも0。ただしExcel/通常版Calcは環境なしで未検証。
+- PR #3の負数保持はCSV文字列の保持で、表計算取り込みの型/精度は保持しない。開発版標準取り込みで8負数がfloat、再保存で全8字句が変化、大きい値3件は数値も不一致。従来ONはアポストロフィ付きstringだった。文字列型の指定は毎回必要。万能な数式防御とは扱わず、公開前の仕様判断が必要。
+- [PR #4](https://github.com/MM20261010/columns-lab/pull/4) head ec6411f: Draft・未マージ。Blob/URL/保存リンク失敗時に結果を無効化し、一般的な案内とURL/要素の後片付けを追加。成功＋8失敗注入が通過。API失敗時の完全な資源解放やOS保存完了は保証しない。
+- 全パイプラインの架空測定をtests/pipeline-profile.jsへ追加。長い20万文字セルは区切り判定後heap25.18MiB、2万5千行×19列で元ファイル名OFFは観測heap34.07MiBまで。段階サンプルでピーク/RSS/スマホではない。64MiB指定でもheap limit実測256MiBで、スマホ相当制限試験は未成立。
+- 2万5千行×19列の正常入力でも、元ファイル名ONではヘッダー込み500020出力セルで暫定上限により拒否、OFFなら475019セルで成功。上限による利用者影響を記録。無検証で上限を上げたり、データを勝手に切り捨てたりしない。
+- 各PRのcore/UI/追加回帰と、両案を局所統合した5テストが成功。GitHub保存12ファイルがテスト済みローカルとGit blob SHAで一致。HTMLも両説明を残して局所確認。Git上の統合・マージは未実施、重なるcore/test/HTMLの解決後に再試験。
+- 詳細・測定・再現・公開条件は[2026-10-12追加検証](pr-validation-2026-10-12.md)。既存[監査記録](security-audit-2026-10-11.md)へ追記。Dedicated Worker/terminateによる中断は別案として推奨、今回は未導入。Android実機・実ブラウザー保存/復旧・Excel/通常版Calcが未検証。
+- CSPはReport-Only計画だけ、Analytics集計・収益・月全体経費は引き続き不明。Google再審査待ち、PR #2 Draft・未マージ。既存最小権限維持、追加支出0円、新規トークン/Secrets/権限/課金なし。
 
-追加レビュー: PR #3へtests/formula-review.test.js（4,000 CSV往復＋ヘッダー/元ファイル名/負数）、PR #4へtests/capacity-review.test.js（2,000見積/往復比較＋境界/長い値）を追加。実行コードは今回変更せず、各PRと局所統合で全テスト成功。Excelの再保存、不可視接頭文字、スマホ/ピーク/キャンセルは未解決。詳細・再現コマンドは監査記録の「本人対応後のレビュー」を読む。
-
-次の優先: PR #3の表計算ソフト検証/保護仕様の判断→PR #4のスマホ/DOM/Blob/中断検証→Analytics追加権限の判断。承認まではマージ・本番公開をしない。
+次の優先: PR #3のExcel/通常版Calc試験と負数/不可視文字の仕様判断→PR #4のAndroid/実ブラウザー保存・Worker中断案→差分統合と再回帰→影響/残存リスク提示後の本人承認。承認までPR #3/#4のマージ・公開は保留。
 
 ## 最優先の方針
 
@@ -26,7 +25,7 @@
 - 静的サイトの公開先はCloudflare Pages。GitHub/main、公開フォルダーsiteで配信。今回の確認済み本番コミットは168b497913c52a2c3ac2a2dfbb40e13cfec008d8。これは以後の最新値を保証しない。
 - Cloudflare公式MCPはPages Read。対象Account IDを明示したプロジェクトGETは200。自動選択の失敗と明示IDでの拒否は別問題。レスポンスのenv_vars・認証用設定を公開ログへ丸ごと出さない。
 - Web Analytics設定が有効、公開トップ・ツール・ガイド・プライバシーにbeacon各1個。受信・集計値は未確認。Visits・PVは不明で、0として扱わない。
-- CSV結合は列名対応、UTF-8/Shift_JIS、CSV/TSV、BOM出力、元ファイル名列に対応。入力は1ファイル10MiB・合計25MiBまで。既存core/UI回帰テストは2026-10-11再実行成功。
+- CSV結合は列名対応、UTF-8/Shift_JIS、CSV/TSV、BOM出力、元ファイル名列に対応。入力は1ファイル10MiB・合計25MiBまで。各PRのcore/UI回帰テストは2026-10-12再実行成功。本番へ対策を反映した意味ではない。
 - 利用者はAndroid Fennecでトップ表示を確認済み。ファイル選択・結合・保存・回転を含むスマホ実機の一連の検証は未完了。
 - Googleアカウント再審査待ち。Search Console操作は保留。確認HTMLと専用200リダイレクトは保持する。別アカウント作成・認証回避はしない。
 - GitHub Actions [PR #2](https://github.com/MM20261010/columns-lab/pull/2)はDraft・未マージ。Secrets登録・実行・定期化はしない。ローカルにそのPRのファイルがあってもmainへ混入させない。
@@ -35,7 +34,7 @@
 
 - CSV/TSV判定、古い結果の保存防止、SEO用canonical・robots・sitemap・404、確認HTML配信。
 - プライバシーを実際のAnalytics利用に合わせて更新。既存ガイドに入力例と検算を追加。
-- 前回はmainのドキュメントのみを更新。今回は実行コードの修正を専用Draft PRへ登録し、mainには記録のみを更新する。権限・接続・ワークフローは変更しない。
+- 今回はPR #3へ説明/テスト、PR #4へ保存失敗処理/テスト/架空測定を登録。mainは記録だけを更新する。権限・接続・ワークフローは変更しない。
 - 計測とGoogle再開手順: [measurement.md](measurement.md)、権限提案: [analytics-access.md](analytics-access.md)。
 - 実測・支出・仮説: [monthly-2026-10.md](monthly-2026-10.md)、[kpi.csv](kpi.csv)、[monthly-template.md](monthly-template.md)。
 - 監査・残存リスク: [security-audit-2026-10-11.md](security-audit-2026-10-11.md)。実機手順: [mobile-qa.md](mobile-qa.md)。市場比較: [market-research-2026-10.md](market-research-2026-10.md)。
