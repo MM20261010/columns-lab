@@ -65,3 +65,9 @@ Pages ReadでAnalyticsの集計値まで取得できるとは扱わない。自�
 - https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/
 - https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/
 - https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/
+
+## 2026-10-12 本人報告によるSearch Console状態の更新
+
+Googleアカウント再審査は通過し、同じアカウントで所有権確認に成功。以前の「再審査待ち」は解消。別アカウント・認証回避なし。sitemap.xml登録済みだがSearch Consoleでは取得エラー。Google公開URLライブテストの取得成功とクロール許可は本人確認済み。トップのインデックス登録リクエストは一時的な送信エラーで未完了。取得エラーの原因やインデックス登録を確認済みと扱わない。
+
+次回は本人がサイトマップの最終読み込み時刻・具体的なエラー・再取得結果を確認する。過剰な再送や公開設定/認証の変更は行わない。検索表示・クリックの集計値は未取得で不明のまま。
