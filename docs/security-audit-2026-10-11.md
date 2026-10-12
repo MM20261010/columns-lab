@@ -154,3 +154,13 @@ PR #4 head4ae642dは手動区切りの暫定案内のみ追加。局所カウン
 既存回帰/局所統合5テスト成功。PR #3/#4/設計の13ファイルがGitHub保存内容とSHA一致。各PRの最小追加検証、利用者影響、残存リスク、revertによる承認付き復旧をpr-validation-2026-10-12.mdの最新節へ整理。Androidは未配布/未実機。ローカルHTMLで動かない場合は権限や公開設定を緩めない。
 
 preview=none、本番main/168b497 success、全修正は[CF-Pages-Skip]。#2/#3/#4/#5 Draft・未マージ維持。新規権限/Secrets/課金なし、追加支出0円。今はマージ/公開承認を求めない。
+
+## 2026-10-12 14:04依頼後のオフライン成果物（最新）
+
+main7d01740とDraft #2/#3/#4/#5を再確認。固定した#3 2ba2927/#4 4ae642dとmain CSSから、自己完結HTMLをWork成果物として作成・保存。33,317 bytes、SHA-256 057d50acabb640f057c46f1e13e2e32449dc6456e01c2daee88f21fc29a80b5a。HTMLをGitHub main/PR/公開サイトへ登録していない。本記録のみGitHub更新。
+
+[オフライン配布仕様/固定ソース/本人操作](android-offline-qa-2026-10-12.md)参照。内蔵4行の架空CSVだけ、実ファイルpickerと大容量試験なし。外部資産/Analytics/通信API/console/永続保存なしを静的確認し、内蔵script/styleのCSPハッシュを検証。connect-src noneは検証版限定、本番CSP/公開設定は変更しない。
+
+統合5回帰とDOM模擬でワンタップ5確認、保護ON/OFF/負数、古い結果保存不可、再結合、Blob/BOM/URL解放試行が成功。ただし実ブラウザーと同じ検証ではない。WorkのURLポリシーがfile://を拒否し、別経路で表示/公開する迂回なし。Android/Fennecの開封、CSP実動作、表示/回転/応答性、保存完了と実File pickerは未検証。Excel/通常版Calcも環境なし未検証、万能防御を主張しない。
+
+HTMLは配布可能な成果物として保存済み。本人には機内モードで小さい架空サンプルだけを試し、開封/保存/応答性を報告してもらう。ローカルHTML制約なら権限緩和なしで停止。Workerは#5設計のまま、実装の判断は実機結果の後。#2/#3/#4/#5未マージ、本番main/168b497、preview none維持、追加支出0円、新規権限/Secretsなし。
