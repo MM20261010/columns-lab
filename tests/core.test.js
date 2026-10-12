@@ -37,3 +37,60 @@ for(const delimiter of ['\t',';']){
   assert.equal(T.parseCSV(text,delimiter)[1][1],'x'.repeat(31000)+'\ncontinued');
 }
 assert.equal(T.detectDelimiter('name\tnote\r\nA\t"a""b"\r\n'),'\t');
+
+// Reject parsed-cell growth before appending the cell that exceeds the budget.
+assert.deepEqual(T.parseCSV('a,b\n1,2',',',{maxCells:4}),[['a','b'],['1','2']]);
+assert.throws(()=>T.parseCSV('a,b\n1,2',',',{maxCells:3}),/入力セル数/);
+assert.throws(()=>T.parseCSV('a',',',{maxCells:0}),/入力セル数/);
+assert.deepEqual(T.parseCSV('a\n1',',',{maxRows:2}),[['a'],['1']]);
+assert.throws(()=>T.parseCSV('a\n1\n2',',',{maxRows:2}),/入力行数/);
+// Estimate must account for missing columns, repeated source names, quoting,
+// protection prefixes, header-only files and short rows, without changing values.
+const specialTables=[{name:'=source".csv',rows:[['a','b'],['=1+1','x"y'],['short']]},
+ {name:'other.csv',rows:[['c'],['\t=1+1']]}];
+for(const source of [false,true])for(const skipBlank of [false,true]){
+ const merged=T.mergeTables(specialTables,{source,skipBlank});
+ assert.equal(merged.estimate.outputCells,(merged.total+1)*merged.columns.length);
+ for(const mode of [false,true])assert.ok(T.writeCSV(merged.columns,merged.rows,mode).length<=merged.estimate.outputCharactersUpperBound);
+}
+// A small input can create a wide dense output. The guard runs before row maps.
+const smallLimits={columns:10,outputCells:5,outputCharacters:100};
+assert.throws(()=>T.mergeTables(tables,{limits:smallLimits}),/上限/);
+T.checkCapacity({columns:2,outputCells:6,outputCharactersUpperBound:20},{columns:2,outputCells:6,outputCharacters:20});
+for(const e of [{columns:3,outputCells:6,outputCharactersUpperBound:20},
+ {columns:2,outputCells:7,outputCharactersUpperBound:20},
+ {columns:2,outputCells:6,outputCharactersUpperBound:21}])
+ assert.throws(()=>T.checkCapacity(e,{columns:2,outputCells:6,outputCharacters:20}),/上限/);
+assert.throws(()=>T.writeCSV(['a'],[['x'.repeat(T.LIMITS.outputCharacters)]]),/出力サイズ/);
+const headersOnly=T.mergeTables([{name:'A',rows:[['a']]},{name:'B',rows:[['b']]}]);
+assert.equal(headersOnly.estimate.outputCells,3);
+assert.throws(()=>T.checkCapacity({rows:2,columns:1,outputCells:3,outputCharactersUpperBound:10},
+  {rows:1,columns:2,outputCells:10,outputCharacters:100}),/行数/);
+console.log('Capacity/estimate boundary tests: passed');
+
+// Formula protection is a limited export mode, not a spreadsheet safety guarantee.
+const hazardous=['=1+1','+1+1','-1+1','@SUM(A1)','＝1+1','＋1+1','－1+1','＠SUM(A1)',
+  '\ttext','\rtext','\ntext','  \ttext','\t=1+1','\r\n=1+1','\u3000＝1+1','\u00a0+1'];
+for(const value of hazardous) assert.equal(T.sanitizeForExcel(value),"'"+value);
+const unchanged=['','plain','123',
+  'a\tb','a\r\nb','text=1','"=1+1',"'=1+1",'１２３'];
+for(const value of unchanged) assert.equal(T.sanitizeForExcel(value),value);
+for(const value of ['-123','-0','-0.25','-.5','-1.','-1e-3','-2E+4','-Infinity','-NaN','--1','-1,2',' -1','-1\n'])
+  assert.equal(T.sanitizeForExcel(value),"'"+value);
+// CSV quoting must not introduce a new field or lose tabs, line breaks or quotes.
+const values=[...hazardous,...unchanged,'x,=1+1','x;=1+1','a"b','="x",=2'];
+assert.deepEqual(T.parseCSV(T.writeCSV(['header'],values.map(v=>[v]),false)).slice(1),values.map(v=>[v]));
+assert.deepEqual(T.parseCSV(T.writeCSV(['＝1+1'],values.map(v=>[v]),true)),
+  [["'＝1+1"],...values.map(v=>[T.sanitizeForExcel(v)])]);
+// The same policy applies to headers and filename-derived values, not just input cells.
+const formulaSource=T.mergeTables([
+  {name:'＝1+1.csv',rows:[['=1+1'],['-123']]},
+  {name:'safe.csv',rows:[['=1+1'],['a"b']]}
+]);
+const protectedSource=T.parseCSV(T.writeCSV(formulaSource.columns,formulaSource.rows,true));
+assert.equal(protectedSource[0][0],"'=1+1");
+assert.equal(protectedSource[1][0],"'-123");
+assert.equal(protectedSource[1][1],"'＝1+1.csv");
+assert.deepEqual(T.parseCSV(T.writeCSV(formulaSource.columns,formulaSource.rows,false)),
+  [formulaSource.columns,...formulaSource.rows]);
+console.log('Formula/export round-trip regression tests: passed');

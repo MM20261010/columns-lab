@@ -18,3 +18,28 @@ elements.demo.listeners.click();
 elements.files.listeners.change();
 assert.equal(elements.download.disabled,true);
 console.log('UI result invalidation tests: passed');
+
+(async()=>{
+  // Tiny budgets exercise the real parser and multi-file application path
+  // without allocating a huge synthetic CSV in a test.
+  const smallCore={...core,LIMITS:{...core.LIMITS,inputCells:6}};
+  const ui=Object.fromEntries(ids.map(id=>[id,node()]));
+  const ctx={...context,window:{CSVCore:smallCore},document:{getElementById:id=>ui[id],createElement:node,createTextNode:text=>({textContent:text})}};
+  vm.runInNewContext(fs.readFileSync(require.resolve('../site/assets/app.js'),'utf8'),ctx);
+  ui.encoding.value='auto';ui.delimiter.value='auto';
+  const bytes=new TextEncoder().encode('a,b\n1,2');
+  ui.files.files=['fixture-a','fixture-b'].map(name=>({name,size:bytes.length,arrayBuffer:async()=>bytes.buffer}));
+  await ui.run.listeners.click();
+  assert.equal(ui.download.disabled,true);
+  assert.match(ui.status.textContent,/入力セル数/);
+  assert.equal(ui.run.disabled,false);
+  assert.equal(ui.files.disabled,false);
+  smallCore.LIMITS.inputCells=8;
+  await ui.run.listeners.click();
+  assert.equal(ui.download.disabled,false);
+  smallCore.writeCSV=()=>{throw Error('出力サイズの上限を超えました');};
+  ui.download.listeners.click();
+  assert.equal(ui.download.disabled,true);
+  assert.match(ui.status.textContent,/出力サイズ/);
+  console.log('UI capacity budget/error recovery tests: passed');
+})().catch(error=>{console.error(error);process.exitCode=1;});
