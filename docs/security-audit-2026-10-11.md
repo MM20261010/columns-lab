@@ -188,3 +188,7 @@ Googleアカウント再審査は通過し、同じアカウントで所有権�
 Pages Read GET 200でpreview=none、本番main/168b497 successを確認。PR #3 2ba2927/#4 4ae642dを固定し、最新main e591031から統合専用ブランチを作成。数式関数とCSVエスケープは#3、容量/保存処理は#4、説明と回帰を併合。新規依存・通信・CSP・権限・課金なし。コミットは[CF-Pages-Skip]、承認前公開禁止。Excel/通常版Calc、不可視19種のExcel挙動、実ファイルpicker・大容量実機・同期中断は未検証/未実装のまま。復旧は統合の変更だけをrevertする承認用PR。過去の監査履歴と最新状態を区別する。
 
 [統合Draft PR #6](https://github.com/MM20261010/columns-lab/pull/6) head e1694493931035d5bb1342b264792dc69f105171、9ファイル限定/mergeable=true。GitHub保存9ファイルSHA一致・保存後5回帰成功。基点と全9コミットのPages is_skipped=true確認。#2/#3/#4/#5/#6 Draft・未マージ、preview none、本番168b497を維持。公開条件/復旧は[integration-release-2026-10-12.md](integration-release-2026-10-12.md)。
+
+## 2026-10-12 実ファイル選択QA・純利益1円の方針
+
+固定#6のcore/appを改変せず埋め込んだWork専用HTMLと小CSVを保存。ネイティブpickerを残し、通信/資産/Analytics/外部依存を除去。静的検査/埋込ハッシュ/架空CSV/回帰/ZIP一致は成功、実機は未検証。Pages GET 200でpreview none/本番168b497 success。重要公開/PRマージなし。収益比較は公式条件調査のみで新規登録/契約/提携/販売/広告/銀行操作なし。デジタル販売の表示/個人情報/品質責任は承認前の解決条件とし、収益優先で省略しない。追加支出0円、新規権限/Secretsなし。
