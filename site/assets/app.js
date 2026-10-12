@@ -85,10 +85,23 @@ $('download').addEventListener('click',()=>{
   let payload;
   try {payload=c.writeCSV(last.columns,last.rows,$('excelSafety').checked);}
   catch(e){last=null;$('download').disabled=true;message(e.message,true);return;}
-  const bom=$('outputEncoding').value==='bom'?'\uFEFF':'';
-  const objectURL=URL.createObjectURL(new Blob([bom,payload],{type:'text/csv;charset=utf-8'}));
-  const link=document.createElement('a');link.href=objectURL;link.download='merged_'+new Date().toISOString().slice(0,10)+'.csv';
-  document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(objectURL),1200);
+  let objectURL,link,started=false;
+  const revoke=()=>{if(objectURL)try{URL.revokeObjectURL(objectURL);}catch(e){/* Best-effort local cleanup; do not log input or platform errors. */}};
+  try{
+    const bom=$('outputEncoding').value==='bom'?'\uFEFF':'';
+    objectURL=URL.createObjectURL(new Blob([bom,payload],{type:'text/csv;charset=utf-8'}));
+    link=document.createElement('a');link.href=objectURL;link.download='merged_'+new Date().toISOString().slice(0,10)+'.csv';
+    document.body.append(link);link.click();started=true;
+  }catch(e){
+    last=null;$('download').disabled=true;
+    message('CSVの保存を開始できませんでした。ブラウザーの空きメモリ・保存設定を確認し、もう一度結合してください。',true);
+  }finally{
+    if(link)try{link.remove();}catch(e){/* Cleanup must not prevent URL release. */}
+    if(objectURL){
+      if(started)try{setTimeout(revoke,1200);}catch(e){revoke();}
+      else revoke();
+    }
+  }
 });
 $('demo').addEventListener('click',()=>{
   $('files').value='';
