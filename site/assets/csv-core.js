@@ -127,10 +127,15 @@
   }
   function sanitizeForExcel(value) {
     const text=String(value??'');
-    // Excel/Calc formula characters; start of value may include whitespace/control chars
-    return /^[\u0000-\u0020]*[=+@\-]/.test(text) ? "'"+text : text;
+    // Keep the existing conservative policy: negative values are protected too.
+    // Do not infer a numeric column type or silently bypass export protection.
+    // OWASP includes full-width formula markers and leading tab/CR/LF.
+    // Check whitespace for detection only; retain the original string unchanged.
+    const prefix=/^[\u0000-\u0020\s]*[=+@\-＝＋＠－]/.test(text);
+    const leadingBreak=/^[\u0000-\u0020\s]*[\t\r\n]/.test(text);
+    return prefix || leadingBreak ? "'"+text : text;
   }
-  function csvCell(v) {const text=String(v??'');return /[",\r\n]/.test(text)?'"'+text.replace(/"/g,'""')+'"':text;}
+  function csvCell(v) {const text=String(v??'');return /[",\t\r\n]/.test(text)?'"'+text.replace(/"/g,'""')+'"':text;}
   function writeCSV(columns, rows, excelSafety=true) {
     const lines=[columns,...rows];
     return lines.map(r=>r.map(v=>csvCell(excelSafety?sanitizeForExcel(v):v)).join(',')).join('\r\n')+'\r\n';

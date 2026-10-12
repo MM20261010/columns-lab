@@ -37,3 +37,30 @@ for(const delimiter of ['\t',';']){
   assert.equal(T.parseCSV(text,delimiter)[1][1],'x'.repeat(31000)+'\ncontinued');
 }
 assert.equal(T.detectDelimiter('name\tnote\r\nA\t"a""b"\r\n'),'\t');
+
+// Formula protection is a limited export mode, not a spreadsheet safety guarantee.
+const hazardous=['=1+1','+1+1','-1+1','@SUM(A1)','＝1+1','＋1+1','－1+1','＠SUM(A1)',
+  '\ttext','\rtext','\ntext','  \ttext','\t=1+1','\r\n=1+1','\u3000＝1+1','\u00a0+1'];
+for(const value of hazardous) assert.equal(T.sanitizeForExcel(value),"'"+value);
+const unchanged=['','plain','123',
+  'a\tb','a\r\nb','text=1','"=1+1',"'=1+1",'１２３'];
+for(const value of unchanged) assert.equal(T.sanitizeForExcel(value),value);
+for(const value of ['-123','-0','-0.25','-.5','-1.','-1e-3','-2E+4','-Infinity','-NaN','--1','-1,2',' -1','-1\n'])
+  assert.equal(T.sanitizeForExcel(value),"'"+value);
+// CSV quoting must not introduce a new field or lose tabs, line breaks or quotes.
+const values=[...hazardous,...unchanged,'x,=1+1','x;=1+1','a"b','="x",=2'];
+assert.deepEqual(T.parseCSV(T.writeCSV(['header'],values.map(v=>[v]),false)).slice(1),values.map(v=>[v]));
+assert.deepEqual(T.parseCSV(T.writeCSV(['＝1+1'],values.map(v=>[v]),true)),
+  [["'＝1+1"],...values.map(v=>[T.sanitizeForExcel(v)])]);
+// The same policy applies to headers and filename-derived values, not just input cells.
+const formulaSource=T.mergeTables([
+  {name:'＝1+1.csv',rows:[['=1+1'],['-123']]},
+  {name:'safe.csv',rows:[['=1+1'],['a"b']]}
+]);
+const protectedSource=T.parseCSV(T.writeCSV(formulaSource.columns,formulaSource.rows,true));
+assert.equal(protectedSource[0][0],"'=1+1");
+assert.equal(protectedSource[1][0],"'-123");
+assert.equal(protectedSource[1][1],"'＝1+1.csv");
+assert.deepEqual(T.parseCSV(T.writeCSV(formulaSource.columns,formulaSource.rows,false)),
+  [formulaSource.columns,...formulaSource.rows]);
+console.log('Formula/export round-trip regression tests: passed');
