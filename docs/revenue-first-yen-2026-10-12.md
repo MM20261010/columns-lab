@@ -15,6 +15,71 @@
 
 最新判断：本人の省人化優先指示による次節が優先。確認代行の第一候補指定とそのドライラン計画は撤回。後段の以前の選択は履歴として保持し、実行しない。
 
+## 2026-10-13 19:40以降：収益成立条件と撤退・観測実験
+
+開始main40804f614f0885c44e27c65e5702fa66aef45d36。最新AGENTS/引き継ぎ/状態/収益/月次/KPI/#2〜#6を読取り確認。前回のドメインHTML/ZIPは技術試作として保存、変更/再試験/追加開発なし。
+
+### 最大3案の採否（再調査・製作を止める条件）
+
+| 候補 | 課題と無料競合との差 | 無広告・無営業の到達候補 | 収益/低介入の成立条件 | 判断 |
+| --- | --- | --- | --- | --- |
+| ドメイン条件比較→国内/海外紹介 | 前回の移管費二重計上相談は再利用。TLDMath等が無料で期間比較まで提供し、条件ゲートの優位は未証明 | 新サイト自然検索は実績/被リンク/検索到達なし。本人へ営業を移す案なし | Namecheapは独自ドメイン・検索/流入/業界実績を求める公式基準。A8は日本語/国内口座、通知・休眠・没収問題が残る | **優先候補から撤退**。差別化/到達/現行無料での収益経路が揃わない。追加開発・登録しない |
+| 既存CSVの無料実用サービス→広告又は任意支援 | 列名結合・端末内処理の競合あり、唯一ではない。有料化は見送り。Excel先頭ゼロの悩みは検索抜粋で再確認、公式に無料の操作解説があり有料ガイドの根拠なし | 既存公開ガイド→ツールの検索/内部導線。自然検索は仮説で現時点未確認。既存資産を使うので新サイト量産不要 | 広告は申請・審査・無効トラフィック/同意/通知対応。支援は商品納品不要でも返金/決済責任が残る | **次の検証1案**。7日間の無変更自然到達観測を先行。商用採択・広告/支援登録は保留 |
+| 低介入デジタル商品（CSV手順/雛形など） | 既存引き継ぎ素材や公式CSV操作解説は無料。新たな購入理由/購入意思を示す証拠なし | マーケット掲載だけで到達すると断定しない。新商品検証の前に支払需要が必要 | Gumroadの日本JPY払出し・販売手数料説明は検索抜粋にあり、今回本文が空で詳細の裏付け未完。問合せ/返金/規約/休眠未解決 | **製作/販売を保留**。新たな雛形・商品・記事を作らない |
+
+撤退は事業一般が不可能との断言ではなく、現条件下で優先する根拠がないという判断。Namecheapの[参加基準](https://www.namecheap.com/support/knowledgebase/article.aspx/9965/55/acceptance-criteria-for-new-affiliates/)は独自ドメインと実績を記載（更新表示2018/12/10、現在公開されている基準として確認）。無料サブドメインが認められると推測せず申請しない。既存の最低出金額は撤退理由にしない。
+
+### 既存CSVの収益経路の現状
+
+- 広告：GoogleはAdSenseを無料と説明。[対象サイト](https://support.google.com/adsense/answer/12170421?hl=en)にPublic Suffix List上のプラットフォームのサブドメインを含む。[PSL公式](https://publicsuffix.org/list/public_suffix_list.dat)でpages.devを確認（取得版2026-10-07、commit3929462652695bad04f0a27afb600974014a3c8b）。よって「独自ドメイン購入が必須」とは判断しない。ただしcolumns-labが個別審査を通る証拠ではない。
+- [参加要件](https://support.google.com/adsense/answer/9724?hl=en)は成人/独自の高品質内容/HTML所有・ポリシー。本人資格/審査は未確認。[支払方法表](https://support.google.com/adsense/answer/1714397?hl=en)にJapanがあるが個別受取設定/銀行費/税務は未確認。[JPY閾値](https://support.google.com/adsense/answer/1709871?hl=en)は通常支払8000円/閉鎖支払1000円。1円確定の成果評価と出金条件は別。
+- [休眠](https://support.google.com/adsense/answer/7237800?hl=en)は広告表示なし6か月で無効化、7年で再開不可と説明。6か月はログイン回数の条件ではなく広告表示。確定収益は再開/閉鎖手順でアクセスできる説明があるが、少額残高の最終受取や取消/停止時の条件まで無条件保証しない。推定広告収益は確定収益でない。広告クリック試験・自己クリック・閲覧依頼をしない。
+- 広告JS/同意管理/通知を含むGPT運用と世界各国のプライバシー・配信リスクは未検証、今回広告を入れない。自然流入と利用価値を確認してから登録/契約/コード/計測/停止方法の具体的承認案を作る。現時点の申請は時期尚早。
+- 任意支援の代替：Ko-fiの[料金](https://ko-fi.com/home/pricing)では新規既定Standardは5%、Freeの単発tipは0%という説明が併存。無料登録=全取引無料ではなく決済費別。[AI方針](https://help.ko-fi.com/hc/en-us/articles/19789627403293-Ko-fi-s-stance-on-AI)は制作方法を偽らないことを要求し、AI内容を一律禁止しない。これはAIによるアカウント操作/認証委任の許可ではない。
+- [Ko-fi規約](https://more.ko-fi.com/terms)：支払は直接PayPal/Stripe、残高をKo-fiで蓄積する仕組みではない。返金/不審請求/税/アカウントは運営者責任。Stripeは[日本対応](https://stripe.com/global)、[標準料金](https://stripe.com/jp/pricing)は初期/月額なし・カード3.6%、通貨換算+2%等、チャージバック受領1500円などのリスクを確認。Ko-fi Connectの個別適用費・日本居住者の本人条件/非営利扱い/休眠/負残高/法的表示は未確認。tipを寄付として税務免除/無責任としない。本人の定期返金対応が必要なら低介入の採択条件を満たさない。
+- [Ko-fi検索](https://help.ko-fi.com/hc/en-us/articles/27035616108957-Can-I-search-for-creators-on-Ko-fi)はプラットフォーム内で作者検索できないと説明、登録自体を集客に数えない。[公式webhook](https://help.ko-fi.com/hc/en-us/articles/360004162298-Does-Ko-fi-have-an-API-or-webhook)は支払時だけで、終了等の状態すべてを通知しない。通知には支援者情報も含まれ得る。Secrets/受信エンドポイント/新接続を作らず、機密支払情報をGitHubへ入れない。
+
+結論：現時点で成立確認済みの商用モデルはない。無料CSVを維持し、広告を主要な将来収益仮説、任意支援を代替として**到達確認前はどちらも採択しない**。新商品や新プログラム探索は、この観測の判断まで増やさない。
+
+### 今回実行した到達観測の基準値
+
+既存限定Read OAuthでschemaのrefererHostフィルターを確認し、公開主要4パスと既知検索エンジンの少数集計を実行。Account ID/host固定、HTTP200/errors=[]。期間は2026-10-11 00:00以上〜10-13 19:40未満JST（UTC10/10 15:00〜10/13 10:40）。全月値ではない。
+
+| RUM集計 | count | sum.visits | avg.sampleInterval |
+| --- | ---: | ---: | ---: |
+| 全host | 16 | 14 | 1 |
+| / | 10 | 10 | 1 |
+| /privacy/ | 2 | 1 | 1 |
+| /guides/csv-column-merge/ | 2 | 1 | 1 |
+| /tools/csv-merge/ | 2 | 2 | 1 |
+
+主要4パス合計16/14で総計と一致。countはAPIイベントで画面PV照合未実施、Visitsは実人数でない。自己/監視アクセスか第三者か未判別、sampleInterval1も計測完全性の証拠でない。同窓の既知検索エンジンrefererHost許可リスト、および自サイト参照元→ツールという別フィルターは**どちらも配列空**。0件/需要なしと断定しない。参照元抑制/直接流入/自己検索/ブラウザー・広告ブロック等もあり得る。フル参照URL・入力/ファイル名・未知ホストを取得していない。検索エンジンのsite:結果は当サイトを返さず、robots/sitemapのopenは内部取得エラー。これらを未インデックス/サイト障害と断定しない。
+
+### 再現する読み取りquery（基準窓）
+
+認可アカウントIDを$aへ接続経路で渡す。queryには秘密やCSV値を入れない。次の観測では上記予定窓へ日時を変更し、返却/欠測/照合を記録。基準窓を最新値として再利用しない。
+
+```graphql
+query($a:string!){viewer{accounts(filter:{accountTag:$a}){total:rumPageloadEventsAdaptiveGroups(limit:1,filter:{datetime_geq:"2026-10-10T15:00:00Z",datetime_lt:"2026-10-13T10:40:00Z",requestHost:"columns-lab.pages.dev"}){count sum{visits} avg{sampleInterval}} pages:rumPageloadEventsAdaptiveGroups(limit:8,filter:{datetime_geq:"2026-10-10T15:00:00Z",datetime_lt:"2026-10-13T10:40:00Z",requestHost:"columns-lab.pages.dev",requestPath_in:["/","/tools/csv-merge/","/guides/csv-column-merge/","/privacy/"]}){dimensions{requestPath} count sum{visits} avg{sampleInterval}}}}}
+```
+
+```graphql
+query($a:string!){viewer{accounts(filter:{accountTag:$a}){searchSignal:rumPageloadEventsAdaptiveGroups(limit:1,filter:{datetime_geq:"2026-10-10T15:00:00Z",datetime_lt:"2026-10-13T10:40:00Z",requestHost:"columns-lab.pages.dev",refererHost_in:["www.google.com","www.google.co.jp","www.bing.com","duckduckgo.com","www.duckduckgo.com","search.yahoo.co.jp"]}){count sum{visits} avg{sampleInterval}} internalToolSignal:rumPageloadEventsAdaptiveGroups(limit:1,filter:{datetime_geq:"2026-10-10T15:00:00Z",datetime_lt:"2026-10-13T10:40:00Z",requestHost:"columns-lab.pages.dev",requestPath:"/tools/csv-merge/",refererHost:"columns-lab.pages.dev"}){count sum{visits} avg{sampleInterval}}}}}
+```
+
+### 選んだ最小実験：7日間の既存CSV自然到達観測
+
+期間：2026-10-13 19:40以上〜10-20 19:40未満JST（UTC10/13 10:40〜10/20 10:40）。基準値取得を今回開始。サイト/タイトル/案内/広告/支援/外部投稿は変更しない。操作：次のWork実行時に期間内の取得可能範囲を最大7日・必要なら日別の小分けで、同じhost/path/referer許可リストで1〜3 query取得。API制限/保持切れなら欠測を記録し無理に埋めない。日次ログイン/転記を本人に求めない。自動Work起動/スケジュール/通知は新設していないので、自動継続観測済みとは報告しない。
+
+観測指標：RUM count/Visits/返却行有無/対象窓/sampleInterval、既知検索参照信号、ツール/ガイドページ信号。Google検索表示/クリック/利用成功/保存完了/実人数/支払意向は現在未取得のまま。既知検索信号が出ても自己検索/偽装可能なので需要証明ではなく、追加確認に進む信号に限る。経路は検索→既存ガイド→既存ツールという仮説を点検する。両ページの集計だけで同じ人のファネルを断定しない。
+
+- 前進条件：複数日のガイド/ツール返却と検索参照信号を観測し、自己作業時刻/既存の取得可能なSearch Console集計等と照合できるなら、1箇所の導線改善又は最小広告審査の承認資料へ進む。GSCの新認証/権限は別承認。今回決済や新機能は不要。
+- 保留条件：少数/自己由来不明/参照信号未返却なら登録しない。7日で検索が育たない可能性があるため需要なしとは結論しない。最大もう1窓だけ延長、以後は未確認集客を理由に新開発を続けず、配信/インデックスの課題に限定して判断する。
+- 撤退条件：無料競合との差を示せず到達検証も前進しない、又は広告/支援の規約適合・通知/プライバシーが本人の反復作業か費用を必須にするなら商用採択を撤回。人間の毎日ログインを代替案にしない。
+- 復旧：今回サイト変更なし、戻す実装なし。query停止だけで観測終了。将来の広告/支援リンクは別の固定変更と停止/revert手順を準備してから本人承認、#2〜#5へ流用しない。
+
+これは到達の観察研究で、価格/成約の実験ではない。第三者の確定収益・純利益は未取得、初期1円未達成。必要最小操作の対象がまだ定まらないため今は本人の承認・登録を求めない。本人操作：不要。追加支出0円、本番bdd91e27 success/preview none・既存PR維持。
+
 ## 2026-10-13 19:14以降：世界市場比較と未公開の最小実験
 
 開始main 001641707195363b5cf9224aab79a5e845c91839。AGENTS/引き継ぎ/状態/月次/KPI/PRを再読。#6 merged、#2〜#5 Draft未マージ、本番bdd91e27 success/preview noneを既存Read OAuthで確認。日本だけに限定しない。今回の成果は条件ゲート付き日英算術ツールの実装・検証で、需要実証や利益達成ではない。
