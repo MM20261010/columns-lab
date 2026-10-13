@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-13-revenue-policy-02",
-  "updated_at": "2026-10-13T07:14:54Z",
+  "run_id": "2026-10-13-adoption-03",
+  "updated_at": "2026-10-13T10:02:10.745746+00:00",
   "status": "completed",
   "status_label": "🟢 作業完了！",
-  "base_commit": "3f40ef3b6cd2f214f4dce7e4b7b655907c496031",
+  "base_commit": "2e4fd1124678abad680b4c033f9779a574f9cbb2",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-13-revenue-policy-02:policy-and-rum-read-success",
+  "notification_key": "2026-10-13-adoption-03:carrd-priority-withdrawal-and-rum-breakdown",
   "facts": {
     "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
     "production_stage": "success",
@@ -37,33 +37,34 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "revenue milestone/withdrawal policy updated",
-    "read-only RUM query succeeded with explicit account",
-    "limited interval raw aggregate recorded separately from monthly KPI"
+    "Carrd demand/competition/terms reviewed and priority rejected",
+    "alternative model narrowed without registration",
+    "JST daily and allowlisted path RUM aggregates returned",
+    "grouped and filtered total counts reconciled"
   ],
   "candidate": {
-    "name": "Carrd plan selection information and suitable referrals",
-    "stage": "conditional_validation_only",
-    "real_customer_validation": "not_performed",
+    "name": ".jp renewal/transfer total cost information and domestic domain referrals",
+    "stage": "validation_candidate_commercial_adoption_on_hold",
+    "real_customer_validation": "historical public cost complaint only; current buyer demand not established",
     "launch_approval_ready": false
   },
   "approval_requests": [],
   "risks": [
-    "revenue and balance not measured",
-    "Japan demand and GPT candidate operation unverified",
-    "reward expiry/dormancy/Japan payout eligibility unverified",
-    "analytics limited window; dashboard interpretation/self traffic unverified",
-    "monitor deduplication not implemented"
+    "monthly metrics and self traffic unknown",
+    "commercial model not ready: buyer acquisition/differentiation/agent terms",
+    "domain transfer duration and affiliate private conditions unknown",
+    "expiry rules vary by platform; no automatic transfer of rules"
   ],
   "next_actions": [
-    "prepare bounded analytics collection and metric comparison",
-    "validate Japanese buyer demand and GPT operating terms",
-    "verify reward expiry/dormancy before registration proposal"
+    "compare .jp renewal/transfer costs for two providers with equivalent terms",
+    "check domestic affiliate low-intervention operation and balance risks before registration proposal",
+    "continue bounded RUM snapshots without new privileges"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
     "docs/revenue-first-yen-2026-10-12.md",
-    "docs/monthly-2026-10.md"
+    "docs/monthly-2026-10.md",
+    "docs/analytics-rum-query.graphql"
   ],
   "automation": {
     "status_file_only": true,
@@ -115,5 +116,74 @@
       "dashboard_comparison": "not_performed",
       "self_traffic": "unknown"
     }
-  ]
+  ],
+  "model_decisions": {
+    "carrd": "withdrawn_from_priority_registration_on_hold",
+    "existing_csv": "maintain_and_measure; new features/monetization on hold",
+    "jp_cost_referral": "selected_for_next_validation_only",
+    "digital_product": "on_hold"
+  },
+  "analytics_daily": [
+    {
+      "jst_date": "2026-10-11",
+      "utc_start": "2026-10-10T15:00:00Z",
+      "utc_end": "2026-10-11T15:00:00Z",
+      "count": 3,
+      "visits": 1,
+      "sample_interval": 1
+    },
+    {
+      "jst_date": "2026-10-12",
+      "utc_start": "2026-10-11T15:00:00Z",
+      "utc_end": "2026-10-12T15:00:00Z",
+      "count": 8,
+      "visits": 8,
+      "sample_interval": 1
+    },
+    {
+      "jst_date": "2026-10-13",
+      "utc_start": "2026-10-12T15:00:00Z",
+      "utc_end": "2026-10-13T07:00:00Z",
+      "partial_day": true,
+      "count": 5,
+      "visits": 5,
+      "sample_interval": 1
+    }
+  ],
+  "analytics_paths": {
+    "window": "2026-10-13 JST 00:00-16:00",
+    "allowlist": [
+      "/",
+      "/tools/csv-merge/",
+      "/guides/csv-column-merge/",
+      "/privacy/"
+    ],
+    "returned": [
+      {
+        "path": "/",
+        "count": 5,
+        "visits": 5
+      }
+    ],
+    "not_returned": [
+      "/tools/csv-merge/",
+      "/guides/csv-column-merge/",
+      "/privacy/"
+    ],
+    "not_returned_value": null,
+    "filtered_total_matches_groups": true,
+    "unique_people": false,
+    "third_party_demand": "unknown"
+  },
+  "saved_evidence_commits": {
+    "revenue": "f579cef8a406bcf44edca7654a2f14c7682558c7",
+    "monthly": "3e1222e51abbaddfc0a574a18f252b35f49e3c64",
+    "rum_query": "be5d876e061685bd26e07b1c164be86b7b8ee774"
+  },
+  "verification": {
+    "three_evidence_files_match_git_blob_sha": true,
+    "three_evidence_deployments_skipped": true,
+    "production_commit_unchanged": true,
+    "preview_none": true
+  }
 }
