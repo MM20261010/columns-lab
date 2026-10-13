@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-13-experiment-04",
-  "updated_at": "2026-10-13T10:24:03.901370+00:00",
+  "run_id": "2026-10-13-gates-05",
+  "updated_at": "2026-10-13T10:48:14.854759+00:00",
   "status": "completed",
   "status_label": "🟢 作業完了！",
-  "base_commit": "001641707195363b5cf9224aab79a5e845c91839",
+  "base_commit": "40804f614f0885c44e27c65e5702fa66aef45d36",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-13-experiment-04:private-domain-cost-prototype",
+  "notification_key": "2026-10-13-gates-05:domain-withdrawal-csv-baseline",
   "facts": {
     "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
     "production_stage": "success",
@@ -37,29 +37,29 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "domestic/global candidates compared using existing evidence",
-    "one offline bilingual cost-gate prototype implemented",
-    "18 core/event-fixture checks passed",
-    "HTML and reproducible ZIP delivered privately"
+    "domain candidate priority withdrawn after official eligibility check",
+    "three models compared without new prototypes",
+    "bounded RUM baseline and search/internal signals queried",
+    "one seven-day unchanged-site observation protocol started"
   ],
   "candidate": {
-    "name": "bilingual domain transfer cost conditions checker and potential referral",
-    "stage": "private_prototype_commercial_and_publication_on_hold",
+    "name": "existing free CSV utility with potential ads/support",
+    "stage": "reach_validation_only_no_commercial_adoption",
     "launch_approval_ready": false,
     "third_party_use": "unknown"
   },
   "approval_requests": [],
   "risks": [
-    "browser/mobile rendering and actual network trace unverified",
-    "arrival and competitor advantage unverified",
-    "ASP notification and safe GPT operation unavailable",
-    "source not saved to Git due connector branch403; no Draft PR created",
-    "A8 termination/forfeiture and Japanese-language rules; overseas network eligibility unverified"
+    "no commercial model fully validated",
+    "self visits and actual organic search unknown",
+    "ad approval/privacy/notifications and tip refund responsibilities unresolved",
+    "prototype remains private and browser QA unverified",
+    "future collection requires Work invocation; automatic startup not implemented"
   ],
   "next_actions": [
-    "direct UI QA in an authorized environment",
-    "specify one-page arrival experiment before publication proposal",
-    "resolve low-intervention affiliate notifications before any application"
+    "bounded same-window RUM collection when Work runs after experiment end",
+    "corroborate arrival signals before monetization approval preparation",
+    "no further domain development or digital product production"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -120,9 +120,9 @@
   ],
   "model_decisions": {
     "carrd": "withdrawn_from_priority_registration_on_hold",
-    "existing_csv": "maintain_and_measure; new features/monetization on hold",
-    "jp_cost_referral": "expanded to bilingual cost-gate prototype only; commercial hold",
-    "digital_product": "on_hold",
+    "existing_csv": "maintain; seven-day reach observation; monetization hold",
+    "jp_cost_referral": "priority_withdrawn; prototype retained no development",
+    "digital_product": "production_on_hold_no_purchase_evidence",
     "global_csv": "new development rejected due strong free competitors"
   },
   "analytics_daily": [
@@ -178,11 +178,11 @@
     "third_party_demand": "unknown"
   },
   "verification": {
-    "local_tests_passed": true,
-    "source_matches_tested_html": true,
+    "bounded_query_success": true,
+    "baseline_groups_match_total": true,
     "production_commit_unchanged": true,
     "preview_none": true,
-    "records_save_status": "verify final Git history and completion report"
+    "records_save_status": "verify Git history and final report"
   },
   "prototype": {
     "html_sha256": "0d75f69244b42b80e1d2b8c6e5cd305562b362be794ff1461b19337c98ce9db1",
@@ -194,5 +194,50 @@
     "external_communication_code": false,
     "github_source_saved": false,
     "draft_pr": null
+  },
+  "experiment": {
+    "name": "unchanged CSV natural-arrival observation",
+    "status": "baseline_collected_future_window_pending",
+    "start_inclusive": "2026-10-13T10:40:00Z",
+    "end_exclusive": "2026-10-20T10:40:00Z",
+    "automatic_work_start": false,
+    "collection": "when Work next invoked; bounded reads only",
+    "extra_window_maximum": 1,
+    "production_change": false
+  },
+  "new_rum_baseline": {
+    "start_inclusive": "2026-10-10T15:00:00Z",
+    "end_exclusive": "2026-10-13T10:40:00Z",
+    "count": 16,
+    "visits": 14,
+    "sample_interval": 1,
+    "paths": [
+      {
+        "path": "/",
+        "count": 10,
+        "visits": 10
+      },
+      {
+        "path": "/privacy/",
+        "count": 2,
+        "visits": 1
+      },
+      {
+        "path": "/guides/csv-column-merge/",
+        "count": 2,
+        "visits": 1
+      },
+      {
+        "path": "/tools/csv-merge/",
+        "count": 2,
+        "visits": 2
+      }
+    ],
+    "group_total_matches": true,
+    "search_allowlist_returned": [],
+    "internal_tool_returned": [],
+    "empty_array_means_zero": false,
+    "self_traffic": "unknown",
+    "third_party_demand": "unknown"
   }
 }
