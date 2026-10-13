@@ -16,6 +16,18 @@
 最終更新: 2026-10-13（日本時間）。対象: MM20261010/columns-lab、main。公開: https://columns-lab.pages.dev/
 
 
+## 最新：Google検索到達の公開側監査・本人確認待ち（2026-10-13 20:06以降）
+
+開始main5f0a3f6835404d0a0983d3ccc9d37f485b41a2ed。AGENTS/本記録/measurement/状態/月次/KPIを読取り。Google復旧・所有権は本人報告成功を現行事実とする。今回Googleアカウント停止を障害にしない。
+
+- 公開HTTP：robots/sitemap/主要4ページの通常UA6応答と、Googlebot UAのrobots/sitemap/top3応答、全9件HTTP200・転送なし。XML正常、4URL/canonical一致、robots許可、meta/header noindexなし。通常/Googlebot UA本文同一。これは実Google IPからの取得成功の証明ではない。Git _headers/_redirectsに主要ページの拒否設定なし、全WAF/Access/Googleログは未監査。
+- Search Console：専用readerなし。既存ブラウザーで対象を1回開くとaboutへ転送し未ログイン案内のみ。ログイン/新接続/OAuth/アカウント操作は行わない。Googleアカウント無効/所有権消失/現在も申請失敗の証拠ではない。
+- サイトマップGoogle取得の継続/解消、実インデックス、申請送信の再成功/失敗、検索表示/クリックは未確認。公開側だけで検索流入を測定できると判定しない。**本人の既存ログイン環境で1回、サイトマップ詳細・トップURL検査・ウェブ過去28日実績の表示確認が必要**。具体項目/判断と最小共有は[measurement](measurement.md)。毎日転記/新認証は求めない。
+- RUM窓10/13 19:40〜10/20 19:40 JSTは継続。検索到達未確認のまま低アクセスを需要不足にしない。障害が判明/解消した場合だけ解消確認から新7日窓を提案、今は変更なし。次のGPT作業は本人の状態表示を監査し、必要な修正/再申請案を具体化して承認まで公開/Google送信は停止。
+- 古いmeasurementとKPIの停止/審査待ち表示を修正。変更はmeasurement/本記録/状態JSON/月次/kpi.csvの5文書。未測定数値の空欄/null維持、サイト修正・新PRなし。既存Pages本番bdd91e27 success/preview none、#2〜#5 Draft/#6 mergedを再確認。権限/認証/Google設定/契約/課金なし、追加支出0円。
+
+終了は🟡承認待ち（本人の1回のGoogle状態確認待ち）。公開監査/記録の保存は完了させるが、Search Console現在値/検索到達の判定は保留。保存ID/一致・Pagesスキップ・本番不変は当該Git履歴と最終報告参照。安全性を緩める操作で代替しない。
+
 ## 最新：ドメイン優先撤退・既存CSVの無変更観測（2026-10-13 19:40以降）
 
 開始main40804f614f0885c44e27c65e5702fa66aef45d36。AGENTS/引き継ぎ/状態/収益/月次/KPI/PR読取り。#6 merged、#2〜#5 Draft未マージ、Pages本番bdd91e27 success/preview noneを既存Read OAuth確認。前回の私的ドメイン試作は保持、追加開発/新PRなし。

@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-13-gates-05",
-  "updated_at": "2026-10-13T10:48:14.854759+00:00",
-  "status": "completed",
-  "status_label": "🟢 作業完了！",
-  "base_commit": "40804f614f0885c44e27c65e5702fa66aef45d36",
+  "run_id": "2026-10-13-search-audit-06",
+  "updated_at": "2026-10-13T11:12:33.163433+00:00",
+  "status": "awaiting_owner_confirmation",
+  "status_label": "🟡 承認待ち",
+  "base_commit": "5f0a3f6835404d0a0983d3ccc9d37f485b41a2ed",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-13-gates-05:domain-withdrawal-csv-baseline",
+  "notification_key": "2026-10-13-search-audit-06:gsc-owner-readout",
   "facts": {
     "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
     "production_stage": "success",
@@ -37,10 +37,10 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "domain candidate priority withdrawn after official eligibility check",
-    "three models compared without new prototypes",
-    "bounded RUM baseline and search/internal signals queried",
-    "one seven-day unchanged-site observation protocol started"
+    "public HTTP9 and canonical/robots/XML checks passed",
+    "Google account restoration correctly recorded as owner report",
+    "existing browser Search Console returned login landing; no auth started",
+    "stale measurement/KPI account suspension wording corrected"
   ],
   "candidate": {
     "name": "existing free CSV utility with potential ads/support",
@@ -48,24 +48,35 @@
     "launch_approval_ready": false,
     "third_party_use": "unknown"
   },
-  "approval_requests": [],
+  "approval_requests": [
+    {
+      "id": "gsc-one-time-readout",
+      "type": "owner_existing_session_display_check",
+      "purpose": "determine unresolved sitemap/index/search states",
+      "minimum_action": "one batch: sitemap detail, top URL inspection, web28day performance",
+      "new_permissions_required": false,
+      "new_connection_requested": false,
+      "daily_manual_work": false
+    }
+  ],
   "risks": [
-    "no commercial model fully validated",
-    "self visits and actual organic search unknown",
-    "ad approval/privacy/notifications and tip refund responsibilities unresolved",
-    "prototype remains private and browser QA unverified",
-    "future collection requires Work invocation; automatic startup not implemented"
+    "GSC current sitemap/index/search measurements unavailable",
+    "UA HTTP200 does not prove actual Googlebot/IP access",
+    "Google reach unknown; traffic cannot disprove demand",
+    "all zone WAF/Access and Google logs not audited"
   ],
   "next_actions": [
-    "bounded same-window RUM collection when Work runs after experiment end",
-    "corroborate arrival signals before monetization approval preparation",
-    "no further domain development or digital product production"
+    "owner one-time existing GSC readout, no new auth/connection requested",
+    "audit readout; prepare concrete repair/request proposal only if needed",
+    "preserve RUM observation and avoid demand conclusion before Google reach verified"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
     "docs/revenue-first-yen-2026-10-12.md",
     "docs/monthly-2026-10.md",
-    "docs/analytics-rum-query.graphql"
+    "docs/analytics-rum-query.graphql",
+    "docs/measurement.md",
+    "docs/kpi.csv"
   ],
   "automation": {
     "status_file_only": true,
@@ -178,10 +189,9 @@
     "third_party_demand": "unknown"
   },
   "verification": {
-    "bounded_query_success": true,
-    "baseline_groups_match_total": true,
-    "production_commit_unchanged": true,
-    "preview_none": true,
+    "public_http_xml_canonical_checked": true,
+    "measurement_status_corrected": true,
+    "numeric_kpi_blank_preserved": true,
     "records_save_status": "verify Git history and final report"
   },
   "prototype": {
@@ -203,7 +213,10 @@
     "automatic_work_start": false,
     "collection": "when Work next invoked; bounded reads only",
     "extra_window_maximum": 1,
-    "production_change": false
+    "production_change": false,
+    "google_reach_status": "unknown",
+    "use_low_access_as_demand_failure": false,
+    "window_reset": "only propose after any actual blocker resolution verified"
   },
   "new_rum_baseline": {
     "start_inclusive": "2026-10-10T15:00:00Z",
@@ -239,5 +252,21 @@
     "empty_array_means_zero": false,
     "self_traffic": "unknown",
     "third_party_demand": "unknown"
+  },
+  "search_audit": {
+    "google_account": "restored_owner_report",
+    "ownership": "verified_owner_report",
+    "public_http": "9 responses200 no redirects",
+    "public_sitemap": "valid4URLs canonical match",
+    "public_noindex": false,
+    "googlebot_ua_only": "normal bodies match; not real Google IP proof",
+    "gsc_direct_access": "about page login required; no auth initiated",
+    "google_sitemap_status": null,
+    "indexed_status": null,
+    "indexing_request_current_result": null,
+    "search_impressions": null,
+    "search_clicks": null,
+    "google_reach_verdict": "unknown",
+    "real_google_crawl_current": "unverified"
   }
 }
