@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-13-adoption-03",
-  "updated_at": "2026-10-13T10:02:10.745746+00:00",
+  "run_id": "2026-10-13-experiment-04",
+  "updated_at": "2026-10-13T10:24:03.901370+00:00",
   "status": "completed",
   "status_label": "🟢 作業完了！",
-  "base_commit": "2e4fd1124678abad680b4c033f9779a574f9cbb2",
+  "base_commit": "001641707195363b5cf9224aab79a5e845c91839",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-13-adoption-03:carrd-priority-withdrawal-and-rum-breakdown",
+  "notification_key": "2026-10-13-experiment-04:private-domain-cost-prototype",
   "facts": {
     "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
     "production_stage": "success",
@@ -37,28 +37,29 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "Carrd demand/competition/terms reviewed and priority rejected",
-    "alternative model narrowed without registration",
-    "JST daily and allowlisted path RUM aggregates returned",
-    "grouped and filtered total counts reconciled"
+    "domestic/global candidates compared using existing evidence",
+    "one offline bilingual cost-gate prototype implemented",
+    "18 core/event-fixture checks passed",
+    "HTML and reproducible ZIP delivered privately"
   ],
   "candidate": {
-    "name": ".jp renewal/transfer total cost information and domestic domain referrals",
-    "stage": "validation_candidate_commercial_adoption_on_hold",
-    "real_customer_validation": "historical public cost complaint only; current buyer demand not established",
-    "launch_approval_ready": false
+    "name": "bilingual domain transfer cost conditions checker and potential referral",
+    "stage": "private_prototype_commercial_and_publication_on_hold",
+    "launch_approval_ready": false,
+    "third_party_use": "unknown"
   },
   "approval_requests": [],
   "risks": [
-    "monthly metrics and self traffic unknown",
-    "commercial model not ready: buyer acquisition/differentiation/agent terms",
-    "domain transfer duration and affiliate private conditions unknown",
-    "expiry rules vary by platform; no automatic transfer of rules"
+    "browser/mobile rendering and actual network trace unverified",
+    "arrival and competitor advantage unverified",
+    "ASP notification and safe GPT operation unavailable",
+    "source not saved to Git due connector branch403; no Draft PR created",
+    "A8 termination/forfeiture and Japanese-language rules; overseas network eligibility unverified"
   ],
   "next_actions": [
-    "compare .jp renewal/transfer costs for two providers with equivalent terms",
-    "check domestic affiliate low-intervention operation and balance risks before registration proposal",
-    "continue bounded RUM snapshots without new privileges"
+    "direct UI QA in an authorized environment",
+    "specify one-page arrival experiment before publication proposal",
+    "resolve low-intervention affiliate notifications before any application"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -120,8 +121,9 @@
   "model_decisions": {
     "carrd": "withdrawn_from_priority_registration_on_hold",
     "existing_csv": "maintain_and_measure; new features/monetization on hold",
-    "jp_cost_referral": "selected_for_next_validation_only",
-    "digital_product": "on_hold"
+    "jp_cost_referral": "expanded to bilingual cost-gate prototype only; commercial hold",
+    "digital_product": "on_hold",
+    "global_csv": "new development rejected due strong free competitors"
   },
   "analytics_daily": [
     {
@@ -175,15 +177,22 @@
     "unique_people": false,
     "third_party_demand": "unknown"
   },
-  "saved_evidence_commits": {
-    "revenue": "f579cef8a406bcf44edca7654a2f14c7682558c7",
-    "monthly": "3e1222e51abbaddfc0a574a18f252b35f49e3c64",
-    "rum_query": "be5d876e061685bd26e07b1c164be86b7b8ee774"
-  },
   "verification": {
-    "three_evidence_files_match_git_blob_sha": true,
-    "three_evidence_deployments_skipped": true,
+    "local_tests_passed": true,
+    "source_matches_tested_html": true,
     "production_commit_unchanged": true,
-    "preview_none": true
+    "preview_none": true,
+    "records_save_status": "verify final Git history and completion report"
+  },
+  "prototype": {
+    "html_sha256": "0d75f69244b42b80e1d2b8c6e5cd305562b362be794ff1461b19337c98ce9db1",
+    "test_sha256": "770644a027ddef0e05b926820d43dc446b11751316a1b13af8142832ddcd2350",
+    "zip_sha256": "905e9b5ad2d8dccf45a9825e9c836f4193325440a1c1ca0ef2fb4bfd1515755d",
+    "tests_passed": 18,
+    "browser_qa": "unverified_file_protocol_blocked",
+    "external_dependencies": false,
+    "external_communication_code": false,
+    "github_source_saved": false,
+    "draft_pr": null
   }
 }
