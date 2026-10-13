@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "run_id": "2026-10-13-demand-01",
+  "updated_at": "2026-10-13T06:04:32Z",
+  "status": "awaiting_approval",
+  "status_label": "🟡 承認待ち",
+  "base_commit": "218a7a05aa882a4e761a86a2e03f3cc0aa561cf5",
+  "record_commit_source": "latest Git history for this file; verify current main before acting",
+  "notification_key": "2026-10-13-demand-01:cf-analytics-read",
+  "facts": {
+    "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
+    "production_stage": "success",
+    "preview_deployment_setting": "none",
+    "pr_6": "merged",
+    "prs_2_to_5": "draft_unmerged",
+    "new_accounts_or_contracts": false,
+    "new_permissions_or_secrets": false,
+    "site_code_changed": false,
+    "additional_spending_yen": 0
+  },
+  "metrics": {
+    "visits": null,
+    "pageviews": null,
+    "search_impressions": null,
+    "search_clicks": null,
+    "revenue_accrued_yen": null,
+    "revenue_confirmed_yen": null,
+    "bank_receipt_yen": null,
+    "monthly_expenses_yen": null,
+    "net_profit_yen": null
+  },
+  "completed": [
+    "official demand/alternatives/payment screening",
+    "four synthetic requirement checks and conditional payout arithmetic",
+    "existing RUM query attempted once with explicit account and denied",
+    "existing monitors read; no task changes"
+  ],
+  "candidate": {
+    "name": "Carrd plan selection information and suitable referrals",
+    "stage": "conditional_validation_only",
+    "real_customer_validation": "not_performed",
+    "launch_approval_ready": false
+  },
+  "approval_requests": [
+    {
+      "id": "cf-analytics-read",
+      "target": "existing Cloudflare OAuth for project-dedicated account",
+      "scope": "Account Analytics Read on the specified account; retain Pages Read",
+      "purpose": "hostname and interval limited RUM aggregate reads",
+      "oauth_screen_scope_verified": false,
+      "risk": "account-wide analytics visibility; account-routing failure may persist",
+      "alternative": "retain missing metrics and continue demand work",
+      "fee": "no paid feature authorized; use free Web Analytics only",
+      "needed_by": "next measurement step around October 14-16",
+      "human_action": "decide whether to approve scope inspection/addition; consent only after approval",
+      "revoke": "disconnect/revoke OAuth connection; fine-grained edit UI unverified"
+    }
+  ],
+  "risks": [
+    "analytics access unresolved",
+    "Japanese demand and buyer acquisition unverified",
+    "candidate GPT operation and PayPal fees/receipt unverified",
+    "duplicate monitors may send duplicate notifications"
+  ],
+  "next_actions": [
+    "verify Japanese buyer need versus free guidance",
+    "verify candidate operation and payout terms before registration proposal",
+    "after explicit approval inspect OAuth consent scope and run one bounded query"
+  ],
+  "evidence_paths": [
+    "docs/agent-handoff.md",
+    "docs/revenue-first-yen-2026-10-12.md",
+    "docs/monthly-2026-10.md"
+  ],
+  "automation": {
+    "status_file_only": true,
+    "work_auto_start_implemented": false,
+    "notification_delivery_tested": false,
+    "existing_monitor_changes": false
+  }
+}
