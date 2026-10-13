@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-13-search-audit-06",
-  "updated_at": "2026-10-13T11:12:33.163433+00:00",
+  "run_id": "2026-10-13-google-fetch-discrepancy-07",
+  "updated_at": "2026-10-13T11:56:35.651041+00:00",
   "status": "awaiting_owner_confirmation",
   "status_label": "🟡 承認待ち",
-  "base_commit": "5f0a3f6835404d0a0983d3ccc9d37f485b41a2ed",
+  "base_commit": "10744873efcbd87456789e9e80cacd51f432807c",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-13-search-audit-06:gsc-owner-readout",
+  "notification_key": "2026-10-13-google-fetch-discrepancy-07:guide-sitemap-response",
   "facts": {
     "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
     "production_stage": "success",
@@ -37,10 +37,10 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "public HTTP9 and canonical/robots/XML checks passed",
-    "Google account restoration correctly recorded as owner report",
-    "existing browser Search Console returned login landing; no auth started",
-    "stale measurement/KPI account suspension wording corrected"
+    "owner new GSC findings recorded separately from direct evidence",
+    "24 response4UA path matrix plus bounded follow-up reads completed",
+    "guide main/production source identity and public content verified",
+    "Pages production success/preview none/static config verified"
   ],
   "candidate": {
     "name": "existing free CSV utility with potential ads/support",
@@ -50,25 +50,26 @@
   },
   "approval_requests": [
     {
-      "id": "gsc-one-time-readout",
-      "type": "owner_existing_session_display_check",
-      "purpose": "determine unresolved sitemap/index/search states",
-      "minimum_action": "one batch: sitemap detail, top URL inspection, web28day performance",
+      "id": "gsc-guide-sitemap-one-batch",
+      "type": "owner_existing_session_diagnostic_check",
+      "purpose": "obtain exact Google fetch evidence; no new auth/request required",
+      "minimum_action": "guide exact URL one live check and available404 response details; sitemap submitted exact URL/error detail/current live fetch if not already current",
       "new_permissions_required": false,
       "new_connection_requested": false,
       "daily_manual_work": false
     }
   ],
   "risks": [
-    "GSC current sitemap/index/search measurements unavailable",
-    "UA HTTP200 does not prove actual Googlebot/IP access",
-    "Google reach unknown; traffic cannot disprove demand",
-    "all zone WAF/Access and Google logs not audited"
+    "Google guide404 differs from DFW public200; cause unresolved",
+    "Google source IP/other edge/current response not audited",
+    "sitemap actual Google error details not obtained; common cause unknown",
+    "search0 period unknown; do not record all-month zero",
+    "partial search reach; low RUM access cannot disprove demand"
   ],
   "next_actions": [
-    "owner one-time existing GSC readout, no new auth/connection requested",
-    "audit readout; prepare concrete repair/request proposal only if needed",
-    "preserve RUM observation and avoid demand conclusion before Google reach verified"
+    "owner one batch guide exact URL live response and sitemap details, no repeated daily work",
+    "interpret response evidence before any repair/approval proposal",
+    "preserve RUM window and do not conclude demand failure"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -76,7 +77,8 @@
     "docs/monthly-2026-10.md",
     "docs/analytics-rum-query.graphql",
     "docs/measurement.md",
-    "docs/kpi.csv"
+    "docs/kpi.csv",
+    "docs/google-reach-investigation-2026-10-13.md"
   ],
   "automation": {
     "status_file_only": true,
@@ -88,6 +90,10 @@
     {
       "id": "cf-analytics-read",
       "resolution": "owner reports scoped read-only OAuth reconnection; bounded RUM query succeeded; no additional permission request"
+    },
+    {
+      "id": "gsc-one-time-readout",
+      "resolution": "owner supplied top indexed/tool request success/guide404/sitemap failed/search0; now narrowed to fetch evidence"
     }
   ],
   "revenue_policy": {
@@ -192,7 +198,9 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "verify Git history and final report"
+    "records_save_status": "verify Git blob and final report",
+    "owner_gsc_report_recorded": true,
+    "http_matrix_verified": true
   },
   "prototype": {
     "html_sha256": "0d75f69244b42b80e1d2b8c6e5cd305562b362be794ff1461b19337c98ce9db1",
@@ -214,7 +222,7 @@
     "collection": "when Work next invoked; bounded reads only",
     "extra_window_maximum": 1,
     "production_change": false,
-    "google_reach_status": "unknown",
+    "google_reach_status": "partial_home_indexed_tool_pending_guide404_sitemap_failed",
     "use_low_access_as_demand_failure": false,
     "window_reset": "only propose after any actual blocker resolution verified"
   },
@@ -256,17 +264,34 @@
   "search_audit": {
     "google_account": "restored_owner_report",
     "ownership": "verified_owner_report",
-    "public_http": "9 responses200 no redirects",
-    "public_sitemap": "valid4URLs canonical match",
-    "public_noindex": false,
-    "googlebot_ua_only": "normal bodies match; not real Google IP proof",
-    "gsc_direct_access": "about page login required; no auth initiated",
-    "google_sitemap_status": null,
-    "indexed_status": null,
-    "indexing_request_current_result": null,
-    "search_impressions": null,
-    "search_clicks": null,
-    "google_reach_verdict": "unknown",
-    "real_google_crawl_current": "unverified"
+    "home_index": "indexed_owner_report_2026-10-13",
+    "tool_index": "not_confirmed",
+    "tool_index_request": "success_owner_report_2026-10-13T20:44+09:00",
+    "guide_google_live_fetch": "404_owner_report_2026-10-13T20:46+09:00",
+    "guide_browser": "Fennec_body_visible_owner_report",
+    "sitemap_gsc": "fetch_failed_owner_report",
+    "sitemap_last_read": "2026-10-12_owner_report",
+    "public_http_matrix": {
+      "responses": 24,
+      "200": 16,
+      "308": 8,
+      "ua_types": 4,
+      "edge_observed": "DFW",
+      "real_google_source_verified": false
+    },
+    "public_guide": "200 correct content; no-slash/index.html308 canonical",
+    "public_sitemap": "200 valid4URLs",
+    "common_cause": "unconfirmed",
+    "production_fix_required": "not established",
+    "gsc_direct_access": "previous login landing; not retried",
+    "search_performance_owner_observation": {
+      "observed_date_jst": "2026-10-13",
+      "impressions": 0,
+      "clicks": 0,
+      "aggregation_period": null,
+      "filters": null,
+      "last_data_date": null,
+      "month_total": false
+    }
   }
 }

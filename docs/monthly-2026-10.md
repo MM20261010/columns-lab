@@ -217,3 +217,17 @@ RUM HTTP200/errors=[]、JST10/11 count3/Visits1、10/12 count8/Visits8、10/13 0
 Google復旧/所有権成功は本人報告。公開robots/sitemap/主要4URLのHTTP/内容を監査、通常UA6+Googlebot UA3の9件全200転送なし、XML/4URL/canonical/robots正常、noindexなし。実Google IP取得とは別。Search Console既存ブラウザーはabout未ログインに転送、ログイン操作なし。現在のサイトマップ取得/インデックス/申請送信/ウェブ実績は不明。1回の本人表示確認を依頼する手順をmeasurementへ保存。
 
 measurement・kpi.csvの古いGoogle停止表示を更新。全月数値/収益は空欄/nullのまま。RUM窓10/13 19:40〜10/20 19:40継続、Google到達未確認では低アクセスを需要不足と評価しない。障害解消の確認後に別窓を提案、今は期間変更なし。公開コード/設定/Google操作/権限/新PR/費用なし。追加支出0円。🟡承認待ち：本人の既存ログイン環境で3箇所の表示を1回確認。
+
+
+## 2026-10-13 20:50以降：Google取得矛盾の追加調査
+
+開始main10744873efcbd87456789e9e80cacd51f432807c。本人追加報告でトップ登録済み、tool20:44登録申請成功/実登録待ち、guide20:46ライブ取得404/未登録、sitemap取得失敗（最終読み込み10/12）、検索表示0/クリック0を更新。以前の「全インデックス不明/申請未成功」を現行状態にしない。検索0は確認日/期間未提示の本人表示値で、全月0ではない。別チャット添付を直接確認したとはしない。
+
+通常/Googlebot/InspectionToolモバイル・デスクトップ×6パスの24応答で正規guide/sitemap/robots/toolは200、guide末尾なし/index.htmlは308→正規末尾あり。全UA同じ本文hash、guide内容/h1/canonicalを確認。no-cache指定の少数追加取得でも200、転送追跡も正常。全体29HTTP応答、DFW1地点でGoogle実IPの取得とは別。Git guideはmain/本番で同一blob、公開はAnalytics注入だけの差。Pages静的uses_functions=false/出力site/build空/production bdd91e27 success/preview none、主要URLの拒否規則なし。
+
+恒常URLミス/未配置/UA名だけの拒否/XML不備は再現せず。Google404とサイトマップ失敗の共通原因は未確定。配信拠点/時刻/実要求URL差は仮説、キャッシュ/WAF/Google障害と決めない。根拠のない再デプロイ/キャッシュ削除/本番修正なし。
+
+次は本人の既存GSCで1回まとめて、guideの完全URLでライブページ取得を確認（404が続くなら表示可能なHTTP応答のステータス/本文タイトル/Ray-IDだけ）、sitemap行の完全URL/エラー詳細と直近ライブ取得状態を確認。sitemap直近ライブ成功済みなら再テスト不要。削除/再送/毎日の転記不要。手順と判断は[追加調査](google-reach-investigation-2026-10-13.md)。現在求めるのは新認証/権限承認でなく限定確認。
+
+RUM窓10/13 19:40〜10/20 19:40維持。Google部分到達（topのみ登録）を全到達としない、guide障害/tool登録待ちが残る低アクセスで需要なしとしない。変更は本記録/measurement/状態/月次/kpi/調査の6文書、[CF-Pages-Skip]で保存照合。既存PR/サイト/Cloudflare/Google設定・権限・費用変更なし、追加支出0円。保存IDと照合/skipはGit履歴と最終報告を参照。Google矛盾解消は未完了、終了は🟡本人の限定確認待ち。
+
