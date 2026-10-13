@@ -2,6 +2,49 @@
 
 最終更新: 2026-10-13（日本時間）。対象: MM20261010/columns-lab、main。公開: https://columns-lab.pages.dev/
 
+## 最新状態：2026-10-13 15時以降・需要検証前進/計測承認待ち
+
+開始main218a7a05。本人からCloudflare/GitHub/GoogleはGPT専用アカウントと追加情報あり。混在リスクは低いが、新しい権限/認証/契約/支払い/公開の包括承認ではない。安全性/無料/最小権限/省人化を維持。
+
+- 収益検証候補を「Carrd無料/有料プランの過不足を防ぐ実用情報→適合する人だけ紹介」の1案へ絞り、4つの架空要件と無料代替/公式機能・出金算術を照合。利用者の選択の迷いは検索抜粋で確認、全文取得エラー/日本語需要/実クリック/実購入は未検証。公開/登録/提携なし。TextExpanderは確認義務と委任制限、Carrd Makerは有料条件、BOOTHは無料競合/購入証拠不足で後順位/除外。[詳細と反証条件](revenue-first-yen-2026-10-12.md)の最新節。
+- Carrdは初期参加無料でも出金最低$25/PayPal/手動申請/為替・銀行費が障壁。本人へ定期作業を移さずGPTが規約適合して維持できる経路は未確定。採択は検証対象の選択で、販売開始承認の依頼ではない。
+- 既存Pages Readのプロジェクト読み取り成功、本番bdd91e27 success/preview none。#6 merged、#2〜#5 Draft未マージのまま。GraphQL RUMを対象Account/ホスト/期間明示で1回実行しnot authorized for that account、session account mismatch、INVALID_ARGUMENT。HTTPステータス非提示。未指定自動選択エラーではない。Visits/PVは不明、0にしない。
+- 追加権限候補は対象アカウントAccount Analytics Read。実際のOAuth同意画面は未確認で、承認前に認証を開始しない。公式はOAuth時の権限選択を説明するが、現UIの細分化/アカウント指定の証拠とは分ける。プラグイン管理の照会はnot_installed/検索なしと返す一方、Cloudflare実ツールは成功するため、管理照会をOAuth不足や切断の証拠にしない。
+- 既存監視を読み取り確認。新旧進捗監視の目的が重複する。新規作成/停止/設定変更はなし。[機械可読状態](agent-status.json)を新設、GitHub監査時のイベントキーと欠測/承認を明示。通知・Work起動を実装したものではない。
+- 変更ファイル：docs/revenue-first-yen-2026-10-12.md、docs/agent-status.json、docs/monthly-2026-10.md、本記録。サイトコード/公開設定/権限/Secrets/契約/支払い変更なし、追加支出0円。保存は[CF-Pages-Skip]、最終コミットは本記録の履歴/終了報告を参照。未測定KPIと既存実装の未検証を維持。
+
+保存検証：fa919c09（収益比較）、2dbd5323（状態JSON）、6a9d7308（月次）の3文書Git blob SHAがローカルと一致。3件のPages is_skipped=true確認。状態JSONの構文・必須状態・KPI null・site_code_changed=falseをローカル確認。サイトコード変更がないためCSV回帰は再実行せず、追加の実装安全保証を主張しない。本記録もスキップ保存し保存一致/本番不変を最終確認する。今回の終了は🟡承認待ち（Analyticsのみ）、需要検証は条件付き候補選定/机上確認まで完了、実購入/入金/日本語需要/常時自動起動は未完了のまま。
+
+次のGPT作業：候補の日本語需要/無料比較の不足とGPT運用の規約・受取経路を詰める。条件不成立なら保留し、記事・商品を増産しない。本人判断：Analytics読み取り追加の可否のみ。販売関連登録の承認準備はまだ未完、今は求めない。
+
+### Analytics承認案（10月14〜16日の計測工程用、未実施）
+
+| 項目 | 内容 |
+| --- | --- |
+| 対象/最小スコープ | 既存Cloudflare公式OAuth、プロジェクト専用の対象アカウントだけAccount Analytics Readを追加候補。Pages Readは維持、Write/管理/All accounts/Account Settings Readは求めない |
+| 目的/できること | ホストcolumns-lab.pages.devと期間を限定したRUM Visits/PVを読取り。指標定義/サンプリング/欠測を確認し月次へ保存。追加だけで自動運営が完成するわけではない |
+| 危険/不足 | 同アカウントの他解析を読める可能性。専用アカウントとの本人情報を踏まえて混在危険は低いが漏洩/誤集計は残る。今の拒否はOAuth権限だけでなく接続のaccount routingも候補。追加しても取得できない可能性 |
+| 実画面 | 未確認。公式はOAuthで権限選択と説明。承認後だけ本人が同意画面を開き、上記Readと対象accountだけ選べるか確認。選べない/広い権限必須/課金表示なら同意せず停止・再提案 |
+| 無料/制限 | Web Analyticsは全プラン対応、無料運用を優先。今回有料機能を有効化しない。GraphQLは既定300query/5分、アカウントquery1account、dataset別の取得期間/保持/行数等はsettingsで確認。成功後も少数集計だけ、限度到達は停止/欠測、有料プランへ切替なし |
+| 代替 | 欠測のまま公開需要調査を継続。本人の毎日転記を前提にしない。トークン/Secrets/Actionsは今回作らず#2 Draft維持 |
+| 本人の最小操作 | 追加の可否を明示判断。承認後だけ既存接続管理からOAuth画面でRead/対象accountを確認し同意。認証情報をチャットへ貼らない。現在は画面操作開始も未実施 |
+| 取消 | OAuth接続の取消/切断でアクセスを止める。細かい権限編集ができるかは現UI未確認。取消時にPages Readも失う可能性を記録し、再接続は別途承認。APIトークンを作る代替は別提案 |
+
+根拠：[MCP OAuth権限選択](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)、[Analytics最小権限](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/)、[Web Analytics](https://developers.cloudflare.com/web-analytics/)、[GraphQL制限](https://developers.cloudflare.com/analytics/graphql-api/limits/)。APIトークン説明をOAuth実画面確認済みとは扱わない。
+
+### 伝書鳩削減：実装範囲と次の運用
+
+状態JSONは手動/GPT保存する公開記録だけ。schema_version、run_id、updated_at、status、notification_key、facts、metrics(null)、approval_requests、next_actionsを用意。通常チャットは最新mainと本記録/JSON/収益を読み、notification_keyが前回と同じなら重複通知を抑える案。独立した監視間で通知済み状態を共有する機能は未実装で、JSONだけでは通知重複を保証して防げない。
+
+| 方法 | 費用/権限/実現可能性 | 役割/判断 |
+| --- | --- | --- |
+| 既存の条件監視＋GitHub記録 | 既存タスクを読取り確認。今回追加料金/権限/設定変更なし、実際の起動/通知配信は今回未テスト | 「承認・進捗監視」を承認/重要リスク/終了検知の主担当、旧「事業進捗ウォッチ」は重複。旧停止/統合は次の個別承認案。収益探索は需要、月次は会計を担当し範囲を分ける |
+| GitHub Actionsの状態検証 | Public repo標準runnerは無料対象だが未導入、実行権限とコード/公開範囲の確認が必要。Secretsなしcontents:readのschema検査なら準備可能 | Workの自動起動/ChatGPTへのプッシュはそれだけではできない。現段階でワークフローを増やさず、JSON構文・必須項目をローカル確認 |
+| Webhook/ChatGPTイベント | この環境にイベント関連ツールはあるがGitHub push対応、宛先/認証/無料制限/承認経路は未検証 | 新接続/公開endpoint/Secretsなしで自動起動可能とは扱わない。今回設定せず、重複監視の整理を先行 |
+| 外部常駐エージェント/Workers | 起動・実行/通知/API利用には権限/認証/規約/無料超過の点検が必要。LLM/API有料費用が発生し得る | 初期/追加0円と安全性を満たす証拠なし、今は採らない |
+
+数日以内の追加候補はAnalytics Readのみ具体案。Carrd無料アカウント/紹介参加とPayPalは需要・規約/受取条件が揃った後、対象/目的/データ/費用/取消・退会/本人操作をまとめて提案し、まだ新設しない。Google接続/メール連携/Actions/常駐権限も今は求めない。
+
 ## 今回の終了ルール整備（2026-10-13）
 
 開始main cc94770a49fe820aa47b98016629fa7639c04168。本人指定の終了ステータス、完了前の差分/検証/保存照合、GitHubだけで再開・監査できる記録、コミット/PR報告、欠測/未承認の扱い、本人操作表示をAGENTS.mdと本記録の標準手順に追加した。前回の事業/PR/本番状態と未解決は以下に保持。今回は運用文書のみ、サイトコード・公開設定・権限・認証・契約・支払いは変更しない。追加支出0円、本人操作：不要。最終保存コミットIDは終了報告と本ファイルの履歴を参照。
