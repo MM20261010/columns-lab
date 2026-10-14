@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
   "run_id": "2026-10-14-google-reach-ad-preparation-08",
-  "updated_at": "2026-10-14T04:46:16.709Z",
-  "status": "completed",
-  "status_label": "🟢 作業完了！",
+  "updated_at": "2026-10-14T04:52:20.474Z",
+  "status": "interrupted",
+  "status_label": "🔴 作業中断",
   "base_commit": "12e3d0a086d474a52d2e0c8fdb5070719f2fa4cb",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-14-google-reach-ad-preparation-08:prepared-no-owner-action",
+  "notification_key": "2026-10-14-google-reach-ad-preparation-08:unexpected-doc-production-redeploy",
   "facts": {
-    "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
+    "production_commit": "21a067786dbbf27ebcec7f3c858d605a97b7c828",
     "production_stage": "success",
     "preview_deployment_setting": "none",
     "pr_6": "merged",
@@ -50,12 +50,14 @@
   },
   "approval_requests": [],
   "risks": [
+    "unexpected4 docs-only production redeploys: skip message not persisted; guard and incident records updated",
     "tool/guide actual indexing and sitemap report processing unconfirmed",
     "past Google404 cause unknown despite10/14 successful live test",
     "RUM1 may be self; partial window and not demand evidence",
     "AdSense individual review/eligibility/privacy/notification and usable Work reader unverified"
   ],
   "next_actions": [
+    "do not perform further production operations; any rollback requires separate owner approval; safe read-only/records remain possible",
     "next Work after10/20 19:40JST collect fixed-window RUM; no auto-start claimed",
     "resolve no-cost authorized GPT earnings/alerts read path before registration approval request",
     "prepare fixed meta-only review PR then separately guide1slot/privacy/CMP proposal if gates pass"
@@ -218,7 +220,7 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "verify Git blob and Pages skip before final completion report",
+    "records_save_status": "verify corrected incident docs/blob/actual skip and production21a067 unchanged before final interrupted report",
     "owner_gsc_report_recorded": true,
     "http_matrix_verified": true
   },
@@ -329,6 +331,22 @@
     "read_connection_implemented": false,
     "approval_ready": false,
     "reason": "natural reach and free authorized GPT read/notification path unverified"
+  },
+  "incident": {
+    "type": "unapproved_doc_only_production_redeploy",
+    "deployment_count": 4,
+    "original_production": "bdd91e27e2092beb74508847f74ab8221cea2e42",
+    "current_production": "21a067786dbbf27ebcec7f3c858d605a97b7c828",
+    "site_diff": false,
+    "compare_changed_files": 13,
+    "preview": "none",
+    "public_top_tool_status": 200,
+    "analytics_tags_each": 1,
+    "adsense_tags": 0,
+    "rollback_performed": false,
+    "rollback_requires_approval": true,
+    "owner_immediate_operation_required": false,
+    "message_guard_added": true
   }
 }
 
