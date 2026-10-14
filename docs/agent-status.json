@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-13-google-fetch-discrepancy-07",
-  "updated_at": "2026-10-13T11:56:35.651041+00:00",
-  "status": "awaiting_owner_confirmation",
-  "status_label": "🟡 承認待ち",
-  "base_commit": "10744873efcbd87456789e9e80cacd51f432807c",
+  "run_id": "2026-10-14-google-reach-ad-preparation-08",
+  "updated_at": "2026-10-14T04:46:16.709Z",
+  "status": "completed",
+  "status_label": "🟢 作業完了！",
+  "base_commit": "12e3d0a086d474a52d2e0c8fdb5070719f2fa4cb",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-13-google-fetch-discrepancy-07:guide-sitemap-response",
+  "notification_key": "2026-10-14-google-reach-ad-preparation-08:prepared-no-owner-action",
   "facts": {
     "production_commit": "bdd91e27e2092beb74508847f74ab8221cea2e42",
     "production_stage": "success",
@@ -37,39 +37,28 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "owner new GSC findings recorded separately from direct evidence",
-    "24 response4UA path matrix plus bounded follow-up reads completed",
-    "guide main/production source identity and public content verified",
-    "Pages production success/preview none/static config verified"
+    "owner10/14 Google live successes recorded separately from index/sitemap processing",
+    "bounded RUM interim read200 count1/Visits1 with unknown self traffic",
+    "existing3 monetization routes compared; guide-onlyAdSense selected for preparation",
+    "staged approval/monitoring/privacy/rollback plan prepared; no commercial execution"
   ],
   "candidate": {
-    "name": "existing free CSV utility with potential ads/support",
-    "stage": "reach_validation_only_no_commercial_adoption",
+    "name": "guide-only AdSense display advertising",
+    "stage": "conditional_preparation_no_registration_no_ads",
     "launch_approval_ready": false,
     "third_party_use": "unknown"
   },
-  "approval_requests": [
-    {
-      "id": "gsc-guide-sitemap-one-batch",
-      "type": "owner_existing_session_diagnostic_check",
-      "purpose": "obtain exact Google fetch evidence; no new auth/request required",
-      "minimum_action": "guide exact URL one live check and available404 response details; sitemap submitted exact URL/error detail/current live fetch if not already current",
-      "new_permissions_required": false,
-      "new_connection_requested": false,
-      "daily_manual_work": false
-    }
-  ],
+  "approval_requests": [],
   "risks": [
-    "Google guide404 differs from DFW public200; cause unresolved",
-    "Google source IP/other edge/current response not audited",
-    "sitemap actual Google error details not obtained; common cause unknown",
-    "search0 period unknown; do not record all-month zero",
-    "partial search reach; low RUM access cannot disprove demand"
+    "tool/guide actual indexing and sitemap report processing unconfirmed",
+    "past Google404 cause unknown despite10/14 successful live test",
+    "RUM1 may be self; partial window and not demand evidence",
+    "AdSense individual review/eligibility/privacy/notification and usable Work reader unverified"
   ],
   "next_actions": [
-    "owner one batch guide exact URL live response and sitemap details, no repeated daily work",
-    "interpret response evidence before any repair/approval proposal",
-    "preserve RUM window and do not conclude demand failure"
+    "next Work after10/20 19:40JST collect fixed-window RUM; no auto-start claimed",
+    "resolve no-cost authorized GPT earnings/alerts read path before registration approval request",
+    "prepare fixed meta-only review PR then separately guide1slot/privacy/CMP proposal if gates pass"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -94,6 +83,10 @@
     {
       "id": "gsc-one-time-readout",
       "resolution": "owner supplied top indexed/tool request success/guide404/sitemap failed/search0; now narrowed to fetch evidence"
+    },
+    {
+      "id": "gsc-guide-sitemap-one-batch",
+      "resolution": "owner10/14 reports both live fetches successful; no further owner repeat check needed now"
     }
   ],
   "revenue_policy": {
@@ -133,6 +126,33 @@
       "unique_people": false,
       "dashboard_comparison": "not_performed",
       "self_traffic": "unknown"
+    },
+    {
+      "start_inclusive": "2026-10-13T10:40:00Z",
+      "end_exclusive": "2026-10-14T04:40:00Z",
+      "host": "columns-lab.pages.dev",
+      "dataset": "rumPageloadEventsAdaptiveGroups",
+      "http_status": 200,
+      "errors": [],
+      "count": 1,
+      "sum_visits": 1,
+      "avg_sampleInterval": 1,
+      "month_total": false,
+      "unique_people": false,
+      "self_traffic": "unknown",
+      "pages": [
+        {
+          "path": "/",
+          "count": 1,
+          "visits": 1
+        }
+      ],
+      "not_returned": [
+        "/tools/csv-merge/",
+        "/guides/csv-column-merge/",
+        "/privacy/"
+      ],
+      "not_returned_value": null
     }
   ],
   "model_decisions": {
@@ -198,7 +218,7 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "verify Git blob and final report",
+    "records_save_status": "verify Git blob and Pages skip before final completion report",
     "owner_gsc_report_recorded": true,
     "http_matrix_verified": true
   },
@@ -222,7 +242,7 @@
     "collection": "when Work next invoked; bounded reads only",
     "extra_window_maximum": 1,
     "production_change": false,
-    "google_reach_status": "partial_home_indexed_tool_pending_guide404_sitemap_failed",
+    "google_reach_status": "live_fetch_success_owner_report_home_indexed_tool_guide_index_pending_sitemap_report_failed",
     "use_low_access_as_demand_failure": false,
     "window_reset": "only propose after any actual blocker resolution verified"
   },
@@ -267,14 +287,14 @@
     "home_index": "indexed_owner_report_2026-10-13",
     "tool_index": "not_confirmed",
     "tool_index_request": "success_owner_report_2026-10-13T20:44+09:00",
-    "guide_google_live_fetch": "404_owner_report_2026-10-13T20:46+09:00",
+    "guide_google_live_fetch": "success_owner_report_2026-10-14T13:34+09:00",
     "guide_browser": "Fennec_body_visible_owner_report",
-    "sitemap_gsc": "fetch_failed_owner_report",
+    "sitemap_gsc": "could_not_read_report_persists_owner_report_2026-10-14",
     "sitemap_last_read": "2026-10-12_owner_report",
     "public_http_matrix": {
-      "responses": 24,
       "200": 16,
       "308": 8,
+      "responses": 24,
       "ua_types": 4,
       "edge_observed": "DFW",
       "real_google_source_verified": false
@@ -292,6 +312,23 @@
       "filters": null,
       "last_data_date": null,
       "month_total": false
-    }
+    },
+    "guide_index_request": "executed_owner_report_2026-10-14_exact_time_unknown",
+    "guide_index": "not_confirmed",
+    "sitemap_google_live_fetch": "success_owner_report_2026-10-14T13:29+09:00",
+    "past_404_cause": "unconfirmed_not_reproduced_2026-10-14",
+    "owner_check_pending": false
+  },
+  "revenue_preparation": {
+    "model": "guide-only AdSense",
+    "registered": false,
+    "ad_code_published": false,
+    "stageA": "separate owner registration/terms plus meta-only production approval",
+    "stageB": "separate guide1slot/privacy/CMP approval",
+    "read_scope_candidate": "https://www.googleapis.com/auth/adsense.readonly",
+    "read_connection_implemented": false,
+    "approval_ready": false,
+    "reason": "natural reach and free authorized GPT read/notification path unverified"
   }
 }
+
