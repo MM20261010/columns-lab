@@ -1,12 +1,12 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-14-google-reach-ad-preparation-08",
-  "updated_at": "2026-10-14T04:52:20.474Z",
-  "status": "interrupted",
-  "status_label": "🔴 作業中断",
-  "base_commit": "12e3d0a086d474a52d2e0c8fdb5070719f2fa4cb",
+  "run_id": "2026-10-14-pages-watch-path-A-09",
+  "updated_at": "2026-10-14T05:19:46.554Z",
+  "status": "awaiting_owner_operation",
+  "status_label": "🟡 承認待ち",
+  "base_commit": "5d963da7a40ba9f4bf91920d138405eff6e5cf9b",
   "record_commit_source": "latest Git history for this file; verify current main before acting",
-  "notification_key": "2026-10-14-google-reach-ad-preparation-08:unexpected-doc-production-redeploy",
+  "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
   "facts": {
     "production_commit": "21a067786dbbf27ebcec7f3c858d605a97b7c828",
     "production_stage": "success",
@@ -37,10 +37,10 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "owner10/14 Google live successes recorded separately from index/sitemap processing",
-    "bounded RUM interim read200 count1/Visits1 with unknown self traffic",
-    "existing3 monetization routes compared; guide-onlyAdSense selected for preparation",
-    "staged approval/monitoring/privacy/rollback plan prepared; no commercial execution"
+    "read current main/Pages production/preview/build/source config",
+    "read fixed Git tree and all13 site files; site-only pattern compatible with current static build",
+    "record old settings/rollback scope/official path matching exceptions",
+    "existing Cloudflare UI sign-in landing observed; no auth started"
   ],
   "candidate": {
     "name": "guide-only AdSense display advertising",
@@ -48,8 +48,20 @@
     "launch_approval_ready": false,
     "third_party_use": "unknown"
   },
-  "approval_requests": [],
+  "approval_requests": [
+    {
+      "id": "pages-watch-A-owner-existing-ui",
+      "type": "owner_existing_session_setting_operation",
+      "already_approved": true,
+      "purpose": "apply Include site/* Exclude empty; Work UI not authenticated",
+      "new_permissions_required": false,
+      "new_auth_requested": false,
+      "daily_manual_work": false,
+      "minimum_action": "one save in existing logged-in owner Cloudflare UI; report saved, then MCP verifies"
+    }
+  ],
   "risks": [
+    "approved site-only filter not yet applied because Work UI lacks existing login",
     "unexpected4 docs-only production redeploys: skip message not persisted; guard and incident records updated",
     "tool/guide actual indexing and sitemap report processing unconfirmed",
     "past Google404 cause unknown despite10/14 successful live test",
@@ -57,10 +69,9 @@
     "AdSense individual review/eligibility/privacy/notification and usable Work reader unverified"
   ],
   "next_actions": [
-    "do not perform further production operations; any rollback requires separate owner approval; safe read-only/records remain possible",
-    "next Work after10/20 19:40JST collect fixed-window RUM; no auto-start claimed",
-    "resolve no-cost authorized GPT earnings/alerts read path before registration approval request",
-    "prepare fixed meta-only review PR then separately guide1slot/privacy/CMP proposal if gates pass"
+    "owner one authorized save in existing authenticated Cloudflare UI",
+    "after owner save MCP GET values and deployment/preview; no test commit",
+    "resume safe documentation operations only with final skip verification until path filter applied"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -220,7 +231,7 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "verify corrected incident docs/blob/actual skip and production21a067 unchanged before final interrupted report",
+    "records_save_status": "verify four documentation blobs/actual skip/current production before final",
     "owner_gsc_report_recorded": true,
     "http_matrix_verified": true
   },
@@ -347,6 +358,44 @@
     "rollback_requires_approval": true,
     "owner_immediate_operation_required": false,
     "message_guard_added": true
+  },
+  "pages_watch": {
+    "approved_plan": "A",
+    "applied": false,
+    "before": {
+      "path_includes": [
+        "*"
+      ],
+      "path_excludes": [],
+      "production_deployments_enabled": true,
+      "preview": "none"
+    },
+    "proposed": {
+      "path_includes": [
+        "site/*"
+      ],
+      "path_excludes": []
+    },
+    "actual": {
+      "path_includes": [
+        "*"
+      ],
+      "path_excludes": []
+    },
+    "site_files_checked": 13,
+    "external_build_inputs_found": false,
+    "ui": "sign-in landing; auth not attempted",
+    "test_commit_created": false,
+    "rollback_old_values": [
+      "*"
+    ],
+    "plan_B_requires_additional_approval": true,
+    "exceptions": [
+      "zero-file push",
+      "3000+ changed files",
+      "20+ commits in push"
+    ],
+    "setting_saved_verified": false
   }
 }
 
