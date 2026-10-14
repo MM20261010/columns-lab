@@ -1,5 +1,19 @@
 # Google取得404・サイトマップ失敗の追加調査
 
+## 2026-10-14 13:40以降：Google到達の更新（本人報告）
+
+sitemap.xmlは13:29JST、guideは13:34JSTのGoogle公開URLライブテスト成功。10/13 guide404は今回再現しない。**過去404の原因は未確定、再デプロイや本番修正による解消ではない。** guideは10/14に本人が登録リクエスト実行、toolは10/13にリクエスト済み、両方の実登録完了は未確認。top登録済み。サイトマップ送信レポートは「読み込めませんでした」のまま。ライブ取得成功/実インデックス/サイトマップ処理は分離する。
+
+以前の本人ライブ再確認待ちはこの報告で終了。今日の追加の本人確認/削除再送/ログイン/権限を要求しない。次回Work時に必要な反映状態だけを判断、毎日転記にしない。RUM10/13 19:40〜10/20 19:40JSTは維持、後半に取得成功が確認された窓で検索流入不足を需要不足の証拠にしない。必要なら到達状態に合わせた別窓を後で提案し、今は日付をリセットしない。
+
+既存Read OAuthで途中窓10/13 19:40以上〜10/14 13:40未満JST（UTC10/13 10:40〜10/14 04:40）を1queryで取得、HTTP200/errors=[]。host total count1/sum.visits1/avg.sampleInterval1、ページ別はtopだけ1/1。許可したguide/tool/privacyは未返却で0に置換しない。第三者/自己不明、広告表示/収益とは別、月次全体ではない。Google検索0/0は10/13本人表示の観測を保持、集計期間不明のまま月次0にしない。
+
+収益の第一準備候補は既存ガイドへの限定AdSense広告。実商用採択/登録/掲載は保留。紹介はCSV関連の有料選択需要/適合案件不足、商品は購入理由不足で製作しない。新確認は所有確認metaで広告JSと審査段階を分ける方法、公式Read APIの成果/通知監査候補、表示報酬→翌月確定の経路。具体的な段階A（無料登録/確認meta/審査）、別承認段階B（guide1枠/CMP/privacy）、30日実験/停止条件を[収益記録](revenue-first-yen-2026-10-12.md)へ準備。専用reader/GPT通知運用は未実装で本人の反復操作へ代替しない。
+
+開始main12e3d0a086d474a52d2e0c8fdb5070719f2fa4cb、Pages本番bdd91e27 success/preview none、#2〜#5 Draft/#6 mergedを再確認。変更は引き継ぎ/measurement/既存Google監査/状態/月次/収益/KPIの7文書だけ。[CF-Pages-Skip]で保存し内容/スキップ/本番不変を照合。サイトコード/公開/Google/認証/権限/Secrets/登録/契約/費用変更なし、追加支出0円。GitHub APIの文書blob作成は403、既承認の文書UI保存で代替、権限を増やさない。
+
+次のGPT作業は10/20以降の既存窓取得と、広告の低介入閲覧/通知経路・公開前QA差分の確定。現在の本人操作：不要。新登録/契約・本番meta/広告・新OAuthは具体的な準備が揃ってから別承認。Googleサイトマップ処理/ツールとガイド登録/収益は未完了。今回の報告反映/比較/実行案の準備を完了として、保存検証後🟢作業完了とする。保存IDは当該Git履歴と最終報告で確認。
+
 確認日：2026-10-13 20:50以降JST。開始main 10744873efcbd87456789e9e80cacd51f432807c。本番はbdd91e27e2092beb74508847f74ab8221cea2e42/success。既存Cloudflare限定Read OAuthとGitHub読取り、公開HTTPだけ。サイトコード・Pages/Google設定・権限・認証・契約・費用の変更なし。追加支出0円。#2〜#5は既存Draft未マージを維持。
 
 ## 本人のSearch Console確認（2026-10-13）
@@ -63,3 +77,4 @@ RUM10/13 19:40〜10/20 19:40 JSTは変更せず継続。トップ登録を全URL
 - [Google common crawlers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers)：URL検査向けGoogle-InspectionToolのUAを区別。
 - [Google Sitemap report](https://support.google.com/webmasters/answer/7451001?hl=ja)：ライブ「ページ取得」、送信URL/エラー詳細、レポートと個々URLのクロールの区別。
 - [URL inspection](https://support.google.com/webmasters/answer/9012289?hl=ja)：ライブとインデックス版の区別。
+
