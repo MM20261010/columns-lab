@@ -260,3 +260,21 @@ sitemap.xmlは13:29JST、guideは13:34JSTのGoogle公開URLライブテスト成
 
 緊急コード復旧が必要な不具合/漏洩は未確認。旧コードと同一なので安易なrevert/redeploy/cache purgeをしない。復旧案は必要なら元公開bdd91e27へのPages rollback又は専用revert/再公開PRを具体化して本人承認、現Read権限を増やして実行しない。ユーザーに遡及的承認を求めて完了扱いしない。現時点で本人の復旧操作は不要。Google取得報告/収益候補準備は保存済み、登録/広告公開/新OAuthは引き続き未実施・未承認。
 
+
+## 2026-10-14 案A承認・実施準備／既存Cloudflare UI未認証のため変更待ち
+
+開始main5d963da7a40ba9f4bf91920d138405eff6e5cf9b。本人はInclude=site/*、Exclude空を承認。本番自動デプロイ維持、preview none維持。案Bの実変更は重大問題の影響を提示して追加承認、包括承認ではない。
+
+変更前GET200：path_includes=["*"]、path_excludes=[]、production_deployments_enabled=true、build_command=""、root_dir=""、destination_dir="site"、uses_functions=false。本番21a067786dbbf27ebcec7f3c858d605a97b7c828/success、preview none。復旧値はInclude=*、Exclude空。軽微な入力修正は案A承認範囲、重大問題でのロールバック/案B/API書込み権限追加は未承認。
+
+Git tree（固定開始main、truncated=false）とsite全13ファイルを読取り。HTML/JS/CSS/robots/sitemap/404/確認HTML/_headers/_redirectsはすべてsite配下。root外はAGENTS/README/docs/testsのみ、package/build設定やFunctions/外部ビルド入力なし。内部href/srcの対象がsite内で解決することを確認。現静的構成にsite/*は適合し、ネストした公開ファイルも公式の*で一致。将来root依存/Functions/生成ソースを導入するなら監視範囲を承認前に見直す。
+
+Cloudflareの承認対象UIを既存ブラウザーで1回開くと、Sign in to Cloudflareへ転送。既存認証済みUIは利用できない。ログインボタン/資格入力/新認証/OAuth/権限追加は行わず、保存前に停止。MCPは既存Readで設定確認のみ、書込みAPIを試さない。403再試行やUI迂回なし。**案Aは未適用、Includeは*のまま。**
+
+本人に必要な最小操作：本人の既存ログイン環境で Workers & Pages→columns-lab→Settings→Build（又はBuilds & deployments）→Build watch paths を開き、Includeの*をsite/*へ置換、Excludeは空のままSave。main/本番自動デプロイ/preview/出力site/ビルドコマンドは変更しない。「保存した」とだけ報告すればGPTがMCP再GETで保持値/本番/previewを確認でき、毎日転記は不要。このWorkへ新ログインを求める代替は今回開始しない。
+
+公式根拠：https://developers.cloudflare.com/pages/configuration/build-watch-paths/ 。*は/を含む0文字以上の一致。通常docs/AGENTS変更は非対象だが、空変更push・3000以上の変更ファイル・20以上のコミットpushではパス判定が省略される。site変更を含む混合pushもビルド対象。手動再デプロイ等をパスフィルターが絶対阻止するとはしない。設定の実UI照合/保持/実pushによる抑止は未検証、実施用の不要なテストcommitなし。現段階でBへ切り替えない。
+
+今回保存するのは引き継ぎ/監査/状態JSON/月次の4文書。UI変更を待つ間も[CF-Pages-Skip]を生成完了後に再確認し、保存後の実メッセージ/blob/Pages is_skippedと本番不変を照合する。新機能/広告/契約/課金なし、追加支出0円、KPIは既存実測/欠測を維持。公開top/tool HTTP200を読取り、CSVJS/実機再試験なし。前回事故を解消済みに置き換えず、現在は🟡認証済み環境での本人設定操作待ち。保存IDはGit履歴/最終報告参照。
+
+
