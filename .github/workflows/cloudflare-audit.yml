@@ -1,0 +1,29 @@
+name: Cloudflare read-only audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-read-only-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    if: github.repository == 'MM20261010/columns-lab' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    environment: cloudflare-read
+    steps:
+      # Official actions/checkout v4 commit verified 2026-10-11.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Read fixed Pages project and print safe report
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_PAGES_READ_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: python3 scripts/cloudflare_audit.py
