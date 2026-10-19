@@ -370,3 +370,16 @@ Pages deployment b135207f-1860-412e-a5cd-67aa28cd5d01はproduction/対象257c7ec
 承認・再認可完了後GPTは同一identity/対象account/Pages読取を照合し、再読取した設定からIncludeだけをsite/*へ変更、保持値を再GET。承認済み257c7ecをdeployment retryで公開し、実成功commitと配信内容、新ガイドの結合/保存/再読込/リセット、旧ツールを確認。認可不足なら無制限再試行せず関連scopeを一括見直す。重大問題なら承認済みの今回差分のみを復旧。新たなSecrets/トークン作成・登録・課金はしない。
 
 今回は調査・提案まで。権限/接続/設定/Secretsは未変更、公開再試行もなし。PR #7/公開候補257c7ec/保全成果物を維持。本番21a067786dbbf27ebcec7f3c858d605a97b7c828/success。10/20 19:40 JST締めの観測は期間未終了・未取得。
+
+
+## 2026-10-19 16:23 JST 本人の一括権限・パス設定承認／再接続入口確認待ち
+
+本人は対象アカウント1件のPages Read/Pages Write/Account Analytics Readおよび本人識別/アカウント識別/接続更新の認可方針、columns-labのInclude=site/*・Exclude空への変更を明示承認。権限復旧後は既存257c7ecの本番公開と公開後検証を継続可。他Pagesの変更/削除、Secrets、新規課金、承認超過は禁止。解除前にChatGPT側の再接続入口を確認し、予期しない要求や復旧不能リスクなら当該操作停止。この承認を同条件で再確認しない。
+
+今回GitHub compareで基点c50a6d75から公開257c7ecまでの変更7ファイルを再確認。本番3ファイルはsite/guides/csv-column-merge/index.htmlとsite/assets/guide-example.js/cssで、いずれもsite/*の一致対象。他の4ファイルはdocs/testsのみ。公式の*はパス区切りも含むためsiteの入れ子にも適合、現在はroot外ビルド入力/Functionsを追加していない。パス修正準備は完了。
+
+Pages再GET200、preview none、production main有効、Include/Exclude空、本番21a067786dbbf27ebcec7f3c858d605a97b7c828/success。権限はまだ本人が再認可完了したとの報告なし。認可取消/再接続/設定PATCH/再デプロイは未実施。
+
+再接続入口を直接確認するため実行用Chromeでhttps://chatgpt.com/pluginsを開いたが、未ログイン画面で本人のInstalled/接続詳細は見えなかった（表示まで約139秒）。公開検索画面のログインボタンを、本人接続の再認可入口と見なさない。資格情報入力や新規ログインは行わず、現在のCloudflare認可を維持。利用可能なプラグイン管理APIにはOAuth再認可開始/接続解除の機能がなく、操作承認モード変更はOAuth権限変更の代替ではない。
+
+現在の残る依存は本人側のCloudflare接続詳細の表示項目。接続詳細だけの画面を1回確認して再接続手段を確定し、権限選択とアカウント限定をまとめて実施する。未確認のボタン名・URLを確実と断定しない。新たな承認ではなく実行に必要な本人UIの情報待ち。公開承認・成果物・本番を維持し、10/20 19:40 JST締めは期間未終了のまま。
