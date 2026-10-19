@@ -353,3 +353,20 @@ Pages deployment b135207f-1860-412e-a5cd-67aa28cd5d01はproduction/対象257c7ec
 再開の最短案は、本人の既存Cloudflareダッシュボードでcolumns-labの対象257c7ecの再デプロイ（可能な場合）を1回実施し、GPTが成功commitと実配信を読み取り、公開後検証を完了すること。今後の自律的な再デプロイ/復旧の一括権限候補はCloudflare Pages Write（対象アカウント限定）＋既存Pages/Account Analyticsの読取維持。プロジェクト単位の限定や既存MCP再認可画面での選択可否は未確認。権限には設定変更/削除等も含まれ得るので、付与と個々の実行承認を分ける。新しい課金/Workers/DNS/Billing/Secrets/User管理の権限を追加しない。権限設定は本人承認後に具体的な同意画面で必要範囲を確認するまで行わない。watch site/*への変更も今回は行わず、別の設定承認範囲を確認する。
 
 終了状態：GitHub保存/PR/マージ完了、追加テスト合格、Cloudflare書込時認証拒否・本番公開待ち。公開承認と保全済み原本を維持。同一内容の再公開承認は不要。
+
+
+## 2026-10-19 Cloudflare公開障害の読取調査・一括設定提案（未承認）
+
+現接続whoami成功、対象Pages GET200。対象アカウントのmembershipはaccepted/Super Administrator。本人の権限と接続OAuthの権限は別。現在のOAuth実grant一覧は未取得。API-token専用verifyは1000 Invalid API Tokenとなったが、OAuth接続失効と解釈しない。権限カタログGET /oauth/scopesは取得でき、これは現在の付与一覧ではない。
+
+公式資料 https://developers.cloudflare.com/agent-setup/visual-studio-code/ の「Writes fail with API error 10000, but reads work」は読み取り専用OAuth grantで起きると説明し、Cloudflare Connected Applicationsで該当grantを撤回しクライアント側セッションを整理して再認可する手順を示す。現環境のAPI読取成功・retry書込10000・本人Adminと整合する有力原因。実grant直接照合は残る。GPT側のChatGPTアプリ設定は既定Allow low-risk actions / 個別Use my defaultで、前回拒否はChatGPT自動レビューではなくCloudflare API応答。今回はPOST再試行なし。
+
+別障害：対象257c7ecのPages deployment b135207f-1860-412e-a5cd-67aa28cd5d01を再GETしproduction/is_skipped=true/skip_reason=path_config確認。プロジェクトのpath_includes=[]、path_excludes=[]、production main自動デプロイtrue、preview none、出力site、root/build空。現在のパス設定がsite差分も省略した事実を確認。本人の権限やcommit_message skipとは別。推奨変更はInclude=site/*、Exclude空だけで、main/preview/output等を保持。パスに一致しない文書変更の省略を意図する。公開済みのセキュリティ設定等は変更しない。
+
+一括OAuth案（承認後のみ）：user:read account:read offline_access page.read page.write account-analytics.read。MCP公式リポジトリsrc/auth/scopes.tsに必須3スコープ、derived-oauth-scopes.jsonとライブ/oauth/scopesにPages Read=page.read/Pages Write=page.write/Account Analytics Read=account-analytics.readを確認。workers-oauth-utils.tsのAdvanced > Edit base scopesは短いscope一覧で既存テンプレートを置換できる。Full accessを選ぶ必要なし。対象はc9ec42e3b10e1b6c96e02f8e1a55640cの1アカウントだけ。Pagesプロジェクト単位のOAuth制限は未確認で、同アカウントの他Pagesにも読み書きが及ぶ前提で審査する。Account Analyticsもアカウントの解析への読取でホスト指定は権限境界ではない。Pages Writeにはプロジェクト設定・削除等も含まれ得るため、実際の操作承認は別。Workers/DNS/R2/KV/D1/Billing/ユーザー管理/Secretsの追加権限なし。作業範囲はcolumns-labだけ。
+
+公式のCloudflare認可管理画面 https://dash.cloudflare.com/profile/access-management/authorization 。公式Workers & Pages入口 https://dash.cloudflare.com/?to=/:account/workers-and-pages → columns-lab → Settings → Build → Build watch paths 。ChatGPT側は既存Cloudflareプラグインの接続詳細から再認可/接続更新を開始する必要があるが、本人UIの正確なボタン名と既存接続を残した再認可の可否は未確認。固定OAuth認可URLはstate/PKCE付きでクライアントが生成するので捏造しない。Cloudflare同意画面のアカウント限定・権限を最終確認するまで承認しない。既存プラグイン自体をアンインストールする提案ではない。現接続を失わないよう、ChatGPT側の再接続入口を確認してから撤回/再認可をまとめて行う。
+
+承認・再認可完了後GPTは同一identity/対象account/Pages読取を照合し、再読取した設定からIncludeだけをsite/*へ変更、保持値を再GET。承認済み257c7ecをdeployment retryで公開し、実成功commitと配信内容、新ガイドの結合/保存/再読込/リセット、旧ツールを確認。認可不足なら無制限再試行せず関連scopeを一括見直す。重大問題なら承認済みの今回差分のみを復旧。新たなSecrets/トークン作成・登録・課金はしない。
+
+今回は調査・提案まで。権限/接続/設定/Secretsは未変更、公開再試行もなし。PR #7/公開候補257c7ec/保全成果物を維持。本番21a067786dbbf27ebcec7f3c858d605a97b7c828/success。10/20 19:40 JST締めの観測は期間未終了・未取得。
