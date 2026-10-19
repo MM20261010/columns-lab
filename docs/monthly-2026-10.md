@@ -1,5 +1,27 @@
 # 2026-10 月次記録（途中経過）
 
+
+## 2026-10-19 16:48 JST 最新状態：本番公開・公開後Chrome検証完了
+
+開始main 9d905657838dadc1fff0387e801998f1aa63f30f。本人は対象アカウント1件のUser Read / Background Access / Account Read / Pages Read / Pages Write / Account Analytics Readの再認可完了を報告。現Cloudflare whoamiは既存と同一identity、対象Pages GET成功。認可スコープ一覧そのものの再取得とは区別するが、以下のPATCHとPOSTが実際に200成功し、従来の書込10000は解消した。
+
+columns-labのみ、Includeを空配列からsite/*へ、Exclude空を保持してPATCH。再GETでsourceの変更項目はpath_includesだけ、build_config/deployment_configs/production_branchの同一性を確認。preview none、出力site、main自動公開を維持。他Pages・Secrets・料金・広告・権限設定は変更なし。Gitの本番3変更パスがsite/*に一致することと公式の入れ子パス適合性は前節で確認済み。
+
+承認対象257c7ec730634accbe545eb33984753b47ba8750の旧skipped deployment b135207f-1860-412e-a5cd-67aa28cd5d01をretry。新deployment 123c7857-36be-47f0-b899-732108e312b0がproduction/is_skipped=false、全stage success、2026-10-19T07:43:48.900786Z（16:43:48 JST）公開完了。project canonical_deploymentも同ID・同commit successへ切替。PR #7 https://github.com/MM20261010/columns-lab/pull/7 の製品内容を変更せず公開した。mainを古いcommitへresetしていない。現在mainのsite tree fbf74b35070dc937f0462e49f7b41f1ddc325516は公開257c7ecと同一。
+
+公開URL https://columns-lab.pages.dev/guides/csv-column-merge/ を実行環境Chrome/CDPで直接検証。初期の保存/選択無効、見本4行4列・金額100/200/300/400・合計1000の結合、実CSVダウンロード、保存bytes（BOM/CRLF、日本語、空欄を含む全行）の確認、実際に保存した同ファイルの再読込一致、改変済み架空CSVの不一致、正しいCSV再選択による一致へ復旧、リセットで表内容消去・保存/選択無効化をすべて確認。保存先を画面が断定しないことも確認。実機Android/Cromiteの本人報告8項目と今回の担当者Chrome直接観測を区別し、Android再検証は依頼していない。
+
+既存ツール https://columns-lab.pages.dev/tools/csv-merge/ もChrome実操作。架空2ファイルを4行5列で結合、実保存CSV全行・_source_file列・合計1000を確認。「元ファイル名」設定を変更すると結果表と照合情報が消え、保存無効・再結合案内となることを確認。無料・登録不要・数式対策ONを維持。既存共有コードは変更なし。
+
+回帰は公開準備で実行済みの既存5スイート（core/app/capacity-review/download-review/formula-review）＋新規guide-example16項目がすべて合格し、stage6-release-tests.jsonに結果を保持。本番製品コードに以後の変更はない。自動テスト/Chrome直接観測/本人Android報告を混同しない。数式対策・負数保護の詳細は既存自動回帰とコード同一性で確認、今回のChromeで数式CSVを追加投入したとはしない。
+
+重大不具合なし、ロールバック不要・未実施。必要時は既存の逆適用検証済み手順に従い、今回の本番3ファイル差分だけを専用revert PR/マージ/再公開し、後続文書を巻戻さない。原本ZIP・試験コード・PR #7は保持。
+
+残る未検証は他ブラウザ/Excel・Calc/読み上げ・200%拡大/大容量実機、今回のHTTPヘッダー個別検査。通常の小規模Chrome操作と既存Android報告を全環境保証としない。新規API連携・常時監視・定期実行は設定していない。10/20 19:40 JST締め観測は期間未終了・未取得、PV/Visits/検索流入/第三者利用を確定値にしない。今回のアクセスと保存は担当者の自己QAで収益や第三者需要の証拠ではない。次回は期間終了後の既定観測を確認し、欠測を0にせず評価する。
+
+本追記は承認済み記録3ファイルだけの文書保存。commit先頭[CF-Pages-Skip]、保存内容とsite同一性、Pages skip/公開257c7ec維持を保存後に再照合する。docs/agent-status.jsonは今回7ファイルの対象外につき変更せず、最新状態は本節とGit/Pages実状態を優先する。本人操作：不要。新たな承認待ち・権限不足・通信障害なし。
+
+
 現行の初期成果は第三者の正当な確定収益で、未出金でも評価する。推定/未確定/確定/未出金残高/出金済み/決済受取/銀行入金/経費/純利益を別記録。出金は必要時のみ事前承認。下の日時付き旧方針より2026-10-13 16:14以降の更新が優先。
 
 - 記録日: 2026-10-11。月末確定前。
