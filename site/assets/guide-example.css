@@ -1,0 +1,10 @@
+.example-box{font-size:1.125rem}
+.example-box h2{font-size:1.45rem}
+.example-box .actions{gap:14px;align-items:stretch}
+.example-box button{min-height:48px;min-width:48px;padding:12px 18px}
+.example-box .field{font-size:1rem;margin-top:24px;gap:12px}
+.example-box input[type=file]{min-height:48px;padding:12px;width:100%;font-size:1rem}
+.example-box table{font-size:1rem}
+.example-box caption{text-align:left;white-space:normal;padding:12px 0}
+.example-box .status{overflow-wrap:anywhere}
+@media(max-width:480px){.example-box .actions{display:grid;grid-template-columns:minmax(0,1fr)}.example-box button{width:100%}}
