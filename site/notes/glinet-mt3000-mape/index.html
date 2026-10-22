@@ -76,12 +76,30 @@
 <p>当時の切り分けでは、LANのRAサーバー、DHCPv6サーバー、SLAAC、LANプレフィックス長64、<code>wan6.sourcefilter=0</code>、<code>dhcp.lan.ra_default=1</code>、NDP Proxy無効を確認した。これらは<strong>検証環境で最終的に使った設定</strong>であり、すべてを他環境で一律に変更する推奨ではない。</p>
 <h3>odhcpdのログレベルに関する注意</h3>
 <p>当時は<code>odhcpd.loglevel=7</code>とサービス再起動でRA関連の挙動が改善した。OpenWrtのodhcpdでも2026年に「ログレベル7でないとRAが正常送信されない」とする<a href="https://github.com/openwrt/odhcpd/issues/388">不具合報告（Issue #388）</a>がある。ただし、報告環境と今回のGL-MT3000は同一ではなく、原因が確定したわけではない。更新済みodhcpdでは再現しない可能性もある。</p>
-<div class="tableArea"><pre><code># SSHで状態確認する例（下記は読み取りのみ）
-ifstatus wan6
-uci show network.wan6
+<h3>実際に試したコマンド（管理者権限のSSHで実行）</h3>
+<p>MAP-EとWAN6の設定を確認した後、LAN端末へIPv6の広告が届かない症状に対して次を試した。<strong>設定変更前の値を控えたうえで、必要な場合だけ実行</strong>してほしい。通信中の端末では短時間の再接続が起きる可能性がある。</p>
+<div class="tableArea"><pre><code># 最初は確認のみ：元の設定値を控える
+uci -q get dhcp.odhcpd.loglevel
 uci show dhcp.lan
-uci show dhcp.odhcpd
-logread | grep odhcpd</code></pre></div>
+ifstatus wan6
+
+# 当時行った回避策（設定を変更する）
+uci set dhcp.odhcpd.loglevel='7'
+uci commit dhcp
+/etc/init.d/odhcpd restart
+
+# 再起動後のログを確認
+logread | grep odhcpd | tail -n 30</code></pre></div>
+<p>この3行の変更コマンドは当時の作業記録に残っているもの。<strong>「7」が必ず必要と証明したわけではない</strong>。OpenWrtの<a href="https://github.com/openwrt/odhcpd/issues/388">Issue #388（別環境の類似報告）</a>も参考になるが、そちらはOpenWrt 25.12.0での報告でありGL.iNet提供OP25と同じバージョンや原因を意味しない。</p>
+<h3>スマートフォンからの確認</h3>
+<p>Wi-Fiをいったん再接続し、端末のIPv6アドレスとデフォルトルートを確認する。<code>fd00:</code>から始まるULAや<code>fe80:</code>から始まるリンクローカルアドレスが見えるだけでは成功とはいえない。ISP由来のグローバルIPv6が使え、<code>https://ipv6.google.com/</code>などへ実際に到達することを確認する。<code>logread</code>にRA送信に関する記録があれば切り分けに役立つ。</p>
+<h3>症状が直らない・元に戻すとき</h3>
+<p>直らなければログレベルだけに固執せず、WAN6のPD、LANのRA設定、IPv6ルート、odhcpdのバージョンを確認する。元のログレベルが<strong>数値4など明示設定されていた場合はその値へ復元</strong>し、元々項目がなかった場合だけ次のように未設定へ戻す。</p>
+<div class="tableArea"><pre><code># 「変更前にloglevelが未設定だった」場合の復元例
+uci -q delete dhcp.odhcpd.loglevel
+uci commit dhcp
+/etc/init.d/odhcpd restart</code></pre></div>
+<p>変更前の値が<code>4</code>などであれば削除ではなく<code>uci set dhcp.odhcpd.loglevel='元の値'</code>で復元し、commitと再起動を行う。デバッグログが増えるので、症状が解消した後も設定を固定すべきかは修正版への更新状況と動作を見て判断しよう。</p>
 <p>まずは取得プレフィックス・RAの送信状況・サービスログを見てから判断する。ログレベル7は詳細なデバッグ記録が増えるため、恒久設定にするかはファームウェアの修正状況とログ容量を確認したい。NAT6やsourcefilter変更もセキュリティ・経路設計に影響し得るので、原因不明のまままとめて適用しない。</p>
 </section>
 
