@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GL-MT3000のOP25でBIGLOBE系MAP-Eを復旧した記録 | 列そろえラボ 技術ノート</title>
-<meta name="description" content="GL.iNet Beryl AX（GL-MT3000）をOpenWrt 25系にクリーン移行し、BIGLOBE IPv6オプション相当のMAP-E接続を復旧した実機記録。LuCI設定、IPv6 RA、MTU、AdGuard Home、Flint 4への適用範囲を整理。">
+<title>GL.iNet純正OP25・GL-MT3000でBIGLOBE IPv6オプションのMAP-Eを設定した実機記録 | 列そろえラボ</title>
+<meta name="description" content="GL.iNet純正OP25（OpenWrt 25系）のBeryl AX（GL-MT3000）でBIGLOBE IPv6オプション相当のMAP-Eを設定。v6プラスとの違い、LuCIのLegacy MAP、IPv6配布のトラブル、AdGuard Homeの使い方と限界を実機記録と公式情報で分かりやすく解説。">
 <link rel="canonical" href="https://columns-lab.pages.dev/notes/glinet-mt3000-mape/">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -13,40 +13,45 @@
 <main class="wrap">
 <div class="toolHeader">
 <p class="eyebrow">実機検証・ネットワーク技術ノート</p>
-<h1>GL-MT3000をOP25に移行して、BIGLOBE系MAP-Eを復旧した記録</h1>
-<p class="lead">Beryl AX（GL-MT3000）で、IPv6はつながるのにIPv4 over IPv6やLAN端末側のIPv6がうまく動かない。OpenWrt 25系への移行時に実際にたどった設定と切り分けを、迷いどころ中心にまとめた。</p>
-<p class="info">記録整理：2026年10月22日 ／ 実機：GL-MT3000 ／ 接続方式：BIGLOBE IPv6オプション相当のMAP-E ／ Flint 4は未検証</p>
-<div class="notesBox"><strong>先に大事なこと：</strong>これは一台の実機での復旧例であり、BIGLOBEの全契約・全ルーターで再現できる保証はない。接続元に割り当てられるIPv6プレフィックス、IPv4共有方式、ポート設定を他人の値で上書きしない。回線に接続したまま試す前に、動いているファームウェアと設定を必ずバックアップしておこう。</div>
+<h1>GL.iNet純正OP25のGL-MT3000で、BIGLOBE系MAP-E接続を設定した話</h1>
+<p class="lead">AdGuard Homeに興味はあるけど「日本のIPv4 over IPv6でつながるの？」と不安な人へ。Beryl AX（GL-MT3000）にメーカー提供のOP25系ファームウェアを導入し、BIGLOBE系MAP-Eで接続するまでに経験した設定・つまずき・確認方法を一台の実機記録としてまとめた。</p>
+<p class="info">記録整理：2026年10月22日 ／ 実機：GL-MT3000（Beryl AX） ／ メーカー提供の4.9.1-op25系を検証 ／ 接続方式：BIGLOBE IPv6オプション相当のMAP-E ／ Flint 4は未検証</p>
+<div class="notesBox"><strong>先に大事なこと：</strong>これは一台の実機検証で、BIGLOBEの全契約や他機種での動作保証ではない。契約者に割り当てられるIPv6プレフィックスやPSIDなどの値はコピーしないこと。ネットを使える状態に戻せるよう、動作中のファームウェアと設定のバックアップを準備してから作業しよう。メーカー配布OP25系と、OpenWrt本家を直接導入した環境は同一ではない。</div>
 </div>
+<section class="panel detail" id="service">
+<h2>最初に：BIGLOBEの「v6プラス」と「IPv6オプション」は同じ名前ではない</h2>
+<p>BIGLOBE公式によれば、両者は仕組みが同等でも、<strong>v6プラスはJPIX社側の設備、IPv6オプションはBIGLOBE側の設備</strong>を利用する別サービス。どちらもMAP-E系でも、設定ルールが同一だと決めつけないでほしい。<a href="https://faq.support.biglobe.ne.jp/faq_detail.html?faq_id=12241">BIGLOBE公式FAQ：v6プラスとIPv6オプションの違い</a></p>
+<p>今回の記録値はBIGLOBE IPv6オプション相当のルールと一致したもの。契約書や管理画面でサービス名を正式に確認した記録はないため、「自分の回線は公式にv6プラス契約だった」とは断定しない。v6プラス利用者にも切り分け方は参考になるが、ルールの流用はしないこと。</p>
+</section>
 <section class="panel detail"><h2>目次</h2>
 <ol class="bullets">
-<li><a href="#background">環境と、最初に起きた問題</a></li>
-<li><a href="#procedure">つながるまでに確認した順序</a></li>
+<li><a href="#background">GL.iNetの何を使った？ 作業前の確認</a></li>
+<li><a href="#procedure">接続までに実際に確認した順序</a></li>
 <li><a href="#map-values">MAP-Eの実機設定メモ</a></li>
 <li><a href="#ipv6-ra">LAN側IPv6とodhcpdで詰まった点</a></li>
 <li><a href="#verification">動作確認のチェックリスト</a></li>
-<li><a href="#adguard">AdGuard Homeは実際何が便利？</a></li>
+<li><a href="#adguard">AdGuard Homeは設定が難しい？</a></li>
 <li><a href="#hardware">Beryl AXとFlint 4の関係</a></li>
 </ol></section>
 
 <section class="panel detail" id="background">
-<h2>1. 環境と、最初に起きた問題</h2>
-<p>利用機材はGL.iNet <strong>GL-MT3000（Beryl AX）</strong>。従来のGL.iNet 4.8.3-op24／OpenWrt 24系で動作していた環境から、設定を引き継がずにGL.iNetのOP25系（当時4.9.1-op25系）へ移行した。ISP側の接続パラメータはBIGLOBE IPv6オプションのMAP-E相当として扱った。正式な契約方式の全項目をISP書類と照合した検証ではない。</p>
-<p>移行中は、WAN6のIPv6プレフィックスが得られない、ルーターではIPv6疎通するのにLAN端末にグローバルIPv6が配布されない、IPv4側のMAP-Eトンネルが成立しない、ページ表示が極端に遅い、といった状態を段階的に確認した。問題は一つではなかった。</p>
-<p>「ルーター自身がIPv6で通信できる」と「スマートフォンがLAN経由でIPv6通信できる」、さらに「IPv4サイトも開く」は<strong>別々の合格条件</strong>として切り分けると判断しやすい。</p>
+<h2>1. GL.iNetの何を使った？ 作業前の確認</h2>
+<p>利用機材はGL.iNet <strong>GL-MT3000（Beryl AX）</strong>。従来のメーカー提供4.8.3-op24／OpenWrt 24系から、メーカー配布の4.9.1-op25系（OpenWrt 25系）へ、設定を引き継がずクリーン導入した。一般の安定版4.9.0などとは<strong>異なるOP25系列</strong>のファームウェアの話。最新配布状況とリリース区分は<a href="https://dl.gl-inet.com/?model=mt3000&type=clean">GL.iNet公式ダウンロードセンター</a>で確認してほしい。</p>
+<p>移行中は、当初WAN6でIPv6プレフィックスを取得できない場面や、ルーター自身はIPv6通信できてもLAN端末側へグローバルIPv6がうまく配布されない状態、MAP-Eがつながらない状態、ページ表示が異常に遅い状態を順に経験した。原因は一つではなく、設定を一度に触るほど切り分けが難しくなった。</p>
+<p><strong>大切なのは「ルーターがIPv6で通信できる」「スマホがLANからIPv6で通信できる」「IPv4サイトも開ける」を別々に確かめること。</strong> GUIで設定しても、細かいLuCI項目に踏み込む必要があった。<a href="https://docs.gl-inet.com/router/ja/4/tutorials/how_to_upgrade_downgrade_router/">GL.iNet公式のアップグレード・バックアップ手順</a>も先に読んでおきたい。</p>
 </section>
 
 <section class="panel detail" id="procedure">
-<h2>2. 接続までの順序</h2>
+<h2>2. 接続までに実際に確認した順序</h2>
 <ol class="bullets">
 <li><strong>逃げ道を確保：</strong>OP24で動作した設定をバックアップ。必要なら別ルーターを一時的な親機に使い、ネット回線への復帰手段を残す。</li>
-<li><strong>OP25をクリーン導入：</strong>古い設定を一括復元せず、まずWAN6（DHCPv6）でIPv6通信と取得プレフィックスを確認する。</li>
-<li><strong>MAP-E設定：</strong>自分のISP・回線方式に合致するMAPルールを登録。「従来のMAPを使用」（Legacy MAP相当）の選択が必要だった。</li>
-<li><strong>トンネルとFirewall：</strong>MAPトンネルの基点をwan6とし、WAN側のマスカレードとMSSクランプを確認。試行環境ではNAT6も使用したが、他の構成で必須とは限らない。</li>
+<li><strong>メーカー提供OP25をクリーン導入：</strong>「Keep Settings」でOP24設定を持ち込まず、公式配布イメージから導入。<strong>WAN6はDHCPv6</strong>として、最初にIPv6接続と取得プレフィックスを確認した。</li>
+<li><strong>LuCIでWAN側をMAP-Eに設定：</strong>MAPルールを入力してトンネルの基点は<code>wan6</code>に。WAN詳細の<strong>「従来のMAPを使用」</strong>を有効にしたら接続できた。従来の<code>export LEGACY=1</code>を追加する必要はなかった。</li>
+<li><strong>Firewallを確認：</strong>WANゾーンのMasquerade（マスカレード）とMSSクランプを確認。検証時はNAT6も導入したが、<strong>NAT6が必須という意味ではない</strong>。構成の違う人が理由なく入れるのは避けたい。</li>
 <li><strong>MTU調整：</strong>MAPトンネルをMTU 1460で調整し、ページ表示が著しく遅い症状の切り分けを行った。回線差があるため1460を万能値とはしない。</li>
-<li><strong>LAN側IPv6：</strong>RA／DHCPv6サーバーモードとLANへのプレフィックス配布を確認。ルーターだけIPv6成功しても完了としない。</li>
+<li><strong>LAN側IPv6：</strong>LuCIでLANへの<code>/64</code>プレフィックス配布、RA／DHCPv6サーバーモードを確認。<code>sourcefilter=0</code>や<code>ra_default=1</code>などの追加調整は、IPv6不調を切り分けた<strong>この環境固有の検証設定</strong>として扱った。</li>
 </ol>
-<p>LuCIの表記はファームウェア更新で変わる可能性がある。設定変更は一項目ずつ行い、変更前後の挙動を比較する。</p>
+<p>LuCIの表記や初期値はFWによって違う。上記は実機での流れで、すべての項目が普遍的な推奨設定とは限らない。変更は一項目ずつ。うまくいかなくなったら直前の値へ戻し、別の原因を探る。</p>
 </section>
 
 <section class="panel detail" id="map-values">
@@ -93,13 +98,13 @@ logread | grep odhcpd</code></pre></div>
 </section>
 
 <section class="panel detail" id="adguard">
-<h2>6. GL.iNetのAdGuard Homeは何が便利？</h2>
-<p><a href="https://docs.gl-inet.com/router/ja/4/interface_guide/adguardhome/">GL.iNet公式のAdGuard Home機能</a>は、家庭内ネットワークのDNS問い合わせを利用して広告・追跡ドメインへのアクセスを減らせる機能。対応機種ならGL.iNet管理画面の「APPLICATIONS → AdGuard Home」から有効化できる。</p>
+<h2>6. AdGuard Homeは設定が難しい？</h2>
+<p>GL.iNetを買う理由の一つが、ルーターに内蔵された<strong>AdGuard Home</strong>。端末ごとにアプリを入れず、家じゅうのDNS問い合わせを元に広告・トラッキングドメインへのアクセスを減らせる。<a href="https://docs.gl-inet.com/router/ja/4/interface_guide/adguardhome/">公式対応モデル表</a>にはBeryl AXとFlint 4の両方が掲載されている。</p><h3>始めるだけなら管理画面から</h3><ol class="bullets"><li>GL.iNet管理画面へログインし、「APPLICATIONS → AdGuard Home」を開く。</li><li>有効化して「Apply」。DNS問い合わせ数やブロックの統計が表示される。</li><li>必要なら「Settings Page」へ進み、フィルタや許可リストを調整。最初から大量のフィルタを積まず、使うアプリに支障がないか確かめる。</li></ol><p><strong>ここはネット接続を完成させてから設定するのがおすすめ。</strong> 最初からMAP-EとAdGuard Homeを同時に触ると、つながらない原因が回線かDNSか分からなくなる。動作に問題が出ればまずAdGuard Home側の設定・ログを確認し、切り分けのため一時無効化する。</p>
 <h3>実用的な場面</h3>
-<ul class="bullets"><li>PCやスマートフォンだけでなく、アプリを入れにくいスマートTV、ゲーム機、IoT機器にもネットワーク単位のフィルタリングを適用しやすい。</li><li>ブロック数と問い合わせ先を管理画面で確認し、誤ブロックを見つけたらフィルタや許可リストを調整できる。</li><li>家族や複数端末のDNSフィルタを、機器ごとに手動設定する負担を減らせる。</li></ul>
+<ul class="bullets"><li>PCやスマートフォンだけでなく、アプリを入れにくいスマートTV、ゲーム機、IoT機器にもネットワーク単位のフィルタリングを適用しやすい。ただし端末側が別DNSを使用すると適用されない場合がある。</li><li>ブロック数と問い合わせ先を管理画面で確認し、誤ブロックを見つけたらフィルタや許可リストを調整できる。</li><li>家族や複数端末のDNSフィルタを、機器ごとに手動設定する負担を減らせる。</li></ul>
 <h3>期待しすぎない方がいいこと</h3>
 <p><strong>YouTubeの動画広告など、コンテンツと同じドメインから配信される広告はDNS方式だけでは基本的に除去できない。</strong> アプリやブラウザーが独自DNSを利用するとフィルタを通らない場合もある。GL.iNet公式も、AdGuard HomeによるクライアントDNSの直接処理が、ドメイン別VPNポリシーやペアレンタルコントロールに影響し得ると注意している。</p>
-<p>最初は控えめなフィルタ構成で通信への影響を観察し、Webサイトやアプリが壊れたらブロックログを確認。DNS保護と、ブラウザー拡張による要素非表示は役割が異なる。なお、この節は公式機能の整理であり、当該OP25実機でAdGuard Homeの全機能を再検証したという意味ではない。</p>
+<p>最初は控えめなフィルタ構成で通信への影響を観察し、Webサイトやアプリが壊れたらブロックログを確認。DNS保護と、ブラウザー拡張による要素非表示は役割が異なる。なお、<strong>「AdGuard Home Handle Client Requests」</strong>を有効にすると、公式案内ではドメインベースのVPNポリシーとペアレンタルコントロールが効かなくなる点にも注意。この節は公式機能の紹介であり、今回のOP25実機でAdGuard Home全機能を再試験した報告ではない。</p>
 <p class="info">参照：<a href="https://github.com/AdguardTeam/AdGuardHome#known-limitations">AdGuard Home公式の既知の制限</a></p>
 </section>
 
@@ -108,8 +113,8 @@ logread | grep odhcpd</code></pre></div>
 <p><strong>Beryl AX（GL-MT3000）</strong>は小型でOpenWrt設定を試しやすいWi-Fi 6ルーター。今回のBIGLOBE系MAP-E復旧を実機で確認したのはこの機種。</p>
 <p><strong>Flint 4（GL-BE14000）</strong>はWi-Fi 7、10GbEなどの高速有線インターフェースを備え、公式資料でAdGuard Home対応を確認できるホームルーター。家庭内端末が多く、ルーターにDNSフィルタも任せたい場合に製品検討の対象となる。</p>
 <p><strong>ただし、Flint 4で同じMAP-Eルール・Legacy MAP・odhcpd回避策が有効かは未検証。</strong> 特にOpenWrtの世代、ファームウェアの実装、ISPの割当条件が違えば手順を読み替える必要がある。Beryl AXの成功＝Flint 4の動作保証、とはしない。</p>
-<p><a href="https://www.gl-inet.com/ja-jp/products/gl-be14000">Flint 4 公式製品ページ・最新仕様</a> ／ <a href="https://docs.gl-inet.com/router/ja/4/user_guide/gl-be14000/">Flint 4 公式ユーザーガイド</a> ／ <a href="https://docs.gl-inet.com/router/ja/4/interface_guide/adguardhome/">AdGuard Home対応モデル一覧</a></p>
-<p class="info">このページの外部製品リンクはメーカーの公式情報への通常リンクで、2026年10月22日時点でアフィリエイトリンク・報酬提携はない。製品の購入を推奨する前に、実際の回線方式・ファームウェア・機能対応を確認してほしい。</p>
+<p><a href="https://docs.gl-inet.com/router/ja/4/user_guide/gl-be14000/">Flint 4 公式製品仕様・セットアップ</a> ／ <a href="https://docs.gl-inet.com/router/ja/4/user_guide/gl-be14000/">Flint 4 公式ユーザーガイド</a> ／ <a href="https://docs.gl-inet.com/router/ja/4/interface_guide/adguardhome/">AdGuard Home対応モデル一覧</a></p>
+<p class="info">このページの外部製品リンクはメーカー公式サイトへの通常リンクで、掲載準備時点でアフィリエイトリンク・報酬提携はない。製品の購入を推奨する前に、実際の回線方式・ファームウェア・機能対応を確認してほしい。</p>
 </section>
 
 <section class="panel detail"><h2>まとめ</h2>
