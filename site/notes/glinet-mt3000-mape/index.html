@@ -34,6 +34,49 @@
 <li><a href="#hardware">Beryl AXとFlint 4の関係</a></li>
 </ol></section>
 
+<section class="panel detail" id="luci-setup">
+<h2>準備：LuCI・日本語化と設定値の取得方法</h2>
+<p>GL.iNet管理画面の「SYSTEM → Advanced Settings → Go To LuCI」で詳細設定へ。<a href="https://docs.gl-inet.com/router/en/4/faq/what_is_luci/">GL.iNet公式の案内</a>を参照。</p>
+<h3>必要パッケージの役割</h3>
+<div class="tableArea"><table><thead><tr><th>名称</th><th>目的</th></tr></thead><tbody>
+<tr><td><code>map</code></td><td>MAP-E接続に使う。今回の実機記録で使用</td></tr>
+<tr><td><code>luci-i18n-base-ja</code></td><td>LuCIの日本語化（任意・今回使用）</td></tr>
+<tr><td><code>luci-i18n-ttyd-ja</code></td><td>ターミナルの日本語翻訳（任意・今回使用）</td></tr>
+<tr><td><code>luci-app-ttyd</code></td><td>LuCI上のターミナル機能本体。SSHなら不要</td></tr>
+<tr><td><code>luci-proto-ipv6</code></td><td>LuCIのIPv6プロトコル画面。通常導入済み</td></tr>
+<tr><td><code>ip-full</code></td><td>ネットワークの詳細診断用でMAP-E接続の必須条件ではない</td></tr>
+</tbody></table></div>
+<p>OP25は<code>apk</code>方式を先に確認。インストール済みなら入れ直さず、メーカーの対応パッケージフィードから必要なものだけ追加する。</p>
+<div class="tableArea"><pre><code>cat /etc/openwrt_release
+command -v apk
+apk info | grep -E "^(map|luci-i18n-base-ja|luci-i18n-ttyd-ja|luci-app-ttyd|luci-proto-ipv6|ip-full)$"
+
+# 未導入のものだけ（接続が必要）
+apk update
+apk add map luci-i18n-base-ja
+# LuCI内ターミナルが必要なら別途
+apk add luci-app-ttyd luci-i18n-ttyd-ja</code></pre></div>
+<p>日本語表示はLuCI「System → System → Language and Style」からJapaneseを選んで保存。表示されるメニュー名はFWによって異なる。<a href="https://openwrt.org/packages/start">OpenWrt公式パッケージ解説</a>。</p>
+<h3>各インターフェースの値の調べ方</h3>
+<div class="tableArea"><table><thead><tr><th>対象</th><th>どこで確認する？</th></tr></thead><tbody>
+<tr><td>ISPサービス名</td><td>BIGLOBE契約情報。v6プラスとIPv6オプションは混同しない</td></tr>
+<tr><td>WAN6 IPv6アドレス</td><td>LuCI → ネットワーク → インターフェース → wan6、または<code>ifstatus wan6</code>の<code>ipv6-address</code></td></tr>
+<tr><td>WAN6 IPv6-PD</td><td>同じWAN6画面の「IPv6-PD」、または<code>ifstatus wan6</code>の<code>ipv6-prefix</code></td></tr>
+<tr><td>MAP-Eパラメータ</td><td>契約方式に合うISP/VNE・メーカー資料でpeeraddr、IPv4/IPv6ルール、EA/PSID/offsetを照合</td></tr>
+<tr><td>MAPトンネル基点</td><td>IPv6を確立したWAN側。今回の実機では<code>wan6</code></td></tr>
+<tr><td>LAN IPv6</td><td>LuCI → LANの割当長（今回は64）、RA、DHCPv6設定</td></tr>
+<tr><td>Firewall</td><td>LuCI → FirewallのWAN側マスカレードとMSSクランプ</td></tr>
+</tbody></table></div>
+<div class="tableArea"><pre><code># 下記は読み取りのみ
+ifstatus wan6
+uci show network.wan6
+uci show network.lan
+uci show dhcp.lan
+uci show firewall
+ip -6 route show</code></pre></div>
+<p><strong>注意：</strong>WAN6のIPv6アドレスとIPv6-PDは別。PDが自動取得できるなら、WAN6アドレスを短くした固定<code>ip6prefix</code>を無条件に書き込まない。取得できない場合は上流HGWとDHCPv6-PDを点検。<a href="https://openwrt.org/docs/guide-user/network/ipv6/troubleshooting">OpenWrt公式IPv6診断</a>を参照。</p>
+<p>コマンド結果やスクショを公開する前に、IPv4/IPv6・MAC・SSID等をマスク。BIGLOBE公式：<a href="https://support.biglobe.ne.jp/ipv6/option.html">IPv6オプション</a> ／ <a href="https://www.rtpro.yamaha.co.jp/RT/docs/biglobe/">ヤマハ公式 BIGLOBE MAP-E解説</a>。</p>
+</section>
 <section class="panel detail" id="background">
 <h2>1. GL.iNetの何を使った？ 作業前の確認</h2>
 <p>利用機材はGL.iNet <strong>GL-MT3000（Beryl AX）</strong>。従来のメーカー提供4.8.3-op24／OpenWrt 24系から、メーカー配布の4.9.1-op25系（OpenWrt 25系）へ、設定を引き継がずクリーン導入した。一般の安定版4.9.0などとは<strong>異なるOP25系列</strong>のファームウェアの話。最新配布状況とリリース区分は<a href="https://dl.gl-inet.com/?model=mt3000&type=clean">GL.iNet公式ダウンロードセンター</a>で確認してほしい。</p>
