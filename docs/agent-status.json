@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-30-cloudflare-reauth-direct-verification",
+  "run_id": "2026-10-30-pr9-demand-reassessment-and-browser-acceptance",
   "updated_at": "2026-10-30",
-  "status": "blocked_validation_environment",
-  "status_label": "🔴 PR9実ブラウザQAは環境制約で中断／観測切分けは実施済み",
+  "status": "blocked_browser_qa_waiting_environment_approval",
+  "status_label": "🔴 実ブラウザQA未完了／需要比較と実行可能な受入試験をPR9に保存",
   "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
   "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
@@ -43,13 +43,18 @@
     "local implementation and 31 new tests passed",
     "existing 6 test files and embedded guide16 passed",
     "approval patch and outreach draft prepared",
-    "Owner-approved16 blobs saved and verified; Draft PR9 created; commit_message deployment skip and main/production unchanged verified"
+    "Owner-approved16 blobs saved and verified; Draft PR9 created; commit_message deployment skip and main/production unchanged verified",
+    "4 candidates compared against primary sources; no search-volume estimates invented",
+    "23-check browser acceptance harness prepared, NOT browser-executed",
+    "10 synthetic fixture bytes/hash matched; 8 EXIF corner expectations independently verified; JS syntax passed",
+    "Search entry copy and bounded acquisition/stop criteria prepared"
   ],
   "candidate": {
     "name": "image byte range and minimum dimensions",
-    "stage": "local_prototype_waiting_github_save_approval",
+    "stage": "qa_only_continuation_publication_on_hold",
     "third_party_use": "unknown",
-    "launch_approval_ready": false
+    "launch_approval_ready": false,
+    "decision": "image range/minimum pixels; no added features; one limited acquisition experiment only after QA and publication approval"
   },
   "approval_requests": [
     {
@@ -68,9 +73,7 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "Continue existing observation with small queries; on a future rate-budget error follow cooldown and preserve missingness",
-    "Inspect next existing task run/result; delivery remains unknown until independent evidence",
-    "Keep PR9 browser QA pending separate owner-private HTTPS environment approval; preserve prior source and fixture work"
+    "Run fixed PR9 acceptance harness and product UI/download QA in an approved owner-private HTTPS environment; then produce one evidence-based publication decision"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -79,7 +82,9 @@
     "docs/analytics-rum-query.graphql",
     "docs/measurement.md",
     "docs/kpi.csv",
-    "docs/google-reach-investigation-2026-10-13.md"
+    "docs/google-reach-investigation-2026-10-13.md",
+    "docs/image-fit-validation-and-launch-2026-10-30.md",
+    "experiments/image-fit/qa/index.html"
   ],
   "automation": {
     "status_file_only": true,

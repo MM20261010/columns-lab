@@ -34,7 +34,8 @@
       "installed Playwright browser executable absent",
       "cloud Chrome file protocol rejected by URL policy; no bypass attempted"
     ],
-    "production_qa_is_separate": true
+    "production_qa_is_separate": true,
+    "latest_attempt": "2026-10-30 sites-preview start still reports missing daemon mailbox; no new host or policy bypass"
   },
   "not_verified": [
     "real Canvas JPEG encoding",
@@ -52,5 +53,24 @@
     "passed": 10,
     "includes": "EXIF orientations1-8, transparent PNG, undersized JPEG",
     "scope": "actual input-file header parser only; no browser JPEG encoding"
+  },
+  "browser_acceptance_harness": {
+    "path": "qa/index.html",
+    "planned_checks": 23,
+    "checks_run_in_browser": 0,
+    "browser_status": "not_run_environment_blocked",
+    "fixture_source": "previous synthetic fixture bytes, not user data",
+    "fixture_hash_and_source_byte_matches": 10,
+    "independent_exif_corner_oracle_checks": 8,
+    "syntax_checked": [
+      "qa/runner.js",
+      "qa/fixtures.js"
+    ],
+    "manual_still_required": [
+      "product UI state/input/consent/reset",
+      "actual filesystem download/reselect SHA-256",
+      "Android real device",
+      "ICC/HDR and memory"
+    ]
   }
 }
