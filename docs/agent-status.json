@@ -68,7 +68,7 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "After rate-limit cooldown issue one small read-only RUM query; do not reauthenticate or retry rapidly",
+    "Continue existing observation with small queries; on a future rate-budget error follow cooldown and preserve missingness",
     "Inspect next existing task run/result; delivery remains unknown until independent evidence",
     "Keep PR9 browser QA pending separate owner-private HTTPS environment approval; preserve prior source and fixture work"
   ],
@@ -235,7 +235,7 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "Direct REST recovery and settings comparison completed; current records to be verified after branch save.",
+    "records_save_status": "REST and GraphQL recovery directly verified; same known self-QA control re-read after cooldown; final record commit supplied by Git history.",
     "owner_gsc_report_recorded": true,
     "http_matrix_verified": true,
     "production_commit_unchanged": "257c7ec730634accbe545eb33984753b47ba8750"
@@ -434,7 +434,8 @@
     "purpose": "separate task execution/result/delivery from RUM emptiness and verify PR9 in browser",
     "automation_changed": false,
     "cloudflare_connection_restored": true,
-    "repeated_reauthentication": false
+    "repeated_reauthentication": false,
+    "cloudflare_graphql_restored": true
   },
   "prior_state_snapshot": {
     "updated_at": "2026-10-14T05:19:46.554Z",
@@ -488,9 +489,12 @@
     "analytics_site_get": "HTTP200",
     "host_matches": true,
     "pages_analytics_identifiers_match_registration": true,
-    "graphql": "rate_limiter_budget_depleted_retry_after5minutes; not authentication error",
-    "new_metrics": null,
+    "graphql": "HTTP200/errors=[] after305+ seconds cooldown; known self-QA control count1 visits1 sampleInterval1",
+    "new_metrics": "known self-QA interval re-read only; no new acquisition measurement",
     "work_specific_auth_failure": "not reproduced",
-    "old_reconnect_ui_cause": "unconfirmed"
+    "old_reconnect_ui_cause": "unconfirmed",
+    "rate_limit_active_at_final_check": false,
+    "control_query_at_utc": "2026-10-30T06:23:22.047Z",
+    "control_must_not_be_added_to_prior_value": true
   }
 }
