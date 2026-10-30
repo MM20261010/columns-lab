@@ -28,8 +28,13 @@
   ],
   "html_static_checks": "ids/label targets/local assets passed",
   "actual_browser_qa": {
-    "status": "not_run",
-    "reason": "sites-previewd mailbox unavailable on both start and status; no infrastructure workaround"
+    "status": "blocked_not_verified",
+    "attempts": [
+      "managed preview daemon unavailable",
+      "installed Playwright browser executable absent",
+      "cloud Chrome file protocol rejected by URL policy; no bypass attempted"
+    ],
+    "production_qa_is_separate": true
   },
   "not_verified": [
     "real Canvas JPEG encoding",
@@ -41,5 +46,11 @@
     "memory peaks",
     "third-party demand"
   ],
-  "provenance": "Executed in Work task. UI tests use simulated encoders and must not be described as actual browser tests."
+  "provenance": "Executed in Work task. UI tests use simulated encoders and must not be described as actual browser tests.",
+  "synthetic_fixture_preflight": {
+    "files": 10,
+    "passed": 10,
+    "includes": "EXIF orientations1-8, transparent PNG, undersized JPEG",
+    "scope": "actual input-file header parser only; no browser JPEG encoding"
+  }
 }

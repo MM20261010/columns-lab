@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-30-image-fit-local-prototype",
+  "run_id": "2026-10-30-observation-delivery-pr9-qa",
   "updated_at": "2026-10-30",
-  "status": "ready_for_browser_qa",
-  "status_label": "🟢 専用ブランチ保存・Draft PR作成完了／次は実ブラウザQA",
+  "status": "blocked_validation_environment",
+  "status_label": "🔴 PR9実ブラウザQAは環境制約で中断／観測切分けは実施済み",
   "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
   "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
@@ -51,7 +51,15 @@
     "third_party_use": "unknown",
     "launch_approval_ready": false
   },
-  "approval_requests": [],
+  "approval_requests": [
+    {
+      "id": "owner-private-https-qa-environment",
+      "already_approved": false,
+      "scope": "one owner-private HTTPS nonproduction QA site from fixed PR9 source if no cost/new contract/expanded permissions; no public production change",
+      "purpose": "standard preview unavailable and local file protocol denied",
+      "production_approval": false
+    }
+  ],
   "risks": [
     "demand/search volume/user adoption unknown; competitors strong",
     "real-browser encoder/orientation/transparency/color/download/mobile QA not run",
@@ -60,10 +68,10 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "Read PR9 fixed head and check managed preview availability",
-    "Run real-browser JPEG generation/PNG transparency/EXIF orientation/download and Android rendering acceptance tests with synthetic fixtures",
-    "Keep actual Android unverified if no device; do not substitute viewport emulation for device evidence",
-    "Prepare separate publication approval only after QA and measurement design"
+    "Obtain separate approval if creating a zero-cost owner-private HTTPS nonproduction QA site; no preview or production setting changes",
+    "Run fixed PR9 image generation/orientation/transparency/limits/download acceptance and actual Android QA where available",
+    "Prepare one limited public acquisition experiment approval with measurement and stop conditions; no added features",
+    "Inspect next existing scheduled run result without creating or altering tasks; delivery unknown remains unknown"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -228,7 +236,7 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "Implementation16 blobs verified; Draft PR9 exists. This follow-up record commit must be re-read by saving agent before final report.",
+    "records_save_status": "Save these findings only on PR9 branch; final Git history supplies record commit.",
     "owner_gsc_report_recorded": true,
     "http_matrix_verified": true,
     "production_commit_unchanged": "257c7ec730634accbe545eb33984753b47ba8750"
@@ -236,7 +244,7 @@
   "prototype": {
     "name": "image-fit",
     "tests_passed": 31,
-    "browser_qa": "unverified_preview_daemon_unavailable",
+    "browser_qa": "blocked_not_verified",
     "external_dependencies": false,
     "external_communication_code": false,
     "github_source_saved": true,
@@ -400,7 +408,7 @@
     "new_tasks_created": false,
     "existing_tasks_modified": false,
     "new_tool_tests_passed": 31,
-    "browser_qa": "unverified_preview_daemon_unavailable",
+    "browser_qa": "blocked: preview daemon absent; file URL policy rejects local HTML",
     "personal_images_used": false,
     "extra_spending_yen": 0,
     "selected_tool": "local JPEG byte-range and minimum-dimension fitter",
@@ -423,7 +431,9 @@
     "deployment_skipped": true,
     "skip_reason": "commit_message",
     "main_unchanged": true,
-    "next_priority": "Real-browser JPEG generation and Android rendering verification"
+    "next_priority": "Real-browser JPEG generation and Android rendering verification",
+    "purpose": "separate task execution/result/delivery from RUM emptiness and verify PR9 in browser",
+    "automation_changed": false
   },
   "prior_state_snapshot": {
     "updated_at": "2026-10-14T05:19:46.554Z",
@@ -452,5 +462,23 @@
       }
     ]
   },
-  "metrics_note": "No monthly confirmed values newly fetched; latest GSC owner observation is a 3-month range, not monthly."
+  "metrics_note": "No monthly confirmed values newly fetched; latest GSC owner observation is a 3-month range, not monthly.",
+  "observation_diagnosis": {
+    "task_enabled": true,
+    "timing_mode": "condition_watch",
+    "latest_run_date_jst": "2026-10-29",
+    "recorded_status": "completed",
+    "body_generated": true,
+    "delivery_status": "unknown",
+    "full_history_available": false,
+    "current_prompt_already_alerts_on_missingness": true,
+    "prompt_updated_after_last_run": true,
+    "current_rum_control": "positive:count1/visits1/sampleInterval1 after known self-QA",
+    "self_qa_start_utc": "2026-10-30T06:05:35.783Z",
+    "self_qa_end_utc": "2026-10-30T06:05:55.585Z",
+    "self_qa_exclude_from_acquisition": true,
+    "initial_24h_72h_host_account_path_site_filters": "all empty HTTP200/errors=[] before selfQA",
+    "historical_cause": "unconfirmed",
+    "metadata_list_read": "additional scope required; not granted"
+  }
 }
