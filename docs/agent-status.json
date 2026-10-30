@@ -2,10 +2,10 @@
   "schema_version": 2,
   "run_id": "2026-10-30-image-fit-local-prototype",
   "updated_at": "2026-10-30",
-  "status": "in_progress",
-  "status_label": "🟡 承認済み保存・Draft PR作成中",
+  "status": "ready_for_browser_qa",
+  "status_label": "🟢 専用ブランチ保存・Draft PR作成完了／次は実ブラウザQA",
   "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
-  "record_commit_source": "Approval-packet draft only; not yet written to GitHub. Writer must replace save state after authorized write and verification.",
+  "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
   "facts": {
     "production_commit": "257c7ec730634accbe545eb33984753b47ba8750",
@@ -42,7 +42,8 @@
     "3 candidates compared; image range/dimension tool selected",
     "local implementation and 31 new tests passed",
     "existing 6 test files and embedded guide16 passed",
-    "approval patch and outreach draft prepared"
+    "approval patch and outreach draft prepared",
+    "Owner-approved16 blobs saved and verified; Draft PR9 created; commit_message deployment skip and main/production unchanged verified"
   ],
   "candidate": {
     "name": "image byte range and minimum dimensions",
@@ -50,17 +51,7 @@
     "third_party_use": "unknown",
     "launch_approval_ready": false
   },
-  "approval_requests": [
-    {
-      "id": "github-image-fit-pilot-save-pr",
-      "already_approved": true,
-      "type": "public_repository_branch_and_draft_pr",
-      "target": "MM20261010/columns-lab task/image-fit-pilot-20261030",
-      "scope": "experiments/image-fit/* and 6 documentation/status paths; no site/* changes",
-      "production_approval": false,
-      "merge_approval": false
-    }
-  ],
+  "approval_requests": [],
   "risks": [
     "demand/search volume/user adoption unknown; competitors strong",
     "real-browser encoder/orientation/transparency/color/download/mobile QA not run",
@@ -69,8 +60,10 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "Save and verify approved16 files on dedicated branch and create one Draft PR",
-    "Prioritize real-browser JPEG generation and Android rendering QA; publication needs separate approval"
+    "Read PR9 fixed head and check managed preview availability",
+    "Run real-browser JPEG generation/PNG transparency/EXIF orientation/download and Android rendering acceptance tests with synthetic fixtures",
+    "Keep actual Android unverified if no device; do not substitute viewport emulation for device evidence",
+    "Prepare separate publication approval only after QA and measurement design"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -100,6 +93,10 @@
     {
       "id": "gsc-guide-sitemap-one-batch",
       "resolution": "owner10/14 reports both live fetches successful; no further owner repeat check needed now"
+    },
+    {
+      "id": "github-image-fit-pilot-save-pr",
+      "resolution": "Owner explicitly approved exactly16 file changes on dedicated branch and one Draft PR; implementation saved and verified at093477dc, Draft PR9 created; no merge or production approval."
     }
   ],
   "revenue_policy": {
@@ -231,9 +228,10 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "not saved: approval required by current owner instruction",
+    "records_save_status": "Implementation16 blobs verified; Draft PR9 exists. This follow-up record commit must be re-read by saving agent before final report.",
     "owner_gsc_report_recorded": true,
-    "http_matrix_verified": true
+    "http_matrix_verified": true,
+    "production_commit_unchanged": "257c7ec730634accbe545eb33984753b47ba8750"
   },
   "prototype": {
     "name": "image-fit",
@@ -241,8 +239,8 @@
     "browser_qa": "unverified_preview_daemon_unavailable",
     "external_dependencies": false,
     "external_communication_code": false,
-    "github_source_saved": false,
-    "draft_pr": null
+    "github_source_saved": true,
+    "draft_pr": 9
   },
   "experiment": {
     "name": "image-fit isolated acquisition hypothesis",
@@ -395,8 +393,8 @@
     "verified_by": "Cloudflare project GET on 2026-10-30; not changed in this run"
   },
   "current_run": {
-    "github_saved": false,
-    "pr_created": false,
+    "github_saved": true,
+    "pr_created": true,
     "production_changed": false,
     "new_site_registered": false,
     "new_tasks_created": false,
@@ -415,7 +413,17 @@
       "auto_merge": false,
       "auto_deploy": false,
       "next_priority": "real-browser JPEG generation and Android rendering verification"
-    }
+    },
+    "pr_number": 9,
+    "pr_url": "https://github.com/MM20261010/columns-lab/pull/9",
+    "source_commit": "093477dc03acab7898df999c609ea8c9a122d712",
+    "saved_file_blobs_verified": 16,
+    "draft": true,
+    "auto_merge": false,
+    "deployment_skipped": true,
+    "skip_reason": "commit_message",
+    "main_unchanged": true,
+    "next_priority": "Real-browser JPEG generation and Android rendering verification"
   },
   "prior_state_snapshot": {
     "updated_at": "2026-10-14T05:19:46.554Z",
