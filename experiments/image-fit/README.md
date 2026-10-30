@@ -1,0 +1,17 @@
+# 画像サイズ合わせ：未公開試作
+
+作成日：2026-10-30 JST。対象：GPT自律収益化、MM20261010/columns-lab。
+
+JPEG・静止PNGを端末内で読み、容量の上下限と最小幅・高さを満たすJPEGを探索する。サーバーAPI、依存パッケージ、広告、解析、データの自動保存はない。1KB=1,000バイト。
+
+`site/index.html` が試作。ローカルHTTP配信で確認できる。配布用の単一HTMLも別途作成する。入力は合成画像で試すこと。Chrome/Firefox/Androidの実ブラウザと実JPEG生成はまだ未検証。
+
+## テスト
+
+Node.js 24で `node --test tests/*.test.js`。31件合格（核心18・静的プライバシー3・画面状態10）。画面試験はNode VMと模擬DOM/模擬Canvas。実際のCanvasコーデック、色、EXIF方向、スマホ表示、ダウンロード完了を証明しない。
+
+## 保存・公開状態
+
+GitHub未反映、PR未作成、未公開。既存本番と既存観測タスクは変更していない。新ツール用のホスト名、canonical、sitemap、実計測タグはまだない。noindexは意図した試作設定で、承認なしに検索公開しない。
+
+承認用変更は同梱 `github-proposal.patch` と `docs/november-development-2026-10-30.md` を参照。既存ソースの変更はなく、実験コードは `experiments/image-fit/` へ保存する提案。GitHub保存・PR公開には本人承認が必要。本番公開は別の判断。

@@ -1,0 +1,5 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const dir=path.join(__dirname,'../site');
+test('client contains no network APIs, third-party resources or persistence',()=>{for(const file of ['app.js','core.js','index.html','style.css']){const t=fs.readFileSync(path.join(dir,file),'utf8');assert.doesNotMatch(t,/\b(fetch|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB|document\.cookie)\b/);assert.doesNotMatch(t,/(?:src|href)=["']https?:|@import|url\(["']?https?:/);}});
+test('CSP denies programmatic connections and form posts; prototype noindex',()=>{const h=fs.readFileSync(path.join(dir,'_headers'),'utf8');assert.match(h,/connect-src 'none'/);assert.match(h,/form-action 'none'/);assert.match(h,/frame-ancestors 'none'/);assert.match(h,/X-Robots-Tag: noindex/);});
+test('no HTML insertion for user-controlled text',()=>assert.doesNotMatch(fs.readFileSync(path.join(dir,'app.js'),'utf8'),/innerHTML|outerHTML|insertAdjacentHTML|document\.write/));

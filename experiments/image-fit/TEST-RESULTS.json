@@ -1,0 +1,45 @@
+{
+  "date_jst": "2026-10-30",
+  "base": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
+  "node_version": "v24.22.1",
+  "commands": [
+    {
+      "cwd": "experiments/image-fit",
+      "command": "node --test tests/*.test.js",
+      "passed": 31,
+      "failed": 0,
+      "groups": {
+        "core": 18,
+        "privacy_static": 3,
+        "ui_mock_dom_canvas": 10
+      }
+    },
+    {
+      "cwd": "fixed-main snapshot",
+      "command": "node --test tests/*.test.js",
+      "passed_test_files": 6,
+      "failed": 0,
+      "guide_embedded_checks": 16
+    },
+    {
+      "command": "node --check site/app.js && node --check site/core.js",
+      "result": "pass"
+    }
+  ],
+  "html_static_checks": "ids/label targets/local assets passed",
+  "actual_browser_qa": {
+    "status": "not_run",
+    "reason": "sites-previewd mailbox unavailable on both start and status; no infrastructure workaround"
+  },
+  "not_verified": [
+    "real Canvas JPEG encoding",
+    "EXIF orientations",
+    "PNG transparency white background",
+    "color/ICC/HDR",
+    "Android rendering",
+    "real download",
+    "memory peaks",
+    "third-party demand"
+  ],
+  "provenance": "Executed in Work task. UI tests use simulated encoders and must not be described as actual browser tests."
+}
