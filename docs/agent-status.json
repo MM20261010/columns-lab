@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-30-observation-delivery-pr9-qa",
+  "run_id": "2026-10-30-cloudflare-reauth-direct-verification",
   "updated_at": "2026-10-30",
   "status": "blocked_validation_environment",
   "status_label": "🔴 PR9実ブラウザQAは環境制約で中断／観測切分けは実施済み",
@@ -68,10 +68,9 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "Obtain separate approval if creating a zero-cost owner-private HTTPS nonproduction QA site; no preview or production setting changes",
-    "Run fixed PR9 image generation/orientation/transparency/limits/download acceptance and actual Android QA where available",
-    "Prepare one limited public acquisition experiment approval with measurement and stop conditions; no added features",
-    "Inspect next existing scheduled run result without creating or altering tasks; delivery unknown remains unknown"
+    "After rate-limit cooldown issue one small read-only RUM query; do not reauthenticate or retry rapidly",
+    "Inspect next existing task run/result; delivery remains unknown until independent evidence",
+    "Keep PR9 browser QA pending separate owner-private HTTPS environment approval; preserve prior source and fixture work"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -236,7 +235,7 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "Save these findings only on PR9 branch; final Git history supplies record commit.",
+    "records_save_status": "Direct REST recovery and settings comparison completed; current records to be verified after branch save.",
     "owner_gsc_report_recorded": true,
     "http_matrix_verified": true,
     "production_commit_unchanged": "257c7ec730634accbe545eb33984753b47ba8750"
@@ -433,7 +432,9 @@
     "main_unchanged": true,
     "next_priority": "Real-browser JPEG generation and Android rendering verification",
     "purpose": "separate task execution/result/delivery from RUM emptiness and verify PR9 in browser",
-    "automation_changed": false
+    "automation_changed": false,
+    "cloudflare_connection_restored": true,
+    "repeated_reauthentication": false
   },
   "prior_state_snapshot": {
     "updated_at": "2026-10-14T05:19:46.554Z",
@@ -479,6 +480,17 @@
     "self_qa_exclude_from_acquisition": true,
     "initial_24h_72h_host_account_path_site_filters": "all empty HTTP200/errors=[] before selfQA",
     "historical_cause": "unconfirmed",
-    "metadata_list_read": "additional scope required; not granted"
+    "metadata_list_read": "restored after owner reauthentication; direct GET HTTP200"
+  },
+  "cloudflare_recovery": {
+    "pages_get": "HTTP200",
+    "analytics_list_get": "HTTP200; previous scope error no longer reproduced",
+    "analytics_site_get": "HTTP200",
+    "host_matches": true,
+    "pages_analytics_identifiers_match_registration": true,
+    "graphql": "rate_limiter_budget_depleted_retry_after5minutes; not authentication error",
+    "new_metrics": null,
+    "work_specific_auth_failure": "not reproduced",
+    "old_reconnect_ui_cause": "unconfirmed"
   }
 }
