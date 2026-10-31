@@ -28,7 +28,7 @@
   ],
   "html_static_checks": "ids/label targets/local assets passed",
   "actual_browser_qa": {
-    "status": "blocked_not_verified",
+    "status": "partial_pass_then_environment_disconnected",
     "attempts": [
       "managed preview daemon unavailable",
       "installed Playwright browser executable absent",
@@ -36,19 +36,18 @@
       "Owner-private HTTPS alternative deployed; blocked before authentication; no credentials entered, no bypass"
     ],
     "production_qa_is_separate": true,
-    "latest_attempt": "2026-10-31: separate owner-private HTTPS QA deployed successfully; browser reached OpenAI sign-in; fresh secure sign-in request rejected by automatic approval review; codec checks not run"
+    "latest_attempt": "2026-10-31 owner-approved sign-in succeeded; real Chrome23 checks passed; product UI generated and downloaded JPEG; remaining roundtrip/UI checks interrupted by unavailable execution environment"
   },
   "not_verified": [
-    "real Canvas JPEG encoding",
-    "EXIF orientations",
-    "PNG transparency white background",
-    "color/ICC/HDR",
-    "Android rendering",
-    "real download",
+    "saved JPEG re-upload/byte-hash roundtrip and filesystem re-decode",
+    "remaining product UI condition-change tests after disconnect",
+    "ICC/HDR",
+    "Android real device/mobile viewport",
     "memory peaks",
+    "other browsers",
     "third-party demand"
   ],
-  "provenance": "Executed in Work task. UI tests use simulated encoders and must not be described as actual browser tests.",
+  "provenance": "Existing31 Node tests remain simulated/static. New23 QA checks executed in real Chrome155/Linux. Product UI sample34393-byte1200x800JPEG generated and Browser Download API returned path after review consent. Remaining checks interrupted, not failed.",
   "synthetic_fixture_preflight": {
     "files": 10,
     "passed": 10,
@@ -58,8 +57,8 @@
   "browser_acceptance_harness": {
     "path": "qa/index.html",
     "planned_checks": 23,
-    "checks_run_in_browser": 0,
-    "browser_status": "not_run_private_site_login_approval_blocked",
+    "checks_run_in_browser": 23,
+    "browser_status": "codec_checks_pass",
     "fixture_source": "previous synthetic fixture bytes, not user data",
     "fixture_hash_and_source_byte_matches": 10,
     "independent_exif_corner_oracle_checks": 8,
@@ -72,6 +71,9 @@
       "actual filesystem download/reselect SHA-256",
       "Android real device",
       "ICC/HDR and memory"
-    ]
+    ],
+    "browser_passed": 23,
+    "browser_failed": 0,
+    "result_path": "qa/RESULTS-2026-10-31.json"
   }
 }

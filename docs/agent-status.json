@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-31-pr9-private-qa-and-alternative-core",
+  "run_id": "2026-10-31-approved-real-browser-qa",
   "updated_at": "2026-10-31",
-  "status": "blocked_new_browser_login_approval",
-  "status_label": "🔴 JPEG実検証はログイン承認で中断／本人限定QA配信・ICS代替コア12試験完了",
+  "status": "blocked_execution_environment_disconnected",
+  "status_label": "🔴 実Chrome23件＋製品JPEG生成/保存成功／残りは実行環境の通信中断",
   "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
   "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
@@ -51,24 +51,19 @@
     "Existing PR9 QA source reused and deployed once to a separate owner-private HTTPS QA site; deployment succeeded",
     "8 QA/product source files matched exact bytes; public sharing not enabled",
     "Browser reached private-site sign-in; fresh authentication request rejected by automatic review; no credentials submitted",
-    "Schedule ICS alternative feasibility core generated a synthetic 386-byte ICS with four occurrences; 12 Node tests passed"
+    "Schedule ICS alternative feasibility core generated a synthetic 386-byte ICS with four occurrences; 12 Node tests passed",
+    "Owner-approved secure sign-in reached existing private QA landing",
+    "Real Chrome codec23 checks passed, including EXIF1-8/transparency/color/bounds/refusals",
+    "Product UI sample generated34393-byte1200x800JPEG; consent/review guards observed; Browser Download API returned saved path"
   ],
   "candidate": {
     "name": "image byte range and minimum dimensions",
-    "stage": "image_frozen_pending_real_browser_qa",
+    "stage": "image_core_browser_passed_remaining_qa_and_demand_hold",
     "third_party_use": "unknown",
     "launch_approval_ready": false,
     "decision": "image feature/public launch on hold; schedule ICS is provisional alternative feasibility core, demand unknown"
   },
-  "approval_requests": [
-    {
-      "id": "new-browser-chatgpt-signin-for-existing-private-qa",
-      "already_approved": false,
-      "scope": "Start secure OpenAI browser authentication for the existing owner-private QA site using an account chosen by the owner; no credentials in chat; no account creation or expanded sharing",
-      "purpose": "Automatic review rejected a fresh authentication request because explicit approval was missing",
-      "production_approval": false
-    }
-  ],
+  "approval_requests": [],
   "risks": [
     "demand/search volume/user adoption unknown; competitors strong",
     "real-browser encoder/orientation/transparency/color/download/mobile QA not run",
@@ -77,7 +72,7 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "After explicit fresh browser sign-in approval, reuse existing private QA site for image codec/UI/download acceptance; do not create another QA site"
+    "After execution environment recovery, reuse existing QA site and prior login approval to complete saved-JPEG roundtrip and product condition-change invalidation; prepare one scoped publication decision"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -91,7 +86,8 @@
     "experiments/image-fit/qa/index.html",
     "experiments/schedule-ics/README.md",
     "experiments/schedule-ics/core.test.cjs",
-    "experiments/schedule-ics/synthetic-example.ics"
+    "experiments/schedule-ics/synthetic-example.ics",
+    "experiments/image-fit/qa/RESULTS-2026-10-31.json"
   ],
   "automation": {
     "status_file_only": true,
@@ -515,8 +511,11 @@
     "source_commit": "aa6dd4c3ff769ef7b3575fe180945cb2e22849cf",
     "owner_private_deployment_succeeded": true,
     "external_visitors": 0,
-    "browser_qa_checks_executed": 0,
-    "fresh_login": "auto_review_rejected",
-    "recreate": false
+    "browser_qa_checks_executed": 23,
+    "fresh_login": "owner_approved_and_target_page_verified",
+    "recreate": false,
+    "codec_checks_passed": 23,
+    "product_ui_generation_and_browser_download": "passed",
+    "roundtrip": "not_verified"
   }
 }
