@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-30-pr9-demand-reassessment-and-browser-acceptance",
-  "updated_at": "2026-10-30",
-  "status": "blocked_browser_qa_waiting_environment_approval",
-  "status_label": "🔴 実ブラウザQA未完了／需要比較と実行可能な受入試験をPR9に保存",
+  "run_id": "2026-10-31-pr9-private-qa-and-alternative-core",
+  "updated_at": "2026-10-31",
+  "status": "blocked_new_browser_login_approval",
+  "status_label": "🔴 JPEG実検証はログイン承認で中断／本人限定QA配信・ICS代替コア12試験完了",
   "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
   "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
@@ -47,21 +47,25 @@
     "4 candidates compared against primary sources; no search-volume estimates invented",
     "23-check browser acceptance harness prepared, NOT browser-executed",
     "10 synthetic fixture bytes/hash matched; 8 EXIF corner expectations independently verified; JS syntax passed",
-    "Search entry copy and bounded acquisition/stop criteria prepared"
+    "Search entry copy and bounded acquisition/stop criteria prepared",
+    "Existing PR9 QA source reused and deployed once to a separate owner-private HTTPS QA site; deployment succeeded",
+    "8 QA/product source files matched exact bytes; public sharing not enabled",
+    "Browser reached private-site sign-in; fresh authentication request rejected by automatic review; no credentials submitted",
+    "Schedule ICS alternative feasibility core generated a synthetic 386-byte ICS with four occurrences; 12 Node tests passed"
   ],
   "candidate": {
     "name": "image byte range and minimum dimensions",
-    "stage": "qa_only_continuation_publication_on_hold",
+    "stage": "image_frozen_pending_real_browser_qa",
     "third_party_use": "unknown",
     "launch_approval_ready": false,
-    "decision": "image range/minimum pixels; no added features; one limited acquisition experiment only after QA and publication approval"
+    "decision": "image feature/public launch on hold; schedule ICS is provisional alternative feasibility core, demand unknown"
   },
   "approval_requests": [
     {
-      "id": "owner-private-https-qa-environment",
+      "id": "new-browser-chatgpt-signin-for-existing-private-qa",
       "already_approved": false,
-      "scope": "one owner-private HTTPS nonproduction QA site from fixed PR9 source if no cost/new contract/expanded permissions; no public production change",
-      "purpose": "standard preview unavailable and local file protocol denied",
+      "scope": "Start secure OpenAI browser authentication for the existing owner-private QA site using an account chosen by the owner; no credentials in chat; no account creation or expanded sharing",
+      "purpose": "Automatic review rejected a fresh authentication request because explicit approval was missing",
       "production_approval": false
     }
   ],
@@ -73,7 +77,7 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "Run fixed PR9 acceptance harness and product UI/download QA in an approved owner-private HTTPS environment; then produce one evidence-based publication decision"
+    "After explicit fresh browser sign-in approval, reuse existing private QA site for image codec/UI/download acceptance; do not create another QA site"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -84,7 +88,10 @@
     "docs/kpi.csv",
     "docs/google-reach-investigation-2026-10-13.md",
     "docs/image-fit-validation-and-launch-2026-10-30.md",
-    "experiments/image-fit/qa/index.html"
+    "experiments/image-fit/qa/index.html",
+    "experiments/schedule-ics/README.md",
+    "experiments/schedule-ics/core.test.cjs",
+    "experiments/schedule-ics/synthetic-example.ics"
   ],
   "automation": {
     "status_file_only": true,
@@ -501,5 +508,15 @@
     "rate_limit_active_at_final_check": false,
     "control_query_at_utc": "2026-10-30T06:23:22.047Z",
     "control_must_not_be_added_to_prior_value": true
+  },
+  "qa_environment": {
+    "url": "https://columns-image-fit-qa-20261031.sharpmodel.chatgpt.site",
+    "version": 1,
+    "source_commit": "aa6dd4c3ff769ef7b3575fe180945cb2e22849cf",
+    "owner_private_deployment_succeeded": true,
+    "external_visitors": 0,
+    "browser_qa_checks_executed": 0,
+    "fresh_login": "auto_review_rejected",
+    "recreate": false
   }
 }
