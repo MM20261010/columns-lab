@@ -1,0 +1,262 @@
+--- a/site/_headers
++++ b/site/_headers
+@@ -3,6 +3,3 @@
+   Referrer-Policy: strict-origin-when-cross-origin
+   X-Frame-Options: DENY
+   Permissions-Policy: camera=(), microphone=(), geolocation=()
+-
+-/tools/image-fit/*
+-  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+--- a/site/index.html
++++ b/site/index.html
+@@ -3,5 +3,5 @@
+ <main><section class="wrap hero"><span class="eyebrow">CSV WORKFLOW TOOLS</span><h1>「列がずれていた」に、<br>結合する前に気づける。</h1><p class="lead">支店別、月別、担当別のCSV。列の並びや項目が違っても、見出し名を照合して統合。足りない列を事前に表示する、無料のCSV作業ツールです。</p><a href="/tools/csv-merge/" class="cta">無料CSV結合ツールを使う →</a><p class="info">登録なし・広告なし・CSVの内容はブラウザ内だけで処理</p></section>
+ <section class="wrap featureGrid" aria-label="特徴"><div class="panel"><h2>列の順番を揃える</h2><p>見出し名で列を対応づけます。位置だけで貼り付けたときのずれを防ぎます。</p></div><div class="panel"><h2>不足している列を表示</h2><p>どのファイルに何の列がないかを結合結果と一緒に確認できます。</p></div><div class="panel"><h2>ファイルはアップロードしない</h2><p>読み込んだCSV本文は外部サーバーに送信しません。お使いの端末のブラウザで処理します。</p></div></section>
+ <section class="wrap"><div class="panel detail" id="about"><h2>使い方</h2><ol class="bullets"><li>CSVを2ファイル以上選びます。</li><li>「列名を確認して結合」を押します。</li><li>不足している列やサンプル行を確認して、CSVで保存します。</li></ol><p>UTF-8 / Shift_JISの読込に対応し、列名が重複している場合などはエラーとして停止します。合計25MB・1ファイル10MBまで。</p><p class="info">このサービスは無料の実験的ツールです。重要なファイルは原本を残し、出力結果を確認してからご利用ください。</p></div></section>
+-<section class="wrap"><div class="panel detail"><h2>列が違うCSVを結合するには</h2><p>列順の違いと列不足は、別々に確認するのがポイントです。支店別の売上一覧を使い、見出し名で結合する具体例を紹介します。</p><a href="/guides/csv-column-merge/">列順・列数が違うCSVを結合する手順</a></div></section><section class="wrap"><div class="panel detail"><h2>画像の容量と最小ピクセルを合わせる</h2><p>書類などに添付する画像の「200KB以下・幅600px以上」を同時に確認。JPEG・静止PNGから、条件内のJPEGを端末内で作成します。</p><a href="/tools/image-fit/">画像サイズ合わせツールを使う</a></div></section></main><footer><div class="wrap">列そろえラボ · 無料のCSV実務支援ツール ｜ <a href="/privacy/">プライバシー・免責事項</a></div></footer>
++<section class="wrap"><div class="panel detail"><h2>列が違うCSVを結合するには</h2><p>列順の違いと列不足は、別々に確認するのがポイントです。支店別の売上一覧を使い、見出し名で結合する具体例を紹介します。</p><a href="/guides/csv-column-merge/">列順・列数が違うCSVを結合する手順</a></div></section></main><footer><div class="wrap">列そろえラボ · 無料のCSV実務支援ツール ｜ <a href="/privacy/">プライバシー・免責事項</a></div></footer>
+ </body></html>
+--- a/site/privacy/index.html
++++ b/site/privacy/index.html
+@@ -1,3 +1,3 @@
+-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="列そろえラボのプライバシーと利用上の注意。CSV・画像の内容はブラウザ内で処理します。"><title>プライバシー・免責事項 | 列そろえラボ</title><link rel="stylesheet" href="/assets/site.css"><link rel="canonical" href="https://columns-lab.pages.dev/privacy/"></head><body>
++<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="列そろえラボのプライバシーと利用上の注意。CSVファイル内容はブラウザ内で処理します。"><title>プライバシー・免責事項 | 列そろえラボ</title><link rel="stylesheet" href="/assets/site.css"><link rel="canonical" href="https://columns-lab.pages.dev/privacy/"></head><body>
+ <header><div class="wrap topbar"><a class="brand" href="/">▦ 列そろえラボ</a><nav class="nav"><a href="/tools/csv-merge/">CSV結合</a></nav></div></header>
+-<main class="wrap"><section class="hero detail"><h1>プライバシー・免責事項</h1><div class="panel"><h2>CSVの取り扱い</h2><p>入力ファイルの内容は、利用者のブラウザ内のJavaScriptで処理します。本ツールはファイル内容をサーバーへアップロードする機能を持ちません。ページ表示に必要な通常のネットワーク通信は発生します。</p><h2>画像の取り扱い</h2><p>画像サイズ合わせは画像の内容・ファイル名を外部送信せず、端末内でJPEGを作成します。作業内容をブラウザへ自動保存しません。JPEG変換では透明部分が白になり、色や画質が変わる場合があります。元画像は変更しません。画像内の個人情報を自動で消す機能ではありません。</p><h2>アクセス解析</h2><p>サイトの利用状況とページの表示性能を確認するため、Cloudflare Web Analyticsを利用しています。計測用スクリプトが、ページの閲覧先・参照元・ブラウザなどの情報や表示性能に関する情報をCloudflareへ送信します。この解析はCookieやlocalStorageによる利用者識別を行いません。本ツールはCSV本文・列名・入力ファイル名・画像内容を解析イベントに送信しません。ページの計測と、CSV・画像の端末内処理は別です。広告ブロックなどにより計測できない場合があります。詳しくは<a href="https://developers.cloudflare.com/web-analytics/">Cloudflare Web Analyticsの公式説明</a>をご確認ください。</p><h2>広告について</h2><p>現時点では広告・アフィリエイトリンクを設置していません。将来導入する際は該当ページで広告であることを明示します。</p><h2>免責</h2><p>本ツールは無償の試験運用です。動作・正確性・特定目的への適合は保証しません。誤変換、データ欠落、処理結果に伴う損害については法令の範囲内で責任を負いかねます。重要なデータは原本をバックアップし、出力を検算してください。</p><h2>更新日</h2><p>2026年11月1日</p></div></section></main><footer><div class="wrap"><a href="/">トップへ戻る</a></div></footer></body></html>
++<main class="wrap"><section class="hero detail"><h1>プライバシー・免責事項</h1><div class="panel"><h2>CSVの取り扱い</h2><p>入力ファイルの内容は、利用者のブラウザ内のJavaScriptで処理します。本ツールはファイル内容をサーバーへアップロードする機能を持ちません。ページ表示に必要な通常のネットワーク通信は発生します。</p><h2>アクセス解析</h2><p>サイトの利用状況とページの表示性能を確認するため、Cloudflare Web Analyticsを利用しています。計測用スクリプトが、ページの閲覧先・参照元・ブラウザなどの情報や表示性能に関する情報をCloudflareへ送信します。この解析はCookieやlocalStorageによる利用者識別を行いません。本ツールはCSV本文・列名・入力ファイル名を解析イベントに送信しません。ページの計測と、CSVの端末内処理は別です。広告ブロックなどにより計測できない場合があります。詳しくは<a href="https://developers.cloudflare.com/web-analytics/">Cloudflare Web Analyticsの公式説明</a>をご確認ください。</p><h2>広告について</h2><p>現時点では広告・アフィリエイトリンクを設置していません。将来導入する際は該当ページで広告であることを明示します。</p><h2>免責</h2><p>本ツールは無償の試験運用です。動作・正確性・特定目的への適合は保証しません。誤変換、データ欠落、処理結果に伴う損害については法令の範囲内で責任を負いかねます。重要なデータは原本をバックアップし、出力を検算してください。</p><h2>更新日</h2><p>2026年10月11日</p></div></section></main><footer><div class="wrap"><a href="/">トップへ戻る</a></div></footer></body></html>
+--- a/site/sitemap.xml
++++ b/site/sitemap.xml
+@@ -4,5 +4,4 @@
+   <url><loc>https://columns-lab.pages.dev/tools/csv-merge/</loc></url>
+   <url><loc>https://columns-lab.pages.dev/guides/csv-column-merge/</loc></url>
+   <url><loc>https://columns-lab.pages.dev/privacy/</loc></url>
+-  <url><loc>https://columns-lab.pages.dev/tools/image-fit/</loc></url>
+ </urlset>
+--- a/site/tools/csv-merge/index.html
++++ b/site/tools/csv-merge/index.html
+@@ -5,5 +5,5 @@
+ <div class="checks"><label><input type="checkbox" id="source" checked>元ファイル名を「_source_file」列に記録する</label><label><input type="checkbox" id="skipblank" checked>完全な空行を除外する</label><label><input type="checkbox" id="excelSafety" checked>Excel等で先頭が数式として実行されそうな値に「'」を付ける（値が変わります）</label></div><div class="actions"><button id="run" type="button">2. 列名を確認して結合</button><button id="demo" class="secondary" type="button">架空サンプルを試す</button></div></section>
+ <section class="panel" aria-live="polite"><h2>2. 結果を確認</h2><p id="status" class="status" role="status">まずCSVを選ぶか、架空サンプルをお試しください。</p><div id="diagnostics"></div><h3>プレビュー（先頭12行）</h3><div class="tableArea"><table id="preview" aria-label="結合結果のプレビュー"></table></div><div class="actions"><button id="download" type="button" disabled>3. 結果CSVを保存</button></div></section>
+ <section class="panel detail"><h2>注意点と仕様</h2><ul class="bullets"><li>すべてのファイルで1行目を列名として扱います。列名の前後の空白は取り除いて照合します。</li><li>列名が同じなら位置が違っても同じ列に格納します。ない項目は空欄にします。</li><li>引用符で囲まれたカンマ、改行、連続した二重引用符に対応します。壊れた引用符や重複列名は処理を停止します。</li><li>自動文字コード判定はUTF-8で復号できる場合にUTF-8を優先します。判定が違う場合は手動指定してください。</li><li>「Excel数式対策」をONにすると、半角・全角の数式開始文字や先頭のタブ・改行などにアポストロフィを追加します（列名・元ファイル名列も対象）。負数（例：-123、-0.25）にも従来どおりアポストロフィを追加します。数値列が文字列として取り込まれ、集計前の型指定が必要になる場合があります。CSV本文の完全一致が必要なら、信頼できるデータでOFFを選び、取り込み時に列の型を指定してください。CSVには型情報がなく、OFFでも先頭ゼロや大きい数値の桁を自動的に保持できるわけではありません。プレビューは元の値です。表計算ソフトや取り込み方法によって挙動が異なり、保存し直した後まで安全を保証する機能ではありません。元の値で取り込む必要がある場合はOFFにし、信頼できるデータを列の型を指定して取り込んでください。</li><li>ExcelでのダブルクリックによるCSV表示では、先頭ゼロや桁数の大きい数値が変換される場合があります。必要ならExcelのデータ取り込み機能で列を文字列として指定してください。</li></ul><div class="notesBox">CSVの内容を外部に送るネットワーク処理はありません。サイトの配信自体には通常の通信が発生します。個人情報・機密情報を扱う場合は、利用組織の規則を確認してください。</div></section>
+-<section class="panel detail"><h2>結合の例とよくある疑問</h2><p><a href="/guides/csv-column-merge/">列順・列数が違うCSVを結合する手順</a>で、空欄の補完や文字化けした場合の対処を確認できます。</p><p>保存前にファイルや結合設定を変えた場合は、再結合してください。プレビューは元の値を表示し、Excel数式対策は保存時に適用します。</p><p class="info">添付用の画像を整える場合は、<a href="/tools/image-fit/">画像サイズ合わせ</a>で容量と最小ピクセルを確認できます。CSVファイルの処理とは別のツールです。</p></section></main><footer><div class="wrap">列そろえラボ ｜ <a href="/">トップ</a> ｜ <a href="/privacy/">プライバシー・免責事項</a></div></footer>
++<section class="panel detail"><h2>結合の例とよくある疑問</h2><p><a href="/guides/csv-column-merge/">列順・列数が違うCSVを結合する手順</a>で、空欄の補完や文字化けした場合の対処を確認できます。</p><p>保存前にファイルや結合設定を変えた場合は、再結合してください。プレビューは元の値を表示し、Excel数式対策は保存時に適用します。</p></section></main><footer><div class="wrap">列そろえラボ ｜ <a href="/">トップ</a> ｜ <a href="/privacy/">プライバシー・免責事項</a></div></footer>
+ </body></html>
+--- a/site/tools/image-fit/index.html
++++ /dev/null
+@@ -1,40 +0,0 @@
+-<!doctype html>
+-<html lang="ja">
+-<head>
+-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' blob: data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+-<meta name="robots" content="index,follow"><link rel="canonical" href="https://columns-lab.pages.dev/tools/image-fit/">
+-<title>画像サイズ合わせ｜容量と最小ピクセルを同時に確認 | 列そろえラボ</title>
+-<meta name="description" content="画像を100KB・200KB・500KB以下へ。容量の上下限と最小ピクセル数を同時に確認し、JPEG・静止PNGから条件内のJPEGを端末内で作成。無料・登録不要。">
+-<link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="app.js" defer></script>
+-</head>
+-<body>
+-<header><a class="brand" href="/">列そろえラボ</a><nav aria-label="ページ案内"><a href="/tools/csv-merge/">CSV列そろえ</a><a href="#guide">使い方</a><a href="/privacy/">プライバシー</a></nav></header>
+-<main>
+-<section class="intro"><p class="eyebrow">送る前の、ひと手間を。</p><h1>画像サイズ合わせ</h1><p>容量を小さく。必要な大きさは、そのままに。</p><p>「200KB以下、幅600px以上」のような条件を一緒に確認。<br>画像はこの端末のブラウザ内で処理します。</p><div class="pills"><span>登録不要</span><span>元ファイルを変更しません</span><span>JPEG・静止PNG対応</span></div></section>
+-<div class="workspace">
+-<section class="panel controls" aria-labelledby="condition-heading">
+-<h2 id="condition-heading"><span class="step">1</span> 提出先の条件</h2>
+-<p class="hint">提出先の案内を確認して入力してください。</p>
+-<div class="presets" aria-label="容量上限の選択"><button type="button" data-kb="100">100KB以下</button><button type="button" data-kb="200">200KB以下</button><button type="button" data-kb="500">500KB以下</button><button type="button" data-kb="1000">1MB以下</button></div>
+-<div class="fields"><label>容量の上限 <span class="unit">KB</span><input id="maxKB" type="number" min="1" max="15000" step="any" value="200"></label><label>容量の下限 <span class="unit">KB・指定なしは0</span><input id="minKB" type="number" min="0" step="any" value="0"></label><label>最小の幅 <span class="unit">px・指定なしは0</span><input id="minW" type="number" min="0" max="12000" step="1" value="0"></label><label>最小の高さ <span class="unit">px・指定なしは0</span><input id="minH" type="number" min="0" max="12000" step="1" value="0"></label></div>
+-<p class="hint">1KB＝1,000バイトで計算します。容量下限を満たすための水増しはしません。</p>
+-<label class="check"><input id="resize" type="checkbox">画質の調整で収まらなければ、縦横比を保って縮小する</label>
+-<p class="hint">指定した最小寸法より小さくしません。拡大・切り抜きは行いません。</p>
+-<hr><h2><span class="step">2</span> 画像を選ぶ</h2>
+-<label class="filebox" for="file">JPEG・静止PNGを1枚選択<input id="file" type="file" accept="image/jpeg,image/png"></label>
+-<p class="hint">15MiB・2,000万画素・各辺12,000pxまで。HEIC・アニメーション・PDFは対象外。</p>
+-<button id="sample" type="button" class="secondary">サンプルで試す</button>
+-<label class="check conversion"><input id="agree" type="checkbox">JPEGへの変換を確認しました。透明部分は白になり、色や画質が変わる場合があります。</label>
+-<div class="actions"><button id="run" class="primary" disabled>条件に合わせたJPEGを作る</button><button id="cancel" type="button" disabled>中止</button><button id="clear" type="button">リセット</button></div>
+-<p id="status" class="status" role="status" aria-live="polite">画像を選ぶか、サンプルで試してください。</p>
+-</section>
+-<section class="panel preview" aria-labelledby="result-heading"><h2 id="result-heading"><span class="step">3</span> 見た目と条件を確認</h2><p class="hint">容量だけでなく、文字や細部が読めるかも確認してください。</p>
+-<div id="empty" class="empty"><span aria-hidden="true">▧</span><p>ここに画像が表示されます</p><small>条件と画像を選んで始めましょう。</small></div>
+-<div id="before" hidden><h3>元画像</h3><p id="input-info"></p><div class="imageframe"><img id="original" alt="選択した元画像" role="button" tabindex="0" aria-label="元画像を原寸で開く（新しいタブ）"></div></div>
+-<div id="after" hidden><h3>作成したJPEG <span class="badge">入力した数値条件を満たしています</span></h3><p id="output-info"></p><div class="imageframe"><img id="output" alt="条件に合わせたJPEG" role="button" tabindex="0" aria-label="作成したJPEGを原寸で開く（新しいタブ）"></div><label class="check"><input id="review" type="checkbox">文字・色・細部を見て、保存する画像を確認しました</label><a id="download" class="primary disabled" aria-disabled="true" tabindex="-1">JPEGを保存</a><p class="hint">プレビューをタップするか、フォーカスしてEnter・スペースを押すと原寸画像を別タブで開けます。提出先での受付・内容の判読は保証しません。</p></div>
+-</section></div>
+-<section class="guide" id="guide"><p class="eyebrow">迷ったときに</p><h2>「容量」と「大きさ」は別の条件です。</h2><div class="guidegrid"><article><h3>KB・MBはファイルの容量</h3><p>「200KB以下」はデータ量の指定です。画質を調整すると、縦横のピクセル数を変えずに小さくできる場合があります。</p></article><article><h3>pxは画像の縦横</h3><p>「幅600px以上」など、必要な寸法も入力できます。元画像が小さい場合は、引き伸ばさずに別の画像を選んでください。</p></article><article><h3>条件に収まらないとき</h3><p>縮小の許可や容量上限を見直してください。容量の下限がある場合は小さくしすぎにも注意。探索で作れなかった場合、保存は有効になりません。</p></article></div><details><summary>画像はどこかに送られますか？</summary><p>画像の内容・ファイル名を送信する機能や、作業内容の自動保存機能はありません。ページ表示時には通常の配信通信と、既存のCloudflare Web Analyticsによる閲覧先・表示性能などの計測通信があります。画像処理とは別で、画像・ファイル名は解析イベントに含めません。リセットやページ終了で作業内容は失われます。詳しくはプライバシー方針をご確認ください。</p></details><details><summary>PNGの透明部分や撮影情報はどうなりますか？</summary><p>出力はJPEGのみで透明部分は白になります。元の撮影情報の引継ぎは目的としていません。色・画質・向きなどを保存前に確認してください。画像内に写っている個人情報は消しません。</p></details><details><summary>下限以上になりません。容量を増やせますか？</summary><p>無意味なデータの追加や、画像の引き伸ばしは行いません。高解像度の元画像を選ぶか、提出先の条件をご確認ください。JPEGの品質・寸法を段階的に試すため、全ての出力方法を探索した結果ではありません。</p></details></section>
+-</main><footer>画像サイズ合わせ · 列そろえラボ<br>このページの数値確認は、提出先の審査や受付の保証ではありません。<nav aria-label="関連ページ"><a href="/">トップ</a><a href="/tools/csv-merge/">CSV列そろえ</a><a href="/privacy/">プライバシー・免責事項</a></nav></footer>
+-</body></html>
+-
+--- a/site/tools/image-fit/app.js
++++ /dev/null
+@@ -1,75 +0,0 @@
+-/* Local-only image processing. No input, file name, or result is sent to a server. */
+-(() => {
+-  'use strict';
+-  const C=ImageFit, $=id=>document.getElementById(id);
+-  let version=0, controller=null, image=null, inputBlob=null, result=null, urls=[];
+-  const fields=['minKB','maxKB','minW','minH','resize','agree'];
+-  function say(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error);}
+-  function revoke(){urls.forEach(x=>URL.revokeObjectURL(x));urls=[];}
+-  function url(blob){const x=URL.createObjectURL(blob);urls.push(x);return x;}
+-  function noDownload(){const old=$('output').getAttribute('src');if(old){URL.revokeObjectURL(old);urls=urls.filter(x=>x!==old);}result=null;$('review').checked=false;$('after').hidden=true;$('download').removeAttribute('href');$('download').classList.add('disabled');$('download').setAttribute('aria-disabled','true');$('download').tabIndex=-1;$('output').removeAttribute('src');}
+-  function invalidate(message){version++;controller?.abort();controller=null;$('cancel').disabled=true;noDownload();$('run').disabled=!image||!$('agree').checked;if(message)say(message);}
+-  function closeInput(){image?.close?.();image=null;inputBlob=null;revoke();$('original').removeAttribute('src');$('before').hidden=true;$('empty').hidden=false;}
+-  function raw(){return {minKB:$('minKB').value,maxKB:$('maxKB').value,minW:$('minW').value,minH:$('minH').value,resize:$('resize').checked};}
+-  async function load(blob){
+-    invalidate();closeInput();$('run').disabled=true;const token=version;
+-    try{
+-      if (!blob.size || blob.size>C.MAX_BYTES) throw new Error('画像は15MiB以下にしてください。');
+-      C.inspect(await blob.arrayBuffer());if(token!==version)return;
+-      if(typeof createImageBitmap!=='function')throw new Error('このブラウザでは画像を読み込めません。最新版のChrome・Firefox等でお試しください。');
+-      const bitmap=await createImageBitmap(blob,{imageOrientation:'from-image'});
+-      if(token!==version){bitmap.close();return;}
+-      C.checkDimensions(bitmap.width,bitmap.height);image=bitmap;inputBlob=blob;
+-      $('original').src=url(blob);$('input-info').textContent=blob.size.toLocaleString('ja-JP')+'バイト（'+(blob.size/1000).toFixed(1)+'KB） / '+image.width+' × '+image.height+'px';
+-      $('before').hidden=false;$('empty').hidden=true;$('run').disabled=!$('agree').checked;say('画像を読み込みました。条件とJPEG変換の確認後、作成してください。');
+-    }catch(e){if(token!==version)return;closeInput();$('run').disabled=true;say(e.message,true);}
+-  }
+-  $('file').addEventListener('change',()=>{const f=$('file').files[0];if(f)load(f);else{invalidate();closeInput();$('run').disabled=true;say('画像を選んでください。');}});
+-  fields.forEach(id=>$(id).addEventListener('input',()=>invalidate('条件が変わりました。もう一度作成してください。')));
+-  document.querySelectorAll('[data-kb]').forEach(b=>b.addEventListener('click',()=>{$('maxKB').value=b.dataset.kb;invalidate('容量の上限を変更しました。もう一度作成してください。');}));
+-  $('run').addEventListener('click',async()=>{
+-    invalidate();if(!image||!$('agree').checked)return;
+-    const token=version;controller=new AbortController();const signal=controller.signal;
+-    $('run').disabled=true;$('cancel').disabled=false;
+-    const canvas=document.createElement('canvas');
+-    // A separate bitmap avoids a reset closing the bitmap still used by an encoder.
+-    let work;
+-    try{
+-      const s=C.settings(raw());work=await createImageBitmap(inputBlob,{imageOrientation:'from-image'});
+-      if(signal.aborted||token!==version)return;
+-      const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw new Error('画像の作成領域を確保できませんでした。');
+-      const encoded=await C.compress(work.width,work.height,s,(w,h,q)=>{
+-        canvas.width=w;canvas.height=h;ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(work,0,0,w,h);
+-        return new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',q));
+-      },signal,p=>say('作成中… '+p.tries+'回目 / '+p.width+' × '+p.height+'px / '+p.bytes.toLocaleString('ja-JP')+'バイト'));
+-      if(token!==version)return;
+-      const actual=C.inspect(await encoded.blob.arrayBuffer());
+-      if(token!==version)return;
+-      if(actual.type!=='image/jpeg'||!C.fits(encoded.blob.size,actual.width,actual.height,s))throw new Error('出力の再確認で条件不一致を検出しました。保存はできません。');
+-      result=encoded.blob;$('output').src=url(result);$('after').hidden=false;
+-      $('output-info').textContent=result.size.toLocaleString('ja-JP')+'バイト（'+(result.size/1000).toFixed(1)+'KB） / '+actual.width+' × '+actual.height+'px / '+encoded.tries+'回試行';
+-      say('入力した数値条件を満たすJPEGを作成しました。見た目を確認してから保存してください。');
+-    }catch(e){if(token===version){noDownload();say(e.message,true);}}
+-    finally{work?.close();canvas.width=canvas.height=1;if(token===version){controller=null;$('run').disabled=!image||!$('agree').checked;$('cancel').disabled=true;}}
+-  });
+-  $('review').addEventListener('change',()=>{
+-    const a=$('download'),enabled=!!result&&$('review').checked;
+-    a.classList.toggle('disabled',!enabled);a.setAttribute('aria-disabled',String(!enabled));a.tabIndex=enabled?0:-1;
+-    if(enabled){a.href=$('output').src;a.download='image-fit.jpg';}else a.removeAttribute('href');
+-  });
+-  $('download').addEventListener('click',e=>{if(!result||!$('review').checked)e.preventDefault();});
+-  $('cancel').addEventListener('click',()=>invalidate('処理を中止しました。古い結果は保存できません。'));
+-  $('clear').addEventListener('click',()=>{invalidate();closeInput();$('file').value='';$('agree').checked=false;$('run').disabled=true;say('画像と結果をクリアしました。');});
+-  $('sample').addEventListener('click',async()=>{
+-    invalidate();const token=version;const c=document.createElement('canvas');c.width=1200;c.height=800;const ctx=c.getContext('2d');
+-    ctx.fillStyle='#e9f2df';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#17674e';ctx.fillRect(80,80,1040,640);ctx.fillStyle='#fff';ctx.font='bold 64px sans-serif';ctx.fillText('SAMPLE 1200 × 800',130,250);ctx.font='32px sans-serif';ctx.fillText('Check text, colors and edges.',130,350);
+-    const b=await new Promise(resolve=>c.toBlob(resolve,'image/png'));c.width=c.height=1;if(token===version&&b){$('file').value='';load(b);}
+-  });
+-  for(const id of ['original','output']){
+-    const open=()=>{const src=$(id).getAttribute('src');if(src)window.open(src,'_blank','noopener,noreferrer');};
+-    $(id).addEventListener('click',open);
+-    $(id).addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+-  }
+-  window.addEventListener('pagehide',()=>{controller?.abort();image?.close();revoke();});
+-})();
+-
+--- a/site/tools/image-fit/core.js
++++ /dev/null
+@@ -1,87 +0,0 @@
+-(function (root, factory) {
+-  const api = factory();
+-  if (typeof module === 'object' && module.exports) module.exports = api;
+-  else root.ImageFit = api;
+-})(typeof globalThis === 'object' ? globalThis : this, function () {
+-  'use strict';
+-  const MAX_BYTES = 15 * 1024 * 1024, MAX_PIXELS = 20000000, MAX_SIDE = 12000;
+-  function checkDimensions(width, height) {
+-    if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 || width > MAX_SIDE || height > MAX_SIDE || width * height > MAX_PIXELS) throw new Error('画像は2,000万画素以下・各辺12,000px以下にしてください。');
+-    return { width, height };
+-  }
+-  function inspect(buffer) {
+-    const b = new Uint8Array(buffer), v = new DataView(buffer);
+-    if (!b.length || b.length > MAX_BYTES) throw new Error('画像は15MiB以下にしてください。');
+-    const png = [137,80,78,71,13,10,26,10].every((x,i) => b[i] === x);
+-    if (png) {
+-      if (b.length < 33 || v.getUint32(8) !== 13 || String.fromCharCode(...b.slice(12,16)) !== 'IHDR') throw new Error('PNGのヘッダーを読み取れません。');
+-      const dim = checkDimensions(v.getUint32(16), v.getUint32(20));
+-      let pos = 8, ended = false;
+-      while (pos + 12 <= b.length) {
+-        const len = v.getUint32(pos), kind = String.fromCharCode(...b.slice(pos + 4,pos + 8));
+-        if (pos + len + 12 > b.length) throw new Error('PNGが途中で切れています。');
+-        if (kind === 'acTL') throw new Error('アニメーションPNGには対応していません。');
+-        pos += len + 12;
+-        if (kind === 'IEND') { ended = true; break; }
+-      }
+-      if (!ended) throw new Error('PNGの終端を読み取れません。');
+-      return { type:'image/png', ...dim };
+-    }
+-    if (b[0] !== 255 || b[1] !== 216) throw new Error('JPEG・静止PNGを選んでください。HEIC・GIF・WebP・SVG・PDFは対象外です。');
+-    let pos = 2;
+-    while (pos < b.length) {
+-      if (b[pos++] !== 255) throw new Error('JPEGの構造を読み取れません。');
+-      while (b[pos] === 255) pos++;
+-      const marker = b[pos++];
+-      if (marker === 217 || marker === 218) break;
+-      if (marker === 1 || (marker >= 208 && marker <= 215)) continue;
+-      if (pos + 2 > b.length) break;
+-      const len = v.getUint16(pos);
+-      if (len < 2 || pos + len > b.length) throw new Error('JPEGが途中で切れています。');
+-      if ([192,193,194,195,197,198,199,201,202,203,205,206,207].includes(marker)) {
+-        if (len < 8) throw new Error('JPEGの寸法を読み取れません。');
+-        return { type:'image/jpeg', ...checkDimensions(v.getUint16(pos+5),v.getUint16(pos+3)) };
+-      }
+-      pos += len;
+-    }
+-    throw new Error('JPEGの寸法を読み取れません。');
+-  }
+-  function settings(raw) {
+-    const n = Object.fromEntries(['minKB','maxKB','minW','minH'].map(k => [k,Number(raw[k])]));
+-    if (Object.values(n).some(x => !Number.isFinite(x))) throw new Error('条件を数値で入力してください。');
+-    if (n.minKB < 0 || n.maxKB < 1 || n.maxKB > 15000 || n.minKB > n.maxKB) throw new Error('容量は上限1〜15,000KB、下限0〜上限の範囲で指定してください。');
+-    if (![n.minW,n.minH].every(x=>Number.isInteger(x)&&x>=0&&x<=MAX_SIDE)) throw new Error('最小寸法は0〜12,000pxの整数で指定してください。');
+-    return {minBytes:Math.ceil(n.minKB*1000),maxBytes:Math.floor(n.maxKB*1000),minW:n.minW,minH:n.minH,resize:raw.resize === true};
+-  }
+-  function fits(bytes,width,height,s) { return bytes>=s.minBytes&&bytes<=s.maxBytes&&width>=s.minW&&height>=s.minH; }
+-  function dimensions(width,height,s) {
+-    checkDimensions(width,height);
+-    if (width<s.minW || height<s.minH) throw new Error('元画像が最小寸法を下回っています。拡大で見かけの条件を合わせず、別の元画像を選んでください。');
+-    const out=[{width,height}];
+-    if (!s.resize) return out;
+-    const floor = Math.max(s.minW/width,s.minH/height,Math.min(1,64/width),Math.min(1,64/height));
+-    for (let scale=.8; scale>floor; scale*=.8) {
+-      const w=Math.max(s.minW,Math.floor(width*scale)),h=Math.max(s.minH,Math.floor(height*scale));
+-      if (w!==out.at(-1).width || h!==out.at(-1).height) out.push({width:w,height:h});
+-    }
+-    const last={width:Math.max(1,Math.ceil(width*floor)),height:Math.max(1,Math.ceil(height*floor))};
+-    if (last.width!==out.at(-1).width || last.height!==out.at(-1).height) out.push(last);
+-    return out;
+-  }
+-  function abort(signal) { if (signal?.aborted) throw new Error('処理を中止しました。'); }
+-  async function compress(width,height,s,encode,signal,onStep=()=>{}) {
+-    let tries=0, smallest=Infinity;
+-    for (const d of dimensions(width,height,s)) {
+-      for (const quality of [.95,.88,.8,.7,.6,.5,.4,.3,.2]) {
+-        abort(signal);
+-        const blob=await encode(d.width,d.height,quality);
+-        abort(signal);
+-        if (!blob || blob.type!=='image/jpeg' || blob.size<1) throw new Error('このブラウザでJPEGを書き出せませんでした。');
+-        tries++;smallest=Math.min(smallest,blob.size);onStep({tries,...d,bytes:blob.size});
+-        if (fits(blob.size,d.width,d.height,s)) return {blob,...d,quality,tries};
+-      }
+-    }
+-    throw new Error('この探索範囲では条件に合うJPEGを作れませんでした。'+(s.resize?'':'「縮小を許可」を選ぶか、')+'容量・最小寸法を見直してください。最小の試行は'+smallest.toLocaleString('ja-JP')+'バイトでした。');
+-  }
+-  return {MAX_BYTES,MAX_PIXELS,inspect,checkDimensions,settings,fits,dimensions,compress};
+-});
+--- a/site/tools/image-fit/style.css
++++ /dev/null
+@@ -1,5 +0,0 @@
+-:root{color-scheme:light;--ink:#15372f;--muted:#577068;--line:#d7e2db;--green:#17674e;--pale:#edf5ee}*{box-sizing:border-box}body{margin:0;background:#f8f9f5;color:var(--ink);font:16px/1.75 system-ui,-apple-system,"Noto Sans JP",sans-serif}header,main,footer{max-width:1160px;margin:auto}header{display:flex;justify-content:space-between;align-items:center;padding:24px}a{color:var(--green)}.brand{font-weight:750;text-decoration:none}.brand span{font-size:11px;background:#e8eddf;padding:4px 8px;border-radius:20px;margin-left:8px}header>a:last-child{font-size:14px}main{padding:0 24px}.intro{padding:44px 0 36px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--green)}h1{font-size:clamp(29px,4vw,45px);line-height:1.45;letter-spacing:.02em;margin:12px 0 18px}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin-top:24px}.intro>p:not(.eyebrow){color:var(--muted)}.pills{display:flex;gap:8px;flex-wrap:wrap;font-size:12px}.pills span{border:1px solid var(--line);padding:3px 11px;border-radius:30px}.workspace{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 4px 20px #21472c04}.step{display:inline-grid;place-items:center;border-radius:50%;width:27px;height:27px;background:var(--pale);font-size:13px;margin-right:8px}.hint,small{font-size:12px;color:var(--muted);line-height:1.7}.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.fields label{font-size:13px;font-weight:600}.unit{display:block;font-weight:400;font-size:11px;color:var(--muted)}input[type=number]{display:block;width:100%;font:inherit;font-size:20px;color:var(--ink);background:#fafcf9;border:1px solid #b7cbbd;border-radius:7px;padding:8px 12px;margin-top:6px}button,.primary{font:inherit;font-size:13px;border:1px solid var(--line);background:white;border-radius:8px;padding:10px 13px;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block}button:hover:not(:disabled){background:var(--pale)}button:disabled{opacity:.45;cursor:default}.presets{display:flex;gap:6px;flex-wrap:wrap}.presets button{padding:6px 10px;font-size:12px}.check{display:flex;align-items:flex-start;gap:9px;font-size:12px;margin:16px 0;cursor:pointer}.check input{margin-top:5px;accent-color:var(--green);min-width:16px;min-height:16px}hr{border:0;border-top:1px solid var(--line);margin:26px 0}.filebox{display:block;padding:17px;background:var(--pale);border:1px dashed #7ca28b;border-radius:10px;font-size:13px;font-weight:600}input[type=file]{display:block;max-width:100%;font-size:12px;margin-top:12px}.secondary{margin:5px 0}.conversion{background:#f8f6ee;padding:12px;border-radius:8px}.actions{display:flex;gap:8px;flex-wrap:wrap}.primary{background:var(--green);color:white;border-color:var(--green);font-weight:600}.primary:hover:not(:disabled){background:#104d3a}.status{font-size:13px;margin-bottom:0;overflow-wrap:anywhere}.status.error{color:#a12b2b}.empty{min-height:300px;background:#f5f8f3;border-radius:12px;display:grid;place-content:center;text-align:center;color:var(--muted);padding:20px}.empty>span{font-size:44px;color:#a6bcab}.empty p{margin:5px}.imageframe{max-height:380px;overflow:auto;background:repeating-conic-gradient(#eef0eb 0% 25%,#fff 0% 50%) 0/20px 20px;border:1px solid var(--line);border-radius:10px;text-align:center}.imageframe img{display:block;max-width:100%;height:auto;margin:auto;cursor:zoom-in}.badge{display:block;width:fit-content;font-size:11px;background:#e6f3e7;color:#216136;border-radius:5px;padding:4px 8px;margin-top:7px}#input-info,#output-info{font-size:12px;overflow-wrap:anywhere}.disabled{pointer-events:none;opacity:.4}.guide{padding:70px 0 30px}.guide>h2{font-size:26px}.guidegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:35px}.guidegrid p,details p{color:var(--muted);font-size:14px}details{border-top:1px solid var(--line);padding:16px 0}summary{cursor:pointer;font-size:14px}footer{font-size:11px;color:var(--muted);padding:35px 24px;border-top:1px solid var(--line)}[hidden]{display:none!important}:focus-visible{outline:3px solid #d1a142;outline-offset:3px}@media(max-width:740px){header{padding:17px}.intro{padding:26px 0}.workspace{grid-template-columns:1fr}.panel{padding:20px}main{padding:0 16px}.guidegrid{grid-template-columns:1fr;gap:0}.guide>h2{font-size:23px}.guide{padding-top:40px}h1{font-size:29px}.preview{min-width:0}.fields{gap:12px}.brand{font-size:14px}}
+-
+-/* Narrow-screen controls: contain intrinsic input widths and keep targets usable. */
+-.workspace>*{min-width:0}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.fields input{min-width:0}button,.primary{min-height:44px}.presets button{min-height:44px}header nav{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}header{gap:12px;flex-wrap:wrap}
+-@media(max-width:420px){.fields{grid-template-columns:1fr}.panel{padding:16px}.presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.presets button{min-width:0;width:100%}.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.actions .primary{grid-column:1/-1}.actions button{min-width:0}.check{overflow-wrap:anywhere}.brand{overflow-wrap:anywhere}}

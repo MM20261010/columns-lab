@@ -1,3 +1,19 @@
+## 2026-11-01：画像サイズ合わせ公開準備完了（条件付き公開承認待ち）
+
+開始PR9 head9fa85f2b5bfe5da01ae017ee53bfa542a820497a。既存codec/実保存/再読込QAを再利用し、主要画像処理core/appは無変更。公開用 `site/tools/image-fit/` 4ファイル、トップ/CSVの往復導線、プライバシー画像説明、5URL sitemap、画像パス限定CSPをPR9に実装。予定URL https://columns-lab.pages.dev/tools/image-fit/ 。公開版index/canonicalを設定し、実験版のnoindex/connect-src noneは維持。既存Cloudflare RUMの自動注入のみを使い、独自追跡/画像・ファイル名イベントなし。
+
+画像CSSだけ狭幅入力1列/44px操作領域/grid最小幅対策/折返しを追加。共通CSS/CSV処理/ガイド資産はhash不変。Node48単位すべて合格（画像34＋公開設定8＋既存CSV/ガイド6ファイルスイート）、ガイド内16項目を重複加算しない。XML parser5URL合格。公開site9ファイルだけの逆差分を作成しgit apply --check＋隔離適用で変更前site完全一致。
+
+今回実Chromeで既存公開トップのCloudflare beacon注入と設定属性を確認（1363×936、画像候補を開いたわけではない）。新候補の実キー/狭幅320・360・390px/Android/読み上げ/実RUM配送は未検証。既存private QA version1を無断更新せず、標準preview再試行/新ホスト/認証なし。原寸キー操作は模擬UI合格で、実ブラウザ成功とはしない。
+
+判断は **🟠 条件付き公開承認待ち**。主要操作は既存実Chrome QA＋同一core/app、影響する自動検査は全合格、公開設定実装済み、重大既知不具合なし。Android未検証だけを無条件禁止理由にせず、軽微なUI/環境制限を明示した限定公開の判断へ進む。本人が条件を受け入れない場合は未公開維持。
+
+具体的な承認範囲/公開手順/残存リスク/停止復旧は docs/image-fit-publication-ready-2026-11-01.md。結果は experiments/image-fit/qa/PUBLICATION-PREP-2026-11-01.json。逆差分は docs/image-fit-publication-rollback.patch（保存のみ）。承認後は固定head/base照合→Draft解除→スキップなし通常merge commit→Pages本番success照合→合成スモーク。緊急復旧の本番適用も別途明示承認が必要。
+
+今回PR9内保存だけ。main5f03a4d/公開257c7ec/PDFbranchce6a3aa/Cloudflare設定/既存QA配信/観測タスクは無変更。GraphQLなし、追加費用0円。保存後に差分/内容一致/Pages skipを確認し最終headを報告する。本人への反復確認は不要、次は限定公開の承認1件。
+
+---
+
 ## 2026-11-01：画像サイズ合わせ公開前最終監査（公開保留）
 
 開始PR9 head fc479efe14f80a71d4e1b5a60b2c30baf2e87a15、Draft/未マージ。前回実Chrome JPEG生成/EXIF/透過/容量/実保存/再読込の証拠を再利用。b2480a59〜fc479efeは文書/結果更新のみで製品ソース不変をcompare確認。JPEG生成・保存・再読込を繰返していない。
