@@ -1,0 +1,88 @@
+{
+  "checked_on": "2026-11-01",
+  "runtime": "v24.22.1",
+  "environment": "Node on Linux; no real browser",
+  "command": "node --test experiments/pdf-text/tests/*.test.cjs",
+  "final_test_run": {
+    "exit_code": 0,
+    "total": 45,
+    "pass": 45,
+    "fail": 0,
+    "skipped": 0,
+    "duration_ms": 125.346551
+  },
+  "breakdown": {
+    "fixed_cases": 25,
+    "core_limits_and_long_text": 5,
+    "dom_clipboard_double_state_tests": 11,
+    "static_source_checks": 4
+  },
+  "exact_input_integrity": "All 25 fixtures reconstruct output using only newline replacements of empty string or one ASCII space; retained newline forms unchanged; idempotence checked.",
+  "browser": {
+    "status": "not_run",
+    "reason": "sites-previewd mailbox is unavailable at /tmp/sites-previewd/requests: No such file or directory (os error 2)",
+    "status_and_start_attempted": true,
+    "native_clipboard_verified": false,
+    "real_mobile_width_verified": false,
+    "android_device_verified": false,
+    "network_capture_verified": false,
+    "no_hosted_fallback": true
+  },
+  "local_copy_state_test_scope": "Clipboard writeText is a stub. Success, rejection, absent API, edit/reset during pending call covered. Not native clipboard proof.",
+  "competitor_comparison": [
+    {
+      "fixture_id": "jp-particle",
+      "original": "本日\nは晴れ。\n\n次の段落。",
+      "prototype_core_output": "本日は晴れ。\n\n次の段落。",
+      "expected": "本日は晴れ。\n\n次の段落。",
+      "competitor": "kei-tool.com/replace",
+      "competitor_observed_on": "2026-11-01 (previous research)",
+      "competitor_output": "今日は晴れ。\n\n次の段落。",
+      "input_units": 1,
+      "competitor_extra_setting_changes": 1,
+      "prototype_intended_extra_settings": 0,
+      "prototype_browser_reverified": false
+    },
+    {
+      "fixture_id": "competitor-quote",
+      "original": "本日\nは晴れ。\n\n> 引用として残したい文章。\n・項目A\n・項目B",
+      "prototype_core_output": "本日は晴れ。\n\n> 引用として残したい文章。\n・項目A\n・項目B",
+      "expected": "本日は晴れ。\n\n> 引用として残したい文章。\n・項目A\n・項目B",
+      "competitor": "temototool.com/tools/linebreak-cleaner/",
+      "competitor_observed_on": "2026-11-01 (previous research)",
+      "competitor_output_evidence": "AX showed > quote marker removed; exact clipboard bytes unverified after full-screen ad",
+      "input_units": 1,
+      "prototype_browser_reverified": false,
+      "competitor_copy_verified": false
+    }
+  ],
+  "safety": {
+    "dependencies_added": 0,
+    "telemetry_added": false,
+    "content_network_apis_in_source": false,
+    "browser_network_observation": false,
+    "production_changed": false,
+    "pr9_changed": false,
+    "task_changed": false,
+    "graphql_used": false
+  },
+  "limitations": [
+    "Real browser acceptance blocked by preview infrastructure; local tests not substitute",
+    "Meaning of unmarked headings not guaranteed",
+    "Numeric/address/quoted/indented lines deliberately left unchanged",
+    "Word splitting/hyphenation/OCR unsupported",
+    "Clipboard can retain copied text after page reset",
+    "No new search demand measurements; acquisition unproven"
+  ],
+  "source_sha256": {
+    "site/core.js": "90468f2f91ccbd3b69243c0c07cf9515fc93237320b751ba5f6afeb4ce32ffff",
+    "site/app.js": "fcc4034a456973b43d4746f2d82d9ada5f7248133fc7b2f520483681236104ff",
+    "site/index.html": "166724edb842524a504d02677fe66665e2f7344bb6383050f58139963e07670b",
+    "site/style.css": "03efb39c1fd3fa5c9762c07dcda533bac30bde3e705d5af3cb5c2465f2c3ebc9",
+    "site/_headers": "8f5e6c41d521e52777dedf5b2eb6d7e76d61fc697fa14a27c8951203cec6e2b6",
+    "tests/cases.json": "3ba3ecdff2e4212cd331d1b37071dd288ddfc0534afd3c1af2110366c87984c6",
+    "tests/core.test.cjs": "d66ea25ae6a6dbccea58d58bb7c07992d778f9beededeb3453be57a832862f4e",
+    "tests/app.test.cjs": "4a001f5e7003c9d4aaf264299cf660a3395cab61fb5cf3ea672eedcb5441932a",
+    "tests/static.test.cjs": "44730c06e311ee5537c96ddb2a4f62c50fc645a6c1cf51d4a0efe9ab3da5973a"
+  }
+}
