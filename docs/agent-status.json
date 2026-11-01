@@ -1,14 +1,14 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-14-pages-watch-path-A-09",
-  "updated_at": "2026-10-14T05:19:46.554Z",
-  "status": "awaiting_owner_operation",
-  "status_label": "🟡 承認待ち",
-  "base_commit": "5d963da7a40ba9f4bf91920d138405eff6e5cf9b",
-  "record_commit_source": "latest Git history for this file; verify current main before acting",
+  "run_id": "2026-11-01-desktop-save-reload-completed",
+  "updated_at": "2026-11-01",
+  "status": "desktop_acceptance_completed_publication_on_hold",
+  "status_label": "🟢 残るデスクトップ保存/再読込・条件変更検証完了／公開保留",
+  "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
+  "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
   "facts": {
-    "production_commit": "21a067786dbbf27ebcec7f3c858d605a97b7c828",
+    "production_commit": "257c7ec730634accbe545eb33984753b47ba8750",
     "production_stage": "success",
     "preview_deployment_setting": "none",
     "pr_6": "merged",
@@ -37,41 +37,44 @@
     "payment_account_received_yen": null
   },
   "completed": [
-    "read current main/Pages production/preview/build/source config",
-    "read fixed Git tree and all13 site files; site-only pattern compatible with current static build",
-    "record old settings/rollback scope/official path matching exceptions",
-    "existing Cloudflare UI sign-in landing observed; no auth started"
+    "fixed-main source/docs read and 31 Git blob checks",
+    "existing observation reports inherited with missingness and provenance",
+    "3 candidates compared; image range/dimension tool selected",
+    "local implementation and 31 new tests passed",
+    "existing 6 test files and embedded guide16 passed",
+    "approval patch and outreach draft prepared",
+    "Owner-approved16 blobs saved and verified; Draft PR9 created; commit_message deployment skip and main/production unchanged verified",
+    "4 candidates compared against primary sources; no search-volume estimates invented",
+    "23-check browser acceptance harness prepared, NOT browser-executed",
+    "10 synthetic fixture bytes/hash matched; 8 EXIF corner expectations independently verified; JS syntax passed",
+    "Search entry copy and bounded acquisition/stop criteria prepared",
+    "Existing PR9 QA source reused and deployed once to a separate owner-private HTTPS QA site; deployment succeeded",
+    "8 QA/product source files matched exact bytes; public sharing not enabled",
+    "Browser reached private-site sign-in; fresh authentication request rejected by automatic review; no credentials submitted",
+    "Schedule ICS alternative feasibility core generated a synthetic 386-byte ICS with four occurrences; 12 Node tests passed",
+    "Owner-approved secure sign-in reached existing private QA landing",
+    "Real Chrome codec23 checks passed, including EXIF1-8/transparency/color/bounds/refusals",
+    "Product UI sample generated34393-byte1200x800JPEG; consent/review guards observed; Browser Download API returned saved path",
+    "Remaining desktop save/reload acceptance passed on existing private QA site, with independently decoded34393-byte JPEG and matching saved-file copy hashes",
+    "Product UI exact35854-byte bounds, refusal cases,9401-byte960x640resize, condition invalidation and reset observed"
   ],
   "candidate": {
-    "name": "guide-only AdSense display advertising",
-    "stage": "conditional_preparation_no_registration_no_ads",
+    "name": "image byte range and minimum dimensions",
+    "stage": "desktop_qa_complete_prepare_limited_publication_proposal",
+    "third_party_use": "unknown",
     "launch_approval_ready": false,
-    "third_party_use": "unknown"
+    "decision": "image feature/public launch on hold; schedule ICS is provisional alternative feasibility core, demand unknown"
   },
-  "approval_requests": [
-    {
-      "id": "pages-watch-A-owner-existing-ui",
-      "type": "owner_existing_session_setting_operation",
-      "already_approved": true,
-      "purpose": "apply Include site/* Exclude empty; Work UI not authenticated",
-      "new_permissions_required": false,
-      "new_auth_requested": false,
-      "daily_manual_work": false,
-      "minimum_action": "one save in existing logged-in owner Cloudflare UI; report saved, then MCP verifies"
-    }
-  ],
+  "approval_requests": [],
   "risks": [
-    "approved site-only filter not yet applied because Work UI lacks existing login",
-    "unexpected4 docs-only production redeploys: skip message not persisted; guard and incident records updated",
-    "tool/guide actual indexing and sitemap report processing unconfirmed",
-    "past Google404 cause unknown despite10/14 successful live test",
-    "RUM1 may be self; partial window and not demand evidence",
-    "AdSense individual review/eligibility/privacy/notification and usable Work reader unverified"
+    "demand/search volume/user adoption unknown; competitors strong",
+    "real-browser encoder/orientation/transparency/color/download/mobile QA not run",
+    "separate-host measurement and publication diff still need preparation and explicit approval",
+    "GSC sitemap processing and tool/guide indexing remain unconfirmed",
+    "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "owner one authorized save in existing authenticated Cloudflare UI",
-    "after owner save MCP GET values and deployment/preview; no test commit",
-    "resume safe documentation operations only with final skip verification until path filter applied"
+    "Prepare one fixed limited-publication diff and measurement plan; verify noindex/CSP/RUM compatibility without publishing or redoing market/auth/observation research"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -80,13 +83,22 @@
     "docs/analytics-rum-query.graphql",
     "docs/measurement.md",
     "docs/kpi.csv",
-    "docs/google-reach-investigation-2026-10-13.md"
+    "docs/google-reach-investigation-2026-10-13.md",
+    "docs/image-fit-validation-and-launch-2026-10-30.md",
+    "experiments/image-fit/qa/index.html",
+    "experiments/schedule-ics/README.md",
+    "experiments/schedule-ics/core.test.cjs",
+    "experiments/schedule-ics/synthetic-example.ics",
+    "experiments/image-fit/qa/RESULTS-2026-10-31.json",
+    "docs/monthly-2026-11.md",
+    "experiments/image-fit/qa/RESULTS-2026-11-01.json"
   ],
   "automation": {
     "status_file_only": true,
     "work_auto_start_implemented": false,
     "notification_delivery_tested": false,
-    "existing_monitor_changes": false
+    "existing_monitor_changes": false,
+    "development_is_separate_from_observation": true
   },
   "closed_approval_requests": [
     {
@@ -100,6 +112,10 @@
     {
       "id": "gsc-guide-sitemap-one-batch",
       "resolution": "owner10/14 reports both live fetches successful; no further owner repeat check needed now"
+    },
+    {
+      "id": "github-image-fit-pilot-save-pr",
+      "resolution": "Owner explicitly approved exactly16 file changes on dedicated branch and one Draft PR; implementation saved and verified at093477dc, Draft PR9 created; no merge or production approval."
     }
   ],
   "revenue_policy": {
@@ -231,26 +247,25 @@
     "public_http_xml_canonical_checked": true,
     "measurement_status_corrected": true,
     "numeric_kpi_blank_preserved": true,
-    "records_save_status": "verify four documentation blobs/actual skip/current production before final",
+    "records_save_status": "REST and GraphQL recovery directly verified; same known self-QA control re-read after cooldown; final record commit supplied by Git history.",
     "owner_gsc_report_recorded": true,
-    "http_matrix_verified": true
+    "http_matrix_verified": true,
+    "production_commit_unchanged": "257c7ec730634accbe545eb33984753b47ba8750"
   },
   "prototype": {
-    "html_sha256": "0d75f69244b42b80e1d2b8c6e5cd305562b362be794ff1461b19337c98ce9db1",
-    "test_sha256": "770644a027ddef0e05b926820d43dc446b11751316a1b13af8142832ddcd2350",
-    "zip_sha256": "905e9b5ad2d8dccf45a9825e9c836f4193325440a1c1ca0ef2fb4bfd1515755d",
-    "tests_passed": 18,
-    "browser_qa": "unverified_file_protocol_blocked",
+    "name": "image-fit",
+    "tests_passed": 31,
+    "browser_qa": "blocked_not_verified",
     "external_dependencies": false,
     "external_communication_code": false,
-    "github_source_saved": false,
-    "draft_pr": null
+    "github_source_saved": true,
+    "draft_pr": 9
   },
   "experiment": {
-    "name": "unchanged CSV natural-arrival observation",
-    "status": "baseline_collected_future_window_pending",
-    "start_inclusive": "2026-10-13T10:40:00Z",
-    "end_exclusive": "2026-10-20T10:40:00Z",
+    "name": "image-fit isolated acquisition hypothesis",
+    "status": "local_only_not_started",
+    "start_inclusive": null,
+    "end_exclusive": null,
     "automatic_work_start": false,
     "collection": "when Work next invoked; bounded reads only",
     "extra_window_maximum": 1,
@@ -302,7 +317,7 @@
     "tool_index_request": "success_owner_report_2026-10-13T20:44+09:00",
     "guide_google_live_fetch": "success_owner_report_2026-10-14T13:34+09:00",
     "guide_browser": "Fennec_body_visible_owner_report",
-    "sitemap_gsc": "could_not_read_report_persists_owner_report_2026-10-14",
+    "sitemap_gsc": "could_not_read_owner_report_2026-10-22; later resubmission/success not confirmed",
     "sitemap_last_read": "2026-10-12_owner_report",
     "public_http_matrix": {
       "200": 16,
@@ -318,12 +333,10 @@
     "production_fix_required": "not established",
     "gsc_direct_access": "previous login landing; not retried",
     "search_performance_owner_observation": {
-      "observed_date_jst": "2026-10-13",
-      "impressions": 0,
+      "observed_date_jst": "2026-10-22",
+      "impressions": 9,
       "clicks": 0,
-      "aggregation_period": null,
-      "filters": null,
-      "last_data_date": null,
+      "aggregation_period": "selected 3 months; exact date boundaries unknown",
       "month_total": false
     },
     "guide_index_request": "executed_owner_report_2026-10-14_exact_time_unknown",
@@ -347,7 +360,7 @@
     "type": "unapproved_doc_only_production_redeploy",
     "deployment_count": 4,
     "original_production": "bdd91e27e2092beb74508847f74ab8221cea2e42",
-    "current_production": "21a067786dbbf27ebcec7f3c858d605a97b7c828",
+    "current_production": "257c7ec730634accbe545eb33984753b47ba8750",
     "site_diff": false,
     "compare_changed_files": 13,
     "preview": "none",
@@ -361,7 +374,7 @@
   },
   "pages_watch": {
     "approved_plan": "A",
-    "applied": false,
+    "applied": true,
     "before": {
       "path_includes": [
         "*"
@@ -378,7 +391,7 @@
     },
     "actual": {
       "path_includes": [
-        "*"
+        "site/*"
       ],
       "path_excludes": []
     },
@@ -395,7 +408,119 @@
       "3000+ changed files",
       "20+ commits in push"
     ],
-    "setting_saved_verified": false
+    "setting_saved_verified": true,
+    "verified_by": "Cloudflare project GET on 2026-10-30; not changed in this run"
+  },
+  "current_run": {
+    "github_saved": true,
+    "pr_created": true,
+    "production_changed": false,
+    "new_site_registered": false,
+    "new_tasks_created": false,
+    "existing_tasks_modified": false,
+    "new_tool_tests_passed": 31,
+    "browser_qa": "blocked: preview daemon absent; file URL policy rejects local HTML",
+    "personal_images_used": false,
+    "extra_spending_yen": 0,
+    "selected_tool": "local JPEG byte-range and minimum-dimension fitter",
+    "deployment_method": "separate static-site candidate, unregistered",
+    "evidence": "docs/november-development-2026-10-30.md",
+    "owner_approval": {
+      "scope": "16 files on dedicated branch and one Draft PR only",
+      "main_change": false,
+      "production_change": false,
+      "auto_merge": false,
+      "auto_deploy": false,
+      "next_priority": "real-browser JPEG generation and Android rendering verification"
+    },
+    "pr_number": 9,
+    "pr_url": "https://github.com/MM20261010/columns-lab/pull/9",
+    "source_commit": "093477dc03acab7898df999c609ea8c9a122d712",
+    "saved_file_blobs_verified": 16,
+    "draft": true,
+    "auto_merge": false,
+    "deployment_skipped": true,
+    "skip_reason": "commit_message",
+    "main_unchanged": true,
+    "next_priority": "Real-browser JPEG generation and Android rendering verification",
+    "purpose": "separate task execution/result/delivery from RUM emptiness and verify PR9 in browser",
+    "automation_changed": false,
+    "cloudflare_connection_restored": true,
+    "repeated_reauthentication": false,
+    "cloudflare_graphql_restored": true
+  },
+  "prior_state_snapshot": {
+    "updated_at": "2026-10-14T05:19:46.554Z",
+    "run_id": "2026-10-14-pages-watch-path-A-09",
+    "facts": {
+      "production_commit": "257c7ec730634accbe545eb33984753b47ba8750",
+      "production_stage": "success",
+      "preview_deployment_setting": "none",
+      "pr_6": "merged",
+      "prs_2_to_5": "draft_unmerged",
+      "new_accounts_or_contracts": false,
+      "new_permissions_or_secrets": false,
+      "site_code_changed": false,
+      "additional_spending_yen": 0
+    },
+    "approval_requests": [
+      {
+        "id": "pages-watch-A-owner-existing-ui",
+        "type": "owner_existing_session_setting_operation",
+        "already_approved": true,
+        "purpose": "apply Include site/* Exclude empty; Work UI not authenticated",
+        "new_permissions_required": false,
+        "new_auth_requested": false,
+        "daily_manual_work": false,
+        "minimum_action": "one save in existing logged-in owner Cloudflare UI; report saved, then MCP verifies"
+      }
+    ]
+  },
+  "metrics_note": "No monthly confirmed values newly fetched; latest GSC owner observation is a 3-month range, not monthly.",
+  "observation_diagnosis": {
+    "task_enabled": true,
+    "timing_mode": "condition_watch",
+    "latest_run_date_jst": "2026-10-29",
+    "recorded_status": "completed",
+    "body_generated": true,
+    "delivery_status": "unknown",
+    "full_history_available": false,
+    "current_prompt_already_alerts_on_missingness": true,
+    "prompt_updated_after_last_run": true,
+    "current_rum_control": "positive:count1/visits1/sampleInterval1 after known self-QA",
+    "self_qa_start_utc": "2026-10-30T06:05:35.783Z",
+    "self_qa_end_utc": "2026-10-30T06:05:55.585Z",
+    "self_qa_exclude_from_acquisition": true,
+    "initial_24h_72h_host_account_path_site_filters": "all empty HTTP200/errors=[] before selfQA",
+    "historical_cause": "unconfirmed",
+    "metadata_list_read": "restored after owner reauthentication; direct GET HTTP200"
+  },
+  "cloudflare_recovery": {
+    "pages_get": "HTTP200",
+    "analytics_list_get": "HTTP200; previous scope error no longer reproduced",
+    "analytics_site_get": "HTTP200",
+    "host_matches": true,
+    "pages_analytics_identifiers_match_registration": true,
+    "graphql": "HTTP200/errors=[] after305+ seconds cooldown; known self-QA control count1 visits1 sampleInterval1",
+    "new_metrics": "known self-QA interval re-read only; no new acquisition measurement",
+    "work_specific_auth_failure": "not reproduced",
+    "old_reconnect_ui_cause": "unconfirmed",
+    "rate_limit_active_at_final_check": false,
+    "control_query_at_utc": "2026-10-30T06:23:22.047Z",
+    "control_must_not_be_added_to_prior_value": true
+  },
+  "qa_environment": {
+    "url": "https://columns-image-fit-qa-20261031.sharpmodel.chatgpt.site",
+    "version": 1,
+    "source_commit": "aa6dd4c3ff769ef7b3575fe180945cb2e22849cf",
+    "owner_private_deployment_succeeded": true,
+    "external_visitors": 0,
+    "browser_qa_checks_executed": 23,
+    "fresh_login": "existing session reused; no new authentication",
+    "recreate": false,
+    "codec_checks_passed": 23,
+    "product_ui_generation_and_browser_download": "passed",
+    "roundtrip": "actual saved JPEG re-upload/decoding passed; saved-file and synchronized-copy SHA256 match; initial in-memory Blob hash not independently exposed",
+    "remaining_desktop_ui": "passed"
   }
 }
-

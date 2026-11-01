@@ -1,0 +1,84 @@
+{
+  "date_jst": "2026-10-30",
+  "base": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
+  "node_version": "v24.22.1",
+  "commands": [
+    {
+      "cwd": "experiments/image-fit",
+      "command": "node --test tests/*.test.js",
+      "passed": 31,
+      "failed": 0,
+      "groups": {
+        "core": 18,
+        "privacy_static": 3,
+        "ui_mock_dom_canvas": 10
+      }
+    },
+    {
+      "cwd": "fixed-main snapshot",
+      "command": "node --test tests/*.test.js",
+      "passed_test_files": 6,
+      "failed": 0,
+      "guide_embedded_checks": 16
+    },
+    {
+      "command": "node --check site/app.js && node --check site/core.js",
+      "result": "pass"
+    }
+  ],
+  "html_static_checks": "ids/label targets/local assets passed",
+  "actual_browser_qa": {
+    "status": "planned_desktop_acceptance_passed",
+    "attempts": [
+      "managed preview daemon unavailable",
+      "installed Playwright browser executable absent",
+      "cloud Chrome file protocol rejected by URL policy; no bypass attempted",
+      "Owner-private HTTPS alternative deployed; blocked before authentication; no credentials entered, no bypass"
+    ],
+    "production_qa_is_separate": true,
+    "latest_attempt": "2026-11-01 existing session reused; actual saved JPEG re-upload and independent decode passed; product bounds/refusal/resize/invalidation/reset passed"
+  },
+  "not_verified": [
+    "Android real device",
+    "Mobile viewport/responsive behavior",
+    "ICC/HDR color reproduction",
+    "Other browsers",
+    "Memory peaks",
+    "Third-party demand/search volume",
+    "Initial in-memory Blob independently hashed against saved file; file hash instead verified across actual browser filesystem and synchronized copy"
+  ],
+  "provenance": "Existing31 Node tests remain simulated/static. New23 QA checks executed in real Chrome155/Linux. Product UI sample34393-byte1200x800JPEG generated and Browser Download API returned path after review consent. Remaining checks interrupted, not failed. 2026-11-01 remaining desktop acceptance completed; raw UI evidence and saved-file SHA256 in separate followup JSON. Android/ICC/HDR/etc remain unverified.",
+  "synthetic_fixture_preflight": {
+    "files": 10,
+    "passed": 10,
+    "includes": "EXIF orientations1-8, transparent PNG, undersized JPEG",
+    "scope": "actual input-file header parser only; no browser JPEG encoding"
+  },
+  "browser_acceptance_harness": {
+    "path": "qa/index.html",
+    "planned_checks": 23,
+    "checks_run_in_browser": 23,
+    "browser_status": "codec_checks_pass",
+    "fixture_source": "previous synthetic fixture bytes, not user data",
+    "fixture_hash_and_source_byte_matches": 10,
+    "independent_exif_corner_oracle_checks": 8,
+    "syntax_checked": [
+      "qa/runner.js",
+      "qa/fixtures.js"
+    ],
+    "manual_still_required": [
+      "product UI state/input/consent/reset",
+      "actual filesystem download/reselect SHA-256",
+      "Android real device",
+      "ICC/HDR and memory"
+    ],
+    "browser_passed": 23,
+    "browser_failed": 0,
+    "result_path": "qa/RESULTS-2026-10-31.json"
+  },
+  "desktop_followup": {
+    "result_path": "qa/RESULTS-2026-11-01.json",
+    "scope": "remaining UI/save/reload only; prior23 codec checks not repeated",
+    "product_changes_required": false
+  }
+}

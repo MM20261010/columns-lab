@@ -1,0 +1,199 @@
+{
+  "date_jst": "2026-10-31",
+  "tested_source_pr_head": "441cd138d2000065091be32db9a3d6546af8651f",
+  "qa_site_source_commit": "aa6dd4c3ff769ef7b3575fe180945cb2e22849cf",
+  "qa_site_version": 1,
+  "origin": "https://columns-image-fit-qa-20261031.sharpmodel.chatgpt.site",
+  "access": "owner-private",
+  "authorization": "Owner explicitly approved fresh secure browser sign-in; target QA landing rendered after authentication.",
+  "browser": "Chrome 155.0.0.0 / Linux x86_64",
+  "codec": {
+    "status": "codec_checks_pass",
+    "at_utc": "2026-10-31T03:29:25.746Z",
+    "at_jst": "2026-10-31 12:29:25",
+    "passed": 23,
+    "failed": 0,
+    "results": [
+      {
+        "name": "fixture hash: orientation-1.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-2.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-3.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-4.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-5.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-6.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-7.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: orientation-8.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: transparent.png",
+        "status": "pass"
+      },
+      {
+        "name": "fixture hash: undersized.jpg",
+        "status": "pass"
+      },
+      {
+        "name": "EXIF 1 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8779,
+          "width": 800,
+          "height": 600
+        }
+      },
+      {
+        "name": "EXIF 2 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8781,
+          "width": 800,
+          "height": 600
+        }
+      },
+      {
+        "name": "EXIF 3 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8814,
+          "width": 800,
+          "height": 600
+        }
+      },
+      {
+        "name": "EXIF 4 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8800,
+          "width": 800,
+          "height": 600
+        }
+      },
+      {
+        "name": "EXIF 5 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8761,
+          "width": 600,
+          "height": 800
+        }
+      },
+      {
+        "name": "EXIF 6 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8791,
+          "width": 600,
+          "height": 800
+        }
+      },
+      {
+        "name": "EXIF 7 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8787,
+          "width": 600,
+          "height": 800
+        }
+      },
+      {
+        "name": "EXIF 8 / JPEG / color corners",
+        "status": "pass",
+        "detail": {
+          "bytes": 8761,
+          "width": 600,
+          "height": 800
+        }
+      },
+      {
+        "name": "transparent -> white JPEG / red center",
+        "status": "pass",
+        "detail": {
+          "bytes": 6265
+        }
+      },
+      {
+        "name": "exact byte lower/upper inclusive",
+        "status": "pass",
+        "detail": {
+          "bytes": 8779
+        }
+      },
+      {
+        "name": "upper bound under resize pressure",
+        "status": "pass",
+        "detail": {
+          "outcome": "fits",
+          "bytes": 2927,
+          "width": 640,
+          "height": 480
+        }
+      },
+      {
+        "name": "lower bound impossible -> refuse",
+        "status": "pass"
+      },
+      {
+        "name": "minimum dimensions -> refuse undersized",
+        "status": "pass"
+      }
+    ]
+  },
+  "product_ui": {
+    "sample_loaded": true,
+    "run_enabled_before_conversion_consent": false,
+    "generated": {
+      "bytes_as_reported_by_product": 34393,
+      "width": 1200,
+      "height": 800,
+      "tries": 1
+    },
+    "download_href_before_visual_review": null,
+    "visual_review_checked": true,
+    "real_browser_download_returned_path": true
+  },
+  "harness_download": {
+    "expected_blob_bytes": 6265,
+    "real_browser_download_returned_path": true,
+    "reselect_operation": "aborted; subsequent DOM still showed not verified",
+    "roundtrip_sha256": "not_verified"
+  },
+  "interruption": {
+    "type": "execution_environment_unavailable",
+    "browser_error": "exec-server transport disconnected; recovery timed out",
+    "terminal_error": "No usable execution environment is available",
+    "last_action_attempt": "Changing maxKB to 34.393 and testing product UI exact boundary",
+    "last_action_result": "unknown; not marked passed or failed"
+  },
+  "not_verified": [
+    "Product UI saved JPEG re-upload and byte-hash roundtrip",
+    "Saved-file filesystem bytes/decoder reopen; environment unavailable before inspection",
+    "Product UI changes/upper-lower boundary tests after disconnect",
+    "Android real device and mobile viewport",
+    "ICC/HDR color reproduction",
+    "Memory peaks and other browsers",
+    "Third-party demand"
+  ],
+  "provenance": "Transcribed exactly from visible browser report and successful Browser Download API path responses. Synthetic images only; codec checks invoke real createImageBitmap/Canvas/toBlob. No credential/account identifier recorded. Browser report JSON was also written to the synchronized workspace before disconnect, but current filesystem cannot be reread."
+}

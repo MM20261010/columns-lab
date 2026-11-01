@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,nofollow">
+<title>画像を200KB以下に圧縮・最小pxも確認｜画像サイズ合わせ（未公開試作）</title>
+<meta name="description" content="画像を100KB・200KB・500KB以下へ。容量の下限と最小ピクセル数を確認し、条件内のJPEGをブラウザ内で作成します。登録不要。">
+<link rel="stylesheet" href="style.css"><script src="core.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="#">画像サイズ合わせ <span>未公開試作</span></a><a href="#guide">使い方</a></header>
+<main>
+<section class="intro"><p class="eyebrow">送る前の、ひと手間を。</p><h1>容量を小さく。<br>必要な大きさは、そのままに。</h1><p>「200KB以下、幅600px以上」のような条件を一緒に確認。<br>画像はこの端末のブラウザ内で処理します。</p><div class="pills"><span>登録不要</span><span>元ファイルを変更しません</span><span>JPEG・静止PNG対応</span></div></section>
+<div class="workspace">
+<section class="panel controls" aria-labelledby="condition-heading">
+<h2 id="condition-heading"><span class="step">1</span> 提出先の条件</h2>
+<p class="hint">提出先の案内を確認して入力してください。</p>
+<div class="presets" aria-label="容量上限の選択"><button type="button" data-kb="100">100KB以下</button><button type="button" data-kb="200">200KB以下</button><button type="button" data-kb="500">500KB以下</button><button type="button" data-kb="1000">1MB以下</button></div>
+<div class="fields"><label>容量の上限 <span class="unit">KB</span><input id="maxKB" type="number" min="1" max="15000" step="any" value="200"></label><label>容量の下限 <span class="unit">KB・指定なしは0</span><input id="minKB" type="number" min="0" step="any" value="0"></label><label>最小の幅 <span class="unit">px・指定なしは0</span><input id="minW" type="number" min="0" max="12000" step="1" value="0"></label><label>最小の高さ <span class="unit">px・指定なしは0</span><input id="minH" type="number" min="0" max="12000" step="1" value="0"></label></div>
+<p class="hint">1KB＝1,000バイトで計算します。容量下限を満たすための水増しはしません。</p>
+<label class="check"><input id="resize" type="checkbox">画質の調整で収まらなければ、縦横比を保って縮小する</label>
+<p class="hint">指定した最小寸法より小さくしません。拡大・切り抜きは行いません。</p>
+<hr><h2><span class="step">2</span> 画像を選ぶ</h2>
+<label class="filebox" for="file">JPEG・静止PNGを1枚選択<input id="file" type="file" accept="image/jpeg,image/png"></label>
+<p class="hint">15MiB・2,000万画素・各辺12,000pxまで。HEIC・アニメーション・PDFは対象外。</p>
+<button id="sample" type="button" class="secondary">サンプルで試す</button>
+<label class="check conversion"><input id="agree" type="checkbox">JPEGへの変換を確認しました。透明部分は白になり、色や画質が変わる場合があります。</label>
+<div class="actions"><button id="run" class="primary" disabled>条件に合わせたJPEGを作る</button><button id="cancel" type="button" disabled>中止</button><button id="clear" type="button">リセット</button></div>
+<p id="status" class="status" role="status" aria-live="polite">画像を選ぶか、サンプルで試してください。</p>
+</section>
+<section class="panel preview" aria-labelledby="result-heading"><h2 id="result-heading"><span class="step">3</span> 見た目と条件を確認</h2><p class="hint">容量だけでなく、文字や細部が読めるかも確認してください。</p>
+<div id="empty" class="empty"><span aria-hidden="true">▧</span><p>ここに画像が表示されます</p><small>条件と画像を選んで始めましょう。</small></div>
+<div id="before" hidden><h3>元画像</h3><p id="input-info"></p><div class="imageframe"><img id="original" alt="選択した元画像" role="button" tabindex="0" aria-label="元画像を原寸で開く（新しいタブ）"></div></div>
+<div id="after" hidden><h3>作成したJPEG <span class="badge">入力した数値条件を満たしています</span></h3><p id="output-info"></p><div class="imageframe"><img id="output" alt="条件に合わせたJPEG" role="button" tabindex="0" aria-label="作成したJPEGを原寸で開く（新しいタブ）"></div><label class="check"><input id="review" type="checkbox">文字・色・細部を見て、保存する画像を確認しました</label><a id="download" class="primary disabled" aria-disabled="true" tabindex="-1">JPEGを保存</a><p class="hint">プレビューをタップするか、フォーカスしてEnter・スペースを押すと原寸画像を別タブで開けます。提出先での受付・内容の判読は保証しません。</p></div>
+</section></div>
+<section class="guide" id="guide"><p class="eyebrow">迷ったときに</p><h2>「容量」と「大きさ」は別の条件です。</h2><div class="guidegrid"><article><h3>KB・MBはファイルの容量</h3><p>「200KB以下」はデータ量の指定です。画質を調整すると、縦横のピクセル数を変えずに小さくできる場合があります。</p></article><article><h3>pxは画像の縦横</h3><p>「幅600px以上」など、必要な寸法も入力できます。元画像が小さい場合は、引き伸ばさずに別の画像を選んでください。</p></article><article><h3>条件に収まらないとき</h3><p>縮小の許可や容量上限を見直してください。容量の下限がある場合は小さくしすぎにも注意。探索で作れなかった場合、保存は有効になりません。</p></article></div><details><summary>画像はどこかに送られますか？</summary><p>この試作に画像送信・外部解析・広告・ブラウザへの自動保存機能はありません。ページ配信時には配信事業者が通常のアクセス情報を処理する場合があります。ファイル名や画像内容を送信する機能はありません。リセットやページ終了で作業内容は失われます。</p></details><details><summary>PNGの透明部分や撮影情報はどうなりますか？</summary><p>出力はJPEGのみで透明部分は白になります。元の撮影情報の引継ぎは目的としていません。色・画質・向きなどを保存前に確認してください。画像内に写っている個人情報は消しません。</p></details><details><summary>下限以上になりません。容量を増やせますか？</summary><p>無意味なデータの追加や、画像の引き伸ばしは行いません。高解像度の元画像を選ぶか、提出先の条件をご確認ください。JPEGの品質・寸法を段階的に試すため、全ての出力方法を探索した結果ではありません。</p></details></section>
+</main><footer>画像サイズ合わせ · 開発中のローカル試作<br>このページの数値確認は、提出先の審査や受付の保証ではありません。</footer>
+</body></html>
+

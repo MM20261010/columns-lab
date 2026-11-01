@@ -1,0 +1,146 @@
+{
+  "date_jst": "2026-11-01",
+  "checked_at_jst": "2026-11-01T18:20:04+09:00",
+  "start_pr_head": "fc479efe14f80a71d4e1b5a60b2c30baf2e87a15",
+  "pr": 9,
+  "decision": "hold_publication",
+  "confirmed_critical_product_defects": [],
+  "prior_qa_reused": [
+    "2026-10-31: real codec23 checks including10 fixture hashes,EXIF1-8,transparent PNG->white JPEG,capacity limits",
+    "2026-11-01: actual saved JPEG/reselection,independent decoder/hash,8 product UI checks"
+  ],
+  "source_change_after_last_qa": [
+    "docs/agent-handoff.md",
+    "docs/agent-status.json",
+    "docs/image-fit-validation-and-launch-2026-10-30.md",
+    "docs/monthly-2026-11.md",
+    "docs/november-development-2026-10-30.md",
+    "experiments/image-fit/README.md",
+    "experiments/image-fit/TEST-RESULTS.json",
+    "experiments/image-fit/qa/RESULTS-2026-11-01.json"
+  ],
+  "current_browser": {
+    "url": "https://columns-image-fit-qa-20261031.sharpmodel.chatgpt.site/site/",
+    "site_version": 1,
+    "access": "existing owner-private; role owner; external visitors0; no new login/deploy",
+    "browser": "Chrome cloud desktop; current version/OS not reread",
+    "viewport": {
+      "width": 1363,
+      "height": 936
+    },
+    "document_client_width": 1348,
+    "document_scroll_width": 1348,
+    "checks": [
+      {
+        "name": "real UI/access/format and condition hints",
+        "result": "pass"
+      },
+      {
+        "name": "synthetic sample PNG selection only",
+        "result": "pass",
+        "bytes": 48305,
+        "width": 1200,
+        "height": 800,
+        "jpeg_regeneration": false
+      },
+      {
+        "name": "unsupported synthetic GIF89a refusal",
+        "result": "pass",
+        "run_disabled": true,
+        "error": "JPEG・静止PNGを選んでください。HEIC・GIF・WebP・SVG・PDFは対象外です。"
+      },
+      {
+        "name": "sample recovery after unsupported format",
+        "result": "pass"
+      },
+      {
+        "name": "reset after recovery",
+        "result": "pass",
+        "before_hidden": true,
+        "after_hidden": true,
+        "save_href": null,
+        "run_disabled": true
+      },
+      {
+        "name": "desktop horizontal overflow",
+        "result": "not_observed",
+        "scope": "only measured desktop width; not mobile"
+      },
+      {
+        "name": "preview keyboard access",
+        "result": "confirmed gap in old live version; image lacks tabindex/role/keydown. Patched source; not deployed to QA."
+      }
+    ],
+    "console": {
+      "observed_application_errors": [],
+      "extension_errors_seen": true,
+      "extension_message": "Error sending browser metadata to extension: Object",
+      "classification": "chrome-extension content script origin; not attributed to app; not claimed all console error-free"
+    },
+    "native_android": false,
+    "mobile_viewports_verified": false,
+    "network_capture_verified": false
+  },
+  "fix": {
+    "classification": "pre-publication improvement",
+    "scope": "keyboard access to existing full-size preview only",
+    "files": [
+      "experiments/image-fit/site/app.js",
+      "experiments/image-fit/site/index.html",
+      "experiments/image-fit/tests/ui.test.js"
+    ],
+    "details": "Image role/button tab stop/name; Enter/Space invoke same blob URL open with noopener/noreferrer; stale src remains unavailable",
+    "real_browser_after_fix": "not_verified; live owner-private version1 left unchanged; no deploy"
+  },
+  "node_regression": {
+    "command": "node --test experiments/image-fit/tests/*.test.js",
+    "runtime": "Node24",
+    "pass": 34,
+    "fail": 0,
+    "skipped": 0,
+    "breakdown": {
+      "core": 18,
+      "privacy_static": 3,
+      "ui_double": 13
+    },
+    "prior_count": 31,
+    "added": 3,
+    "native_codec_rerun": false,
+    "existing_csv_tests_rerun": false
+  },
+  "privacy": {
+    "source_network_and_storage_scan": "pass",
+    "connect_src": "none",
+    "filename_transmission_implemented": false,
+    "actual_network_capture": "not_verified"
+  },
+  "public_settings": {
+    "title_and_description": "present but prototype title",
+    "h1": "one",
+    "canonical": "absent",
+    "robots_meta": "noindex,nofollow",
+    "robots_header": "noindex,nofollow",
+    "internal_links": "only fragment links; no lab/home/privacy link",
+    "sitemap": "production still4 URLs; image route absent",
+    "rum_compatibility": "prototype CSP blocks external beacon and connections; explicit public measurement policy required",
+    "source": "https://developers.cloudflare.com/web-analytics/faq/"
+  },
+  "unknown": [
+    "Android actual device",
+    "320/360/390px/mobile keyboard and touch",
+    "new keyboard patch in real browser",
+    "ICC/HDR/CMYK/broad color reproduction",
+    "mobile peak memory/large images/other browsers",
+    "actual input network capture",
+    "public route/canonical/sitemap/internal links and RUM/CSP candidate"
+  ],
+  "next": "Validate the patched source in an authorized preview without changing live host; finish narrow-width and keyboard acceptance; then prepare scoped production path/SEO/measurement diff for separate approval.",
+  "safety": {
+    "main_changed": false,
+    "production_changed": false,
+    "pdf_branch_changed": false,
+    "qa_host_deployed": false,
+    "graphql_used": false,
+    "additional_cost": 0
+  }
+}

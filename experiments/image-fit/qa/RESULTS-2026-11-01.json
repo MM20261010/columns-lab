@@ -1,0 +1,105 @@
+{
+  "date_jst": "2026-11-01",
+  "tested_pr_head": "b2480a59c16a0c7f114bf22eb68de22f9a4d004d",
+  "qa_site_source_commit": "aa6dd4c3ff769ef7b3575fe180945cb2e22849cf",
+  "qa_site_version": 1,
+  "access": "existing owner-private site; signed-in session reused; no new login",
+  "browser": "Chrome cloud desktop; version not re-read",
+  "scope": "Remaining product UI/save/reload tests only. The23 real codec checks from2026-10-31 were reused, not repeated.",
+  "saved_file": {
+    "bytes": 34393,
+    "width": 1200,
+    "height": 800,
+    "format": "JPEG",
+    "mode": "RGB",
+    "sha256": "166e60eeeaf36d07c3d894f8c108b171efcdac95beacdd92533d07f59176fb0e",
+    "browser_download_completed": true,
+    "browser_download_file_hash_computed": true,
+    "synchronized_copy_hash_matches": true,
+    "independent_pillow_decode": "pass",
+    "same_browser_download_path_reselected_in_product": true,
+    "product_input_report": "34,393バイト（34.4KB） / 1200 × 800px",
+    "in_memory_blob_hash_separately_exposed": false
+  },
+  "checks": [
+    {
+      "name": "Product saved JPEG re-upload and decode",
+      "status": "pass",
+      "old_output_visible": false,
+      "old_download_href": null
+    },
+    {
+      "name": "Capacity change invalidates prior reviewed download",
+      "status": "pass",
+      "old_output_visible": false,
+      "download_href": null,
+      "aria_disabled": "true"
+    },
+    {
+      "name": "Actual product byte lower/upper exact boundary",
+      "status": "pass",
+      "min_bytes": 35854,
+      "max_bytes": 35854,
+      "output_bytes": 35854,
+      "width": 1200,
+      "height": 800,
+      "tries": 1
+    },
+    {
+      "name": "Unattainable lower bound refuses and disables download",
+      "status": "pass",
+      "min_bytes": 199000,
+      "max_bytes": 200000,
+      "smallest_try_bytes": 12479,
+      "output_visible": false,
+      "download_href": null
+    },
+    {
+      "name": "Minimum width greater than source refuses",
+      "status": "pass",
+      "min_width": 2000,
+      "source_width": 1200,
+      "message": "元画像が最小寸法を下回っています。拡大で見かけの条件を合わせず、別の元画像を選んでください。"
+    },
+    {
+      "name": "Upper bound with opted-in resize and minimum dimensions",
+      "status": "pass",
+      "max_bytes": 10000,
+      "min_width": 600,
+      "min_height": 400,
+      "output_bytes": 9401,
+      "width": 960,
+      "height": 640,
+      "tries": 17
+    },
+    {
+      "name": "Minimum pixel condition change invalidates download",
+      "status": "pass",
+      "min_width_changed_to": 601,
+      "old_output_visible": false,
+      "download_href": null
+    },
+    {
+      "name": "Reset clears input/output and disables generation/save",
+      "status": "pass",
+      "input_visible": false,
+      "output_visible": false,
+      "run_enabled": false,
+      "download_href": null,
+      "message": "画像と結果をクリアしました。"
+    }
+  ],
+  "not_verified": [
+    "Android real device",
+    "Mobile viewport/responsive behavior",
+    "ICC/HDR color reproduction",
+    "Other browsers",
+    "Memory peaks",
+    "Third-party demand/search volume",
+    "Initial in-memory Blob independently hashed against saved file; file hash instead verified across actual browser filesystem and synchronized copy"
+  ],
+  "known_product_defects_detected": [],
+  "automation_notes": "Two locator.waitFor calls timed out, but fresh subsequent UI reads showed completed expected refusal/success. Outcomes were classified from the actual final UI, not from those wait failures. No product defect inferred from locator timing.",
+  "current_decision": "Remaining desktop acceptance checks complete; no product-code correction required. No new feature development. Public launch/merge/outreach remains unapproved and on hold.",
+  "next_work": "Prepare one reviewable limited-publication diff and measurement plan, checking QA CSP/noindex and analytics compatibility before requesting production approval."
+}

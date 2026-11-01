@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>画像サイズ合わせ：合成画像コーデックQA</title>
+<h1>ブラウザ受入試験（未実施）</h1>
+<p>承認済みの同一オリジンQA環境でのみ実行。合成画像10枚を使います。画像・結果を送信するコードはありません。</p>
+<p>実装のcore.jsと同じCanvas変換手順を検査します。製品UI操作、実ファイル保存、Android実機、ICC/HDR色再現は別の確認が必要です。</p>
+<button id="run" type="button">合成画像の試験を実行</button>
+<pre id="report">not_run</pre><a id="save" hidden>透過変換のJPEGを保存</a>
+<p><label>上のリンクから保存したJPEGを再選択 <input id="reload" type="file" accept="image/jpeg"></label></p>
+<pre id="roundtrip">保存・再読込は未検証</pre>
+<p><a href="../site/index.html">製品UIを別途検証する</a>（合成画像のみ使用）</p>
+<script src="../site/core.js"></script><script src="fixtures.js"></script><script src="runner.js"></script>
+</html>

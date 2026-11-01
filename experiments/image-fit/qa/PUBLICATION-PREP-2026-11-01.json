@@ -1,0 +1,84 @@
+{
+  "checked_at_jst": "2026-11-01T18:48:27+09:00",
+  "starting_head": "9fa85f2b5bfe5da01ae017ee53bfa542a820497a",
+  "decision": "conditional_publication_approval_ready",
+  "known_critical_defects": [],
+  "planned_url": "https://columns-lab.pages.dev/tools/image-fit/",
+  "public_directory": "site/tools/image-fit/",
+  "completion": {
+    "major_known_defects_absent": true,
+    "major_codec_save_ops_supported_by_prior_real_QA": true,
+    "page_seo_links_measurement_prepared": true,
+    "required_affected_automated_tests_pass": true,
+    "limitations_recorded": true
+  },
+  "changes": {
+    "publication": "4 static files; no qa content",
+    "existing_pages": [
+      "site/index.html",
+      "site/tools/csv-merge/index.html",
+      "site/privacy/index.html",
+      "site/sitemap.xml",
+      "site/_headers"
+    ],
+    "responsive": "image-only CSS: minmax(0,1fr), min-width0, single-column fields <=420px,44px targets, wrapping navigation",
+    "encoding_core_or_app_changed": false,
+    "tracking_added": false,
+    "graphql_used": false
+  },
+  "tests": {
+    "command": "node --test experiments/image-fit/tests/*.test.js tests/*.test.js",
+    "node_version": "24.22.1",
+    "node_report_units": 48,
+    "pass": 48,
+    "fail": 0,
+    "skipped": 0,
+    "breakdown": {
+      "image_unit_and_mock_tests": 34,
+      "publication_integration_tests": 8,
+      "existing_csv_guide_file_suites": 6
+    },
+    "guide_subchecks": 16,
+    "guide_subchecks_included_in_six_file_suites": true,
+    "xml_parser": "namespace and5 URLs pass",
+    "rollback": "git apply --check and isolated apply restore pre-change entire site byte-exact"
+  },
+  "reused_QA": [
+    "2026-10-31: real codec23 incl fixture10; EXIF1-8/transparent PNG/size bounds",
+    "2026-11-01: actual JPEG save/reopen/hash/independent decode and8 product UI checks",
+    "2026-11-01 prelaunch audit: unsupported GIF refusal/sample recovery/reset at existing privateQA version1"
+  ],
+  "current_real_browser": {
+    "production_home_opened": true,
+    "browser": "Chrome cloud desktop",
+    "viewport": {
+      "width": 1363,
+      "height": 936
+    },
+    "observed_existing_RUM_src": "https://static.cloudflareinsights.com/beacon.min.js",
+    "beacon_configuration_present": true,
+    "candidate_page_deployed_or_opened": false
+  },
+  "candidate_verification_limits": {
+    "keyboard_patch_real_browser": "not_verified; node mock pass",
+    "mobile_320_360_390": "not_verified; responsive source prepared/reviewed only",
+    "screen_reader": "not_verified; semantic names/keyboard source and mock checked",
+    "android_device": "not_available / not_verified",
+    "candidate_RUM_network_delivery": "not_verified before deployment; existing injection confirmed; matching CSP prepared",
+    "image_input_network_capture": "not_performed; application source has no content-transmission APIs"
+  },
+  "preserved": [
+    "CSV processing assets and guide/sharedCSS hash-identical",
+    "image core/app byte-identical to9fa85f2",
+    "prototype noindex and connect-src none remain in experiments",
+    "main/production/PDFbranch untouched",
+    "Pages preview none/watch site/* preserved"
+  ],
+  "conditions": [
+    "Owner accepts listed narrow-screen/Android/keyboard live verification limitations for a limited first release",
+    "Production smoke after separately approved merge; do not count QA as real demand",
+    "If critical generation/save/overflow fails after release, use prepared scoped rollback under approval"
+  ],
+  "publication": "No merge, ready-for-review change, deployment, external post, or Cloudflare config write executed",
+  "next_after_approval": "Recheck exact approved head/base and draft; mark ready; normal merge commit without skip marker; verify Pages production commit and browser smoke; use scoped rollback if needed"
+}
