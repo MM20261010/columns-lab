@@ -1,0 +1,150 @@
+{
+  "checked_at_jst": "2026-11-01T19:36:25+09:00",
+  "approval": "User explicitly approved limited production release of PR9 commit3080a84, accepted reported unverified items, and instructed recovery if serious issues arise.",
+  "approved_head": "3080a8479f86aa60b468799038eb96b40f298bff",
+  "preflight": {
+    "approved_tree": "0da72c5ffc96369d85a7b5f073cdc500a1632d18",
+    "public_files_byte_matched": 9,
+    "main_before": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
+    "unexpected_changes": false
+  },
+  "pr": 9,
+  "merge_commit": "bfca22122db50ba34bad8d6d9ebe70dd989f2184",
+  "merge_method": "merge",
+  "auto_merge": false,
+  "deployment": {
+    "id": "b44225f7-8529-4315-9534-909472b24057",
+    "environment": "production",
+    "commit": "bfca22122db50ba34bad8d6d9ebe70dd989f2184",
+    "status": "success",
+    "is_skipped": false,
+    "completed_at_jst": "2026-11-01T19:18:46+09:00",
+    "canonical_deployment_matches": true
+  },
+  "url": "https://columns-lab.pages.dev/tools/image-fit/",
+  "browser": {
+    "name": "Chrome cloud desktop",
+    "os_version": "not re-read; prior QA Chrome155/Linux retained separately",
+    "viewport": {
+      "width": 1363,
+      "height": 936,
+      "document_client": 1348,
+      "document_scroll": 1348
+    },
+    "sample_only": true,
+    "image": {
+      "input": "synthetic PNG sample1200x800",
+      "min_width": 600,
+      "min_height": 400,
+      "max_bytes": 200000,
+      "output_bytes": 34393,
+      "width": 1200,
+      "height": 800,
+      "tries": 1,
+      "download_disabled_before_visual_review": true,
+      "visual_review_completed": true,
+      "actual_browser_download": true,
+      "download_file_read": true,
+      "synchronized_copy_hash_match": true,
+      "sha256": "166e60eeeaf36d07c3d894f8c108b171efcdac95beacdd92533d07f59176fb0e",
+      "independent_decode": "Pillow JPEG/RGB1200x800 full load pass",
+      "enter_opens_blob_tab": true,
+      "space_opens_blob_tab": true,
+      "changed_maxKB_invalidates_href": true,
+      "reset_clears_and_disables": true
+    },
+    "csv": {
+      "synthetic_sample": true,
+      "rows": 4,
+      "columns": 5,
+      "amounts": [
+        100,
+        200,
+        300,
+        400
+      ],
+      "sum": 1000,
+      "actual_browser_download": true,
+      "saved_bytes": 185,
+      "bom": true,
+      "crlf": true,
+      "independent_csv_parse": true,
+      "setting_change_disables_old_download": true
+    },
+    "page_settings": {
+      "title_correct": true,
+      "canonical_correct": true,
+      "robots_meta": "index,follow",
+      "home_incoming_link": true,
+      "csv_image_link": true,
+      "privacy_image_section": true,
+      "live_sitemap_urls": 5,
+      "desktop_overflow": false,
+      "preset_button_heights": [
+        44,
+        44,
+        44,
+        44
+      ]
+    },
+    "errors": {
+      "observed_application_errors": [],
+      "extension_errors_observed": true,
+      "extension_error_scope": "chrome-extension content-script metadata message; not attributed to app",
+      "initial_state_read": "First immediate read preceded completion; fresh final UI showed success; generation not repeated"
+    }
+  },
+  "measurement": {
+    "beacon_element_present": true,
+    "beacon_configuration_attribute_present": true,
+    "script_src": "https://static.cloudflareinsights.com/beacon.min.js",
+    "meta_csp_matches_prepared": true,
+    "actual_beacon_response_status": "unverified",
+    "reason": "No supported network observer; standard performance object unavailable in read-only browser evaluation",
+    "graphql_used": false,
+    "qa_not_counted_as_third_party": true
+  },
+  "auxiliary_http": {
+    "requests": 8,
+    "status": 403,
+    "paths_scope": "image page,home,CSV,privacy,sitemap and3 image assets",
+    "origin_of_403": "not determined; no workaround/retries",
+    "classification": "Separate executor HTTP path failure; real Chrome can load and operate production. Not evidence of Googlebot success/failure.",
+    "headers_independently_verified": false
+  },
+  "narrow_screen": {
+    "keyboard_shortcuts_attempted_once": true,
+    "actual_width_after_attempt": 1363,
+    "target_widths_verified": [],
+    "android_real_device": false,
+    "conclusion": "320/360/390px remain unverified; no narrow/mobile pass inferred"
+  },
+  "critical_defects": [],
+  "rollback": {
+    "prepared_patch": "docs/image-fit-publication-rollback.patch",
+    "executed": false,
+    "reason": "No confirmed serious product defect in observed checks"
+  },
+  "prior_tests": {
+    "node_report_units": 48,
+    "pass": 48,
+    "rerun_this_release": false,
+    "reason": "approved code/tree unchanged; real production smoke adds deployment-path verification"
+  },
+  "safety": {
+    "additional_cost": 0,
+    "new_account": false,
+    "cloudflare_configuration_changed": false,
+    "pdf_branch_unchanged": "ce6a3aa58cb7810114e231de651f57b1096b8f5d",
+    "automation_changed": false,
+    "external_posts": false
+  },
+  "limitations": [
+    "Android and320/360/390px actual layout/touch",
+    "Full screen reader and other browsers",
+    "ICC/HDR/mobile peak memory",
+    "Actual RUM beacon delivery and independent response headers",
+    "Auxiliary executor403 origin",
+    "Search crawl/indexing and third-party demand remain unmeasured"
+  ]
+}

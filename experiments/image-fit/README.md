@@ -1,3 +1,19 @@
+## 2026-11-01 19:36 JST：画像サイズ合わせ限定公開完了・主要機能スモーク合格
+
+本人が3080a84の未検証事項を了承し限定公開を承認。マージ前に固定head/承認tree0da72c5/公開site9ファイルbytes/main5f03a4dを照合、想定外変更なし。Draft解除→expected_head指定の通常merge、製品公開commit `bfca22122db50ba34bad8d6d9ebe70dd989f2184`。Pages `b44225f7-8529-4315-9534-909472b24057`、production/is_skipped=false/success、19:18:46 JST。canonical_deploymentも同commit。公開URL https://columns-lab.pages.dev/tools/image-fit/ 。
+
+公開版実Chromeで合成画像のJPEG34,393bytes/1200×800を1回作成、レビュー前保存無効→確認後実Download。保存ファイルと同期コピーhash一致、Pillow独立全画素デコード。出力画像のEnter/Spaceで原寸Blobタブを実確認。容量変更で旧保存無効、リセットでクリア。CSVも実サンプル4行5列/金額合計1000、実保存185bytes/BOM/CRLF/独立CSV読込み、設定変更後の保存無効化が合格。トップ/プライバシー/sitemap5URLの反映を実Chrome確認。
+
+実viewport1363×936、横はみ出しなし、preset44px高。端末モード切替は実幅が変わらず320/360/390px未検証。Android/広範な読み上げ/ICC/HDR/メモリも未検証。新ページのRUM script要素/設定属性/metaCSPは確認したが配送/POST/集計返却は未確認。補助HTTP8URLは403（原因/返却元未特定）で、ブラウザ稼働成功やGooglebot判定と混同しない。取得console範囲にアプリ由来エラーなし、拡張起源エラーは別分類。重大製品問題なし、逆差分復旧は不要/未実施。
+
+詳細 docs/image-fit-production-release-2026-11-01.md と experiments/image-fit/qa/PRODUCTION-RELEASE-2026-11-01.json。事前Node48単位は同一製品treeの既存合格を継承し再実行していない。公開前の「承認待ち/保留」は過去記録で、現在は本人承認済み限定公開中。
+
+mainへの追加保存は文書5件だけ、[CF-Pages-Skip]。site tree不変/記録commit skip/公開bfca221維持を保存後照合し最終報告。記録commitと公開commitを区別。GraphQL/外部投稿/観測タスク変更/Cloudflare設定変更なし、追加費用0円。PDFbranchce6a3aa不変。本人操作：不要。
+
+自己QAはおおむね19:19〜19:36 JSTの画像/CSV/トップ/Privacy/sitemap閲覧・合成保存。第三者PV/需要/収益へ数えない。次の1件は既存観測の取得可能な画像ページ/検索流入根拠を確認し、公開開始を起点とした限定公開評価へ引き継ぐ。欠測は不明、無目的な同一QA/市場再調査/機能量産なし。
+
+---
+
 ## 2026-11-01：画像サイズ合わせ公開準備完了（条件付き公開承認待ち）
 
 開始PR9 head9fa85f2b5bfe5da01ae017ee53bfa542a820497a。既存codec/実保存/再読込QAを再利用し、主要画像処理core/appは無変更。公開用 `site/tools/image-fit/` 4ファイル、トップ/CSVの往復導線、プライバシー画像説明、5URL sitemap、画像パス限定CSPをPR9に実装。予定URL https://columns-lab.pages.dev/tools/image-fit/ 。公開版index/canonicalを設定し、実験版のnoindex/connect-src noneは維持。既存Cloudflare RUMの自動注入のみを使い、独自追跡/画像・ファイル名イベントなし。
