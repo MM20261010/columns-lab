@@ -65,6 +65,11 @@
     ctx.fillStyle='#e9f2df';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#17674e';ctx.fillRect(80,80,1040,640);ctx.fillStyle='#fff';ctx.font='bold 64px sans-serif';ctx.fillText('SAMPLE 1200 × 800',130,250);ctx.font='32px sans-serif';ctx.fillText('Check text, colors and edges.',130,350);
     const b=await new Promise(resolve=>c.toBlob(resolve,'image/png'));c.width=c.height=1;if(token===version&&b){$('file').value='';load(b);}
   });
-  for(const id of ['original','output'])$(id).addEventListener('click',()=>{const src=$(id).getAttribute('src');if(src)window.open(src,'_blank','noopener,noreferrer');});
+  for(const id of ['original','output']){
+    const open=()=>{const src=$(id).getAttribute('src');if(src)window.open(src,'_blank','noopener,noreferrer');};
+    $(id).addEventListener('click',open);
+    $(id).addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  }
   window.addEventListener('pagehide',()=>{controller?.abort();image?.close();revoke();});
 })();
+

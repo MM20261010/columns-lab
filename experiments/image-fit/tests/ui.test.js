@@ -4,7 +4,7 @@ function jpeg(w=1200,h=800,size=1000){const b=new Uint8Array(Math.max(17,size));
 function png(w,h){const b=new Uint8Array(45),v=new DataView(b.buffer);b.set([137,80,78,71,13,10,26,10]);v.setUint32(8,13);b.set(Buffer.from('IHDR'),12);v.setUint32(16,w);v.setUint32(20,h);b.set(Buffer.from('IEND'),37);return new Blob([b],{type:'image/png'});}
 class Element{
  constructor(){this.listeners={};this.attrs={};this.value='';this.checked=false;this.disabled=false;this.hidden=false;this.files=[];this.classes=new Set();this.classList={add:c=>this.classes.add(c),remove:c=>this.classes.delete(c),toggle:(c,on)=>on?this.classes.add(c):this.classes.delete(c)};}
- addEventListener(e,f){(this.listeners[e]??=[]).push(f);}async emit(e){await Promise.all((this.listeners[e]??[]).map(f=>f({preventDefault(){}})));}
+ addEventListener(e,f){(this.listeners[e]??=[]).push(f);}async emit(e,detail={}){await Promise.all((this.listeners[e]??[]).map(f=>f({preventDefault(){},...detail})));}
  setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k]??null;}removeAttribute(k){delete this.attrs[k];}
  get src(){return this.attrs.src;}set src(v){this.attrs.src=v;}get href(){return this.attrs.href;}set href(v){this.attrs.href=v;}
 }
@@ -13,9 +13,9 @@ function harness(){
  const el=id=>els[id]??=(new Element());for(const [k,v] of Object.entries({maxKB:'200',minKB:'0',minW:'0',minH:'0'}))el(k).value=v;
  el('after').hidden=true;el('run').disabled=true;
  const document={getElementById:el,querySelectorAll:()=>[],createElement(tag){assert.equal(tag,'canvas');return {width:1,height:1,getContext(){return {fillRect(){},fillText(){},drawImage(){}};},toBlob(callback,type){const blob=type==='image/png'?png(this.width,this.height):jpeg(this.width,this.height);if(delay)pending.push(()=>callback(blob));else queueMicrotask(()=>callback(blob));}};}};
- const window={addEventListener(){},open(){}};
+ const opened=[];const window={addEventListener(){},open(...args){opened.push(args);}};
  vm.runInNewContext(fs.readFileSync(require.resolve('../site/app.js'),'utf8'),{ImageFit:C,document,window,URL:{createObjectURL(b){const u='blob:mock/'+(++sequence);urls.set(u,b);return u;},revokeObjectURL(u){urls.delete(u);revoked.push(u);}},AbortController,createImageBitmap:async b=>({...C.inspect(await b.arrayBuffer()),close(){}})});
- return {el,urls,revoked,pending,setDelay:x=>delay=x,async load(b=jpeg()){el('file').files=[b];await el('file').emit('change');await settle();},async agree(){el('agree').checked=true;await el('agree').emit('input');}};
+ return {el,urls,revoked,pending,opened,setDelay:x=>delay=x,async load(b=jpeg()){el('file').files=[b];await el('file').emit('change');await settle();},async agree(){el('agree').checked=true;await el('agree').emit('input');}};
 }
 async function settle(){for(let i=0;i<12;i++)await new Promise(r=>setImmediate(r));}
 test('selection requires JPEG conversion consent before run',async()=>{const h=harness();await h.load();assert.equal(h.el('run').disabled,true);await h.agree();assert.equal(h.el('run').disabled,false);});
@@ -28,3 +28,8 @@ test('unsupported file removes previous selection and cannot run',async()=>{cons
 test('small original is rejected, not silently upscaled',async()=>{const h=harness();await h.load();await h.agree();h.el('minW').value='1300';await h.el('run').emit('click');assert.equal(h.el('after').hidden,true);assert.match(h.el('status').textContent,/下回って/);});
 test('sample flow selects an image without reading a personal file',async()=>{const h=harness();await h.el('sample').emit('click');await settle();assert.equal(h.el('before').hidden,false);assert.match(h.el('input-info').textContent,/1200 × 800px/);});
 test('oversize file is rejected without reading its bytes',async()=>{const h=harness();let read=false;await h.load({size:C.MAX_BYTES+1,arrayBuffer(){read=true;throw Error('must not read');}});assert.equal(read,false);assert.equal(h.el('run').disabled,true);assert.match(h.el('status').textContent,/15MiB/);});
+
+test('original preview supports Enter and Space, ignores other keys',async()=>{const h=harness();await h.load();let prevented=0;for(const key of ['Enter',' '])await h.el('original').emit('keydown',{key,preventDefault(){prevented++;}});await h.el('original').emit('keydown',{key:'ArrowDown'});assert.equal(prevented,2);assert.equal(h.opened.length,2);for(const args of h.opened)assert.deepEqual(args,[h.el('original').src,'_blank','noopener,noreferrer']);});
+test('output keyboard activation opens only a current result',async()=>{const h=harness();await h.load();await h.agree();await h.el('run').emit('click');await h.el('output').emit('keydown',{key:'Enter'});assert.equal(h.opened.length,1);const old=h.opened[0][0];await h.el('maxKB').emit('input');await h.el('output').emit('keydown',{key:' '});assert.equal(h.opened.length,1);assert.ok(h.revoked.includes(old));});
+test('preview controls have accessible names and keyboard tab stops',()=>{const html=fs.readFileSync(require.resolve('../site/index.html'),'utf8');for(const id of ['original','output']){const tag=html.match(new RegExp('<img id="'+id+'"[^>]*>'))[0];assert.match(tag,/role="button"/);assert.match(tag,/tabindex="0"/);assert.match(tag,/aria-label="[^"]+新しいタブ[^"]*"/);}});
+
