@@ -28,7 +28,7 @@
   ],
   "html_static_checks": "ids/label targets/local assets passed",
   "actual_browser_qa": {
-    "status": "partial_pass_then_environment_disconnected",
+    "status": "planned_desktop_acceptance_passed",
     "attempts": [
       "managed preview daemon unavailable",
       "installed Playwright browser executable absent",
@@ -36,18 +36,18 @@
       "Owner-private HTTPS alternative deployed; blocked before authentication; no credentials entered, no bypass"
     ],
     "production_qa_is_separate": true,
-    "latest_attempt": "2026-10-31 owner-approved sign-in succeeded; real Chrome23 checks passed; product UI generated and downloaded JPEG; remaining roundtrip/UI checks interrupted by unavailable execution environment"
+    "latest_attempt": "2026-11-01 existing session reused; actual saved JPEG re-upload and independent decode passed; product bounds/refusal/resize/invalidation/reset passed"
   },
   "not_verified": [
-    "saved JPEG re-upload/byte-hash roundtrip and filesystem re-decode",
-    "remaining product UI condition-change tests after disconnect",
-    "ICC/HDR",
-    "Android real device/mobile viewport",
-    "memory peaks",
-    "other browsers",
-    "third-party demand"
+    "Android real device",
+    "Mobile viewport/responsive behavior",
+    "ICC/HDR color reproduction",
+    "Other browsers",
+    "Memory peaks",
+    "Third-party demand/search volume",
+    "Initial in-memory Blob independently hashed against saved file; file hash instead verified across actual browser filesystem and synchronized copy"
   ],
-  "provenance": "Existing31 Node tests remain simulated/static. New23 QA checks executed in real Chrome155/Linux. Product UI sample34393-byte1200x800JPEG generated and Browser Download API returned path after review consent. Remaining checks interrupted, not failed.",
+  "provenance": "Existing31 Node tests remain simulated/static. New23 QA checks executed in real Chrome155/Linux. Product UI sample34393-byte1200x800JPEG generated and Browser Download API returned path after review consent. Remaining checks interrupted, not failed. 2026-11-01 remaining desktop acceptance completed; raw UI evidence and saved-file SHA256 in separate followup JSON. Android/ICC/HDR/etc remain unverified.",
   "synthetic_fixture_preflight": {
     "files": 10,
     "passed": 10,
@@ -75,5 +75,10 @@
     "browser_passed": 23,
     "browser_failed": 0,
     "result_path": "qa/RESULTS-2026-10-31.json"
+  },
+  "desktop_followup": {
+    "result_path": "qa/RESULTS-2026-11-01.json",
+    "scope": "remaining UI/save/reload only; prior23 codec checks not repeated",
+    "product_changes_required": false
   }
 }

@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "run_id": "2026-10-31-approved-real-browser-qa",
-  "updated_at": "2026-10-31",
-  "status": "blocked_execution_environment_disconnected",
-  "status_label": "🔴 実Chrome23件＋製品JPEG生成/保存成功／残りは実行環境の通信中断",
+  "run_id": "2026-11-01-desktop-save-reload-completed",
+  "updated_at": "2026-11-01",
+  "status": "desktop_acceptance_completed_publication_on_hold",
+  "status_label": "🟢 残るデスクトップ保存/再読込・条件変更検証完了／公開保留",
   "base_commit": "5f03a4da55ccd8493c852b7e24596f9bc2804f9c",
   "record_commit_source": "Implementation save verified at 093477dc03acab7898df999c609ea8c9a122d712; follow-up record commit is in this file Git history and PR9 head.",
   "notification_key": "2026-10-14-pages-watch-path-A-09:existing-ui-login-not-available",
@@ -54,11 +54,13 @@
     "Schedule ICS alternative feasibility core generated a synthetic 386-byte ICS with four occurrences; 12 Node tests passed",
     "Owner-approved secure sign-in reached existing private QA landing",
     "Real Chrome codec23 checks passed, including EXIF1-8/transparency/color/bounds/refusals",
-    "Product UI sample generated34393-byte1200x800JPEG; consent/review guards observed; Browser Download API returned saved path"
+    "Product UI sample generated34393-byte1200x800JPEG; consent/review guards observed; Browser Download API returned saved path",
+    "Remaining desktop save/reload acceptance passed on existing private QA site, with independently decoded34393-byte JPEG and matching saved-file copy hashes",
+    "Product UI exact35854-byte bounds, refusal cases,9401-byte960x640resize, condition invalidation and reset observed"
   ],
   "candidate": {
     "name": "image byte range and minimum dimensions",
-    "stage": "image_core_browser_passed_remaining_qa_and_demand_hold",
+    "stage": "desktop_qa_complete_prepare_limited_publication_proposal",
     "third_party_use": "unknown",
     "launch_approval_ready": false,
     "decision": "image feature/public launch on hold; schedule ICS is provisional alternative feasibility core, demand unknown"
@@ -72,7 +74,7 @@
     "raw RUM includes sampling/self-QA/unknown bot traffic; no monthly1000PV achievement claim"
   ],
   "next_actions": [
-    "After execution environment recovery, reuse existing QA site and prior login approval to complete saved-JPEG roundtrip and product condition-change invalidation; prepare one scoped publication decision"
+    "Prepare one fixed limited-publication diff and measurement plan; verify noindex/CSP/RUM compatibility without publishing or redoing market/auth/observation research"
   ],
   "evidence_paths": [
     "docs/agent-handoff.md",
@@ -87,7 +89,9 @@
     "experiments/schedule-ics/README.md",
     "experiments/schedule-ics/core.test.cjs",
     "experiments/schedule-ics/synthetic-example.ics",
-    "experiments/image-fit/qa/RESULTS-2026-10-31.json"
+    "experiments/image-fit/qa/RESULTS-2026-10-31.json",
+    "docs/monthly-2026-11.md",
+    "experiments/image-fit/qa/RESULTS-2026-11-01.json"
   ],
   "automation": {
     "status_file_only": true,
@@ -512,10 +516,11 @@
     "owner_private_deployment_succeeded": true,
     "external_visitors": 0,
     "browser_qa_checks_executed": 23,
-    "fresh_login": "owner_approved_and_target_page_verified",
+    "fresh_login": "existing session reused; no new authentication",
     "recreate": false,
     "codec_checks_passed": 23,
     "product_ui_generation_and_browser_download": "passed",
-    "roundtrip": "not_verified"
+    "roundtrip": "actual saved JPEG re-upload/decoding passed; saved-file and synchronized-copy SHA256 match; initial in-memory Blob hash not independently exposed",
+    "remaining_desktop_ui": "passed"
   }
 }
