@@ -1,0 +1,120 @@
+{
+  "checked_at_utc": "2026-11-01T08:37:02Z",
+  "checked_at_jst": "2026-11-01T17:37:02+09:00",
+  "source_commit": "8886239168b064b19e7545c147b590de853e9753",
+  "status": "blocked_before_app_load",
+  "application_browser_verdict": "undetermined",
+  "browser": {
+    "inventory": "Chrome / cdp",
+    "os": "not independently confirmed in this attempt",
+    "viewport_width": null,
+    "viewport_height": null,
+    "application_opened": false,
+    "native_clipboard_attempted": false
+  },
+  "executor": {
+    "prior_runtime": "Node v24.22.1 / Linux",
+    "source_snapshot_sha256_match_count": 9,
+    "automatic_tests_rerun": false,
+    "previous_automatic_tests": {
+      "pass": 45,
+      "fail": 0
+    }
+  },
+  "attempts": [
+    {
+      "method": "sites-preview status",
+      "result": "sites-previewd mailbox is unavailable at /tmp/sites-previewd/requests: No such file or directory (os error 2)",
+      "retried": false
+    },
+    {
+      "method": "loopback HTTP server",
+      "command": "python -u -m http.server 8765 --bind 127.0.0.1 --directory <prototype-site>",
+      "result": "Serving HTTP startup message returned; process session subsequently stopped with exit code 130",
+      "http_200_obtained": false
+    },
+    {
+      "method": "Chrome navigation",
+      "url": "http://127.0.0.1:8765/",
+      "result": "net::ERR_CONNECTION_REFUSED",
+      "retry": false
+    },
+    {
+      "method": "executor urllib.request localhost probe",
+      "url": "http://127.0.0.1:8765/",
+      "result": "URLError / ConnectionRefusedError [Errno 111]",
+      "http_200_obtained": false
+    },
+    {
+      "method": "shared file direct navigation",
+      "protocol": "file:",
+      "result": "Browser security policy: only http/https allowed; must not circumvent",
+      "retry_or_bypass": false
+    }
+  ],
+  "uncertainty": "Startup message does not prove HTTP reachability. Executor probe also failed, so browser/executor separation alone is not established as the root cause.",
+  "checks": [
+    {
+      "name": "paste and automatic formatting",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "native clipboard full equality",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "manual edit and recopy",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "restore/reformat/reset",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "empty/long/special-character input",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "320/360/390px UI and interaction",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "horizontal overflow/overlap/input usability",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "no content transmission in browser",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    },
+    {
+      "name": "application console errors",
+      "status": "not_run",
+      "reason": "Application page could not be loaded"
+    }
+  ],
+  "fixes": [],
+  "code_changed": false,
+  "network_capture_performed": false,
+  "android_device_verified": false,
+  "safety": {
+    "synthetic_input_entered": false,
+    "real_data_sent": false,
+    "new_account": false,
+    "hosted_deployment": false,
+    "main_changed": false,
+    "pr9_changed": false,
+    "graphql_used": false,
+    "added_cost": 0,
+    "owned_test_server_stopped": true
+  },
+  "resume_condition": "Supported HTTP(S) preview reachable from the real Chrome browser; first verify HTTP 200 and actual application DOM, then resume existing acceptance cases without rebuilding.",
+  "escalation": "No file-protocol policy circumvention, alternate control channel, network permission changes, or unauthorized hosting."
+}
