@@ -1,0 +1,195 @@
+{
+  "checked_on": "2026-11-01",
+  "candidate_genres": 7,
+  "sites_tested": 9,
+  "browser_scope": "desktop only; mobile/Android unverified",
+  "sites": [
+    {
+      "genre": "2リスト比較",
+      "site": "ListDiff",
+      "url": "https://listdiff.com/ja/risuto-hikaku",
+      "input": [
+        "001\n002\n002\nりんご",
+        "2\n002\nみかん"
+      ],
+      "output": {
+        "a_only": "001\nりんご",
+        "common": "002",
+        "b_only": "2\nみかん",
+        "union": "001\n002\nりんご\n2\nみかん"
+      },
+      "input_units": 2,
+      "process_buttons": 0,
+      "carryout": "コピーは未操作",
+      "observed": "自動結果。先頭ゼロ保持、重複は集合として統合。各欄のツールバーが多く、一部英語、広告抑制ボタン/メディア失敗表示あり。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "重複行整理",
+      "site": "ハルオフィス",
+      "url": "https://www.webharu.com/office/remove-duplicates/",
+      "input": [
+        "001\n002\n002\nAPPLE\napple\n 003 "
+      ],
+      "output": "001\n002\nAPPLE\n003",
+      "input_units": 1,
+      "process_buttons": 1,
+      "carryout": "保存ボタン1回→登録モーダルで停止。コピー未操作。",
+      "observed": "6→4行。初期設定で大小文字無視/前後空白削除。保存だけは登録が必要と表示。登録/規約同意なし。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "重複行整理",
+      "site": "Ariake Tools",
+      "url": "https://tools.ariake-ai.com/tools/remove-duplicate-lines",
+      "input": [
+        "001\n002\n002\nAPPLE\napple\n 003 "
+      ],
+      "output": "001\n002\nAPPLE\napple\n 003 ",
+      "input_units": 1,
+      "process_buttons": 0,
+      "carryout": "コピーは未操作",
+      "observed": "6→5行。大小文字/空白保持、削除行表示の導線あり。短い入力の結果表示まで登録要求なし。ハルの制限を業界共通とは扱わない。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "単価比較",
+      "site": "tsulo",
+      "url": "https://tsulo.com/life/tanka-hikaku",
+      "input": [
+        "A149円/300g",
+        "B398円/1000g（入数ともに1）"
+      ],
+      "output": "A49.67円/100g、B39.80円/100g、B19.9%安い",
+      "input_units": 4,
+      "process_buttons": 0,
+      "carryout": "結果閲覧まで",
+      "observed": "4数値で自動計算。単位/入数/3商品目対応、説明が下に続く。試験経路で登録や阻害広告は観測せず。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "営業日計算",
+      "site": "エンジニアの道具箱",
+      "url": "https://engineer-toolbox.jp/tools/business-days/",
+      "input": [
+        "2026-11-02",
+        "1営業日後"
+      ],
+      "output": "2026-11-04（水）、2日後",
+      "input_units": 2,
+      "process_buttons": 0,
+      "carryout": "結果閲覧まで",
+      "observed": "11/3を除外。期間計算とN日計算が同居し、N日欄は途中。祝日/年末年始設定、説明あり。会社休日は別。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "改行整形",
+      "site": "くらしの便利ツール",
+      "url": "https://kei-tool.com/replace",
+      "input": [
+        "本日\nは晴れ。\n\n次の段落。"
+      ],
+      "output": "今日は晴れ。\n\n次の段落。",
+      "input_units": 1,
+      "process_buttons": 0,
+      "setting_changes": 1,
+      "carryout": "コピー未操作",
+      "observed": "改行削除をON。初期の置換『本日→今日』も適用され、語彙まで変化。段落は保持。置換機能の仕様であり、全競合に共通の不具合とはしない。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "改行整形",
+      "site": "てもとツール",
+      "url": "https://temototool.com/tools/linebreak-cleaner/",
+      "input": [
+        "本日\nは晴れ。\n\n> 引用として残したい文章。\n・項目A\n・項目B"
+      ],
+      "output": "本日は晴れ。\n\n引用として残したい文章。\n・項目A\n・項目B",
+      "input_units": 1,
+      "process_buttons": 0,
+      "carryout": "コピー1回後に全面広告。クリップボードは直前のMarkdownのまま。コピー完了は未確認、追加閉じる操作は未実施。",
+      "observed": "6→5行。段落/箇条書き保持、引用符削除が初期ON。広告が操作に割り込む事例を直接観測。全利用者/毎回で起こるとはしない。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false,
+      "output_note": "AX表示内容に基づく要約。厳密な改行bytes/クリップボードは広告表示後に確認できず。"
+    },
+    {
+      "genre": "画像余白",
+      "site": "Webspe",
+      "url": "https://webspe.net/tools/image-padding/",
+      "input": [
+        "既存QA合成透過PNG800×600",
+        "四辺20px"
+      ],
+      "output": "840×640px、四辺20px、PNGと画面表示",
+      "input_units": 1,
+      "process_buttons": 0,
+      "setting_changes": 1,
+      "carryout": "保存ボタン1回。Download APIがパスを返したがファイル読取りはENOENT、保存ファイルの再デコード未確認。",
+      "observed": "画像選択1回＋OS選択（タップ数未測定）＋余白入力1回。初期100px時は1000×800。ツール前にスポンサー枠。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    },
+    {
+      "genre": "表Markdown変換",
+      "site": "植木鉢団",
+      "url": "https://uekibachidan.com/mdtable/",
+      "input": [
+        "項目\t金額\n例A\t100\n例B\t200"
+      ],
+      "output": "| 項目 | 金額 |\n| ---- | ---- |\n| 例A  | 100  |\n| 例B  | 200  |",
+      "input_units": 1,
+      "process_buttons": 0,
+      "carryout": "コピー1回、クリップボードが出力全文と一致",
+      "observed": "自動判定/リアルタイム/日本語幅対応。試験経路に登録要求/阻害広告は観測せず。単純な機能追加では優位性がない。",
+      "checked_on": "2026-11-01",
+      "environment": "実Chrome / Linux / desktop",
+      "mobile_verified": false,
+      "android_device_verified": false,
+      "touch_tap_count": null,
+      "network_privacy_audited": false
+    }
+  ],
+  "extra_blocked_site": {
+    "url": "https://www.lsx.jp/utils/redundant/index.html",
+    "status": "ordinary upstream connection reset; operation unverified; not classified as bot"
+  }
+}

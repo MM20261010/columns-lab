@@ -1,0 +1,1398 @@
+{
+  "checked_on": "2026-11-01",
+  "keyword_count": 40,
+  "keywords": [
+    {
+      "id": 1,
+      "category": "日付",
+      "q": "日数計算",
+      "sources": [
+        {
+          "title": "日数計算・期間計算｜何日後の日付・今日から年末までの日数 - ベストカレンダー",
+          "url": "https://bestcalendar.jp/tools/nissu",
+          "ref": "turn22search0"
+        },
+        {
+          "title": "日数計算〖無料〗 | 計算BOX",
+          "url": "https://keisanbox.com/keisan/nissu/",
+          "ref": "turn22search1"
+        },
+        {
+          "title": "日数計算・時間計算｜日付の差・○日後・あと何日・勤務時間の合計を無料で | MYコンサルティング",
+          "url": "https://www.myconsulting.co.jp/hp/tools/date-calc/",
+          "ref": "turn22search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "初日を含むかで意図が分かれる。Google回答内完結は未確認。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 2,
+      "category": "日付",
+      "q": "営業日計算",
+      "sources": [
+        {
+          "title": "営業日数計算（土日・祝日を除く／N営業日後・前） | エンジニアの道具箱",
+          "url": "https://engineer-toolbox.jp/tools/business-days/",
+          "ref": "turn19search0"
+        },
+        {
+          "title": "営業日計算 - DateDB",
+          "url": "https://jp.datedb.net/tool/business-days/",
+          "ref": "turn19search1"
+        },
+        {
+          "title": "営業日計算ツール｜土日祝・銀行・行政の休みに対応 | Kazoerude（かぞえるで）",
+          "url": "https://kazoerude.com/",
+          "ref": "turn19search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": "営業日計算",
+      "results_observed": "ツール中心",
+      "intent_note": "土日祝除外・N日前後。Trendsと実操作あり。祝日保守が必要。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 3,
+      "category": "日付",
+      "q": "何日後 計算",
+      "sources": [
+        {
+          "title": "日数計算・期間計算｜何日後の日付・今日から年末までの日数 - ベストカレンダー",
+          "url": "https://bestcalendar.jp/tools/nissu",
+          "ref": "turn23search0"
+        },
+        {
+          "title": "何日後・何日前の計算｜○日後は何月何日？（何か月後も）",
+          "url": "https://keisan.navilly.com/tools/days-after.html",
+          "ref": "turn23search1"
+        },
+        {
+          "title": "日付計算の方法｜何日後・何日前・日付間の日数を計算",
+          "url": "https://hizuke.tokyo/guide/date-calculation",
+          "ref": "turn23search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール＋解説",
+      "intent_note": "定型日付なら検索内完結の可能性。実際の回答枠は未確認。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 4,
+      "category": "日付",
+      "q": "日付 曜日 一覧 作成",
+      "sources": [
+        {
+          "title": "今日の日付と日本のカレンダー - DateDB",
+          "url": "https://jp.datedb.net/",
+          "ref": "turn18search0"
+        },
+        {
+          "title": "曜日を計算 - 年齢計算サイト",
+          "url": "https://www.calc-age.com/day_of_week",
+          "ref": "turn18search1"
+        },
+        {
+          "title": "連番・日付リスト生成ツール｜ゼロ埋め・接頭辞・曜日付きで一括作成 | にゃんこツール",
+          "url": "https://nyankotools.com/tools/sequence-generator/",
+          "ref": "turn18search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "日付/曜日/連番の意図が混在。需要規模は未確認。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 5,
+      "category": "日付",
+      "q": "締切 逆算",
+      "sources": [
+        {
+          "title": "◯日前とは？｜逆算の意味・数え方・「までに」の注意〖キゲンナビ〗",
+          "url": "https://kigennavi.jp/tools/deadline/what-is-before-deadline.html",
+          "ref": "turn20search0"
+        },
+        {
+          "title": "営業日計算（○営業日後・営業日数） · 営業日 計算 ｜ siutil",
+          "url": "https://siutil.com/ja/business-days/",
+          "ref": "turn20search1"
+        },
+        {
+          "title": "締め切りから逆算した作業の日程（無料）｜テマヘラ",
+          "url": "https://ainosensei.com/tools/backward-plan/",
+          "ref": "turn20search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "解説＋ツール",
+      "intent_note": "締切の法的・業務固有条件は別。逆算一般も混在。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 6,
+      "category": "単価",
+      "q": "単価比較 計算",
+      "sources": [
+        {
+          "title": "単価比較 どっちがお得・どっちが安い〖無料ツール〗",
+          "url": "https://tsulo.com/life/tanka-hikaku",
+          "ref": "turn24search0"
+        },
+        {
+          "title": "単価計算ツール｜どっちが安い？1mL・1gあたりの値段で比べる｜価格比較.JP",
+          "url": "https://kakakuhikaku.jp/keisan/",
+          "ref": "turn24search1"
+        },
+        {
+          "title": "単価の比較（100gあたり・1枚あたり）｜テマヘラ",
+          "url": "https://ainosensei.com/tools/unit-price/",
+          "ref": "turn24search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": "単価比較",
+      "results_observed": "ツール中心",
+      "intent_note": "買物の2商品比較。親語のTrendsあり。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 7,
+      "category": "単価",
+      "q": "100g あたり 計算",
+      "sources": [
+        {
+          "title": "100gあたりの価格計算 — 内容量が違う商品を比べる | 生活計算所",
+          "url": "https://eolmaji.com/ja/unit-price-100g",
+          "ref": "turn21search0"
+        },
+        {
+          "title": "単価比較 どっちがお得・どっちが安い〖無料ツール〗",
+          "url": "https://tsulo.com/life/tanka-hikaku",
+          "ref": "turn21search1"
+        },
+        {
+          "title": "100gあたりの価格計算｜内容量から100g単価を計算",
+          "url": "https://dentakuweb.com/100g-atari-kakaku-keisan/",
+          "ref": "turn21search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "100g単価の具体作業。店頭表示・電卓も代替。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 8,
+      "category": "単価",
+      "q": "容量 単価 比較",
+      "sources": [
+        {
+          "title": "単価比較 どっちがお得・どっちが安い〖無料ツール〗",
+          "url": "https://tsulo.com/life/tanka-hikaku",
+          "ref": "turn17search0"
+        },
+        {
+          "title": "単価比較（100gあたり・1mLあたり）｜どっちが安い？容量違いを一瞬で比較｜手軽屋 | 手軽屋",
+          "url": "https://tegaruya.com/unit-price/",
+          "ref": "turn17search1"
+        },
+        {
+          "title": "単価比較 | 100gあたりの価格でどっちが安いか | 電子お道具箱",
+          "url": "https://e-toolbox.net/tools/unit-price-calculator",
+          "ref": "turn17search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "容量と入数の比較。親語のTrendsを当該語の実数にしない。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 9,
+      "category": "単価",
+      "q": "税込 税抜 計算",
+      "sources": [
+        {
+          "title": "消費税の計算｜税込・税抜の変換（10%・8%）と早見表",
+          "url": "https://keisan.navilly.com/tools/tax-included.html",
+          "ref": "turn30search0"
+        },
+        {
+          "title": "税込・税抜 計算ツール｜消費税10%・8%の税込計算と税抜き計算（端数処理と複数行の合計つき）｜そろばんノート",
+          "url": "https://sorobannote.com/calc/zeikomi",
+          "ref": "turn30search1"
+        },
+        {
+          "title": "消費税計算 · KitMerit",
+          "url": "https://kitmerit.com/ja/finance/consumption-tax/",
+          "ref": "turn30search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "単一数値は電卓/検索内回答に代替されやすい（仮説）。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 10,
+      "category": "単価",
+      "q": "割引率 計算",
+      "sources": [
+        {
+          "title": "割引率計算機 | 電卓JP | 電卓JP",
+          "url": "https://www.calculatorjp.com/discount-rate-calculator",
+          "ref": "turn26search0"
+        },
+        {
+          "title": "Microsoft PowerPoint - プレゼンテーション1",
+          "url": "https://www.mlit.go.jp/common/001090778.pdf",
+          "ref": "turn26search12"
+        },
+        {
+          "title": "割引計算（無料）｜割引後の価格・割引率・元値をすぐ計算〖何割引き対応〗｜計算ナビ",
+          "url": "https://keisan-navi.jp/seikatsu/waribiki/",
+          "ref": "turn26search1"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール＋別意図",
+      "intent_note": "買物と金融の割引率が混在。数値需要は不明。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 11,
+      "category": "文章",
+      "q": "改行 削除 ツール",
+      "sources": [
+        {
+          "title": "改行を削除 オンライン",
+          "url": "https://www.toolsina.com/ja/line-break-remover/",
+          "ref": "turn28search0"
+        },
+        {
+          "title": "改行削除 — 無料・登録不要のツール | Zerethon",
+          "url": "https://tools.zerethon.com/ja/remove-line-breaks",
+          "ref": "turn28search1"
+        },
+        {
+          "title": "改行削除・空白削除ツール｜文字起こしの整形にも｜Klang",
+          "url": "https://jp.klang.ai/tools/text-cleanup/",
+          "ref": "turn28search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": "改行削除",
+      "results_observed": "ツール中心",
+      "intent_note": "PDFコピペの困りごとの質問を補強調査。Google直接SERPは確認画面で中断。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 12,
+      "category": "文章",
+      "q": "空白 削除 ツール",
+      "sources": [
+        {
+          "title": "空白削除ツール — 無料・ブラウザ完結 | Zerethon",
+          "url": "https://tools.zerethon.com/ja/whitespace-remover",
+          "ref": "turn31search0"
+        },
+        {
+          "title": "文字の置換・改行削除ツール｜一括置換、改行・空白・空行の削除",
+          "url": "https://kei-tool.com/replace",
+          "ref": "turn31search1"
+        },
+        {
+          "title": "空白・重複行テキスト整理 · QuickKit Tools",
+          "url": "https://tools.quickkit.net/ja/tools/text-cleaner",
+          "ref": "turn31search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "全空白削除は意味破壊に注意。改行親語のTrendsは別物。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 13,
+      "category": "文章",
+      "q": "全角 半角 変換",
+      "sources": [
+        {
+          "title": "全角・半角変換",
+          "url": "https://www.douni.one/jp/fullwidth-halfwidth",
+          "ref": "turn32search0"
+        },
+        {
+          "title": "全角半角変換ツール｜英数字・記号・半角カナを相互に変換 | ROBERIN",
+          "url": "https://roberin.com/ja/fullwidth-halfwidth-converter/",
+          "ref": "turn32search1"
+        },
+        {
+          "title": "全角半角 変換ツール ｜ 計算.me",
+          "url": "https://keisan.me/henkan/",
+          "ref": "turn32search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "かな/英数字/記号の範囲差。競合多数。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 14,
+      "category": "文章",
+      "q": "文字数 カウント",
+      "sources": [
+        {
+          "title": "文字数カウント",
+          "url": "https://count.yuki-lab.com/",
+          "ref": "turn25search0"
+        },
+        {
+          "title": "文字数カウント（無料）｜リアルタイム計算・原稿用紙換算｜FNNプライムオンライン",
+          "url": "https://www.fnn.jp/list/character-count",
+          "ref": "turn25search1"
+        },
+        {
+          "title": "文字数カウント｜原稿用紙換算・単語数・行数・全角半角も同時計測 - utsuwa",
+          "url": "https://utsuwa-tools.com/ja/text/character-counter/",
+          "ref": "turn25search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": "文字数カウント",
+      "results_observed": "ツール中心",
+      "intent_note": "Trendsは比較内で突出。大手メディアもあり競争強い。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 15,
+      "category": "文章",
+      "q": "文章 差分 比較",
+      "sources": [
+        {
+          "title": "文章比較ツール（リアルタイム差分表示）｜無料",
+          "url": "https://tohitsu.co.jp/diff/",
+          "ref": "turn29search0"
+        },
+        {
+          "title": "テキスト差分ビュー｜文章・ことばの無料ツール｜ポチカツ道具箱",
+          "url": "https://tools.potikatsu.com/t/text-diff/",
+          "ref": "turn29search1"
+        },
+        {
+          "title": "テキスト比較・差分チェック｜文章の違いを色分け表示 - shinsu.jp",
+          "url": "https://shinsu.jp/text-diff/",
+          "ref": "turn29search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "2文章の差分。差分アルゴリズムと長文性能の負担。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 16,
+      "category": "リスト",
+      "q": "重複行 削除",
+      "sources": [
+        {
+          "title": "重複行 削除 — 名簿やリストのダブりを消す（重複だけ抽出も・送信なし） | ハルオフィス",
+          "url": "https://www.webharu.com/office/remove-duplicates/",
+          "ref": "turn27search0"
+        },
+        {
+          "title": "重複行削除｜元の順番のまま重複した行を削除 - Ariake Tools",
+          "url": "https://tools.ariake-ai.com/tools/remove-duplicate-lines",
+          "ref": "turn27search1"
+        },
+        {
+          "title": "重複行を削除｜ことばツール",
+          "url": "https://kotoba-tools.sugars.chatgpt.site/duplicate-lines",
+          "ref": "turn27search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": true,
+      "google_related_verified": true,
+      "google_serp_verified": true,
+      "trends_keyword": "重複行削除",
+      "results_observed": "混在（Google直接）",
+      "intent_note": "ツール＋Excel解説＋AI概要。Google候補/関連あり。",
+      "google_answer_box_verified": "AI概要あり（操作自体は検索内で完結せず）",
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 17,
+      "category": "リスト",
+      "q": "重複 チェック ツール",
+      "sources": [
+        {
+          "title": "重複文字チェック｜お仕事効率化ツール",
+          "url": "https://itakata.com/tool/duplicate.php",
+          "ref": "turn36search0"
+        },
+        {
+          "title": "重複行の削除・並べ替えツール｜リストの重複チェック、空行削除、あいうえお順・数字順",
+          "url": "https://kei-tool.com/lines",
+          "ref": "turn36search1"
+        },
+        {
+          "title": "リスト比較・差分チェック｜重複件数も確認できる無料ツール",
+          "url": "https://comparetwolists.app/ja/",
+          "ref": "turn36search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "1リストか2リストか、文字列か文章盗用かを区別。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 18,
+      "category": "リスト",
+      "q": "2つのリスト 比較",
+      "sources": [
+        {
+          "title": "2つのリストを比較 — 差分と共通項目 | LibraTool",
+          "url": "https://libratool.com/ja/tools/list-compare",
+          "ref": "turn37search0"
+        },
+        {
+          "title": "リスト比較・差分チェック｜重複件数も確認できる無料ツール",
+          "url": "https://comparetwolists.app/ja/",
+          "ref": "turn37search1"
+        },
+        {
+          "title": "2つのリスト突合 | 仕事データツール",
+          "url": "https://tools.norqevia.com/text/list-compare/",
+          "ref": "turn37search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": true,
+      "google_related_verified": true,
+      "google_serp_verified": true,
+      "trends_keyword": null,
+      "results_observed": "混在（Google直接）",
+      "intent_note": "Excel照合解説＋比較ツール＋AI概要。候補/関連あり。",
+      "google_answer_box_verified": "AI概要あり（操作自体は検索内で完結せず）",
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 19,
+      "category": "リスト",
+      "q": "行 並び替え ツール",
+      "sources": [
+        {
+          "title": "行の並べ替え — 無料のテキスト整列ツール | Zerethon",
+          "url": "https://tools.zerethon.com/ja/sort-lines",
+          "ref": "turn33search0"
+        },
+        {
+          "title": "行を並び替え（文字列ソート）｜ことばツール",
+          "url": "https://kotoba-tools.sugars.chatgpt.site/line-sort",
+          "ref": "turn33search1"
+        },
+        {
+          "title": "テキスト逆順・行シャッフル・重複削除・ソートツール | アサリツールズ",
+          "url": "https://tools.studioasari.co.jp/text-tools/textshuffle",
+          "ref": "turn33search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "Excelやエディタで代替可能。かな・数値順の差。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 20,
+      "category": "リスト",
+      "q": "連番 作成 ツール",
+      "sources": [
+        {
+          "title": "連番・日付リスト生成ツール｜ゼロ埋め・接頭辞・曜日付きで一括作成 | にゃんこツール",
+          "url": "https://nyankotools.com/tools/sequence-generator/",
+          "ref": "turn40search0"
+        },
+        {
+          "title": "整理券・番号札の作成（無料）｜テマヘラ",
+          "url": "https://ainosensei.com/tools/number-ticket/",
+          "ref": "turn40search1"
+        },
+        {
+          "title": "PDFに連番・CSV差し込み｜アンケート・申込書・整理券の一括作成 | 業務支援ツール | けもの相談所",
+          "url": "https://kemono-soudan.jp/work-tools/renban-pdf/",
+          "ref": "turn40search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール＋解説",
+      "intent_note": "連番文字列と番号札PDFは別。ニーズを分離。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 21,
+      "category": "PDF",
+      "q": "PDF 結合 無料",
+      "sources": [
+        {
+          "title": "PDF結合（無料・登録不要）｜MamePDF",
+          "url": "https://mamepdf.jp/",
+          "ref": "turn38search0"
+        },
+        {
+          "title": "PDFの結合・分割・並べ替えを無料で（登録不要）｜カツプロ",
+          "url": "https://pro.alcuesto.jp/tools/pdf-merge",
+          "ref": "turn38search1"
+        },
+        {
+          "title": "PDF結合・分割・画像からPDF変換｜無料・登録不要",
+          "url": "https://mojimeter.help/pdf",
+          "ref": "turn38search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "ローカル処理も既存。PDF互換性/容量対応の保守負担。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 22,
+      "category": "PDF",
+      "q": "PDF 分割 無料",
+      "sources": [
+        {
+          "title": "PDF分割｜ページごと・範囲指定で無料分割",
+          "url": "https://pdf-tool.apps.wsww.jp/ja/split-pdf",
+          "ref": "turn35search0"
+        },
+        {
+          "title": "無料PDF分割ツール - 電子契約システム マイサイン（mysign）",
+          "url": "https://mysign.jp/pdf-split-online",
+          "ref": "turn35search1"
+        },
+        {
+          "title": "PDF分割（無料）｜ページの抜き出し・分割・並べ替え・回転・削除｜手元ツール",
+          "url": "https://temoto-tools.com/pdf-split/",
+          "ref": "turn35search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "範囲選択の既存サービス多数。スマホ実操作未確認。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 23,
+      "category": "PDF",
+      "q": "PDF ページ 並べ替え",
+      "sources": [
+        {
+          "title": "PDFページ順序変更 - ドラッグ＆ドロップで並べ替え（無料） | ainew.jp Tools",
+          "url": "https://ainew.jp/pdf-reorder",
+          "ref": "turn34search0"
+        },
+        {
+          "title": "〖無料〗PDFページの入れ替え・並び替えをオンラインで | Adobe Acrobat",
+          "url": "https://www.adobe.com/jp/acrobat/online/rearrange-pdf",
+          "ref": "turn34search1"
+        },
+        {
+          "title": "PDFページ回転・自由回転・削除・並び替え - 無料オンラインツール",
+          "url": "https://pdf.links-create.co.jp/pdf-rotate",
+          "ref": "turn34search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "Adobe公式も存在。並べ替えのタッチ品質未確認。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 24,
+      "category": "PDF",
+      "q": "PDF 2in1 無料",
+      "sources": [
+        {
+          "title": "PDFを2in1・4in1にする（無料）｜1枚の紙に2・4・6・8・9・16ページ。並べる順や余白も選べる｜手元ツール",
+          "url": "https://temoto-tools.com/pdf-nup/",
+          "ref": "turn39search0"
+        },
+        {
+          "title": "PDF編集・結合・分割・圧縮の無料ツール｜インストール不要 HANEPDF",
+          "url": "https://hanetool.com/pdf/",
+          "ref": "turn39search1"
+        },
+        {
+          "title": "貼るだけ、無料、登録不要のPDF編集 — pdfbako",
+          "url": "https://pdfbako.app/lp",
+          "ref": "turn39search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "印刷設定のN-upとファイル再構成は別。規模不明。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 25,
+      "category": "PDF",
+      "q": "PDF 墨消し 無料",
+      "sources": [
+        {
+          "title": "PDF の墨消し（黒塗り） - 無料・アップロード不要 | Scissor PDF",
+          "url": "https://pdf.scissor.studio/ja/redact-pdf/",
+          "ref": "turn41search0"
+        },
+        {
+          "title": "PDFの一部を消去する2つの方法｜Adobe Acrobat",
+          "url": "https://www.adobe.com/jp/acrobat/hub/how-to-white-out-on-pdf.html",
+          "ref": "turn41search1"
+        },
+        {
+          "title": "PDFTidy — PDF の透かし削除・墨消し・画像変換",
+          "url": "https://pdftidy.cc/ja/",
+          "ref": "turn41search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール＋解説",
+      "intent_note": "見た目の黒塗りだけで内容が残るリスク。第3候補にはしない。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 26,
+      "category": "画像",
+      "q": "画像 余白 追加",
+      "sources": [
+        {
+          "title": "画像余白追加ツール - まめアプリ工房",
+          "url": "https://mameapp.com/tools/image-add-padding",
+          "ref": "turn45search0"
+        },
+        {
+          "title": "画像余白追加ツール｜余白サイズや色を自由に設定可能",
+          "url": "https://webspe.net/tools/image-padding/",
+          "ref": "turn45search1"
+        },
+        {
+          "title": "‎余白：写真にフレームを追加し、サイズ調整、背景をぼかしますアプリ - App Store",
+          "url": "https://apps.apple.com/jp/app/%E4%BD%99%E7%99%BD-%E5%86%99%E7%9C%9F%E3%81%AB%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97-%E3%82%B5%E3%82%A4%E3%82%BA%E8%AA%BF%E6%95%B4-%E8%83%8C%E6%99%AF%E3%82%92%E3%81%BC%E3%81%8B%E3%81%97%E3%81%BE%E3%81%99/id1659350166",
+          "ref": "turn45search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": "画像余白追加",
+      "results_observed": "ツール＋アプリ",
+      "intent_note": "Trends比較内は小さい。既存画像PRと重なり追加優先低。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 27,
+      "category": "画像",
+      "q": "画像 背景 透過",
+      "sources": [
+        {
+          "title": "背景透過（背景削除）｜無料・登録なし・元の大きさのまま透過PNG｜キットベンチ",
+          "url": "https://kitbench.net/background-remover/",
+          "ref": "turn46search0"
+        },
+        {
+          "title": "画像背景透過 — やっとくん",
+          "url": "https://yattokun.com/tools/haikei-touka",
+          "ref": "turn46search1"
+        },
+        {
+          "title": "背景透過・画像の切り抜き｜人物や商品を透過PNGに（写真は送信しない）｜はねつーる（HANETOOL）",
+          "url": "https://hanetool.com/cut/",
+          "ref": "turn46search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "モデル/演算負荷・画質競争が強い。初期追加費用ゼロでも保守重い。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 28,
+      "category": "画像",
+      "q": "画像 一括 リネーム",
+      "sources": [
+        {
+          "title": "画像のファイル名を変更 - 一括リネームも無料",
+          "url": "https://imageonline.io/ja/rename-image/",
+          "ref": "turn42search0"
+        },
+        {
+          "title": "画像一括リネーム・ファイル名変更ツール〖無料・ブラウザ完結〗 | アサリツールズ",
+          "url": "https://tools.studioasari.co.jp/file-tools/batchrename",
+          "ref": "turn42search1"
+        },
+        {
+          "title": "画像一括リネーム オンライン - アップロード不要",
+          "url": "https://jp.piliapp.com/image/rename/",
+          "ref": "turn42search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "ZIP保存/一括命名。スマホファイル操作の負担。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 29,
+      "category": "画像",
+      "q": "EXIF 削除",
+      "sources": [
+        {
+          "title": "写真の位置情報（GPS）・Exifを削除（無料）｜画質はそのまま。撮影場所・機種・日時を確かめて消す｜手元ツール",
+          "url": "https://temoto-tools.com/exif-remove/",
+          "ref": "turn44search0"
+        },
+        {
+          "title": "EXIF確認・削除ツール｜写真の位置情報・撮影情報を確認して削除",
+          "url": "https://utilab.jp/tools/exif-checker/",
+          "ref": "turn44search1"
+        },
+        {
+          "title": "1.4. 写真の位置情報",
+          "url": "https://www.ipa.go.jp/security/10threats/ps6vr7000000auzz-att/yougoyashikumi_2022.pdf",
+          "ref": "turn44search12"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール＋公的解説",
+      "intent_note": "位置情報削除の必要性はIPA資料。完全な除去/再エンコード検証が必要。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 30,
+      "category": "画像",
+      "q": "画像 縦横比 計算",
+      "sources": [
+        {
+          "title": "画像の切り抜き・リサイズの計算｜縦横比を保った寸法とdpi",
+          "url": "https://keisan.navilly.com/tools/aspect-crop.html",
+          "ref": "turn43search0"
+        },
+        {
+          "title": "アスペクト比計算｜縦横比と余白の無料ツール",
+          "url": "https://itkagyo.com/tools/aspect-ratio-calculator/",
+          "ref": "turn43search1"
+        },
+        {
+          "title": "アスペクト比計算機（比率の約分・解像度から縦横サイズを計算） | にゃんこツール",
+          "url": "https://nyankotools.com/tools/aspect-ratio-calculator/",
+          "ref": "turn43search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "単純比率は検索/電卓代替の可能性。画像PRとの差が小さい。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 31,
+      "category": "データ",
+      "q": "Excel 先頭ゼロ 消える",
+      "sources": [
+        {
+          "title": "先頭のゼロおよび大きい数値の保持 | Microsoft Support",
+          "url": "https://support.microsoft.com/ja-jp/excel/keeping-leading-zeros-and-large-numbers",
+          "ref": "turn48search0"
+        },
+        {
+          "title": "〖Excel〗先頭に「0（ゼロ）」を表示させる方法｜ソフトの利用方法（Office、Adobe、PDF、ブラウザ関連）｜各利用方法、マニュアル｜利用方法｜東京経済大学情報システム課",
+          "url": "https://www.tku.ac.jp/iss/guide/classroom/tipspc/excel0.html",
+          "ref": "turn48search1"
+        },
+        {
+          "title": "〖EX-005〗先頭ゼロが消える？Excelで番号を正しく入力する方法｜Excel効率化ノート管理人",
+          "url": "https://note.com/modern_pipit6206/n/nead01171de45",
+          "ref": "turn48search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "公式解説中心",
+      "intent_note": "失われたゼロは推測復元不能。単独新ツールより既存ガイド向き。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 32,
+      "category": "データ",
+      "q": "CSV 文字化け 変換",
+      "sources": [
+        {
+          "title": "CSVファイルを文字化けやデータ形式を変えないで開く方法を教えてください : 財務省",
+          "url": "https://www.mof.go.jp/faq/statistics/12ua.htm",
+          "ref": "turn47search0"
+        },
+        {
+          "title": "CSVの文字化けを直す文字コード変換（UTF-8 BOM付き・Shift_JIS・改行コード） | ファイル操作 | Toolbase",
+          "url": "https://toolbase.cc/file/convert/charset",
+          "ref": "turn47search1"
+        },
+        {
+          "title": "文字化け変換・文字コード変換ツール - Mediasoft",
+          "url": "https://www.mediasoft.jp/tools/mojibake-encoding-converter/",
+          "ref": "turn47search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "公式解説＋ツール",
+      "intent_note": "財務省に開き方のFAQ。既存CSVとの回遊強いが文字コード検証負担。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 33,
+      "category": "データ",
+      "q": "TSV CSV 変換",
+      "sources": [
+        {
+          "title": "TSV を CSV に変換 — カンマ区切り、無料 | Quinvert",
+          "url": "https://quinvert.com/ja/tsv-to-csv",
+          "ref": "turn50search0"
+        },
+        {
+          "title": "TSV CSV変換 - タブ区切りとカンマ区切りを相互変換 | sakuttoAI",
+          "url": "https://sakutto.ai/tools/tsv-csv-convert",
+          "ref": "turn50search1"
+        },
+        {
+          "title": "TSV CSV 変換ツール｜タブ区切りをカンマ区切りに変換（無料）",
+          "url": "https://kanaries.net/ja/tools/tsv-to-csv",
+          "ref": "turn50search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "引用符/セル内改行への対応が必要。CSVとの回遊強い。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 34,
+      "category": "データ",
+      "q": "表 Markdown 変換",
+      "sources": [
+        {
+          "title": "表の変換 | コピペで使う",
+          "url": "https://oha-yo.com/tools/table/",
+          "ref": "turn52search0"
+        },
+        {
+          "title": "Markdown表 相互変換ツール | 表計算のコピペとMarkdown表を双方向に変換",
+          "url": "https://uekibachidan.com/mdtable/",
+          "ref": "turn52search1"
+        },
+        {
+          "title": "表をMarkdown形式に変換 | 表変換ツール | AI Engineering Tools",
+          "url": "https://engineer.dogeonmars.com/ja/tools/table-converter",
+          "ref": "turn52search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "実ブラウザで貼付→自動変換→コピー確認。先行競合が速い。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 35,
+      "category": "データ",
+      "q": "Excel 重複 抽出",
+      "sources": [
+        {
+          "title": "重複しない値を抽出する、または重複する値を削除する | Microsoft Support",
+          "url": "https://support.microsoft.com/ja-jp/Excel/get-started/filter-for-unique-values-or-remove-duplicate-values",
+          "ref": "turn51search0"
+        },
+        {
+          "title": "重複しない値を抽出する、または重複する値を削除する | Microsoft Support",
+          "url": "https://support.microsoft.com/ja-jp/excel/get-started/filter-for-unique-values-or-remove-duplicate-values",
+          "ref": "turn51search1"
+        },
+        {
+          "title": "重複しない値を抽出する、または重複する値を削除する | Microsoft Support",
+          "url": "https://support.microsoft.com/ja-JP/Excel/get-started/filter-for-unique-values-or-remove-duplicate-values",
+          "ref": "turn51search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "公式解説中心",
+      "intent_note": "Excel機能が代替。Webへ貼る必然性は別に必要。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 36,
+      "category": "汎用",
+      "q": "時間 計算 ツール",
+      "sources": [
+        {
+          "title": "時間計算ツール｜時間の足し算・引き算・勤務時間の合計｜計算ナビ",
+          "url": "https://keisan-navi.jp/date/jikan/",
+          "ref": "turn55search0"
+        },
+        {
+          "title": "時間 計算ツール｜時間の足し算・引き算、経過時間、分を時間に変換(100分は何時間何分)、何時間後の時刻",
+          "url": "https://shikumiyasan.com/life/jikan/",
+          "ref": "turn55search1"
+        },
+        {
+          "title": "時間計算ツール〖無料〗時間の足し算・引き算・合計を自動計算",
+          "url": "https://tools.humanity-japan.jp/time-calc/",
+          "ref": "turn55search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "勤務/経過/加算など複数意図。日跨ぎ/丸めの要件増。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 37,
+      "category": "汎用",
+      "q": "分 時間 変換",
+      "sources": [
+        {
+          "title": "分 → 時間 コンバーター (min → h) - Convert",
+          "url": "https://convert.app/ja/time/minute-to-hour/",
+          "ref": "turn49search0"
+        },
+        {
+          "title": "時間の変換｜分→時間、時間→分・秒、小数の時間 ｜ 計算.me",
+          "url": "https://keisan.me/jikan/henkan.php",
+          "ref": "turn49search1"
+        },
+        {
+          "title": "分 から 時間 変換 | 1 min = 0.016667 h | UnitConv",
+          "url": "https://unitconv.org/ja/convert/time/minute-to-hour",
+          "ref": "turn49search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "定型変換は検索内完結のリスク（未確認）。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 38,
+      "category": "汎用",
+      "q": "比率 計算",
+      "sources": [
+        {
+          "title": "比率の計算式（分子／分母）：",
+          "url": "https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/kakutei12/dl/01_tyo.pdf",
+          "ref": "turn56search12"
+        },
+        {
+          "title": "6　比率の解説（諸率の算出に用いた人口は20、21頁を参照）",
+          "url": "https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/kakutei23/dl/01_cho.pdf",
+          "ref": "turn56search13"
+        },
+        {
+          "title": "6　比率の解説（諸率の算出に用いた人口は、18頁を参照）",
+          "url": "https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/kakutei25/dl/01_cho.pdf",
+          "ref": "turn56search14"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "初回検索は偏り・補足でツール確認",
+      "intent_note": "初回は統計PDFに偏った。別検索系で補強し工具需要と断定しない。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true,
+      "supplementary_search": {
+        "method": "system1",
+        "q": "比率 計算 無料 ツール",
+        "sources": [
+          {
+            "title": "比率計算ツール",
+            "url": "https://rakko.tools/ja/tools/ratio-calculator"
+          },
+          {
+            "title": "比率計算機",
+            "url": "https://www.choalabs.com/ja/calculator/ratio"
+          }
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "category": "汎用",
+      "q": "パーセント 計算",
+      "sources": [
+        {
+          "title": "パーセント計算",
+          "url": "https://www.luft.co.jp/cgi/percent.php",
+          "ref": "turn54search0"
+        },
+        {
+          "title": "パーセント公式 | Percentage Calculator",
+          "url": "https://percentage.onl/ja/learn/percentage-formula/",
+          "ref": "turn54search1"
+        },
+        {
+          "title": "パーセント計算 - 割合・増減率・何%引きをすぐ計算（無料） | ZEKILO",
+          "url": "https://zekilo.com/ja/percentage-calculator/",
+          "ref": "turn54search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール＋解説",
+      "intent_note": "電卓・検索回答と競合。ケース別UIが必要。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    },
+    {
+      "id": 40,
+      "category": "汎用",
+      "q": "QRコード 作成 無料",
+      "sources": [
+        {
+          "title": "かんたん無料QRコード作成 QRコード.jp",
+          "url": "https://www.qr-code.jp/",
+          "ref": "turn53search0"
+        },
+        {
+          "title": "〖無料〗QRコード（二次元コード）作成ツール | QR TOOL",
+          "url": "https://qr.c-cloud.co.jp/tools/generator/design",
+          "ref": "turn53search1"
+        },
+        {
+          "title": "QRコード作成（無料）｜URL・文字・Wi-FiのQRコードを作ってPNG・SVGで保存。色・大きさも｜手元ツール",
+          "url": "https://temoto-tools.com/qr-code/",
+          "ref": "turn53search2"
+        }
+      ],
+      "checked_on": "2026-11-01",
+      "method": "公開検索サービス system2（Google順位ではない）",
+      "monthly_searches_japan": null,
+      "google_suggest_verified": false,
+      "google_related_verified": false,
+      "google_serp_verified": false,
+      "trends_keyword": null,
+      "results_observed": "ツール中心",
+      "intent_note": "既存無料サービス多数。静的QR/動的追跡QRを分ける。",
+      "google_answer_box_verified": null,
+      "tool_source_is_not_demand_volume": true
+    }
+  ],
+  "google_scope": {
+    "direct_success_keywords": [
+      "重複行 削除",
+      "2つのリスト 比較"
+    ],
+    "auxiliary_serp": "2つのリスト",
+    "suggest_prefixes": [
+      "重複行",
+      "2つのリスト"
+    ],
+    "blocked_query": "改行 削除 ツール",
+    "block": "Googleから通常と異なるトラフィックの確認画面。CAPTCHA操作/突破なし。別経路でGoogleを再取得しない。"
+  },
+  "trends": {
+    "country": "JP",
+    "range": "過去12か月（UI表示）",
+    "category": "すべて",
+    "search_type": "ウェブ検索",
+    "term_type": "検索キーワード",
+    "comparison1": {
+      "terms": [
+        "重複行削除",
+        "営業日計算",
+        "単価比較",
+        "改行削除",
+        "文字数カウント"
+      ],
+      "visible_average": [
+        0,
+        1,
+        1,
+        1,
+        72
+      ]
+    },
+    "comparison2": {
+      "terms": [
+        "重複行削除",
+        "営業日計算",
+        "単価比較",
+        "改行削除",
+        "画像余白追加"
+      ],
+      "visible_average": [
+        8,
+        34,
+        42,
+        55,
+        1
+      ]
+    },
+    "weekly_first": "2025-10-26",
+    "weekly_last": "2026-11-01（未完了週の可能性あり）",
+    "monthly_search_volume": null,
+    "warning": "別比較間で指数を直接比較しない。検索数・利用者数・獲得可能PVではない。0を無需要と解釈しない。",
+    "methodology_url": "https://support.google.com/trends/answer/4365533?hl=ja"
+  },
+  "monthly_volume_for_all": null
+}
