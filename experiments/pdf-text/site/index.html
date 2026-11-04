@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>PDF文章整形｜改行を整えて、そのままコピー</title>
+  <meta name="description" content="PDFからコピーした文章の折り返し改行を控えめに整形。原文を残し、結果を編集してコピーできます。">
+  <link rel="stylesheet" href="style.css">
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="brand">列そろえラボ <span class="badge">試作版</span></p>
+      <h1>PDF文章整形</h1>
+      <p class="lead">改行を整えて、そのままコピー。</p>
+      <p class="privacy">登録不要 · 文章を送信しません</p>
+    </header>
+    <section class="card" aria-label="文章の整形">
+      <div class="label-row"><label for="source"><span class="step">1</span> 文章を貼り付け</label><button id="reset" class="quiet" type="button" disabled>リセット</button></div>
+      <textarea id="source" rows="7" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="source-hint" placeholder="PDFからコピーした文章を、ここに貼り付けてください。"></textarea>
+      <p id="source-hint" class="hint">原文は残します。語句・数字・引用符は変えません。</p>
+      <div class="result-heading"><label for="result"><span class="step">2</span> 結果を確認・編集</label><span class="automatic">自動整形</span></div>
+      <textarea id="result" rows="7" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="result-hint summary" placeholder="整形した文章がここに表示されます。" disabled></textarea>
+      <p id="result-hint" class="hint">曖昧な改行は残します。気になる箇所は手直しできます。</p>
+      <p id="summary" class="summary"></p>
+      <button id="copy" class="primary" type="button" disabled>結果をコピー</button>
+      <p id="status" class="status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="secondary"><button id="restore" type="button" disabled>原文のまま</button><button id="reformat" type="button" disabled>整形し直す</button></div>
+    </section>
+    <details>
+      <summary>残す改行・使い方について</summary>
+      <p>段落・空行・箇条書き・見出し・URL・メール・数字を含む行は、改行をなるべく残します。日本語の助詞などから折り返しと判断できる箇所だけをつなぎます。英文では接続に必要な半角スペースを入れる場合があります。</p>
+      <p>意図と違う場合は結果を手直しするか、「原文のまま」に戻せます。すべての折り返しや見出しを正しく判定できるわけではありません。</p>
+      <p>10万文字（UTF-16単位）・5,000行まで。PDFファイルの読込や画像の文字認識は行いません。表・CSV全体には使わず、文章だけを貼り付けてください。</p>
+      <p>文章はこのページの一時的な状態だけに保持します。リセットや再読み込みで消えます。端末のクリップボードへコピー済みの文章は消えません。</p>
+    </details>
+    <footer>列そろえラボ · 本文の送信・自動保存なし</footer>
+  </main>
+</body>
+</html>
