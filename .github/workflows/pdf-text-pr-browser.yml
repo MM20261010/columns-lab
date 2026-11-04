@@ -1,0 +1,24 @@
+name: PDF text release browser QA
+on:
+  push:
+    branches:
+      - release/pdf-text-20261104
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/*.test.js tests/*.test.cjs experiments/pdf-text/tests/*.test.cjs
+      - run: npm install --no-save --no-package-lock playwright@1.58.2
+      - run: npx playwright install --with-deps chromium
+      - name: Start localhost site
+        run: python3 -m http.server 8765 --directory site > /tmp/pdf-text-http.log 2>&1 &
+      - name: Browser QA
+        run: node tests/qa/pdf-text-browser.cjs

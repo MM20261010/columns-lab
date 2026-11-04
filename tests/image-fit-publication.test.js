@@ -19,7 +19,7 @@ test('CSP is route-scoped, matches meta, permits existing RUM without unsafe scr
  const rules=headers.split('\n/tools/image-fit/*\n');
  assert.equal(rules.length,2);
  assert.doesNotMatch(rules[0],/Content-Security-Policy|X-Robots-Tag/);
- assert.equal(rules[1].trim(),'Content-Security-Policy: '+meta+"; frame-ancestors 'none'");
+ assert.equal(rules[1].split('\n/tools/pdf-text/*')[0].trim(),'Content-Security-Policy: '+meta+"; frame-ancestors 'none'");
  assert.match(meta,/script-src 'self' https:\/\/static.cloudflareinsights.com;/);
  assert.match(meta,/connect-src 'self' https:\/\/cloudflareinsights.com;/);
  assert.match(meta,/form-action 'none'/);
@@ -43,11 +43,11 @@ test('changed pages contain only resolving local resources and fragment links',(
   }
  }
 });
-test('sitemap contains five unique absolute canonical URLs including the image tool',()=>{
+test('sitemap contains six unique absolute canonical URLs including the image tool',()=>{
  const xml=read('site/sitemap.xml');
  assert.match(xml,/xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9"/);
  const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
- assert.equal(urls.length,5);assert.equal(new Set(urls).size,5);
+ assert.equal(urls.length,6);assert.equal(new Set(urls).size,6);
  assert.ok(urls.includes('https://columns-lab.pages.dev/tools/image-fit/'));
  assert.ok(urls.every(u=>new URL(u).origin==='https://columns-lab.pages.dev'));
  assert.match(read('site/robots.txt'),/Sitemap: https:\/\/columns-lab.pages.dev\/sitemap.xml/);
