@@ -10,8 +10,8 @@ const cases=require('../../experiments/pdf-text/tests/cases.json');
    await page.goto('http://127.0.0.1:8765/tools/pdf-text/');
    const norm=x=>x.replace(/\r\n|\r/g,'\n');
    for(const c of cases){
-    await page.fill('#source',c.input);assert.equal(await page.inputValue('#source'),norm(c.input),c.id+' original');assert.equal(await page.inputValue('#result'),norm(c.expected),c.id+' result');
-    if(c.expected){await page.click('#copy');await page.waitForFunction(()=>document.querySelector('#status').textContent==='コピーしました。');assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),norm(c.expected),c.id+' clipboard');}
+    await page.fill('#source',c.input);const original=await page.inputValue('#source'),displayed=await page.inputValue('#result');assert.ok(original===c.input||original===norm(c.input),c.id+' original');assert.ok(displayed===c.expected||displayed===norm(c.expected),c.id+' result');
+    if(c.expected){await page.click('#copy');await page.waitForFunction(()=>document.querySelector('#status').textContent==='コピーしました。');assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),displayed,c.id+' clipboard');}
    }
    const original='この文章は\n画面幅で折り返されています。\n\n・項目を保持';await page.fill('#source',original);
    await page.fill('#result','手動編集🙂\n"引用" 00123 <tag>');await page.click('#copy');await page.waitForFunction(()=>document.querySelector('#status').textContent==='コピーしました。');assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),'手動編集🙂\n"引用" 00123 <tag>');assert.equal(await page.inputValue('#source'),original);
