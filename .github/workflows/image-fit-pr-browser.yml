@@ -17,6 +17,7 @@ jobs:
           node-version: '22'
       - run: npm install --no-save --no-package-lock playwright@1.58.2
       - run: npx playwright install --with-deps chromium
+      - run: python3 -m pip install Pillow==13.0.0
       - name: Start localhost site
         run: python3 -m http.server 8765 --directory site > /tmp/image-fit-http.log 2>&1 &
       - name: Browser QA
