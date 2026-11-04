@@ -1,0 +1,23 @@
+name: PR image-fit browser QA
+on:
+  push:
+    branches:
+      - fix/image-fit-exact-dimensions-20261104
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-package-lock playwright@1.58.2
+      - run: npx playwright install --with-deps chromium
+      - name: Start localhost site
+        run: python3 -m http.server 8765 --directory site > /tmp/image-fit-http.log 2>&1 &
+      - name: Browser QA
+        run: node tests/qa/image-fit-browser.cjs
