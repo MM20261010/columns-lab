@@ -1,0 +1,53 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const C=require('../site/tools/image-fit/core.js');
+function jpeg(w=1200,h=800,size=1000){const b=new Uint8Array(Math.max(17,size));b.set([255,216,255,192,0,11,8,h>>8,h&255,w>>8,w&255,1,1,17,0,255,217]);return new Blob([b],{type:'image/jpeg'});}
+function png(w,h){const b=new Uint8Array(45),v=new DataView(b.buffer);b.set([137,80,78,71,13,10,26,10]);v.setUint32(8,13);b.set(Buffer.from('IHDR'),12);v.setUint32(16,w);v.setUint32(20,h);b.set(Buffer.from('IEND'),37);return new Blob([b],{type:'image/png'});}
+class Element{
+ constructor(){this.listeners={};this.attrs={};this.value='';this.checked=false;this.disabled=false;this.hidden=false;this.files=[];this.classes=new Set();this.classList={add:c=>this.classes.add(c),remove:c=>this.classes.delete(c),toggle:(c,on)=>on?this.classes.add(c):this.classes.delete(c)};}
+ addEventListener(e,f){(this.listeners[e]??=[]).push(f);}async emit(e,detail={}){await Promise.all((this.listeners[e]??[]).map(f=>f({preventDefault(){},...detail})));}
+ setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k]??null;}removeAttribute(k){delete this.attrs[k];}
+ get src(){return this.attrs.src;}set src(v){this.attrs.src=v;}get href(){return this.attrs.href;}set href(v){this.attrs.href=v;}
+}
+function harness(){
+ const els={},urls=new Map(),revoked=[],pending=[];let sequence=0,delay=false,jpegBytes=1000;
+ const el=id=>els[id]??=(new Element());for(const [k,v] of Object.entries({maxKB:'200',minKB:'0',minW:'0',minH:'0',maxW:'0',maxH:'0',mode:'capacity',targetW:'100',targetH:'100',fit:'pad'}))el(k).value=v;
+ el('after').hidden=true;el('run').disabled=true;
+ const document={getElementById:el,querySelectorAll:()=>[],createElement(tag){assert.equal(tag,'canvas');return {width:1,height:1,getContext(){return {fillRect(){},fillText(){},drawImage(){}};},toBlob(callback,type){const blob=type==='image/png'?png(this.width,this.height):jpeg(this.width,this.height,jpegBytes);if(delay)pending.push(()=>callback(blob));else queueMicrotask(()=>callback(blob));}};}};
+ const opened=[];const window={addEventListener(){},open(...args){opened.push(args);}};
+ vm.runInNewContext(fs.readFileSync(require.resolve('../site/tools/image-fit/app.js'),'utf8'),{ImageFit:C,document,window,URL:{createObjectURL(b){const u='blob:mock/'+(++sequence);urls.set(u,b);return u;},revokeObjectURL(u){urls.delete(u);revoked.push(u);}},AbortController,createImageBitmap:async b=>({...C.inspect(await b.arrayBuffer()),close(){}})});
+ return {el,urls,revoked,pending,opened,setJpegBytes:x=>jpegBytes=x,setDelay:x=>delay=x,async load(b=jpeg()){el('file').files=[b];await el('file').emit('change');await settle();},async agree(){el('agree').checked=true;await el('agree').emit('input');}};
+}
+async function settle(){for(let i=0;i<12;i++)await new Promise(r=>setImmediate(r));}
+test('selection requires JPEG conversion consent before run',async()=>{const h=harness();await h.load();assert.equal(h.el('run').disabled,true);await h.agree();assert.equal(h.el('run').disabled,false);});
+test('result cannot be downloaded until visual review checkbox',async()=>{const h=harness();await h.load();await h.agree();await h.el('run').emit('click');assert.equal(h.el('after').hidden,false);assert.equal(h.el('download').getAttribute('href'),null);h.el('review').checked=true;await h.el('review').emit('change');assert.ok(h.el('download').href.startsWith('blob:'));assert.equal(h.el('download').download,'image-fit.jpg');});
+test('changing conditions immediately invalidates old output and revokes blob',async()=>{const h=harness();await h.load();await h.agree();await h.el('run').emit('click');const old=h.el('output').src;h.el('review').checked=true;await h.el('review').emit('change');h.el('maxKB').value='100';await h.el('maxKB').emit('input');assert.equal(h.el('download').getAttribute('href'),null);assert.equal(h.el('after').hidden,true);assert.ok(h.revoked.includes(old));});
+test('reset clears input, preview, output, consent and object URLs',async()=>{const h=harness();await h.load();await h.agree();await h.el('run').emit('click');await h.el('clear').emit('click');assert.equal(h.el('before').hidden,true);assert.equal(h.el('after').hidden,true);assert.equal(h.el('run').disabled,true);assert.equal(h.el('agree').checked,false);assert.equal(h.urls.size,0);});
+test('late encoder result cannot restore a result after reset',async()=>{const h=harness();await h.load();await h.agree();h.setDelay(true);const run=h.el('run').emit('click');await settle();assert.equal(h.pending.length,1);await h.el('clear').emit('click');h.pending.shift()();await run;assert.equal(h.el('after').hidden,true);assert.equal(h.el('download').getAttribute('href'),null);assert.equal(h.el('run').disabled,true);});
+test('cancel discards late encoder and permits retry',async()=>{const h=harness();await h.load();await h.agree();h.setDelay(true);const run=h.el('run').emit('click');await settle();await h.el('cancel').emit('click');h.pending.shift()();await run;assert.equal(h.el('after').hidden,true);assert.equal(h.el('run').disabled,false);h.setDelay(false);await h.el('run').emit('click');assert.equal(h.el('after').hidden,false);});
+test('unsupported file removes previous selection and cannot run',async()=>{const h=harness();await h.load();await h.agree();await h.load(new Blob(['<svg/>'],{type:'image/png'}));assert.equal(h.el('run').disabled,true);assert.equal(h.el('before').hidden,true);assert.match(h.el('status').textContent,/対象外/);});
+test('small original is rejected, not silently upscaled',async()=>{const h=harness();await h.load();await h.agree();h.el('minW').value='1300';await h.el('run').emit('click');assert.equal(h.el('after').hidden,true);assert.match(h.el('status').textContent,/下回って/);});
+test('sample flow selects an image without reading a personal file',async()=>{const h=harness();await h.el('sample').emit('click');await settle();assert.equal(h.el('before').hidden,false);assert.match(h.el('input-info').textContent,/1200 × 800px/);});
+test('oversize file is rejected without reading its bytes',async()=>{const h=harness();let read=false;await h.load({size:C.MAX_BYTES+1,arrayBuffer(){read=true;throw Error('must not read');}});assert.equal(read,false);assert.equal(h.el('run').disabled,true);assert.match(h.el('status').textContent,/15MiB/);});
+
+test('original preview supports Enter and Space, ignores other keys',async()=>{const h=harness();await h.load();let prevented=0;for(const key of ['Enter',' '])await h.el('original').emit('keydown',{key,preventDefault(){prevented++;}});await h.el('original').emit('keydown',{key:'ArrowDown'});assert.equal(prevented,2);assert.equal(h.opened.length,2);for(const args of h.opened)assert.deepEqual(args,[h.el('original').src,'_blank','noopener,noreferrer']);});
+test('output keyboard activation opens only a current result',async()=>{const h=harness();await h.load();await h.agree();await h.el('run').emit('click');await h.el('output').emit('keydown',{key:'Enter'});assert.equal(h.opened.length,1);const old=h.opened[0][0];await h.el('maxKB').emit('input');await h.el('output').emit('keydown',{key:' '});assert.equal(h.opened.length,1);assert.ok(h.revoked.includes(old));});
+test('preview controls have accessible names and keyboard tab stops',()=>{const html=fs.readFileSync(require.resolve('../site/tools/image-fit/index.html'),'utf8');for(const id of ['original','output']){const tag=html.match(new RegExp('<img id="'+id+'"[^>]*>'))[0];assert.match(tag,/role="button"/);assert.match(tag,/tabindex="0"/);assert.match(tag,/aria-label="[^"]+新しいタブ[^"]*"/);}});
+
+
+
+test('exact mode toggles fields and names the precise result before generation',async()=>{const h=harness();h.el('mode').value='exact';await h.el('mode').emit('input');assert.equal(h.el('exact-settings').hidden,false);assert.equal(h.el('capacity-settings').hidden,true);assert.match(h.el('dimension-summary').textContent,/幅100 × 高さ100px/);await h.load();await h.agree();await h.el('run').emit('click');assert.match(h.el('output-info').textContent,/100 × 100px/);});
+test('every dimension or method change invalidates an existing save',async()=>{for(const id of ['mode','targetW','targetH','fit','maxW','maxH','minW','minH']){const h=harness();await h.load();await h.agree();await h.el('run').emit('click');h.el('review').checked=true;await h.el('review').emit('change');await h.el(id).emit('input');assert.equal(h.el('download').getAttribute('href'),null,id);assert.equal(h.el('after').hidden,true,id);}});
+test('invalid exact target cannot be saved and user can correct and retry',async()=>{const h=harness();await h.load();await h.agree();h.el('mode').value='exact';h.el('targetW').value='0';await h.el('run').emit('click');assert.equal(h.el('after').hidden,true);assert.equal(h.el('download').getAttribute('href'),null);h.el('targetW').value='100';await h.el('targetW').emit('input');await h.el('run').emit('click');assert.equal(h.el('after').hidden,false);});
+
+// Explicitly mocked UI lifecycle; real browser storage/Canvas is not covered here.
+test('capacity failure removes a reviewed save and permits recovery in exact mode',async()=>{
+ const h=harness();await h.load();await h.agree();h.el('mode').value='exact';await h.el('mode').emit('input');
+ await h.el('run').emit('click');h.el('review').checked=true;await h.el('review').emit('change');assert.ok(h.el('download').href);
+ h.setJpegBytes(100001);h.el('maxKB').value='100';await h.el('maxKB').emit('input');await h.el('run').emit('click');
+ assert.equal(h.el('after').hidden,true);assert.equal(h.el('review').checked,false);assert.equal(h.el('download').getAttribute('href'),null);assert.equal(h.el('download').getAttribute('aria-disabled'),'true');assert.match(h.el('status').textContent,/仕上がり寸法は変更していません/);
+ h.setJpegBytes(1000);await h.el('run').emit('click');assert.equal(h.el('after').hidden,false);assert.equal(h.el('download').getAttribute('href'),null);assert.match(h.el('output-info').textContent,/100 × 100px/);
+});
+test('incompatible min/max range rejects output and recovers after correction',async()=>{
+ const h=harness();await h.load();await h.agree();h.el('minW').value='600';h.el('maxW').value='500';await h.el('run').emit('click');assert.equal(h.el('after').hidden,true);assert.equal(h.el('download').getAttribute('href'),null);assert.match(h.el('status').textContent,/最小寸法以上/);
+ h.el('minW').value='100';h.el('minH').value='100';h.el('maxW').value='500';h.el('maxH').value='300';await h.el('maxW').emit('input');await h.el('run').emit('click');assert.equal(h.el('after').hidden,false);assert.match(h.el('output-info').textContent,/450 × 300px/);
+});

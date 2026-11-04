@@ -1,0 +1,116 @@
+{
+  "kind": "non-browser Pillow adapter",
+  "source": "synthetic 1280x681 only",
+  "files": [
+    {
+      "file": "pad.jpg",
+      "bytes": 3132,
+      "width": 100,
+      "height": 100,
+      "format": "JPEG",
+      "sha256": "f3122b91126eb00861f5d2f80ef76dbba1b89834e1cbe896517a7fe4f7822fe1",
+      "pixelChecks": {
+        "topRGB": [
+          255,
+          255,
+          255
+        ],
+        "leftRGB": [
+          254,
+          0,
+          254
+        ],
+        "yellowObjectBounds": [
+          16,
+          15
+        ]
+      },
+      "tries": 1,
+      "quality": 0.95
+    },
+    {
+      "file": "crop.jpg",
+      "bytes": 2331,
+      "width": 100,
+      "height": 100,
+      "format": "JPEG",
+      "sha256": "690e791b7e468654fa8230a31467bc71f47051a53089aba69c2496a1fdcce953",
+      "pixelChecks": {
+        "topRGB": [
+          0,
+          128,
+          1
+        ],
+        "leftRGB": [
+          255,
+          1,
+          1
+        ],
+        "yellowObjectBounds": [
+          28,
+          28
+        ]
+      },
+      "tries": 1,
+      "quality": 0.95
+    },
+    {
+      "file": "stretch.jpg",
+      "bytes": 2990,
+      "width": 100,
+      "height": 100,
+      "format": "JPEG",
+      "sha256": "30ccd8e4a395255a07a4a7fa78986ce44a5b1a552b4946994b36be826a7b3638",
+      "pixelChecks": {
+        "topRGB": [
+          0,
+          128,
+          1
+        ],
+        "leftRGB": [
+          254,
+          0,
+          254
+        ],
+        "yellowObjectBounds": [
+          16,
+          28
+        ]
+      },
+      "tries": 1,
+      "quality": 0.95
+    },
+    {
+      "file": "range.jpg",
+      "bytes": 72267,
+      "width": 500,
+      "height": 266,
+      "format": "JPEG",
+      "sha256": "24892207b640c261c610714397ec483a2cb39080bd49dc79710a81c8538a4532",
+      "pixelChecks": {},
+      "tries": 2,
+      "quality": 0.88
+    }
+  ],
+  "impossibleExact1KB": "rejected",
+  "unreachableMinimum100KB": "rejected",
+  "sourceCommit": "97bc8f909d4fe29d82cdd76ae9e77190f78ae819",
+  "checkedDateJST": "2026-11-04",
+  "node": "v24.22.1",
+  "pillow": "13.0.0",
+  "browserCanvasVerified": false,
+  "savedFileVerification": "Pillow reopen + full pixel decode + exact dimensions/bytes + pixel assertions",
+  "nodeTests": {
+    "reportedUnits": 65,
+    "passed": 65,
+    "failed": 0,
+    "skipped": 0
+  },
+  "narrowWidths": {
+    "320": "unverified",
+    "360": "unverified",
+    "390": "unverified"
+  },
+  "androidPhysicalDevice": "unverified",
+  "productCodeChangesThisQA": false
+}

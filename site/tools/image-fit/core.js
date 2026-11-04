@@ -47,16 +47,30 @@
     throw new Error('JPEGの寸法を読み取れません。');
   }
   function settings(raw) {
-    const n = Object.fromEntries(['minKB','maxKB','minW','minH'].map(k => [k,Number(raw[k])]));
+    const mode=raw.mode ?? 'capacity';
+    const n = Object.fromEntries(['minKB','maxKB','minW','minH'].map(k => [k,mode==='exact'&&['minW','minH'].includes(k)?0:Number(raw[k])]));
     if (Object.values(n).some(x => !Number.isFinite(x))) throw new Error('条件を数値で入力してください。');
     if (n.minKB < 0 || n.maxKB < 1 || n.maxKB > 15000 || n.minKB > n.maxKB) throw new Error('容量は上限1〜15,000KB、下限0〜上限の範囲で指定してください。');
     if (![n.minW,n.minH].every(x=>Number.isInteger(x)&&x>=0&&x<=MAX_SIDE)) throw new Error('最小寸法は0〜12,000pxの整数で指定してください。');
-    return {minBytes:Math.ceil(n.minKB*1000),maxBytes:Math.floor(n.maxKB*1000),minW:n.minW,minH:n.minH,resize:raw.resize === true};
+    if (!['capacity','exact'].includes(mode)) throw new Error('寸法の指定方法を選んでください。');
+    const maxW=mode==='exact'?0:Number(raw.maxW||0),maxH=mode==='exact'?0:Number(raw.maxH||0);
+    if (![maxW,maxH].every(x=>Number.isInteger(x)&&x>=0&&x<=MAX_SIDE)) throw new Error('最大寸法は0〜12,000pxの整数で指定してください。');
+    if (mode==='capacity'&&((maxW&&maxW<n.minW)||(maxH&&maxH<n.minH))) throw new Error('最大寸法は最小寸法以上にしてください。');
+    const targetW=Number(raw.targetW),targetH=Number(raw.targetH),fit=raw.fit ?? 'pad';
+    if (mode==='exact') {
+      checkDimensions(targetW,targetH);
+      if (!['pad','crop','stretch'].includes(fit)) throw new Error('縦横比が違う場合の方法を選んでください。');
+    }
+    return {minBytes:Math.ceil(n.minKB*1000),maxBytes:Math.floor(n.maxKB*1000),minW:mode==='exact'?0:n.minW,minH:mode==='exact'?0:n.minH,maxW:mode==='exact'?0:maxW,maxH:mode==='exact'?0:maxH,mode,targetW,targetH,fit,resize:raw.resize === true};
   }
-  function fits(bytes,width,height,s) { return bytes>=s.minBytes&&bytes<=s.maxBytes&&width>=s.minW&&height>=s.minH; }
+  function fits(bytes,width,height,s) { return bytes>=s.minBytes&&bytes<=s.maxBytes&&(s.mode==='exact' ? width===s.targetW&&height===s.targetH : width>=s.minW&&height>=s.minH&&(!s.maxW||width<=s.maxW)&&(!s.maxH||height<=s.maxH)); }
   function dimensions(width,height,s) {
     checkDimensions(width,height);
+    if(s.mode==='exact') return [{width:s.targetW,height:s.targetH}];
     if (width<s.minW || height<s.minH) throw new Error('元画像が最小寸法を下回っています。拡大で見かけの条件を合わせず、別の元画像を選んでください。');
+    const scale=Math.min(1,s.maxW?s.maxW/width:1,s.maxH?s.maxH/height:1);
+    width=Math.max(1,Math.floor(width*scale));height=Math.max(1,Math.floor(height*scale));
+    if (width<s.minW || height<s.minH) throw new Error('縦横比を保ったまま、最小寸法と最大寸法を同時に満たせません。寸法の範囲を見直してください。');
     const out=[{width,height}];
     if (!s.resize) return out;
     const floor = Math.max(s.minW/width,s.minH/height,Math.min(1,64/width),Math.min(1,64/height));
@@ -81,7 +95,18 @@
         if (fits(blob.size,d.width,d.height,s)) return {blob,...d,quality,tries};
       }
     }
-    throw new Error('この探索範囲では条件に合うJPEGを作れませんでした。'+(s.resize?'':'「縮小を許可」を選ぶか、')+'容量・最小寸法を見直してください。最小の試行は'+smallest.toLocaleString('ja-JP')+'バイトでした。');
+    throw new Error('この探索範囲では条件に合うJPEGを作れませんでした。'+(s.mode==='exact'?'指定した仕上がり寸法は変更していません。容量上限を増やすか、仕上がり寸法を見直してください。':(s.resize?'':'縮小を許可するか、')+'容量・寸法の範囲を見直してください。')+'最小の試行は'+smallest.toLocaleString('ja-JP')+'バイトでした。');
   }
-  return {MAX_BYTES,MAX_PIXELS,inspect,checkDimensions,settings,fits,dimensions,compress};
+  function geometry(sw,sh,w,h,fit='pad') {
+    if (fit==='stretch') return {x:0,y:0,width:w,height:h};
+    const scale=(fit==='crop'?Math.max:Math.min)(w/sw,h/sh);
+    return {x:(w-sw*scale)/2,y:(h-sh*scale)/2,width:sw*scale,height:sh*scale};
+  }
+  function draw(ctx,image,w,h,s) {
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
+    const d=geometry(image.width,image.height,w,h,s.mode==='exact'?s.fit:'stretch');
+    ctx.drawImage(image,d.x,d.y,d.width,d.height);
+  }
+  return {geometry,draw,MAX_BYTES,MAX_PIXELS,inspect,checkDimensions,settings,fits,dimensions,compress};
 });
+

@@ -3,14 +3,21 @@
   'use strict';
   const C=ImageFit, $=id=>document.getElementById(id);
   let version=0, controller=null, image=null, inputBlob=null, result=null, urls=[];
-  const fields=['minKB','maxKB','minW','minH','resize','agree'];
+  const fields=['minKB','maxKB','minW','minH','resize','agree','mode','targetW','targetH','fit','maxW','maxH'];
   function say(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error);}
   function revoke(){urls.forEach(x=>URL.revokeObjectURL(x));urls=[];}
   function url(blob){const x=URL.createObjectURL(blob);urls.push(x);return x;}
   function noDownload(){const old=$('output').getAttribute('src');if(old){URL.revokeObjectURL(old);urls=urls.filter(x=>x!==old);}result=null;$('review').checked=false;$('after').hidden=true;$('download').removeAttribute('href');$('download').classList.add('disabled');$('download').setAttribute('aria-disabled','true');$('download').tabIndex=-1;$('output').removeAttribute('src');}
   function invalidate(message){version++;controller?.abort();controller=null;$('cancel').disabled=true;noDownload();$('run').disabled=!image||!$('agree').checked;if(message)say(message);}
   function closeInput(){image?.close?.();image=null;inputBlob=null;revoke();$('original').removeAttribute('src');$('before').hidden=true;$('empty').hidden=false;}
-  function raw(){return {minKB:$('minKB').value,maxKB:$('maxKB').value,minW:$('minW').value,minH:$('minH').value,resize:$('resize').checked};}
+  function raw(){return {minKB:$('minKB').value,maxKB:$('maxKB').value,minW:$('minW').value,minH:$('minH').value,resize:$('resize').checked,mode:$('mode').value,targetW:$('targetW').value,targetH:$('targetH').value,fit:$('fit').value,maxW:$('maxW').value,maxH:$('maxH').value};}
+  function describe(){
+    const exact=$('mode').value==='exact';
+    $('exact-settings').hidden=!exact;$('capacity-settings').hidden=exact;
+    const names={pad:'白い余白を追加して全体を残す',crop:'中央を残して周囲を切り抜く',stretch:'縦横比を変えて引き伸ばす'};
+    $('dimension-summary').textContent=exact?'仕上がり：幅'+$('targetW').value+' × 高さ'+$('targetH').value+'px。'+names[$('fit').value]+'。容量に収まらなくても寸法は変えません。元画像より大きい指定では画質が粗くなる場合があります。':'寸法は指定した範囲内で決まります。「最小100px」は100px以上の意味で、100×100pxになる指定ではありません。ぴったりの寸法にする場合は「仕上がり寸法を指定」を選んでください。';
+  }
+  describe();
   async function load(blob){
     invalidate();closeInput();$('run').disabled=true;const token=version;
     try{
@@ -25,7 +32,7 @@
     }catch(e){if(token!==version)return;closeInput();$('run').disabled=true;say(e.message,true);}
   }
   $('file').addEventListener('change',()=>{const f=$('file').files[0];if(f)load(f);else{invalidate();closeInput();$('run').disabled=true;say('画像を選んでください。');}});
-  fields.forEach(id=>$(id).addEventListener('input',()=>invalidate('条件が変わりました。もう一度作成してください。')));
+  fields.forEach(id=>$(id).addEventListener('input',()=>{describe();invalidate('条件が変わりました。もう一度作成してください。');}));
   document.querySelectorAll('[data-kb]').forEach(b=>b.addEventListener('click',()=>{$('maxKB').value=b.dataset.kb;invalidate('容量の上限を変更しました。もう一度作成してください。');}));
   $('run').addEventListener('click',async()=>{
     invalidate();if(!image||!$('agree').checked)return;
@@ -39,7 +46,7 @@
       if(signal.aborted||token!==version)return;
       const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw new Error('画像の作成領域を確保できませんでした。');
       const encoded=await C.compress(work.width,work.height,s,(w,h,q)=>{
-        canvas.width=w;canvas.height=h;ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(work,0,0,w,h);
+        canvas.width=w;canvas.height=h;C.draw(ctx,work,w,h,s);
         return new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',q));
       },signal,p=>say('作成中… '+p.tries+'回目 / '+p.width+' × '+p.height+'px / '+p.bytes.toLocaleString('ja-JP')+'バイト'));
       if(token!==version)return;
@@ -72,4 +79,5 @@
   }
   window.addEventListener('pagehide',()=>{controller?.abort();image?.close();revoke();});
 })();
+
 
