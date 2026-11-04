@@ -1,3 +1,13 @@
+## 2026-11-04：画像サイズ合わせ・寸法指定の操作性改善（未公開）
+
+基点main `e6fabfe60593d8c638ebd7c80479a9956cf97116`。本人の「最小100pxを100pxぴったりと誤解」の実機報告を受け、`fix/image-fit-exact-dimensions-20261104` で改善。容量優先/仕上がり寸法指定を分離、白余白（初期）/中央切り抜き/引き伸ばし、容量と寸法の同時判定、最小/最大範囲、設定変更後の保存無効化を実装。新ライブラリ・画像の外部送信・CSP/計測変更なし。既存実験コピー/PDF/CSV実装を変更しない。
+
+Nodeテスト63合格（core33/UI16/公開整合8/既存CSVガイド6ファイル）、構文/HTMLラベル検査合格。encoder/Canvas/DOMを含むモック検証を実JPEGの生成・保存成功と扱わない。管理プレビューstart/statusはデーモンmailbox不在で不可。変更版の実ブラウザ・320/360/390px・Android実機は未検証。別環境への無断公開やネットワーク迂回はしない。
+
+競合4社の公開情報と実装理由、ファイル一覧、検証限界は `docs/image-fit-usability-2026-11-04.md`。今回の保存はDraft PRまで。`[CF-Pages-Skip]` を維持し、main/本番は変更しない。保存後照合・skip・本番不変の結果は該当PRにも記録する。
+
+次の1件：利用可能な承認済みプレビューで合成画像の100×100px/100KB以下を3方式で実生成・保存・再読込し、狭幅を確認。過去QAの再利用だけで変更版を公開しない。本番公開・マージは別承認。費用0円、本人操作は現時点不要。
+
 ## 2026-11-01 19:36 JST：画像サイズ合わせ限定公開完了・主要機能スモーク合格
 
 本人が3080a84の未検証事項を了承し限定公開を承認。マージ前に固定head/承認tree0da72c5/公開site9ファイルbytes/main5f03a4dを照合、想定外変更なし。Draft解除→expected_head指定の通常merge、製品公開commit `bfca22122db50ba34bad8d6d9ebe70dd989f2184`。Pages `b44225f7-8529-4315-9534-909472b24057`、production/is_skipped=false/success、19:18:46 JST。canonical_deploymentも同commit。公開URL https://columns-lab.pages.dev/tools/image-fit/ 。

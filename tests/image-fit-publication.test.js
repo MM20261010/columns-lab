@@ -7,7 +7,7 @@ const page='site/tools/image-fit/index.html',html=read(page);
 test('publication page is indexable with one heading and exact canonical',()=>{
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
  assert.match(html,/<h1>画像サイズ合わせ<\/h1>/);
- assert.match(html,/<title>画像サイズ合わせ｜容量と最小ピクセルを同時に確認 \| 列そろえラボ<\/title>/);
+ assert.match(html,/<title>画像サイズ合わせ｜仕上がり寸法と容量を同時に指定 \| 列そろえラボ<\/title>/);
  assert.match(html,/rel="canonical" href="https:\/\/columns-lab\.pages\.dev\/tools\/image-fit\/"/);
  assert.match(html,/name="description" content="[^"]+JPEG・静止PNG[^"]+"/);
  assert.doesNotMatch(html,/noindex|nofollow|未公開試作|開発中のローカル試作/);
@@ -52,8 +52,7 @@ test('sitemap contains five unique absolute canonical URLs including the image t
  assert.ok(urls.every(u=>new URL(u).origin==='https://columns-lab.pages.dev'));
  assert.match(read('site/robots.txt'),/Sitemap: https:\/\/columns-lab.pages.dev\/sitemap.xml/);
 });
-test('public tool uses exact tested app/core/style; no QA files in its route',()=>{
- for(const f of ['app.js','core.js','style.css'])assert.equal(read('site/tools/image-fit/'+f),read('experiments/image-fit/site/'+f));
+test('public tool keeps local processing and no QA files in its route',()=>{
  assert.deepEqual(fs.readdirSync(path.join(root,'site/tools/image-fit')).sort(),['app.js','core.js','index.html','style.css']);
  for(const f of ['app.js','core.js'])assert.doesNotMatch(read('site/tools/image-fit/'+f),/\b(fetch|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB)\b|innerHTML/);
  const scriptSources=[...html.matchAll(/<script\b[^>]*src="([^"]+)"/g)].map(m=>m[1]);
@@ -76,3 +75,4 @@ test('privacy notice separates page measurement from image/name content and warn
  assert.match(p,/透明部分が白になり、色や画質が変わる場合/);
  assert.match(html,/画像・ファイル名は解析イベントに含めません/);
 });
+
