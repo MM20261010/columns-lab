@@ -1,0 +1,58 @@
+{
+  "asOfJST": "2026-11-04",
+  "status": "three_tools_published_observation_phase",
+  "productCommit": "5e8158ff10f2d6887c2dfc55f298455bfb516471",
+  "imageFirstRelease": "0d6676f36dbb4cbf81b69b00be883fd222e8b7db",
+  "csvOriginalRelease": "bdd91e27e2092beb74508847f74ab8221cea2e42",
+  "siteTree": "db4e7dfefcc7fc36b5b6df81d1d9445ad7730ffe",
+  "pullRequests": [
+    10,
+    11
+  ],
+  "ciRuns": {
+    "image": 41754246515,
+    "pdfAndImage": 41755156780,
+    "production": 41755618039
+  },
+  "nodeReportedTests": 117,
+  "nodeFailures": 0,
+  "viewportsTested": [
+    320,
+    360,
+    390
+  ],
+  "androidPhysicalDevice": "unverified",
+  "privacy": "local image/text processing; no new input telemetry",
+  "cloudflareMeasurement": {
+    "scriptResponses": "16 HTTP200",
+    "rumPostRequests": 31,
+    "rumPostResponses": "17 observed HTTP204",
+    "aggregatePV": null,
+    "thirdPartyPV": null,
+    "toolCompletions": null
+  },
+  "google": {
+    "currentSearchImpressions": null,
+    "currentSearchClicks": null,
+    "newToolsIndexed": null,
+    "ga4Property": null,
+    "ga4TagInPublicSource": false,
+    "lastOwnerReportDate": "2026-10-22",
+    "lastOwnerReportSelectedPeriod": "3 months",
+    "lastOwnerReportImpressions": 9,
+    "lastOwnerReportClicks": 0
+  },
+  "revenueJPY": null,
+  "monthlyExpensesJPY": null,
+  "thisWorkAdditionalExpenseJPY": 0,
+  "selfQAWIndowJST": [
+    "2026-11-04T10:20:00+09:00",
+    "2026-11-04T10:50:00+09:00"
+  ],
+  "automationSchedulesChanged": false,
+  "newAutomations": 0,
+  "newToolDevelopment": "pause",
+  "decisionDate": "2026-11-30",
+  "decisionDayAutomationCreated": false,
+  "nextWork": "Evaluate measured search reach and per-tool page traffic; choose one evidence-backed distribution or explanation improvement."
+}

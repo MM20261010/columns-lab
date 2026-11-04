@@ -1,3 +1,17 @@
+## 2026-11-04：3ツール公開完了・新ツール開発停止／観測へ移行
+
+本人の「3ツール完成・公開・観測移行」を受け、PR #10の固定567ebda/差分/実Chromium CIを照合してmerge0d6676f。既存PDF ce6a3aa（原型8886239/研究beedd8ab）を再利用し、PR #11固定81ec701/29ファイルを照合、Node117＋実Chromium受入成功後にmerge。現在本番 `5e8158ff10f2d6887c2dfc55f298455bfb516471`、Pages c47b6822-86c3-4184-b3df-f4eadde3fcea/success。
+
+公開URL：CSV https://columns-lab.pages.dev/tools/csv-merge/ 、画像 https://columns-lab.pages.dev/tools/image-fit/ 、PDF https://columns-lab.pages.dev/tools/pdf-text/ 。画像は100×100/容量/余白・切抜き・引伸ばしを公開。読込中の条件変更で入力を捨てる競合を本番確認し、再現2テスト→inputVersion分離の最小修正済み。PDFは原文保持/復元/編集/実コピー/リセット。本文処理の外部送信や新規追跡は追加しない。title/canonical/index/内部導線/sitemap6URL/privacy/CSP整合。
+
+CI run41754246515（画像）・41755156780（PDF＋画像）・41755618039（本番）成功。3幅320/360/390px、3画像方式×3幅の実保存/独立Pillow画素デコード/JPEG再入力、PDF25fixture×3幅・実clipboard全文一致/長文/上限超過/復帰/復元/編集/リセットが合格。本番6ページ200/canonical、3ツール狭幅横はみ出しなし。対話型ChromeでもPDF操作と画像100×100/2656bytes実保存・Pillow独立確認・再入力合格。Android実機/広範な色・互換・読み上げ・実機メモリは未検証。過去の「プレビュー障害で未検証/公開保留」は当時の記録であり、CI成功と今回の公開を優先する。
+
+本番RUM script取得200/POST応答204を確認。ただし集計PV/第三者流入/ツール完了数は不明。GA4タグは公開コードに見つからず、GA4/GSC専用ツールなし。10/22本人GSC表示9/クリック0は3か月選択の過去値で11月値にしない。新ページindex/Google sitemap取得も未確認。本作業追加支出0、月次収益/費用/純利益は未取得を0にしない。自己QAは保守的に11/4 10:20〜10:50 JSTを今回分として区別。
+
+既存週1回観測と月次レビューのpromptだけ3ツール/11月30日判断へ更新、enabled/頻度不変を確認。新規定期タスクなし。通知配送はunknown、到着保証なし。観測範囲6主要path、正常な変化なしの通知抑制は可、欠測/障害/重要増減/承認待ち/停止は報告対象。11/30当日用の専用自動実行は新設していない。
+
+詳細 `docs/three-tools-release-2026-11-04.md` と `docs/three-tools-observation-2026-11-04.json`。本番検証専用branch verify/three-tools-production-20261104 / afc66c4（デプロイスキップ、mainへのマージ不要）に再現用CI。次のWorkは新ツールを作らず、検索到達・ページ別実測から集客/説明改善1件を選ぶ。原則新ツール開発停止、11/30に正常計測・実利用・検索反応で継続判断。外部投稿は別承認。費用0円、本人操作：不要。
+
 ## 2026-11-04：PR #10 公開前QA・代替実JPEG検証合格／実ブラウザは環境障害
 
 対象head `97bc8f909d4fe29d82cdd76ae9e77190f78ae819`、Draft PR #10、ブランチ `fix/image-fit-exact-dimensions-20261104`。Chrome自体と公開CSV操作は成功したが、PR版の管理プレビューstart/statusはデーモンmailbox不在で失敗。承認待ちではない。PR版の実Chrome生成/Download/再読込、320/360/390px、Android実機は未検証、公開判断は保留。迂回サーバーや別ホスティングへ無断公開しない。
