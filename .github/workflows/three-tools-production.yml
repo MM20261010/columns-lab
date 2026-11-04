@@ -1,0 +1,19 @@
+name: One-off three-tool production verification
+on:
+  push:
+    branches:
+      - verify/three-tools-production-20261104
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --no-package-lock playwright@1.58.2
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/qa/three-tools-production.cjs
